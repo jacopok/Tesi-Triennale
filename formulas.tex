@@ -1,0 +1,195 @@
+\subsection{Nobili}
+
+\paragraph{Tensor calculus}
+
+The covariant derivative keeps account of the shifting of the basis vectors:
+
+\begin{equation}
+    \nabla_\mu A^\nu = \partial_\mu A^\nu + \Gamma^\nu _{\alpha \mu}  A^\alpha
+\end{equation}
+
+The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors! they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$.
+
+If we have the metric, they can be calculated as:
+
+\begin{equation}
+    \Gamma^\mu_{\nu \rho} = \frac{1}{2} g^{\mu \alpha} \qty(
+    \partial_\rho g_{\alpha \nu} +
+    \partial_\nu g_{\alpha \rho} -
+    \partial_\alpha g_{\nu \rho}
+    ) \label{eq:christoffel-symbols-from-metric}
+\end{equation}
+
+This also tells us that they are symmetric in the lower two indices: $\Gamma ^\mu _{\nu \rho} = \Gamma ^\mu _{(\nu \rho)}$.
+
+The divergence of a vector field $A^\mu$ can be calculated as:
+
+\begin{equation}
+    \nabla_\mu A^\mu = \frac{1}{\sqrt{-g}}\partial_\mu \qty(\sqrt{-g}A^\mu) \label{eq:covariant-divergence}
+\end{equation}
+
+where $g$ is the determinant of the metric.
+
+We can also define the Dalambertian operator $\square = \nabla_\mu \nabla^\mu = \nabla_\mu \partial^\mu$, which can only act on scalars, and it does so like:
+
+\begin{equation}
+    \square A = \nabla_\mu (\partial^\mu A) =  \frac{1}{\sqrt{-g}}\partial_\mu \qty(\sqrt{-g}\partial^\mu A)
+\end{equation}
+
+If we differentiate and antisymmetryze (so, take the rotor of) an antisymmetric tensor $F_{[\mu \nu]}$, the Christoffel symbols cancel:
+
+\begin{equation}
+    \nabla_{[\mu} F_{\nu\rho]} = \partial_{[\mu} F_{\nu\rho]}
+\end{equation}
+
+The derivative with respect to proper time is $\dv{}{\tau} = u^\mu \partial_\mu$.
+
+Covariant acceleration is defined as:
+
+\begin{equation}
+    a^\nu = u^\mu \nabla_\mu u^\nu
+\end{equation}
+
+\paragraph{Geodesics}
+
+If we have a path $x^\mu(\lambda)$, we would like to see if it is a geodesic, that is, if it is stationary with respect to path length. To do this we can stationarize the action corresponding to the lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
+
+\begin{equation}
+    \Ddot{x}^\mu + \Gamma^\mu_{\nu\rho} \Dot{x}^\nu \Dot{x}^\rho = 0
+\end{equation}
+
+Where $\Gamma$ are the Christoffel symbols, which can be calculated by differentiating the metric, as shown in \eqref{eq:christoffel-symbols-from-metric}. $\Lagr$ is an integral of these Lagrange equations.
+
+If the parameter $\lambda$ is taken to be the proper time $s$, then the equation is
+
+\begin{equation}
+    \dv{u^\mu}{s} + \Gamma^\mu _{\nu\rho} u^\nu u^\rho = 0
+\end{equation}
+
+\paragraph{Tetrads and projectors}
+
+We want to work in a reference in which the velocity $u^\mu$ is purely timelike. This can always be found by the equivalence principle. Such a reference is called a tetrad. It also allows the metric to become the Minkowski metric in a neighbourhood of the point we consider.
+
+It is useful to project tensors onto the and space-like and time-like subspaces defined by our tetrad (and we wish to do so in a coordinate-independent manner,  so just taking the 0th and $i $-th components in the tetrad will not suffice). We therefore define the projectors:
+
+\begin{equation}
+    h_{\mu \nu} = u_\mu u_\nu + g_{\mu \nu} \qquad \pi_{\mu\nu} = -u_\mu u_\nu
+\end{equation}
+
+respectively onto the space- and time-like subspaces.
+
+\paragraph{Metrics}
+
+The simplest one is the Schwarzschild metric. It describes a spherically symmetric object of mass $M$, in spherical coordinates. Defining $\Phi = -M/r$, we have:
+
+\begin{equation}
+    \dd{s}^2 = -(1+2\Phi)\dd{t}^2 + \frac{1}{1+2\Phi} \dd{r}^2 
+    + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi}) \label{eq:schwartzshild-line-element}
+\end{equation}
+
+or, equivalently,
+
+\begin{equation}
+    g_{\mu\nu} =  \diag{-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta }
+\end{equation}
+
+We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag{-, +, +, +}$ in the limit $M\rightarrow 0$. Its determinant is $g = -r^4 \sin^2 \theta$.
+
+\paragraph{Fluid mechanics}
+
+In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
+
+When dealing with a continuum, we will have a certain density of particle per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$. 
+
+This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
+
+Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
+We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
+
+Now, the vector $\rho u^\mu$ describes the flux of energy. 
+We can then write the equation for the conservation of momentum:
+
+\begin{equation}
+    f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
+\end{equation}
+
+\paragraph{Spherical accretion}
+
+We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we treat a fluid with 4-velocity $u^\mu$ in spherical coordinates, since the problem we are looking at is stationary and spherically symmetric the velocity is:
+
+\begin{equation}
+    u^\mu = \begin{pmatrix}
+        \gamma^2 / y\\
+        yv\\
+        0\\
+        0
+    \end{pmatrix}
+\end{equation}
+
+where we define $\gamma = \qty(1-v^2)^{-1/2}$, $y=\gamma \sqrt{1+2\Phi}$.
+
+The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
+
+\begin{equation}
+    \dv{}{r} \qty(\rho_0 yvr^2) = 0
+\end{equation}
+
+In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$.
+
+We also have the Euler equation:
+
+\begin{equation}
+    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
+\end{equation}
+
+And the equation for ???
+
+\begin{equation}
+    \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
+\end{equation}
+
+From these we can show that the quantity $\gamma \sqrt{1+2\Phi} h$ (where $h = (p+\rho)/\rho_0$ is the specific enthalpy), is a constant of motion.
+In the nonrelativistic, weak-field limit this  becomes
+
+\begin{equation}
+    \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
+\end{equation}
+
+
+\subsection{Taub}
+
+This section summarizes my study of A. H. Taub's review of relativistic fluid dynamics, \cite{taub}.
+
+Nonrelativistic fluid mechanics are described by the equations:
+
+\begin{align}
+    \partial_t \rho + \partial_i (\rho v^i) =0 \\
+    \rho \qty(\partial_t v^i + v^j \partial_j v^i) = \partial_j T^{ij} \\
+    \rho \partial_t E + v^i \partial_i E = \partial_i \qty(T^{ij}v_j + \lambda\partial^i T)
+\end{align}
+
+where $\rho$ is the density of the fluid,
+$v^i$ are the components of its velocity, 
+$T^{ij}$ is the stress tensor (or, equivalently, the space-like components of the energy-momentum tensor),
+$E$ is the energy of the fluid,
+$\lambda$ is the thermal conductivity,
+$T$ is the temperature of the fluid.
+
+The nonrelativistic stress tensor can be written as:
+
+\begin{equation}
+    T_{ij} = -(p + \xi \partial_k v^k ) \delta_{ij} + \eta \partial_{(i} v_{j)}
+\end{equation}
+
+where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $T_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
+
+Note that we are working in Euclidean 3D space, so the metric is the identity and upper and lower indices are equivalent.
+
+The energy is a sum of kinetic and specific energy:
+
+\begin{equation}
+    E = v^i v_i /2 + \varepsilon
+\end{equation}
+
+where $\varepsilon$ is the specific energy (of a type that is different from kinetic) per unit mass.
+

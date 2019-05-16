@@ -1,0 +1,30 @@
+I will use greek indices ($\mu$, $\nu$, $\rho$\dots) to denote 4-dimensional indices ranging from 0 to 3, and latin indices ($i$, $j$, $k$\dots) to denote 3-dimensional indices ranging from 1 to 3.
+
+I will use the ``mostly plus'' metric for flat Minkowski space-time, $\eta_{\mu \nu} = \diag{-, +, +, +}$.
+I will use Einstein summation convention: if an index appears multiple times in the same monomial, it is meant to be summed over
+
+Take a diffeomorphism $x \rightarrow y$, with Jacobian matrix $\pdv*{y^\mu}{x^\nu}$.
+The indices of contravariant vectors, trasforming as
+
+\begin{equation}
+    V^\mu \rightarrow \qty( \pdv{y^\mu}{x^\nu})  V^\nu
+\end{equation}
+
+will be denoted as upper indices, while the indices of covariant vectors, trasforming as
+
+\begin{equation}
+V_\mu \rightarrow \qty( \pdv{x^\nu}{y^\mu})  V_\nu
+\end{equation}
+
+will be denoted as lower indices; the same applies to higher rank tensors.
+
+Unless otherwise specified, I will work in geometrized units, where $c = G = 1$.
+
+Take a tensor with many indices, $T_{IJ}$, where $I$ is shorthand for the $n$ indices $\mu \nu \rho \dots$ and the same applies to $J$. These indices can be symmetrized and antisymmetrized, and I will use the following conventions:
+
+\begin{align}
+    T_{(I)J} &= \sum_{\sigma \in S_n} T_{\sigma(I)J} \\
+    T_{[I]J} &= \sum_{\sigma \in S_n} \sign{\sigma} T_{\sigma(I)J} 
+\end{align}
+
+where $S_n$ is the group of permutations of $n$ elements, and $\sign{\sigma}$ is 1 if $\sigma$ is an even permutation (it can be obtained in an even number of pair swaps) and -1 otherwise.

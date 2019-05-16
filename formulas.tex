@@ -83,7 +83,7 @@ respectively onto the space- and time-like subspaces.
 The simplest one is the Schwarzschild metric. It describes a spherically symmetric object of mass $M$, in spherical coordinates. Defining $\Phi = -M/r$, we have:
 
 \begin{equation}
-    \dd{s}^2 = -(1+2\Phi)\dd{t}^2 + \frac{1}{1+2\Phi} \dd{r}^2 
+    \dd{s}^2 = -(1+2\Phi)\dd{t}^2 + \frac{1}{1+2\Phi} \dd{r}^2
     + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi}) \label{eq:schwartzshild-line-element}
 \end{equation}
 
@@ -99,14 +99,14 @@ We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag{-, +, +, +}
 
 In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
 
-When dealing with a continuum, we will have a certain density of particle per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$. 
+When dealing with a continuum, we will have a certain density of particle per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$.
 
 This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
 
 Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
 We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
-Now, the vector $\rho u^\mu$ describes the flux of energy. 
+Now, the vector $\rho u^\mu$ describes the flux of energy.
 We can then write the equation for the conservation of momentum:
 
 \begin{equation}
@@ -169,7 +169,7 @@ Nonrelativistic fluid mechanics are described by the equations:
 \end{align}
 
 where $\rho$ is the density of the fluid,
-$v^i$ are the components of its velocity, 
+$v^i$ are the components of its velocity,
 $T^{ij}$ is the stress tensor (or, equivalently, the space-like components of the energy-momentum tensor),
 $E$ is the energy of the fluid,
 $\lambda$ is the thermal conductivity,
@@ -193,3 +193,4 @@ The energy is a sum of kinetic and specific energy:
 
 where $\varepsilon$ is the specific energy (of a type that is different from kinetic) per unit mass.
 
+Testing git commit: $e^{i\pi}+1=0$.

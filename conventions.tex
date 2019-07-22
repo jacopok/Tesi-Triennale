@@ -1,3 +1,7 @@
+\documentclass[main.tex]{subfiles}
+\begin{document}
+
+
 I will use greek indices ($\mu$, $\nu$, $\rho$\dots) to denote 4-dimensional indices ranging from 0 to 3, and latin indices ($i$, $j$, $k$\dots) to denote 3-dimensional indices ranging from 1 to 3.
 
 I will use the ``mostly plus'' metric for flat Minkowski space-time, $\eta_{\mu \nu} = \diag{-, +, +, +}$.
@@ -24,7 +28,9 @@ Take a tensor with many indices, $T_{IJ}$, where $I$ is shorthand for the $n$ in
 
 \begin{align}
     T_{(I)J} &= \sum_{\sigma \in S_n} T_{\sigma(I)J} \\
-    T_{[I]J} &= \sum_{\sigma \in S_n} \sign{\sigma} T_{\sigma(I)J} 
+    T_{[I]J} &= \sum_{\sigma \in S_n} \sign{\sigma} T_{\sigma(I)J}
 \end{align}
 
 where $S_n$ is the group of permutations of $n$ elements, and $\sign{\sigma}$ is 1 if $\sigma$ is an even permutation (it can be obtained in an even number of pair swaps) and -1 otherwise.
+
+\end{document}

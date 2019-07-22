@@ -7,5 +7,7 @@
 *.blg
 *.out
 *.pdf
+!figures/*
+!main.pdf
 *.run.xml
 *.synctex.gz

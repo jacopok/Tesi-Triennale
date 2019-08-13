@@ -50,7 +50,7 @@ The derivative with respect to proper time is $\dv{}{\tau} = u^\mu \partial_\mu$
 
 Covariant acceleration is defined as:
 
-\begin{equation}
+\begin{equation} \label{eq:covariant-acceleration-def}
     a^\nu = u^\mu \nabla_\mu u^\nu
 \end{equation}
 
@@ -58,15 +58,21 @@ Covariant acceleration is defined as:
 
 The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
 
-\begin{equation}
-    R ^{\mu} _{\nu \rho \sigma} V^\nu = [\nabla_\rho, \nabla_\sigma]   V^\mu
+\begin{equation} \label{eq:riemann-tensor-def}
+    R ^{\mu} _{\nu \rho \sigma} V^\nu \defeq [\nabla_\rho, \nabla_\sigma]   V^\mu
 \end{equation}
 
-It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one.
+It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one. This result follows by direct computation from formula \eqref{eq:riemann-tensor-def}.
 
 \begin{equation}
     R ^{\mu} _{\nu \rho \sigma} =
+     \partial_\rho \Gamma^\mu_{\nu \sigma}
+    -\partial_\sigma \Gamma^\mu_{\nu \rho}
+    +\Gamma^\mu_{\rho \lambda} \Gamma ^{\lambda} _{\sigma \nu}
+    -\Gamma^\mu_{\sigma \lambda} \Gamma ^{\lambda} _{\rho \nu}
 \end{equation}
+
+The Christoffel symbols can be nonzero if we choose certain coordinates even for flat spacetime, but the Riemann tensor is zero iff the spacetime is flat.
 
 \paragraph{Geodesics}
 
@@ -84,11 +90,35 @@ If the parameter $\lambda$ is taken to be the proper time $s$, then the equation
     \dv{u^\mu}{s} + \Gamma^\mu _{\nu\rho} u^\nu u^\rho = 0
 \end{equation}
 
+Notice that this is equivalent to the covariant acceleration \eqref{eq:covariant-acceleration-def} being zero.
+
+\paragraph{Fermi-Walker transport}
+
+Take a general vector field \(V ^{\mu} (s)\) defined along a curve, with its tangent vector \(u^\mu\) whose covariant acceleration is \(a^\mu\).
+Then we say that \(V^\mu\) is transported according to Fermi-Walker iff it satisfies
+
+\begin{equation}
+    \dot{V}^\mu  = u^\nu \nabla_\nu V^\nu
+    = V_\rho \qty(u^\mu a^\rho - a^\mu u^\rho)
+\end{equation}
+
+This condition is always satisfied by \(V^\mu = u^\mu\), since \(a^\mu u_\mu = 0\), whether or not the curve is a geodesic. The tangent vector is \emph{parallel} transported only for geodesics.
+
 \paragraph{Tetrads and projectors}
 
-We want to work in a reference in which the velocity $u^\mu$ is purely timelike. This can always be found by the equivalence principle. Such a reference is called a tetrad. It also allows the metric to become the Minkowski metric in a neighbourhood of the point we consider.
+We want to work in a reference in which the velocity $u^\mu$ is purely timelike. This can always be found by the equivalence principle. Such a reference can be completed into what  is called a tetrad, for which the metric becomes the Minkowski metric in a neighbourhood of the point we consider.
 
-It is useful to project tensors onto the and space-like and time-like subspaces defined by our tetrad (and we wish to do so in a coordinate-independent manner,  so just taking the 0th and $i $-th components in the tetrad will not suffice). We therefore define the projectors:
+We call the velocity \(u^\mu = V^\mu _{(0)}\), and add to it three other vectors \(V^\mu_{(i)}\) such that
+
+\begin{equation}
+    g_{\mu\nu} V^\mu _{(\alpha)} V^\nu _{(\beta)} = \eta_{(\alpha) (\beta)}
+\end{equation}
+
+where the brackets around the indices denote the fact that they label four vectors, not the components of a tensor.
+
+We can choose the vectors \(V_{(i)}^\mu\) so that they are Fermi-Walker transported along the worldline defined by \(u^\mu\): this allows us to find the relativistic equivalent of a nonrotating frame of reference.
+
+It is useful to project tensors onto the space-like and time-like subspaces defined by our tetrad (and we wish to do so in a coordinate-independent manner,  so just taking the 0th and $i $-th components in the tetrad will not suffice). We therefore define the projectors:
 
 \begin{equation}
     h_{\mu \nu} = u_\mu u_\nu + g_{\mu \nu} \qquad \pi_{\mu\nu} = -u_\mu u_\nu
@@ -98,7 +128,7 @@ respectively onto the space- and time-like subspaces.
 
 \paragraph{Metrics}
 
-The simplest one is the Schwarzschild metric. It describes a spherically symmetric object of mass $M$, in spherical coordinates. Defining $\Phi = -M/r$, we have:
+The simplest physically relevant one is the Schwarzschild metric. It describes a spherically symmetric object of mass $M$, in spherical coordinates. Defining $\Phi = -M/r$, we have:
 
 \begin{equation}
     \dd{s}^2 = -(1+2\Phi)\dd{t}^2 + \frac{1}{1+2\Phi} \dd{r}^2

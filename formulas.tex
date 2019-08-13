@@ -24,7 +24,7 @@ If we have the metric, they can be calculated as:
     ) \label{eq:christoffel-symbols-from-metric}
 \end{equation}
 
-This also tells us that they are symmetric in the lower two indices: $\Gamma ^\mu _{\nu \rho} = \Gamma ^\mu _{(\nu \rho)}$.
+This also tells us that they are symmetric in the lower two indices: $\Gamma ^\mu _{\nu \rho} = \Gamma ^\mu _{\rho \nu}$.
 
 The divergence of a vector field $A^\mu$ can be calculated as:
 
@@ -52,6 +52,20 @@ Covariant acceleration is defined as:
 
 \begin{equation}
     a^\nu = u^\mu \nabla_\mu u^\nu
+\end{equation}
+
+\paragraph{Curvature}
+
+The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
+
+\begin{equation}
+    R ^{\mu} _{\nu \rho \sigma} V^\nu = [\nabla_\rho, \nabla_\sigma]   V^\mu
+\end{equation}
+
+It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one.
+
+\begin{equation}
+    R ^{\mu} _{\nu \rho \sigma} =
 \end{equation}
 
 \paragraph{Geodesics}
@@ -103,7 +117,7 @@ We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag{-, +, +, +}
 
 In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
 
-When dealing with a continuum, we will have a certain density of particle per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$.
+When dealing with a continuum, we will have a certain density of particles per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$.
 
 This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
 
@@ -146,7 +160,7 @@ We also have the Euler equation:
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
-And the equation for ???
+And the equation for the variation of the total internal energy:
 
 \begin{equation}
     \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}

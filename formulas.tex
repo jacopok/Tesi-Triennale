@@ -280,13 +280,15 @@ and as in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the 
 
 \section{Nobili, Turolla, Zampieri}
 
+See \cite{NTZ91}.
+
 The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
 
 \begin{equation}
     \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
 \end{equation}
 
-where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}.\footnote{See \url{http://lss.fnal.gov/archive/2012/pub/fermilab-pub-12-107-a.pdf}}
+where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{Gnedin_2012}.
 
 The cooling function of the infalling gas is
 
@@ -307,7 +309,7 @@ The version of this equation in Stellingwerf and Buff is similar: the first cons
 
 \section{Thorne's PSTF moment formalism}
 
-Following \cite{thorne1980}.
+Following \cite{thorne1981}.
 
 Given any tensor \(A^{\mu_1 \dots \mu_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
 
@@ -339,13 +341,40 @@ To see what this is doing, let us consider its action on a rank-two tensor:
     A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho
 \end{equation}
 
-Now, let us consider all the space-like (unit) vectors \(n^\mu\), which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span a three-dimensional sphere.
+Now, let us consider all the unit vectors \(n^\mu\) in the space normal to the velocity, which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span a three-dimensional sphere.
 
 If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it into harmonics as such:
 
 \begin{equation}
     F(n) = \sum _{k=0}   ^{\infty}
-    F_{\alpha_1 \dots \alpha_k} \prod_{i=0}^k n^{\alpha_i} 
+    \mathscr F_{\alpha_1 \dots \alpha_k} \prod_{i=0}^k n^{\alpha_i}
 \end{equation}
+
+Where the PTSF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed as
+
+\begin{equation}
+    \mathscr F_{\alpha_1 \dots \alpha_k} =
+    \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF}
+\end{equation}
+
+Now, consider a photon, whose trajectory in spacetime is parametrized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
+
+\begin{equation}
+    p = \dv{}{\xi}
+\end{equation}
+
+Now, our observer has a timelike velocity \(u^\mu\). We can find a spacelike vector \(n^\mu\) corresponding to the space-like part of the movement of the photon, or
+
+\begin{equation}
+    p^\mu = (- u^\nu p_\nu) (u^\mu + n^\mu)
+\end{equation}
+
+Now, we define a parameter \(l\) which corresponds to the space distance the photon moved through in this frame (this is \emph{not} covariant!)
+
+\begin{equation}
+    l = \int  (-u^\nu p_\nu) \dd{\xi}
+\end{equation}
+
+now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
 
 \end{document}

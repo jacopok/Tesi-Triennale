@@ -48,7 +48,7 @@ If we differentiate and antisymmetryze (so, take the rotor of) an antisymmetric 
 
 The derivative with respect to proper time is $\dv{}{\tau} = u^\mu \partial_\mu$.
 
-Covariant acceleration is defined as:
+\index{covariant acceleration}Covariant acceleration is defined as:
 
 \begin{equation} \label{eq:covariant-acceleration-def}
     a^\nu = u^\mu \nabla_\mu u^\nu
@@ -276,13 +276,19 @@ The cooling function of the infalling gas is
     \begin{split}
     \Lambda (T) &= \left(
     \qty(
-    \SI{1.42e-27}{}T^{1/2} \qty(
-    1 + \SI{4.4e-10}{}T
-    ) + \SI{6.0e-22}{}T^{-1/2}
+    \num{1.42e-27}T^{1/2} \qty(
+    1 + \num{4.4e-10}T
+    ) + \num{6.0e-22}T^{-1/2}
     )^{-1} \right. \\
-    & \quad \left. + \SI{e25}{} \qty(\frac{T}{\SI{1.5849e4}{K} })^{-12}
-    \right)^{-1} \SI{}{erg cm^3 \per s}
+    & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
+    \right)^{-1} \si{\erg\per\cubic\centi\metre\per\second}
     \end{split}
 \end{equation}
+
+The version of this equation in Stellingwerf and Buff is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
+
+\begin{bluebox}
+  This is reported in \si{\erg\cubic\centi\metre\per\second} both in NTZ91 and in SB82, but it does not really make sense...
+\end{bluebox}
 
 \end{document}

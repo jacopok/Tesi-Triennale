@@ -74,6 +74,7 @@ sorting=ynt
 \usepackage[version=4]{mhchem}
 \usepackage{siunitx}
 \sisetup{separate-uncertainty=true}
+\DeclareSIUnit\erg{erg}
 \usepackage{cancel}
 
 %%
@@ -163,3 +164,9 @@ sorting=ynt
 % \newcommand{\selective}[2]{
 % \IfSubStr{#1}{\thisuser}{#2}{}%
 % }
+
+\usepackage{imakeidx}                      % Indice analitico
+\makeindex[intoc]                          % L'indice analitico va nell'indice generale
+%\indexsetup{firstpagestyle=empty}          % Niente numero di pagina nella prima dell'indice analitico
+
+%\usepackage[italian]{varioref}             % riferimenti completi della pagina

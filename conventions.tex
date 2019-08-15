@@ -27,8 +27,8 @@ Unless otherwise specified, I will work in geometrized units, where $c = G = 1$.
 Take a tensor with many indices, $T_{IJ}$, where $I$ is shorthand for the $n$ indices $\mu \nu \rho \dots$ and the same applies to $J$. These indices can be symmetrized and antisymmetrized, and I will use the following conventions:
 
 \begin{align}
-    T_{(I)J} &= \sum_{\sigma \in S_n} T_{\sigma(I)J} \\
-    T_{[I]J} &= \sum_{\sigma \in S_n} \sign{\sigma} T_{\sigma(I)J}
+    T_{(I)J} &= \frac{1}{n!} \sum_{\sigma \in S_n} T_{\sigma(I)J} \\
+    T_{[I]J} &= \frac{1}{n!} \sum_{\sigma \in S_n} \sign{\sigma} T_{\sigma(I)J}
 \end{align}
 
 where $S_n \ni \sigma $ is the group of permutations of $n$ elements, and $\sign{\sigma}$ is 1 if $\sigma$ is an even permutation (it can be obtained in an even number of pair swaps) and -1 otherwise.

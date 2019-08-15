@@ -12,3 +12,5 @@
 *.run.xml
 *.synctex.gz
 *.ilg
+*.idx
+*.ind

@@ -161,6 +161,15 @@ We can then write the equation for the conservation of momentum:
     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
 \end{equation}
 
+\paragraph{Ideal fluids}
+
+They are fluids with \(\eta=\xi=\kappa=0\), that is, without viscosity (neither compressive nor shear) nor heat transmission.
+They are described by the following stress-energy tensor:
+
+\begin{equation}
+    T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu}
+\end{equation}
+
 \paragraph{Spherical accretion}
 
 We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we treat a fluid with 4-velocity $u^\mu$ in spherical coordinates, since the problem we are looking at is stationary and spherically symmetric the velocity is:
@@ -190,7 +199,7 @@ We also have the Euler equation:
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
-And the equation for the variation of the total internal energy:
+And the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
 \begin{equation}
     \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
@@ -202,6 +211,7 @@ In the nonrelativistic, weak-field limit this  becomes
 \begin{equation}
     \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
 \end{equation}
+
 
 
 \subsection{Taub}
@@ -270,6 +280,14 @@ and as in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the 
 
 \section{Nobili, Turolla, Zampieri}
 
+The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
+
+\begin{equation}
+    \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
+\end{equation}
+
+where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}.\footnote{See \url{http://lss.fnal.gov/archive/2012/pub/fermilab-pub-12-107-a.pdf}}
+
 The cooling function of the infalling gas is
 
 \begin{equation}
@@ -287,8 +305,47 @@ The cooling function of the infalling gas is
 
 The version of this equation in Stellingwerf and Buff is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
 
-\begin{bluebox}
-  This is reported in \si{\erg\cubic\centi\metre\per\second} both in NTZ91 and in SB82, but it does not really make sense...
-\end{bluebox}
+\section{Thorne's PSTF moment formalism}
+
+Following \cite{thorne1980}.
+
+Given any tensor \(A^{\mu_1 \dots \mu_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
+
+\begin{equation}
+    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^P
+    = \qty(\prod_i h^{\mu_i}_{\nu_i}) A^{\nu_1 \dots \nu_k}
+\end{equation}
+
+Then, we can take the symmetric part of any (?) tensor as outlined in \Nameref{sec:notational-preface}:
+
+\begin{equation}
+    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^S
+    = A^{(\mu_1 \dots \mu_k)}
+\end{equation}
+
+We can select the trace-free part of a projected, symmetric tensor by
+
+\begin{equation}
+    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^{TF}
+    = \sum _{i=0}   ^{\lfloor k/2 \rfloor}
+    (-1)^i \frac{k! (2k-2i-1)!!}{(k-2i)! (2k-1)!! (2i)!!}
+    h^{(\alpha_1 \alpha_2} \dots h^{\alpha_{2i-1} \alpha_{2i}}
+    A^{\alpha_{2i+1} \dots \alpha_k) \beta_1 \dots \beta_i}\,_{\beta_1 \dots \beta_i}
+\end{equation}
+
+To see what this is doing, let us consider its action on a rank-two tensor:
+
+\begin{equation}
+    A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho
+\end{equation}
+
+Now, let us consider all the space-like (unit) vectors \(n^\mu\), which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span a three-dimensional sphere.
+
+If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it into harmonics as such:
+
+\begin{equation}
+    F(n) = \sum _{k=0}   ^{\infty}
+    F_{\alpha_1 \dots \alpha_k} \prod_{i=0}^k n^{\alpha_i} 
+\end{equation}
 
 \end{document}

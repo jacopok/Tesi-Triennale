@@ -199,6 +199,14 @@ We also have the Euler equation:
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
+The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the Schwarzschild Christoffel coefficients:
+
+\begin{equation}
+  \Gamma^1_{\mu \nu} = \left[\begin{matrix}- \frac{2 M \left(\frac{M}{r} - \frac{1}{2}\right)}{r^{2}} & 0 & 0 & 0\\0 & \frac{2 M \left(\frac{M}{r} - \frac{1}{2}\right)}{r^{2} \left(- \frac{2 M}{r} + 1\right)^{2}} & 0 & 0\\0 & 0 & 2 r \left(\frac{M}{r} - \frac{1}{2}\right) & 0\\0 & 0 & 0 & 2 r \left(\frac{M}{r} - \frac{1}{2}\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
+\end{equation}
+
+while the proper-time derivative is \(\dv*{}{\tau} = u^\mu \partial_\mu = yv\partial_1\).
+
 And the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
 \begin{equation}

@@ -211,7 +211,7 @@ In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mas
 
 We also have the Euler equation:
 
-\begin{equation}
+\begin{equation} \label{eq:relativistic-euler}
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
@@ -223,15 +223,25 @@ The only interesting component of this is the radial one, so we need to calculat
 
 while the proper-time derivative is \(\dv*{}{\tau} = u^\mu \partial_\mu = yv\partial_1\).
 Plugging in the expression for the only relevant component of \(h^{\mu\nu}\), \(h^{11} = g^{11} + u^1 u^1 = (1 + 2 \Phi) (1 + v^2 \gamma^2) = y^2\)
-we get:
+we get, after lengthy computation,
+
+\begin{equation}
+  a^1 = y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2})
+\end{equation}
+
+Substituting this into the (radial component of the) Euler equation \eqref{eq:relativistic-euler} we get
 
 \begin{subequations}
 \begin{align}
-  (p + \rho) y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) &= - h^{1 1} \partial_1 P = - y^2 \partial_1 P \\
-   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} &=  - \frac{\partial_1 P}{p + \rho}
+  (p + \rho) y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) &= - h^{1 1} \partial_1 p = - y^2 \partial_1 p \\
+   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + \frac{1}{p + \rho} \dv{p}{r} &= 0
   \label{eq:ideal-euler}
 \end{align}
 \end{subequations}
+
+\begin{greenbox}
+  In equations 3.12.7, 8 in \cite{nobili} there is most definitely a sign error.
+\end{greenbox}
 
 We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
@@ -243,7 +253,32 @@ We also have the equation for the variation of the total internal energy, which 
     \dv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0}
 \end{equation}
 
-From these we can show that the quantity $\gamma h \sqrt{1+2\Phi} $ (where $h = (p+\rho)/\rho_0$ is the specific enthalpy), is a constant of motion.
+From these we can show that
+
+\begin{claim}
+The quantity $\gamma h \sqrt{1+2\Phi} = yh$ (where $h = (p+\rho)/\rho_0$ is the specific enthalpy), is a constant of motion.
+\end{claim}
+
+\begin{proof}
+First of all, by direct computation it can be shown that
+
+\begin{equation} \label{eq:log-y-conservation}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} = \dv{\log y }{r}
+\end{equation}
+
+Then, following \textcite[section 6.3]{Gourgoulhon:2006bn} we find that \(\dd{p} = \rho_0 \dd{h}\) in the isentropic case, therefore
+
+\begin{equation} \label{eq:log-h-conservation}
+  \frac{1}{\rho + p} \dv{p}{r}  =  \dv{\log h}{r}
+\end{equation}
+
+we can substitute the results in \eqref{eq:log-y-conservation} and \eqref{eq:log-h-conservation} into \eqref{eq:ideal-euler}:
+
+\begin{equation}
+  \dv{\log h}{r} + \dv{\log y }{r} = \dv{\log (hy) }{r} = 0
+\end{equation}
+
+\end{proof}
 
 In the nonrelativistic, weak-field limit this  becomes the classical conservation of density of energy:
 
@@ -262,8 +297,8 @@ Also, we can rewrite the RHS of \eqref{eq:ideal-euler} as:
 where we define the speed of sound \(v_s^2 = (\pdv*{P}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process). Therefore we get:
 
 \begin{equation}
-  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} =
-  - \frac{v_s^2 \partial_1\rho_0}{\rho_0}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
+  + \frac{v_s^2 \partial_1\rho_0}{\rho_0} = 0
 \end{equation}
 
 We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):

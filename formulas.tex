@@ -74,6 +74,18 @@ It can be calculated using the Christoffel symbols, and while they are not tenso
 
 The Christoffel symbols can be nonzero if we choose certain coordinates even for flat spacetime, but the Riemann tensor is zero iff the spacetime is flat.
 
+The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{Misner1973}:
+
+\begin{subequations}
+\begin{align}
+  \nabla _{[\lambda} R_{\mu\nu]\rho \sigma} &= 0 \label{eq:bianchi-identities}  \\
+  R_{\mu\nu\rho\sigma} &= R_{[\mu\nu][\rho\sigma]} = R_{[\rho\sigma][\mu\nu]}  \\
+  R_{[\mu\nu\rho\sigma]} &= 0 = R_{\mu[\nu\rho\sigma]}
+\end{align}
+\end{subequations}
+
+If we define the Ricci tensor \(R_{\mu\nu} = R^\rho_{\mu \rho \nu}\) and the curvature scalar \(R = R_{\mu\nu}g^{\mu\nu}\), we can rewrite \eqref{eq:bianchi-identities}  as \(\nabla_\mu R = 2 \nabla_\nu R^{\nu}_{\mu}\).
+
 \paragraph{Geodesics}
 
 If we have a path $x^\mu(\lambda)$, we would like to see if it is a geodesic, that is, if it is stationary with respect to path length. To do this we can stationarize the action corresponding to the lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
@@ -191,7 +203,11 @@ The conservation of mass holds: if $\rho_0$ is the rest mass density of the flui
     \dv{}{r} \qty(\rho_0 yvr^2) = 0
 \end{equation}
 
-In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$.
+In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$: therefore
+
+\begin{equation}
+  \dot{M} = 4 \pi\rho_0 yvr^2
+\end{equation}
 
 We also have the Euler equation:
 
@@ -199,28 +215,73 @@ We also have the Euler equation:
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
-The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the Schwarzschild Christoffel coefficients:
+The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the radial Schwarzschild Christoffel coefficients:
 
 \begin{equation}
-  \Gamma^1_{\mu \nu} = \left[\begin{matrix}- \frac{2 M \left(\frac{M}{r} - \frac{1}{2}\right)}{r^{2}} & 0 & 0 & 0\\0 & \frac{2 M \left(\frac{M}{r} - \frac{1}{2}\right)}{r^{2} \left(- \frac{2 M}{r} + 1\right)^{2}} & 0 & 0\\0 & 0 & 2 r \left(\frac{M}{r} - \frac{1}{2}\right) & 0\\0 & 0 & 0 & 2 r \left(\frac{M}{r} - \frac{1}{2}\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
+  \Gamma^1_{\mu \nu} = \left[\begin{matrix}\frac{M \left(- 2 M + r\right)}{r^{3}} & 0 & 0 & 0\\0 & \frac{M}{r \left(2 M - r\right)} & 0 & 0\\0 & 0 & 2 M - r & 0\\0 & 0 & 0 & \left(2 M - r\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
 \end{equation}
 
 while the proper-time derivative is \(\dv*{}{\tau} = u^\mu \partial_\mu = yv\partial_1\).
+Plugging in the expression for the only relevant component of \(h^{\mu\nu}\), \(h^{11} = g^{11} + u^1 u^1 = (1 + 2 \Phi) (1 + v^2 \gamma^2) = y^2\)
+we get:
 
-And the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
+\begin{subequations}
+\begin{align}
+  (p + \rho) y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) &= - h^{1 1} \partial_1 P = - y^2 \partial_1 P \\
+   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} &=  - \frac{\partial_1 P}{p + \rho}
+  \label{eq:ideal-euler}
+\end{align}
+\end{subequations}
+
+We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
 \begin{equation}
     \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
+    \qquad
+    \text{or}
+    \qquad
+    \dv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0}
 \end{equation}
 
 From these we can show that the quantity $\gamma h \sqrt{1+2\Phi} $ (where $h = (p+\rho)/\rho_0$ is the specific enthalpy), is a constant of motion.
-In the nonrelativistic, weak-field limit this  becomes
+
+In the nonrelativistic, weak-field limit this  becomes the classical conservation of density of energy:
 
 \begin{equation}
     \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
 \end{equation}
 
+Also, we can rewrite the RHS of \eqref{eq:ideal-euler} as:
 
+\begin{equation}
+  - \frac{\partial_1 P}{p + \rho} =
+  - \frac{\rho_0}{\rho_0} \frac{\partial_1 P}{p + \rho} =
+  - \frac{v_s^2}{\rho_0} \partial_1\rho_0
+\end{equation}
+
+where we define the speed of sound \(v_s^2 = (\pdv*{P}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process). Therefore we get:
+
+\begin{equation}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} =
+  - \frac{v_s^2 \partial_1\rho_0}{\rho_0}
+\end{equation}
+
+We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):
+
+
+\begin{equation}
+\gamma^2 v^2 \dv{\log v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + v_s^2 \dv{\log \rho_0}{r}  = 0
+\end{equation}
+
+\begin{greenbox}
+  Are the eqrefs at page 174 in \cite{nobili} wrong? What's up with equations 2.7.3, 5?
+
+  Somehow this equation comes up:
+\end{greenbox}
+
+\begin{equation}
+  \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
+\end{equation}
 
 \subsection{Taub}
 

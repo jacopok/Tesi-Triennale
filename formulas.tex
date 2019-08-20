@@ -245,18 +245,19 @@ Substituting this into the (radial component of the) Euler equation \eqref{eq:re
 
 We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
-\begin{equation}
+\begin{equation} \label{eq:enthalpy-definition}
     \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
     \qquad
     \text{or}
     \qquad
-    \dv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0}
+    \pdv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0} \defeq h
 \end{equation}
 
+(where we have defined $h$, the specific enthalpy).
 From these we can show that
 
 \begin{claim}
-The quantity $\gamma h \sqrt{1+2\Phi} = yh$ (where $h = (p+\rho)/\rho_0$ is the specific enthalpy), is a constant of motion.
+The quantity $\gamma h \sqrt{1+2\Phi} = yh$ , is a constant of motion.
 \end{claim}
 
 \begin{proof}
@@ -286,19 +287,43 @@ In the nonrelativistic, weak-field limit this  becomes the classical conservatio
     \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
 \end{equation}
 
-Also, we can rewrite the RHS of \eqref{eq:ideal-euler} as:
+Also, we can rewrite the last term of the Euler equation \eqref{eq:ideal-euler} using \eqref{eq:enthalpy-definition}  as:
 
 \begin{equation}
-  - \frac{\partial_1 P}{p + \rho} =
-  - \frac{\rho_0}{\rho_0} \frac{\partial_1 P}{p + \rho} =
-  - \frac{v_s^2}{\rho_0} \partial_1\rho_0
+  \frac{\partial_1 p}{p + \rho} =
+  \frac{\rho_0}{\rho_0} \frac{\partial_1 p}{p + \rho} =
+  \frac{1}{\rho_0} \pdv{p}{\rho} \pdv{\rho_0}{\rho}
+  \pdv{\rho}{p}   \partial_1 p =
+  \frac{v_s^2}{\rho_0} \partial_1\rho_0
 \end{equation}
 
-where we define the speed of sound \(v_s^2 = (\pdv*{P}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process). Therefore we get:
+where we define the speed of sound \(v_s^2 = (\pdv*{p}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process).
+
+This can be rewritten as
+
+\begin{equation}
+  \dd{p} = \pdv{p}{\rho} \pdv{\rho}{\rho_0} \dd{\rho_0} = v_s^2 h \dd{\rho_0}
+\end{equation}
+
+\begin{greenbox}
+  Somehow in \cite[page 175]{nobili} this becomes:
+
+  \begin{equation}
+    \dv{\log p }{\log r} = \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+  \end{equation}
+
+  but it seems to me it should be
+
+  \begin{equation}
+  \dv{\log p }{\log r} = \frac{p+\rho}{p} v_s^2 \dv{\log \rho_0}{\log r }
+  \end{equation}
+\end{greenbox}
+
+Therefore we get:
 
 \begin{equation}
   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
-  + \frac{v_s^2 \partial_1\rho_0}{\rho_0} = 0
+  + \frac{v_s^2 }{\rho_0}\dv{\rho_0}{r} = 0
 \end{equation}
 
 We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):

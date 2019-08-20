@@ -195,12 +195,19 @@ We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we 
     \end{pmatrix}
 \end{equation}
 
-where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$.
+where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{thorne1981-2}).
 
 The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
 
-\begin{equation}
+\begin{equation} \label{eq:integral-continuity}
     \dv{}{r} \qty(\rho_0 yvr^2) = 0
+\end{equation}
+
+\(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
+
+\begin{equation} \label{eq:differential-continuity}
+  \dv{\log \rho_0}{\log r} +
+  \dv{\log yv}{\log r} + 2 = 0
 \end{equation}
 
 In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$: therefore
@@ -319,7 +326,7 @@ This can be rewritten as
   \end{equation}
 \end{greenbox}
 
-Therefore we get:
+Coming back to \eqref{eq:relativistic-euler},  we get:
 
 \begin{equation}
   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
@@ -328,20 +335,44 @@ Therefore we get:
 
 We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):
 
-
-\begin{equation}
-\gamma^2 v^2 \dv{\log v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + v_s^2 \dv{\log \rho_0}{r}  = 0
-\end{equation}
+\begin{subequations}
+\begin{align}
+  \gamma^2 v^2 \dv{\log v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + v_s^2 \dv{\log \rho_0}{r}  &= 0 \\
+  \frac{\gamma^2 - 1}{r}  \dv{\log v}{\log r} + \frac{M}{(y^2/\gamma^2) r^2}
+  + \frac{v_s^2}{r} \dv{\log \rho_0}{\log r}  &= 0  \\
+  % \frac{1 - (1-v^2)}{1}  \dv{\log v}{\log r} + \frac{M}{(y^2) r}
+  % + (1-v^2)\frac{v_s^2}{1} \dv{\log \rho_0}{\log r}  &= 0 \\
+  v^2  \dv{\log v}{\log r} + \frac{M}{y^2 r}
+  + (1-v^2) v_s^2 \dv{\log \rho_0}{\log r}  &= 0
+\end{align}
+\end{subequations}
 
 \begin{greenbox}
-  Are the eqrefs at page 174 in \cite{nobili} wrong? What's up with equations 2.7.3, 5?
+  Are the eqrefs at page 174 in \cite{nobili} wrong? Equations 2.7.3, 5 seem not to be related at all...
 
   Somehow this equation comes up:
+
+  \begin{equation}
+    \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
+  \end{equation}
+
+  and we wind up with the system
+
+  \begin{subequations}
+  \begin{align}
+    (v^2-v_s^2) \dv{\log \rho_0}{\log r} &= - 2v^2 + \frac{M}{y^2 r}  \\
+    (v^2-v_s^2) \dv{\log yv }{\log r} &=  2v_s^2 - \frac{M}{y^2 r}  \\
+    \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+  \end{align}
+  \end{subequations}
+
+  but I do not see at all how to get to it, it does not seem to work!
+  If we add the first two equations we get back \eqref{eq:differential-continuity}...
 \end{greenbox}
 
-\begin{equation}
-  \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
-\end{equation}
+\begin{greenbox}
+  Typo in \cite[page 175]{nobili}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
+\end{greenbox}
 
 \subsection{Taub}
 
@@ -437,7 +468,7 @@ The cooling function of the infalling gas is
     ) + \num{6.0e-22}T^{-1/2}
     )^{-1} \right. \\
     & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
-    \right)^{-1} \si{\erg\per\cubic\centi\metre\per\second}
+    \right)^{-1} \si{\erg\cubic\centi\metre\per\second}
     \end{split}
 \end{equation}
 

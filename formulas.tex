@@ -12,9 +12,9 @@ The covariant derivative keeps account of the shifting of the basis vectors:
     \nabla_\mu A^\nu = \partial_\mu A^\nu + \Gamma^\nu _{\alpha \mu}  A^\alpha
 \end{equation}
 
-The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors! they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$.
+The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors! they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$. They are not intrinsic to the manifold.
 
-If we have the metric, they can be calculated as:
+If we have the metric (and make reasonable assumptions of the connection being torsion-free), they can be calculated as:
 
 \begin{equation}
     \Gamma^\mu_{\nu \rho} = \frac{1}{2} g^{\mu \alpha} \qty(
@@ -74,7 +74,7 @@ It can be calculated using the Christoffel symbols, and while they are not tenso
 
 The Christoffel symbols can be nonzero if we choose certain coordinates even for flat spacetime, but the Riemann tensor is zero iff the spacetime is flat.
 
-The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{Misner1973}:
+The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{Misner:1973}:
 
 \begin{subequations}
 \begin{align}
@@ -140,7 +140,7 @@ respectively onto the space- and time-like subspaces.
 
 \paragraph{Killing vector fields}
 
-Following \cite[section 25.2, page 650]{Misner1973}.
+Following \cite[section 25.2, page 650]{Misner:1973}.
 Say there is a certain direction (for simplicity, along one of our coordinate axes) along which the metric is preserved: an \(\widetilde{\alpha}\) such that \(\partial_{\widetilde{\alpha} g_{\mu\nu}}\).
 
 Then the metric properties of curves along the manifold are unchanged if we shift their coordinate representation by a constant along the \(\widetilde{\alpha}\) coordinate axis.
@@ -164,7 +164,7 @@ It can also be seen this way that \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called
 
 \paragraph{Lie derivative}
 
-Following \cite[section 6]{taub}. The Lie derivative of a generic tensor \(T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_m}\) along a vector \(\xi^\mu\) is defined as:
+Following \cite[section 6]{Taub:1978}. The Lie derivative of a generic tensor \(T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_m}\) along a vector \(\xi^\mu\) is defined as:
 
 \begin{equation}
     \Lie_{\xi} T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_m} \defeq
@@ -232,7 +232,7 @@ We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we 
     \end{pmatrix}
 \end{equation}
 
-where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{thorne1981-2}).
+where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
 
 The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
 
@@ -284,7 +284,7 @@ Substituting this into the (radial component of the) Euler equation \eqref{eq:re
 \end{subequations}
 
 \begin{greenbox}
-  In equations 3.12.7, 8 in \cite{nobili} there is most definitely a sign error.
+  In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error.
 \end{greenbox}
 
 We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
@@ -350,7 +350,7 @@ This can be rewritten as
 \end{equation}
 
 \begin{greenbox}
-  Somehow in \cite[page 175]{nobili} this becomes:
+  Somehow in \cite[page 175]{Nobili:2000} this becomes:
 
   \begin{equation}
     \dv{\log p }{\log r} = \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
@@ -385,7 +385,7 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
 \end{subequations}
 
 \begin{greenbox}
-  Are the eqrefs at page 174 in \cite{nobili} wrong? Equations 2.7.3, 5 seem not to be related at all...
+  Are the eqrefs at page 174 in \cite{Nobili:2000} wrong? Equations 2.7.3, 5 seem not to be related at all...
 
   Somehow this equation comes up:
 
@@ -408,12 +408,12 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
 \end{greenbox}
 
 \begin{greenbox}
-  Typo in \cite[page 175]{nobili}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
+  Typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
 \end{greenbox}
 
 \subsection{Taub}
 
-This section summarizes my study of A. H. Taub's review of relativistic fluid dynamics, \cite{taub}.
+This section summarizes my study of A. H. Taub's review of relativistic fluid dynamics, \cite{Taub:1978}.
 
 \paragraph{Nonrelativistic}
 
@@ -477,7 +477,7 @@ and as in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the 
 
 \section{Nobili, Turolla, Zampieri}
 
-See \cite{NTZ91}.
+See \cite{NobiliTurollaZampieri:1991dec}.
 
 The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
 
@@ -485,7 +485,7 @@ The cooling function \(\Lambda (T)\) is defined by the following relation, which
     \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
 \end{equation}
 
-where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{Gnedin_2012}.
+where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{Gnedin:2012}.
 
 The cooling function of the infalling gas is
 
@@ -513,7 +513,7 @@ The version of this equation in Stellingwerf and Buff is similar: the first cons
 
 \section{Thorne's PSTF moment formalism}
 
-Following \cite{thorne1981}.
+Following \cite{Thorne:1981feb}.
 
 Given any tensor \(A^{\mu_1 \dots \mu_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
 

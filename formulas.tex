@@ -138,7 +138,44 @@ It is useful to project tensors onto the space-like and time-like subspaces defi
 
 respectively onto the space- and time-like subspaces.
 
-\paragraph{Metrics}
+\paragraph{Killing vector fields}
+
+Following \cite[section 25.2, page 650]{Misner1973}.
+Say there is a certain direction (for simplicity, along one of our coordinate axes) along which the metric is preserved: an \(\widetilde{\alpha}\) such that \(\partial_{\widetilde{\alpha} g_{\mu\nu}}\).
+
+Then the metric properties of curves along the manifold are unchanged if we shift their coordinate representation by a constant along the \(\widetilde{\alpha}\) coordinate axis.
+
+Let us call the direction of this translation \(\xi^\mu = \delta^\mu_{\widetilde{\alpha}}\) if we use this coordinate system. It can be shown by direct computation that
+
+\begin{equation} \label{eq:killing-vector-identity}
+    \nabla_{\nu} \xi_\mu = \frac{1}{2} \qty(\partial_{\widetilde{\alpha}}
+    g_{\mu\nu} + \partial_\nu g_{\mu\widetilde{\alpha}} -
+    \partial_\mu g_{\nu \widetilde{\alpha}})
+\end{equation}
+
+but by hypothesis the first term on the RHS of \eqref{eq:killing-vector-identity} is zero, therefore we have shown that \(\nabla_{\nu} \xi_\mu = \nabla_{[\nu} \xi_{\mu]}\) in this coordinate frame, but since this is a covariant equation it extends to every other one.
+
+It can also be seen this way that \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called \emph{Killing's equation}. This is useful since: given a geodesic \(x^\mu(\lambda)\), for which we define \(u^\mu = \dv*{x^\mu}{\lambda} \), it must be the case that \(u^\nu \nabla_\nu u^\mu = 0 \). Then, the component of \(u^\mu\) along \(\xi^\mu\) (\(u^{\widetilde{\alpha}} = u^\mu \xi_\mu\)) is conserved:
+
+\begin{equation}
+    \dv{}{\lambda} \qty(u^\mu \xi_\mu) = u^\nu \nabla_\nu \qty(u^\mu \xi_\mu)
+    = \cancelto{0}{\xi^\mu u^\nu \nabla_\nu u_\mu} + \cancelto{0}{u^\nu u^\mu \nabla_\nu \xi_\mu} \equiv 0
+\end{equation}
+
+\paragraph{Lie derivative}
+
+Following \cite[section 6]{taub}. The Lie derivative of a generic tensor \(T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_m}\) along a vector \(\xi^\mu\) is defined as:
+
+\begin{equation}
+    \Lie_{\xi} T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_m} \defeq
+    \xi^\rho \nabla_\rho T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_m}
+    + \sum_{i=1}^{m} T^{\mu_1 \dots \mu_n} _{\nu_1 \dots \nu_{i-1} \rho \nu_{i+1} \dots \nu_m} \nabla_{\nu_i} \xi^\rho
+    - \sum_{i=1}^{n} T^{\mu_1 \dots \nu_{i-1} \rho \nu_{i+1} \dots \mu_n} _{\nu_1 \dots  \nu_m} \nabla_{\rho} \xi^{\mu_i}
+\end{equation}
+
+Some special cases are: a scalar \(\Lie _\xi f = \xi^\rho \partial_\rho f \), a vector \(\Lie _\xi u^\mu = \xi^\rho \nabla_\rho u^\mu -u^\rho \nabla_\rho \xi^\mu\), and  an antisymmetric covariant two-tensor \(\omega_{\mu\nu} = \omega_{[\mu \nu]}\) which represents a closed form \(\nabla_{[\mu} \omega_{\nu \rho]} = 0\) we have \(\Lie _\xi \omega_{\mu\nu} =2\nabla_{[\nu} \qty( \omega_{\mu] \rho} \xi^\rho )\)
+
+\paragraph{Useful metrics}
 
 The simplest physically relevant one is the Schwarzschild metric. It describes a spherically symmetric object of mass $M$, in spherical coordinates. Defining $\Phi = -M/r$, we have:
 

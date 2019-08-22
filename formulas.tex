@@ -488,7 +488,7 @@ If we differentiate \eqref{eq:tetrad-components-lambda} wrt \(s\), and use \eqre
 
 where in the last step we expressed everything wrt the tetrad coordinate system. Therefore, in those cordinates, the evolution of the components \(X^{(a)}\) is linear, and defined by the tetrad components of the two-form \(\nabla_\mu u_\nu\). So, we want to decompose this tensor:
 
-\begin{equation}
+\begin{equation} \label{eq:covariant-acceleration-decomposition}
     \nabla_\sigma u_\tau =
     \underbrace{\omega_{\sigma \tau}}_{\substack{\text{spatial} \\ \text{rotation}}}
     + \underbrace{\sigma_{\sigma\tau}}_{\substack{\text{spatial} \\ \text{shear}}}
@@ -520,6 +520,14 @@ Note, from \cite[pages 51--52]{Carroll:1997ar}: this is the volume form of the m
 \end{greenbox}
 
 By the antisymmetry in the definition we can immediately see that \(\omega^\mu u_\mu=0\). It holds that \(\omega^\mu \equiv 0 \iff u_\mu = \rho \partial_\mu f \) (locally!) for scalar \(\rho\), \(f\), since this is equivalent to \(u_\mu\) being a closed form.
+
+\(\omega_\mu\) and \(\omega_{\mu \nu}\) are ``dual'' in the sense that
+
+\begin{equation}
+    \omega _{\sigma\tau} = u^\mu \omega^\nu \eta_{\mu \nu \sigma \tau}
+\end{equation}
+
+and some other useful identities can be found in equations 7.5 through 7.7 of \cite[]{Taub:1978}.
 
 \paragraph{Wave velocity}
 
@@ -557,19 +565,19 @@ If we are dealing with a timelike surface \(\Sigma\), or equivalently \(\partial
 
 From this it can be shown that \(1-v^2 = (1+(u^\mu n_\mu)^2)^{-1}\), and then \(v \gamma = u^\mu n_\mu\).
 
-\paragraph{Relativistic fluid dynamics}
+\paragraph{Relativistic non-ideal fluid dynamics}
 
 The dynamics of the fluid are described by the conservation of the stress-energy tensor \(\nabla_\mu T ^{\mu \nu} =0\) and the conservation of mass \(\nabla_\mu (\rho u^\mu) =0\).
 
 Any stress-energy tensor can be decomposed in its space and time-like parts in the local rest frame of the fluid:
 
-\begin{equation}
+\begin{equation} \label{eq:stress-energy-tensor-decomposition}
     T_{\mu \nu} = w u_\mu u_\nu + w_\mu u_\nu + u_\mu w_\nu + w _{\mu \nu}
 \end{equation}
 
 where
 
-\begin{subequations}
+\begin{subequations} \label{eq:components-stress-energy-tensor}
 \begin{align}
   w &=  T _{\mu \nu} u^\mu u^\nu = \rho_0 (1 + \varepsilon) \\
   w_\mu &= T _{\nu \sigma} h^\sigma _\mu u^\nu  = -\kappa h_\mu ^\sigma  \qty(\partial_\sigma T + T a_\sigma)\\
@@ -577,10 +585,51 @@ where
 \end{align}
 \end{subequations}
 
-TODO: add citation of section where these are defined
-and as in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy.
+For the definition of the acceleration, vorticity etc. see equation \eqref{eq:covariant-acceleration-decomposition}.
+As in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy.
 
+Because of the conservation of the stress-energy tensor, we have:
 
+\begin{equation} \label{eq:velocity-stress-energy-tensor-identity}
+    \nabla_\nu \qty(u_\mu T ^{\mu \nu}) = T^{\mu \nu} \nabla_\nu u_\mu
+\end{equation}
+
+Let us also consider the expression of the differential entropy:
+
+\begin{equation} \label{eq:differential-entropy}
+    T\dd{S} = \dd{\varepsilon} + p \dd{\frac{1}{\rho_0}}
+\end{equation}
+
+\begin{claim}
+    We can mold equation \eqref{eq:velocity-stress-energy-tensor-identity} into a version of the second principle of thermodynamics
+
+    \begin{equation} \label{eq:second-principle-thermodynamics}
+        T \nabla_\mu S^\mu = \xi \theta^2 + 2 \eta \sigma_{\mu\nu} \sigma^{\mu\nu} + \frac{w^\mu w_\mu}{\kappa T} \geq 0
+    \end{equation}
+
+    where we define \(S^\mu = \rho_0 S u^\mu + w^\mu /T\).
+\end{claim}
+
+\begin{proof}
+    We will need the decompositions of
+    the derivative of velocity \eqref{eq:covariant-acceleration-decomposition},
+    of the stress-energy tensor \eqref{eq:stress-energy-tensor-decomposition}, \eqref{eq:components-stress-energy-tensor},
+    the expression of differential entropy \eqref{eq:differential-entropy}
+    and the conservation of mass \(\nabla_\mu (\rho_0 u^\mu) = 0\).
+
+    First of all, the LHS of \eqref{eq:velocity-stress-energy-tensor-identity} can be greatly simplified by noticing that \(u^\mu w_\mu = u^\mu w_{\mu \nu} = 0\), so it becomes
+
+    \begin{subequations}
+    \begin{align}
+        \nabla_\nu \qty(u_\mu T ^{\mu \nu}) &= \nabla_\nu \qty( w \underbrace{u_\mu u^\mu}_{-1} u^\nu + \underbrace{u_\mu w^\mu}_{0} u^\nu + \underbrace{ u_\mu u^\mu}_{-1} w^\nu + \underbrace{u_\mu w ^{\mu \nu}}_{0}) \\
+         &= \nabla_\nu \qty(- u^\nu \rho_0 (1 + \varepsilon) + \kappa h_\sigma^\nu \qty(\partial^\sigma T + T a^\sigma)) \\
+         &=  - \rho_0 u^\nu \nabla_\nu \varepsilon + \kappa \nabla_\nu \qty( h_\sigma^\nu \qty(\partial^\sigma T + T a^\sigma))  \\
+         &= - \rho_0 u^\nu \nabla_\nu \varepsilon + \kappa \qty( \nabla_\nu \qty(\partial^\nu T + T a^\nu) + \nabla_\nu \qty(u^\nu u_\sigma \qty(\partial^\sigma T + T a^\sigma)))  \\
+         &= 
+    \end{align}
+    \end{subequations}
+
+\end{proof}
 
 \subsection{Nobili, Turolla, Zampieri}
 

@@ -1,4 +1,4 @@
-# Tesi-Triennale
+# Tesi Triennale: Relativistic non-ideal flows
 Tesi di laurea triennale in Fisica all'Università di Padova, AA 2018-19
 
 Thesis for my undergraduate degree in Physics at the University of Padua.
@@ -11,5 +11,7 @@ undergoing spherically symmetrical accretion of a plasma of ionized hydrogen.
 
 ## Technicalities
 
-This repository will be kept syncronyzed with the corresponding Overleaf page.
+This repository will be kept syncronized with the corresponding Overleaf page.
 The thesis can be rendered by compiling the file `main.tex`.
+
+The other files can be compiled as standalone `LaTeX` documents.

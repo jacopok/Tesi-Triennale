@@ -538,6 +538,25 @@ We can choose a velocity \(v\) such that \(k^\mu = u^\mu - v t^\mu\) is parallel
   \label{fig:taub_wave_velocity}
 \end{figure}
 
+Now, we can multiply the equation \(k^\mu = u^\mu - v t^\mu\) by \(\partial_\mu \varphi\): we get \(v t^\mu \partial_\mu \varphi = u^\mu \partial_\mu \varphi\). What multiplies \(v\) in the LHS of this equation is the length of the spatial component of \(\partial_\mu \varphi\), or \(\sqrt{h^{\mu\nu} \partial_\mu \varphi \partial_\nu \varphi}\).
+Using the definition of \(h ^{\mu \nu} \), we can arrive at
+
+\begin{equation} \label{eq:lorentz-factor-wave-velocity}
+    \gamma^{-2} = 1 - v^2 = \frac{g^{\mu\nu} \partial_\mu \varphi \partial_\nu \varphi}{h^{\mu\nu} \partial_\mu \varphi \partial_\nu \varphi}
+\end{equation}
+
+The denominator in \eqref{eq:lorentz-factor-wave-velocity} is positive, so we can see that \(1-v^2\) is positive iff \(\partial_\mu \varphi\) is spacelike, and \(v^2 = 1\) iff it is null.
+
+If we are dealing with a timelike surface \(\Sigma\), or equivalently \(\partial_\mu \varphi\) is spacelike, then we define \(n^\mu \propto \partial_\mu \varphi\) such that \(n^\mu n_\mu = 1\) and we find:
+
+\begin{equation}
+    v = \frac{u^\mu \partial_\mu \varphi}{\sqrt{h^{\mu\nu} \partial_\mu \varphi \partial_\nu \varphi}}
+    = \frac{u^\mu n_\mu}{\sqrt{h^{\mu\nu} n_\nu n_\mu}}
+    = \frac{u^\mu n_\mu}{\sqrt{1 + (u^\mu n_\mu)^2}}
+\end{equation}
+
+From this it can be shown that \(1-v^2 = (1+(u^\mu n_\mu)^2)^{-1}\), and then \(v \gamma = u^\mu n_\mu\).
+
 \paragraph{Relativistic fluid dynamics}
 
 The dynamics of the fluid are described by the conservation of the stress-energy tensor \(\nabla_\mu T ^{\mu \nu} =0\) and the conservation of mass \(\nabla_\mu (\rho u^\mu) =0\).
@@ -597,7 +616,7 @@ The cooling function of the infalling gas is
     \end{split}
 \end{equation}
 
-The version of this equation in Stellingwerf and Buff is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
+The version of this equation in \textcite[equation 10]{StellingwerfBuff:1982} is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
 
 \subsection{Thorne's PSTF moment formalism}
 

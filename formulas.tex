@@ -510,10 +510,13 @@ We can describe the rotation with a ``vorticity vector'':
     \omega^\mu = \frac{1}{2 \sqrt{-g}} \varepsilon^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma} = \frac{1}{2} \eta^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma}
 \end{equation}
 
-where we define the fully antisymmetric, covariant tensor \(\eta^{\mu\nu\sigma\tau} = \varepsilon^{\mu\nu\sigma\tau} / \sqrt{-g} \).
+where we define the fully antisymmetric, covariant tensor \(\eta^{\mu\nu\sigma\tau} = \varepsilon^{\mu\nu\sigma\tau} / \sqrt{-g} \). With its indices lowered, it is
+\(\eta_{\mu\nu\sigma\tau} = - \varepsilon_{\mu\nu\sigma\tau} \sqrt{-g} \).
+
+Note, from \cite[pages 51--52]{Carroll:1997ar}: this is the volume form of the manifold, and it is defined this way since \(g\) is a \emph{tensor density} of weight $-2$, while the bare Levi-Civita symbol is a density of weight $+1$.
 
 \begin{greenbox}
-  The definitions of \(\eta\) from \cite[eq. 4.1]{Taub:1978} and \cite[eq. 7.2]{Taub:1978} seem to disagree!
+  The signs in \cite[]{Taub:1978} and \cite[]{Carroll:1997ar} seem to disagree though!
 \end{greenbox}
 
 By the antisymmetry in the definition we can immediately see that \(\omega^\mu u_\mu=0\). It holds that \(\omega^\mu \equiv 0 \iff u_\mu = \rho \partial_\mu f \) (locally!) for scalar \(\rho\), \(f\), since this is equivalent to \(u_\mu\) being a closed form.
@@ -522,10 +525,18 @@ By the antisymmetry in the definition we can immediately see that \(\omega^\mu u
 
 Following \cite[section 5]{Taub:1978}.
 
-An equation in the form \(\varphi (x^\mu) = 0\) defines a 3D surface \(\Sigma\); its constant-\(x^0\) slices are 2D surfaces. We can decompose \(\partial_\mu \varphi\) in a component proportional to the velocity, \(a u_\mu\), and one which is orthogonal to it, \(W_\mu = h^\sigma_\mu \partial_\sigma \varphi\). Then \(W_\mu W^\mu = h^\sigma_\mu  h_\beta^\mu \partial_\sigma \varphi \partial^\beta \varphi = h^{\sigma\beta} \partial_\sigma \varphi \partial_\beta \varphi\) by the idempotency of the projector \(h\).
+An equation in the form \(\varphi (x^\mu) = 0\) defines a 3D surface \(\Sigma\); its constant-\(x^0\) slices are 2D surfaces. We can decompose \(\partial_\mu \varphi\) in a component proportional to the velocity, \(a u_\mu\), and one which is orthogonal to it, \(W_\mu = h^\sigma_\mu \partial_\sigma \varphi\). Then \(W_\mu W^\mu = h^\sigma_\mu  h_\beta^\mu \partial_\sigma \varphi \partial^\beta \varphi = h^{\sigma\beta} \partial_\sigma \varphi \partial_\beta \varphi\)
+by the idempotency of the projector \(h\).
 Thus we can see that \(W^2 \geq 0\), therefore it is a spacelike vector. We can define its corresponding unit vector: \(W^\mu = t^\mu \sqrt{W^\nu W_\nu}\).
 
 We can choose a velocity \(v\) such that \(k^\mu = u^\mu - v t^\mu\) is parallel to \(\Sigma\), or \(k^\mu \partial_\mu \varphi = 0\). If this condition is satisfied, then \(v\) is the wave velocity of \(\Sigma\) as measured by an observer with velocity \(u^\mu\).
+
+\begin{figure}[ht]
+  \centering
+  \incfig{figures/taub_wave_velocity}
+  \caption{Wave velocity diagram}
+  \label{fig:taub_wave_velocity}
+\end{figure}
 
 \paragraph{Relativistic fluid dynamics}
 

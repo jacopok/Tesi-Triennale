@@ -1,6 +1,19 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
+\subsection{Basics}
+
+\paragraph{Metric}
+
+The metric tensor \(g_{\mu\nu}\) is a symmetric \((0,2)\) tensor which gives us a scalar product at every point in our manifold: \(x \cdot y = g_{\mu\nu} x^\mu y^\nu\).
+It is not intrinsic to the manifold.
+By integrating the velocity vector we can find the lengths of curves \(x^\mu(\lambda)\):
+
+\begin{equation}
+    L = \int \sqrt{g_{\mu\nu} \dv{x^\mu}{\lambda} \dv{x^\nu}{\lambda} }  \dd{\lambda}
+\end{equation}
+
+For a flat spacetime we use the Minkowski metric \(\eta_{\mu\nu}\). In general, in the presence of matter the manifold will be curved, so there will not be a coordinate transformation to cast \(g_{\mu\nu}\) in the form \(\eta_{\mu\nu}\). If we choose a certain point \(P\), however, it is possible to find a transformation in order to impose the conditions \(g_{\mu\nu}(P)=\eta_{\mu\nu}(P)\), \(\partial_\rho g_{\mu\nu}(P) = 0\) \cite[pages 49--50]{Carroll:1997ar}.
 
 \subsection{Nobili}
 
@@ -205,12 +218,29 @@ This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
 Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
 We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
-Now, the vector $\rho u^\mu$ describes the flux of energy.
-We can then write the equation for the conservation of momentum:
+\paragraph{Stress-energy tensor}
+
+The stress-energy tensor \(T^{\mu\nu}\) is a \((2,0)\) tensor, whose \(\mu, \nu\) component is the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
+
+Because of our choice of metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), sice that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
+
+For a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
 
 \begin{equation}
-    f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
+    T^{\mu\nu} = \rho u^\mu u^\nu = \begin{bmatrix}
+    \rho    & 0  &  0 & 0 \\
+      0 & 0  & 0  & 0 \\
+      0 & 0  & 0  & 0 \\
+      0 & 0  & 0  & 0
+    \end{bmatrix}
 \end{equation}
+
+% Now, the vector $\rho u^\mu$ describes the flux of energy.
+% We can then write the equation for the conservation of momentum:
+%
+% \begin{equation}
+%     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
+% \end{equation}
 
 \paragraph{Ideal fluids}
 
@@ -220,198 +250,6 @@ They are described by the following stress-energy tensor:
 \begin{equation}
     T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu}
 \end{equation}
-
-\paragraph{Spherical accretion}
-
-We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we treat a fluid with 4-velocity $u^\mu$ in spherical coordinates, since the problem we are looking at is stationary and spherically symmetric the velocity is:
-
-\begin{equation}
-    u^\mu = \begin{pmatrix}
-        \gamma^2 / y\\
-        yv\\
-        0\\
-        0
-    \end{pmatrix}
-\end{equation}
-
-where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
-
-The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
-
-\begin{equation} \label{eq:integral-continuity}
-    \dv{}{r} \qty(\rho_0 yvr^2) = 0
-\end{equation}
-
-\(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
-
-\begin{equation} \label{eq:differential-continuity}
-  \dv{\log \rho_0}{\log r} +
-  \dv{\log yv}{\log r} + 2 = 0
-\end{equation}
-
-In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$: therefore
-
-\begin{equation}
-  \dot{M} = 4 \pi\rho_0 yvr^2
-\end{equation}
-
-We also have the Euler equation:
-
-\begin{equation} \label{eq:relativistic-euler}
-    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
-\end{equation}
-
-The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the radial Schwarzschild Christoffel coefficients:
-
-\begin{equation}
-  \Gamma^1_{\mu \nu} = \left[\begin{matrix}\frac{M \left(- 2 M + r\right)}{r^{3}} & 0 & 0 & 0\\0 & \frac{M}{r \left(2 M - r\right)} & 0 & 0\\0 & 0 & 2 M - r & 0\\0 & 0 & 0 & \left(2 M - r\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
-\end{equation}
-
-while the proper-time derivative is \(\dv*{}{\tau} = u^\mu \partial_\mu = yv\partial_1\).
-Plugging in the expression for the only relevant component of \(h^{\mu\nu}\), \(h^{11} = g^{11} + u^1 u^1 = (1 + 2 \Phi) (1 + v^2 \gamma^2) = y^2\)
-we get, after lengthy computation,
-
-\begin{equation}
-  a^1 = y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2})
-\end{equation}
-
-Substituting this into the (radial component of the) Euler equation \eqref{eq:relativistic-euler} we get
-
-\begin{subequations}
-\begin{align}
-  (p + \rho) y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) &= - h^{1 1} \partial_1 p = - y^2 \partial_1 p \\
-   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + \frac{1}{p + \rho} \dv{p}{r} &= 0
-  \label{eq:ideal-euler}
-\end{align}
-\end{subequations}
-
-\begin{greenbox}
-  In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error.
-\end{greenbox}
-
-We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
-
-\begin{equation} \label{eq:enthalpy-definition}
-    \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
-    \qquad
-    \text{or}
-    \qquad
-    \pdv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0} \defeq h
-\end{equation}
-
-(where we have defined $h$, the specific enthalpy).
-From these we can show that
-
-\begin{claim}
-The quantity $\gamma h \sqrt{1+2\Phi} = yh$ , is a constant of motion.
-\end{claim}
-
-\begin{proof}
-First of all, by direct computation it can be shown that
-
-\begin{equation} \label{eq:log-y-conservation}
-  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} = \dv{\log y }{r}
-\end{equation}
-
-Then, following \textcite[section 6.3]{Gourgoulhon:2006bn} we find that \(\dd{p} = \rho_0 \dd{h}\) in the isentropic case, therefore
-
-\begin{equation} \label{eq:log-h-conservation}
-  \frac{1}{\rho + p} \dv{p}{r}  =  \dv{\log h}{r}
-\end{equation}
-
-we can substitute the results in \eqref{eq:log-y-conservation} and \eqref{eq:log-h-conservation} into \eqref{eq:ideal-euler}:
-
-\begin{equation}
-  \dv{\log h}{r} + \dv{\log y }{r} = \dv{\log (hy) }{r} = 0
-\end{equation}
-
-\end{proof}
-
-In the nonrelativistic, weak-field limit this  becomes the classical conservation of density of energy:
-
-\begin{equation}
-    \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
-\end{equation}
-
-Also, we can rewrite the last term of the Euler equation \eqref{eq:ideal-euler} using \eqref{eq:enthalpy-definition}  as:
-
-\begin{equation}
-  \frac{\partial_1 p}{p + \rho} =
-  \frac{\rho_0}{\rho_0} \frac{\partial_1 p}{p + \rho} =
-  \frac{1}{\rho_0} \pdv{p}{\rho} \pdv{\rho_0}{\rho}
-  \pdv{\rho}{p}   \partial_1 p =
-  \frac{v_s^2}{\rho_0} \partial_1\rho_0
-\end{equation}
-
-where we define the speed of sound \(v_s^2 = (\pdv*{p}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process).
-
-This can be rewritten as
-
-\begin{equation}
-  \dd{p} = \pdv{p}{\rho} \pdv{\rho}{\rho_0} \dd{\rho_0} = v_s^2 h \dd{\rho_0}
-\end{equation}
-
-\begin{greenbox}
-  Somehow in \cite[page 175]{Nobili:2000} this becomes:
-
-  \begin{equation}
-    \dv{\log p }{\log r} = \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
-  \end{equation}
-
-  but it seems to me it should be
-
-  \begin{equation}
-  \dv{\log p }{\log r} = \frac{p+\rho}{p} v_s^2 \dv{\log \rho_0}{\log r }
-  \end{equation}
-\end{greenbox}
-
-Coming back to \eqref{eq:relativistic-euler},  we get:
-
-\begin{equation}
-  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
-  + \frac{v_s^2 }{\rho_0}\dv{\rho_0}{r} = 0
-\end{equation}
-
-We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):
-
-\begin{subequations}
-\begin{align}
-  \gamma^2 v^2 \dv{\log v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + v_s^2 \dv{\log \rho_0}{r}  &= 0 \\
-  \frac{\gamma^2 - 1}{r}  \dv{\log v}{\log r} + \frac{M}{(y^2/\gamma^2) r^2}
-  + \frac{v_s^2}{r} \dv{\log \rho_0}{\log r}  &= 0  \\
-  % \frac{1 - (1-v^2)}{1}  \dv{\log v}{\log r} + \frac{M}{(y^2) r}
-  % + (1-v^2)\frac{v_s^2}{1} \dv{\log \rho_0}{\log r}  &= 0 \\
-  v^2  \dv{\log v}{\log r} + \frac{M}{y^2 r}
-  + (1-v^2) v_s^2 \dv{\log \rho_0}{\log r}  &= 0
-\end{align}
-\end{subequations}
-
-\begin{greenbox}
-  Are the eqrefs at page 174 in \cite{Nobili:2000} wrong? Equations 2.7.3, 5 seem not to be related at all...
-
-  Somehow this equation comes up:
-
-  \begin{equation}
-    \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
-  \end{equation}
-
-  and we wind up with the system
-
-  \begin{subequations}
-  \begin{align}
-    (v^2-v_s^2) \dv{\log \rho_0}{\log r} &= - 2v^2 + \frac{M}{y^2 r}  \\
-    (v^2-v_s^2) \dv{\log yv }{\log r} &=  2v_s^2 - \frac{M}{y^2 r}  \\
-    \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
-  \end{align}
-  \end{subequations}
-
-  but I do not see at all how to get to it, it does not seem to work!
-  If we add the first two equations we get back \eqref{eq:differential-continuity}...
-\end{greenbox}
-
-\begin{greenbox}
-  Typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
-\end{greenbox}
 
 \subsection{Taub}
 
@@ -424,14 +262,14 @@ Nonrelativistic fluid mechanics are described by the equations:
 \begin{subequations}
 \begin{align}
     \partial_t \rho + \partial_i (\rho v^i) &= 0 &\text{conservation of mass} \\
-    \rho \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j T^{ij} &\text{conservation of momentum}  \\
-    \rho \partial_t E + v^i \partial_i E &= \partial_i \qty(T^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
+    \rho \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \\
+    \rho \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
 \end{align}
 \end{subequations}
 
 where $\rho$ is the density of the fluid,
 $v^i$ are the components of its velocity,
-$T^{ij}$ is the stress tensor (or, equivalently, the space-like components of the energy-momentum tensor),
+$\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the energy-momentum tensor),
 $E$ is the energy of the fluid,
 $\kappa$ is the thermal conductivity,
 $T$ is the temperature of the fluid.
@@ -602,6 +440,16 @@ Equivalently, we can write
 \end{align}
 \end{subequations}
 
+It holds \cite[]{Taub:1948} that:
+
+\begin{equation}
+0
+\leq 3p
+\leq \frac{3}{2}p + \sqrt{\qty(\frac{3}{2}p)^2 + \rho_0^2}
+\leq \rho = \rho_0 (1 + \varepsilon)
+\leq \rho_0 + 3p
+\end{equation}
+
 \paragraph{Forces}
 
 If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy tensor given in \eqref{eq:stress-energy-tensor-decomposition-2}, that is, look at the spatial components of the conservation equations, we get:
@@ -610,19 +458,19 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
 \begin{align}
   h^\sigma_\mu \nabla_\nu \qty((p+\rho) u^\mu u^\nu + p g^{\mu\nu}) &=
   h^\sigma_\mu \nabla_\nu \qty(T^{\mu\nu}_V - T^{\mu\nu}_h)  \\
-  (\rho + p) a^\sigma + h^\sigma_\nu \partial^\nu p &=
+  (\rho + p) a^\sigma + h^\sigma_\nu \partial^\nu p &= h^\sigma_\mu \nabla_\nu \qty(
+  +\xi \theta h_{\mu\nu} + 2 \eta \sigma_{\mu\nu} - 2w_{(\mu} u_{\nu)})  \\
+  &= \underbrace{\nabla_\nu T^{\mu\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
+  \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}}
 \end{align}
 \end{subequations}
 
-It holds \cite[]{Taub:1948} that:
+\begin{greenbox}
+  I have not done the whole computation yet. Shouldn't there be an \(\eta\) in front of \(\sigma^2\)? Is it a typo in \cite[]{Taub:1978}?
+\end{greenbox}
 
-\begin{equation}
-    0
-    \leq 3p
-    \leq \frac{3}{2}p + \sqrt{\qty(\frac{3}{2}p)^2 + \rho_0^2}
-    \leq \rho = \rho_0 (1 + \varepsilon)
-    \leq \rho_0 + 3p
-\end{equation}
+\paragraph{The Second Principle in GR}
+
 
 Because of the conservation of the stress-energy tensor, we have:
 
@@ -892,5 +740,197 @@ Now, we define a parameter \(l\) which corresponds to the space distance the pho
 \end{equation}
 
 now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
+
+\subsection{Spherical accretion}
+
+We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we treat a fluid with 4-velocity $u^\mu$ in spherical coordinates, since the problem we are looking at is stationary and spherically symmetric the velocity is:
+
+\begin{equation}
+    u^\mu = \begin{pmatrix}
+        \gamma^2 / y\\
+        yv\\
+        0\\
+        0
+    \end{pmatrix}
+\end{equation}
+
+where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
+
+The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
+
+\begin{equation} \label{eq:integral-continuity}
+    \dv{}{r} \qty(\rho_0 yvr^2) = 0
+\end{equation}
+
+\(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
+
+\begin{equation} \label{eq:differential-continuity}
+  \dv{\log \rho_0}{\log r} +
+  \dv{\log yv}{\log r} + 2 = 0
+\end{equation}
+
+In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$: therefore
+
+\begin{equation}
+  \dot{M} = 4 \pi\rho_0 yvr^2
+\end{equation}
+
+We also have the Euler equation:
+
+\begin{equation} \label{eq:relativistic-euler}
+    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
+\end{equation}
+
+The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the radial Schwarzschild Christoffel coefficients:
+
+\begin{equation}
+  \Gamma^1_{\mu \nu} = \left[\begin{matrix}\frac{M \left(- 2 M + r\right)}{r^{3}} & 0 & 0 & 0\\0 & \frac{M}{r \left(2 M - r\right)} & 0 & 0\\0 & 0 & 2 M - r & 0\\0 & 0 & 0 & \left(2 M - r\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
+\end{equation}
+
+while the proper-time derivative is \(\dv*{}{\tau} = u^\mu \partial_\mu = yv\partial_1\).
+Plugging in the expression for the only relevant component of \(h^{\mu\nu}\), \(h^{11} = g^{11} + u^1 u^1 = (1 + 2 \Phi) (1 + v^2 \gamma^2) = y^2\)
+we get, after lengthy computation,
+
+\begin{equation}
+  a^1 = y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2})
+\end{equation}
+
+Substituting this into the (radial component of the) Euler equation \eqref{eq:relativistic-euler} we get
+
+\begin{subequations}
+\begin{align}
+  (p + \rho) y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) &= - h^{1 1} \partial_1 p = - y^2 \partial_1 p \\
+   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + \frac{1}{p + \rho} \dv{p}{r} &= 0
+  \label{eq:ideal-euler}
+\end{align}
+\end{subequations}
+
+\begin{greenbox}
+  In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error.
+\end{greenbox}
+
+We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
+
+\begin{equation} \label{eq:enthalpy-definition}
+    \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
+    \qquad
+    \text{or}
+    \qquad
+    \pdv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0} \defeq h
+\end{equation}
+
+(where we have defined $h$, the specific enthalpy).
+From these we can show that
+
+\begin{claim}
+The quantity $\gamma h \sqrt{1+2\Phi} = yh$ , is a constant of motion.
+\end{claim}
+
+\begin{proof}
+First of all, by direct computation it can be shown that
+
+\begin{equation} \label{eq:log-y-conservation}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} = \dv{\log y }{r}
+\end{equation}
+
+Then, following \textcite[section 6.3]{Gourgoulhon:2006bn} we find that \(\dd{p} = \rho_0 \dd{h}\) in the isentropic case, therefore
+
+\begin{equation} \label{eq:log-h-conservation}
+  \frac{1}{\rho + p} \dv{p}{r}  =  \dv{\log h}{r}
+\end{equation}
+
+we can substitute the results in \eqref{eq:log-y-conservation} and \eqref{eq:log-h-conservation} into \eqref{eq:ideal-euler}:
+
+\begin{equation}
+  \dv{\log h}{r} + \dv{\log y }{r} = \dv{\log (hy) }{r} = 0
+\end{equation}
+
+\end{proof}
+
+In the nonrelativistic, weak-field limit this  becomes the classical conservation of density of energy:
+
+\begin{equation}
+    \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
+\end{equation}
+
+Also, we can rewrite the last term of the Euler equation \eqref{eq:ideal-euler} using \eqref{eq:enthalpy-definition}  as:
+
+\begin{equation}
+  \frac{\partial_1 p}{p + \rho} =
+  \frac{\rho_0}{\rho_0} \frac{\partial_1 p}{p + \rho} =
+  \frac{1}{\rho_0} \pdv{p}{\rho} \pdv{\rho_0}{\rho}
+  \pdv{\rho}{p}   \partial_1 p =
+  \frac{v_s^2}{\rho_0} \partial_1\rho_0
+\end{equation}
+
+where we define the speed of sound \(v_s^2 = (\pdv*{p}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process).
+
+This can be rewritten as
+
+\begin{equation}
+  \dd{p} = \pdv{p}{\rho} \pdv{\rho}{\rho_0} \dd{\rho_0} = v_s^2 h \dd{\rho_0}
+\end{equation}
+
+\begin{greenbox}
+  Somehow in \cite[page 175]{Nobili:2000} this becomes:
+
+  \begin{equation}
+    \dv{\log p }{\log r} = \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+  \end{equation}
+
+  but it seems to me it should be
+
+  \begin{equation}
+  \dv{\log p }{\log r} = \frac{p+\rho}{p} v_s^2 \dv{\log \rho_0}{\log r }
+  \end{equation}
+\end{greenbox}
+
+Coming back to \eqref{eq:relativistic-euler},  we get:
+
+\begin{equation}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
+  + \frac{v_s^2 }{\rho_0}\dv{\rho_0}{r} = 0
+\end{equation}
+
+We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):
+
+\begin{subequations}
+\begin{align}
+  \gamma^2 v^2 \dv{\log v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + v_s^2 \dv{\log \rho_0}{r}  &= 0 \\
+  \frac{\gamma^2 - 1}{r}  \dv{\log v}{\log r} + \frac{M}{(y^2/\gamma^2) r^2}
+  + \frac{v_s^2}{r} \dv{\log \rho_0}{\log r}  &= 0  \\
+  % \frac{1 - (1-v^2)}{1}  \dv{\log v}{\log r} + \frac{M}{(y^2) r}
+  % + (1-v^2)\frac{v_s^2}{1} \dv{\log \rho_0}{\log r}  &= 0 \\
+  v^2  \dv{\log v}{\log r} + \frac{M}{y^2 r}
+  + (1-v^2) v_s^2 \dv{\log \rho_0}{\log r}  &= 0
+\end{align}
+\end{subequations}
+
+\begin{greenbox}
+  Are the eqrefs at page 174 in \cite{Nobili:2000} wrong? Equations 2.7.3, 5 seem not to be related at all...
+
+  Somehow this equation comes up:
+
+  \begin{equation}
+    \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
+  \end{equation}
+
+  and we wind up with the system
+
+  \begin{subequations}
+  \begin{align}
+    (v^2-v_s^2) \dv{\log \rho_0}{\log r} &= - 2v^2 + \frac{M}{y^2 r}  \\
+    (v^2-v_s^2) \dv{\log yv }{\log r} &=  2v_s^2 - \frac{M}{y^2 r}  \\
+    \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+  \end{align}
+  \end{subequations}
+
+  but I do not see at all how to get to it, it does not seem to work!
+  If we add the first two equations we get back \eqref{eq:differential-continuity} which is good but that is the only part which seems to make sense.
+\end{greenbox}
+
+\begin{greenbox}
+  Typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
+\end{greenbox}
 
 \end{document}

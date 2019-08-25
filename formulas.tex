@@ -339,6 +339,10 @@ where in the last step we expressed everything wrt the tetrad coordinate system.
     \item \(\theta = \nabla_\mu u^\mu\) is the bare trace of the tensor, corresponding to the expansion velocity;
     \item \(a_\mu = u^\nu \nabla_\nu u^\mu\) is the covariant acceleration;
     \item \(\sigma_{\sigma \tau} = \qty(\nabla_{(\mu} u_{\nu)}) h^\mu_\sigma h^\nu _\tau - \frac[i]{1}{3} \theta h_{\sigma \tau} = \nabla_{(\sigma} u_{\tau)} + a_{(\sigma} u_{\tau)} - \frac[i]{1}{3} \theta h_{\sigma \tau} \) is the spatial symmetric trace-free part of the tensor, that is, the shear stress;
+    \footnote{A trick for this computation: why would a term like \(u^\mu u_\sigma \nabla_\tau u_\mu\) be zero? We can just multiply by \(1 = - u^\tau u_\tau\) to get \(-u^\mu u_\sigma u_\tau u^\tau \nabla_\tau u_\mu = \sum_\tau u_\sigma u_\tau a_\mu u^\mu = 0\).
+    \begin{greenbox}
+        Is this right? It seems like we shouldn't be able to do this... The index \(\tau\) in the starting formula was not summed and then it is so this does not sound convincing. Is there another way to see that \(u^\mu u_{(\sigma} \nabla_{\tau)} u_\mu = 0\)?
+    \end{greenbox}}
     \item \(\omega_{\sigma \tau} = h^\nu_\sigma h^\mu_\tau \nabla_{[\nu} u_{\mu]} = \partial_{[\tau} u_{\sigma]} + a_{[\tau} u_{\sigma]}\) is the spatial rotation tensor.
 \end{enumerate}
 
@@ -461,13 +465,15 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
   (\rho + p) a^\sigma + h^\sigma_\nu \partial^\nu p &= h^\sigma_\mu \nabla_\nu \qty(
   +\xi \theta h_{\mu\nu} + 2 \eta \sigma_{\mu\nu} - 2w_{(\mu} u_{\nu)})  \\
   &= \underbrace{\nabla_\nu T^{\mu\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
-  \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}}
+  \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}} \label{eq:full-spatial-equations-of-motion}
 \end{align}
 \end{subequations}
 
 \begin{greenbox}
   I have not done the whole computation yet. Shouldn't there be an \(\eta\) in front of \(\sigma^2\)? Is it a typo in \cite[]{Taub:1978}?
 \end{greenbox}
+
+In the perfect fluid case we simply get Euler's equation from \eqref{eq:full-spatial-equations-of-motion}
 
 \paragraph{The Second Principle in GR}
 

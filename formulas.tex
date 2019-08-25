@@ -242,15 +242,6 @@ For a gas of non-interacting particles, the stress-energy tensor is very simple:
 %     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
 % \end{equation}
 
-\paragraph{Ideal fluids}
-
-They are fluids with \(\eta=\xi=\kappa=0\), that is, without viscosity (neither compressive nor shear) nor heat transmission.
-They are described by the following stress-energy tensor:
-
-\begin{equation}
-    T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu}
-\end{equation}
-
 \subsection{Taub}
 
 This section summarizes my study of A. H. Taub's review of relativistic fluid dynamics, \cite{Taub:1978}.
@@ -431,7 +422,7 @@ For the definition of the acceleration, vorticity etc. see equation \eqref{eq:co
 As in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy.
 
 \begin{greenbox}
-    The fact that the decomposition can be written in this way is not proven in \cite[]{Taub:1978}, but it seems like a proof can be found in \cite[]{Eckart:1940}.
+    The fact that the decomposition can be written in this way is not proven in \cite[]{Taub:1978}, but it seems like a proof can be found in \cite[]{Eckart:1940}, which is locked behind a paywall.
 \end{greenbox}
 
 Equivalently, we can write
@@ -463,7 +454,7 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
   h^\sigma_\mu \nabla_\nu \qty((p+\rho) u^\mu u^\nu + p g^{\mu\nu}) &=
   h^\sigma_\mu \nabla_\nu \qty(T^{\mu\nu}_V - T^{\mu\nu}_h)  \\
   (\rho + p) a^\sigma + h^\sigma_\nu \partial^\nu p &= h^\sigma_\mu \nabla_\nu \qty(
-  +\xi \theta h_{\mu\nu} + 2 \eta \sigma_{\mu\nu} - 2w_{(\mu} u_{\nu)})  \\
+  +\xi \theta h^{\mu\nu} + 2 \eta \sigma^{\mu\nu} - 2w^{(\mu} u^{\nu)})  \\
   &= \underbrace{\nabla_\nu T^{\mu\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
   \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}} \label{eq:full-spatial-equations-of-motion}
 \end{align}
@@ -471,9 +462,12 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
 
 \begin{greenbox}
   I have not done the whole computation yet. Shouldn't there be an \(\eta\) in front of \(\sigma^2\)? Is it a typo in \cite[]{Taub:1978}?
+  The heat part seems to make sense, I'm missing how \(-w^\mu u^\nu \nabla_\nu u_\mu = u_\mu (u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu)\).
 \end{greenbox}
 
-In the perfect fluid case we simply get Euler's equation from \eqref{eq:full-spatial-equations-of-motion}
+The vectors \(\mathscr F^\sigma _{h, V}\) are relativistic forces on the fluid due respectively to heat flow and viscosity.
+
+In the perfect fluid case the RHS is zero we simply get Euler's equation from \eqref{eq:full-spatial-equations-of-motion}.
 
 \paragraph{The Second Principle in GR}
 
@@ -638,8 +632,35 @@ Let us also consider the expression of the differential per-unit-rest-mass entro
 
 If we assume that the fluid is in equilibrium (\(\nabla_\mu S^\mu = 0\)) then we must have \(\theta = 0\) (no compression), \(\sigma_{\mu\nu} = 0 \) (no shear stresses), \(w_\mu=0\) (no heat conduction which is not equal to \(-\kappa T a_\mu\)... doesn't have the same ring to it).
 
-If our fluid is ideal (\(\xi = \eta = \kappa = 0\)) then the RHS of \eqref{eq:second-principle-thermodynamics} is zero and so is \(w^\mu\),
+\paragraph{Stationarity}
+
+Will skip most of this section. A spacetime is stationary if it admits a timelike Killing vector field? \textcite[]{Ehlers:1971} proved that from a hypothesis of stationarity we get \(\nabla_\mu S^\mu = 0\).
+
+\paragraph{Ideal fluids}
+
+They are fluids with \(\eta=\xi=\kappa=0\), that is, without viscosity (neither compressive nor shear) nor heat transmission.
+They are described by the following stress-energy tensor:
+
+\begin{equation}
+    T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu} = \rho_0 h u^{\mu} u^\nu + p g^{\mu\nu}
+\end{equation}
+
+where \(h = (p + \rho) / \rho_0\) is the enthalpy. If our fluid is ideal then the RHS of \eqref{eq:second-principle-thermodynamics} is zero and so is \(w^\mu\),
 therefore \(T \nabla_\mu S^\mu = T \nabla_\mu \qty(\rho_0 S u^\mu) = T \rho_0 u^\mu \partial_\mu S\) by the continuity equation. So, unless \(\rho_0\) and \(T\) are not zero, \(S\) is conserved along the world-lines of the fluid.
+
+Also, the RHS of \eqref{eq:full-spatial-equations-of-motion} is zero, therefore we get the Euler equation:
+
+\begin{equation} \label{eq:relativistic-euler}
+    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
+\end{equation}
+
+\paragraph{Barotropic fluids}
+
+The definition of a barotropic flow is: a flow for which the density is just a function of temperature, \(\rho = \rho (p)\).
+
+\begin{greenbox}
+  What is \(d\) in \cite[equation 11.10]{Taub:1978}? Is it a typo? I do not get that equation. Also, I quote: ``Equations 11.3 and 11.5 do not hold. However, it is a consequence of equations 11.3 and...''
+\end{greenbox}
 
 \subsection{Nobili, Turolla, Zampieri}
 
@@ -781,11 +802,7 @@ In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mas
   \dot{M} = 4 \pi\rho_0 yvr^2
 \end{equation}
 
-We also have the Euler equation:
-
-\begin{equation} \label{eq:relativistic-euler}
-    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
-\end{equation}
+We also have the Euler equation \eqref{eq:relativistic-euler}.
 
 The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the radial Schwarzschild Christoffel coefficients:
 

@@ -821,8 +821,8 @@ Therefore, introducing the notation \([F] = F_+ - F_-\), selecting one of the tw
 We denote \(m = \rho_0 u^\mu n_\mu\) (at the boundary), and then the first equation is the fact that \(m\) is the same on either side:
 
 \begin{equation} \label{eq:rankine-hugoniot-1}
-    \rho_0^+ u^\mu_+ n^\mu =
-    \rho_0^- u^\mu-+ n^\mu \defeq m
+    \rho_{0+} u^\mu_+ n_\mu =
+    \rho_{0-} u^\mu_- n_\mu \defeq m
 \end{equation}
 
 The other, for an ideal flud, is
@@ -838,7 +838,11 @@ by \eqref{eq:momentum-conservation-across-boundary} must satisfy
     m \qty(V^\mu_+ - V^\mu _-) Y_\mu = 0
 \end{equation}
 
-then either \(m = 0\): this is called a \emph{slip-stream} discontinuity, because the normal component of the velocity is zero, so the fluid is flowing \emph{along} the boundary, no matter is crossing it; or \(V^\mu _+ Y_\mu = V^\mu _- Y_\mu\) for \emph{all} the \(Y^\mu\): this is called a \emph{shock wave}.
+then
+\begin{itemize}
+    \item either \(m = 0\): this is called a \emph{slip-stream} discontinuity, because the normal component of the velocity is zero, so the fluid is flowing \emph{along} the boundary, no matter is crossing it;
+    \item  or \(V^\mu _+ Y_\mu = V^\mu _- Y_\mu\) for \emph{all} the \(Y^\mu\): this is called a \emph{shock wave}.
+\end{itemize}
 
 \begin{greenbox}
   There are \emph{three} independent \(Y^\mu\), right?
@@ -857,7 +861,19 @@ then, by multiplying \eqref{eq:momentum-conservation-across-boundary} and using 
     m^2 = \frac{p_+ - p_-}{\tau_+ - \tau_-}
 \end{equation}
 
-equations \eqref{eq:rankine-hugoniot-1}, \eqref{eq:rankine-hugoniot-2} and \eqref{eq:rankine-hugoniot-3} are the Rankine-Hugoniot equations.   
+equations \eqref{eq:rankine-hugoniot-1}, \eqref{eq:rankine-hugoniot-2} and \eqref{eq:rankine-hugoniot-3} are the Rankine-Hugoniot equations.
+
+\begin{greenbox}
+  TODO: show that the nonrelativistic limit of these is
+
+  \begin{subequations}
+  \begin{align}
+    \rho_0 u^i n_i &= \const  \\
+    \rho_0 u^i u_i + p &= \const  \\
+    h + u^2 /2 &= \const
+  \end{align}
+  \end{subequations}
+\end{greenbox}
 
 \subsection{Perfect fluids' spherical accretion}
 
@@ -1053,6 +1069,11 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
 
 \subsection{Radiative processes in spherical accretion}
 
+\begin{greenbox}
+  Question posed in \cite[Introduction]{ThorneFLammmangZytkow:1981feb}: will a black hole inside a star eat it whole in a free-fall time-scale (around 1 year) or on an Eddington-limited time-scale (around \(10^8\) years)?
+  Is this known now?
+\end{greenbox}
+
 \paragraph{Eddington luminosity}
 
 It is the characteristic luminosity at which the radiation pressure from the photons moving outward equals the gravitational specific force on the infalling matter.
@@ -1169,7 +1190,7 @@ Where the PTSF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed 
     \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF}
 \end{equation}
 
-Now, consider a photon, whose trajectory in spacetime is parametrized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
+In particular, the function we will apply this to is the distribution of EM radiation around the BH. So, let us consider a photon, whose trajectory in spacetime is parametrized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
 
 \begin{equation}
     p = \dv{}{\xi}
@@ -1189,5 +1210,8 @@ Now, we define a parameter \(l\) which corresponds to the space distance the pho
 
 now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
 
+It is known that the volume element \(\dd{V}_p = \dd[3]{p} / p^0 \) is Lorentz invariant.
+
+We want to quantify the number density of photons in relation to their momentum. We assume the radiation in unpolarized, 
 
 \end{document}

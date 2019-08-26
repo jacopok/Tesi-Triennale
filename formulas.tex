@@ -65,6 +65,15 @@ The derivative with respect to proper time is $\dv{}{\tau} = u^\mu \nabla_\mu$.
     a^\nu = u^\mu \nabla_\mu u^\nu
 \end{equation}
 
+\paragraph{Stokes' theorem}
+
+Following \cite[]{Unger:2016}.
+If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) of this manifold equipped with coordinates \(x^\mu\) a metric \(g_{\mu\nu}\), with a submanifold boundary \(\partial V\) equipped with coordinates \(y^\mu\) and the induced metric \(h_{\alpha\beta} = \qty(\pdv*{x^\mu}{y^\alpha}) \qty(\pdv*{x^\nu}{y^\beta}) g_{\mu\nu}\), and for which we have a properly oriented normal vector \(n^\mu (y)\); then for any vector \(f^\mu\) we have:
+
+\begin{equation} \label{eq:stokes-theorem}
+    \int _{V} \nabla_\mu f^\mu \sqrt{\abs{\det g}}  \dd[n]{x}  = \int _{\partial V} f^\mu  n_\mu \sqrt{\abs{\det h}} \dd[n-1]{y}
+\end{equation}
+
 \paragraph{Curvature}
 
 The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
@@ -774,6 +783,81 @@ We can also rewrite the perfect-fluid stress-energy tensor as \(T^{\mu\nu} = s V
 but in the (barotropic?) case \(s = \rho_0\) we can use the conservation of mass to get \(\rho_0 u^\nu \nabla_\nu (\xi_\mu V^\mu) = 0\), so the quantity \(H = \xi_\mu V^\mu\) is conserved along the worldlines of the fluid.
 
 If we are in the coordinate system which would be the LRF for an observer with velocity \(\xi^\mu\), then the conserved quantity is \(H = V^0 \).
+
+\paragraph{Shocks and conservation laws through boundaries}
+
+Following \cite[section 13]{Taub:1978}.
+The differential formulations of the conservation of mass and momentum will not hold at points of non-differentiability, such as through shock waves.
+There, they must be replaced by an integral law.
+We can reframe our conservation laws as the statements that, for any scalar \(f\) and vector \(\lambda_\mu\) we will have
+
+\begin{subequations} \label{eq:conservation-laws-arbitrary-functions}
+\begin{align}
+  \nabla_\mu \qty(f \rho_0 u^\mu) &= \rho_0 u^\mu \partial_\mu f  \\
+  \nabla_\mu \qty(\lambda_\nu T^{\mu\nu})&= T^{\mu\nu} \nabla_\mu \lambda_\nu
+\end{align}
+\end{subequations}
+
+We can integrate these on a generic volume \(V\) using Stokes' theorem \eqref{eq:stokes-theorem}, choosing coordinates on the boundary such that the determinant of the induced metric on the submanifold is uniformly 1.
+
+\begin{subequations} \label{eq:conservation-laws-arbitrary-functions-integral}
+    \begin{align}
+        \int _{\partial V} n_\mu \qty(f \rho_0 u^\mu) \dd[3]{y} &= \int_V \rho_0 u^\mu \partial_\mu f \sqrt{-g}  \dd[4]{x}  \\
+        \int_{\partial V} n_\mu \qty(\lambda_\nu T^{\mu\nu}) \dd[3]{y}&= \int _V T^{\mu\nu} \nabla_\mu \lambda_\nu \sqrt{-g}  \dd[4]{x}
+    \end{align}
+\end{subequations}
+
+Now, to deal with the shock we do the following: take the hypersurface at which the shock happens, enclose it in an infinitesimally thin 4D volume: then, as the volume decreases the RHSs of equations \eqref{eq:conservation-laws-arbitrary-functions-integral} go to 0, therefore the LHSs also must: we can write them as the difference of the integrands at the boundary.
+Therefore, introducing the notation \([F] = F_+ - F_-\), selecting one of the two outward vectors and denoting only it as \(n_\mu\) and using the arbitrariness of \(f\), \(\lambda_\nu\) we have:
+
+\begin{equation}
+    \qty[n_\mu \rho_0 u^\mu] = n_\mu \qty[\rho_0 u^\mu] = 0
+    \qquad
+    \text{and}
+    \qquad
+    \qty[n_\mu T^{\mu\nu}] = n_\mu [T^{\mu\nu}] = 0
+\end{equation}
+
+We denote \(m = \rho_0 u^\mu n_\mu\) (at the boundary), and then the first equation is the fact that \(m\) is the same on either side:
+
+\begin{equation} \label{eq:rankine-hugoniot-1}
+    \rho_0^+ u^\mu_+ n^\mu =
+    \rho_0^- u^\mu-+ n^\mu \defeq m
+\end{equation}
+
+The other, for an ideal flud, is
+
+\begin{equation} \label{eq:momentum-conservation-across-boundary}
+    m \qty(V^\mu_+ - V^\mu _-) + n^\mu \qty(p_+ - p_-) = 0
+\end{equation}
+
+with \(V^\mu = h u^\mu\). Now, consider a set of vectors \(Y^\mu\) such that \(Y^\mu n_\mu = 0\) and \(Y^\mu Y_\mu = 1\). These form a two-parameter family (\(\sim S^2\)), and
+by \eqref{eq:momentum-conservation-across-boundary} must satisfy
+
+\begin{equation}
+    m \qty(V^\mu_+ - V^\mu _-) Y_\mu = 0
+\end{equation}
+
+then either \(m = 0\): this is called a \emph{slip-stream} discontinuity, because the normal component of the velocity is zero, so the fluid is flowing \emph{along} the boundary, no matter is crossing it; or \(V^\mu _+ Y_\mu = V^\mu _- Y_\mu\) for \emph{all} the \(Y^\mu\): this is called a \emph{shock wave}.
+
+\begin{greenbox}
+  There are \emph{three} independent \(Y^\mu\), right?
+\end{greenbox}
+
+In the shock wave case, we must write two (?) more equations to fully recover the \eqref{eq:momentum-conservation-across-boundary}. To do so, we define \(\tau = h/\rho_0\) and use the fact that \(V^2 = -h^2\).
+Then, we multiply \eqref{eq:momentum-conservation-across-boundary} by \(V_{\mu}^{+}\) and \(V_{\mu}^{-}\), and use the fact that \(n_\mu V^\mu_{\pm} = m \tau_{\pm}\). We get
+
+\begin{equation} \label{eq:rankine-hugoniot-2}
+    h^2_+ - h^2_- - (p_+ - p_-)(\tau_+ - \tau_-) = 0
+\end{equation}
+
+then, by multiplying \eqref{eq:momentum-conservation-across-boundary} and using the fact that \(n^\mu\) is timelike we get:
+
+\begin{equation}\label{eq:rankine-hugoniot-3}
+    m^2 = \frac{p_+ - p_-}{\tau_+ - \tau_-}
+\end{equation}
+
+equations \eqref{eq:rankine-hugoniot-1}, \eqref{eq:rankine-hugoniot-2} and \eqref{eq:rankine-hugoniot-3} are the Rankine-Hugoniot equations.   
 
 \subsection{Perfect fluids' spherical accretion}
 

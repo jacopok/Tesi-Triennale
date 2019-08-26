@@ -1168,7 +1168,7 @@ We can select the trace-free part of a projected, symmetric tensor by
     A^{\alpha_{2i+1} \dots \alpha_k) \beta_1 \dots \beta_i}\,_{\beta_1 \dots \beta_i}
 \end{equation}
 
-To see what this is doing, let us consider its action on a rank-two tensor:
+To see what this is doing, let us consider its action on a rank-two projected tensor: it is just the subtraction of its trace,
 
 \begin{equation}
     A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho
@@ -1210,8 +1210,10 @@ Now, we define a parameter \(l\) which corresponds to the space distance the pho
 
 now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
 
-It is known that the volume element \(\dd{V}_p = \dd[3]{p} / p^0 \) is Lorentz invariant.
 
-We want to quantify the number density of photons in relation to their momentum. We assume the radiation in unpolarized, 
+We want to quantify the number density of photons in relation to their momentum. We assume the radiation in unpolarized, therefore for each unit \(h^3\) cell in phase space there can be 2 photons: so we denote the distribution function of the photons as \(2N (x^\mu, p^\mu)\).
+
+It is known that the volume element \(\dd{V}_p = \dd[3]{p} / p^0 \) is Lorentz invariant (see \cite[box 22.5]{MisnerThorneWheeler:1973}).
+We can write this using the photons' frequency \(\nu = - p^\mu u_\mu / h\) as \(\dd{V}_p = \nu \dd[]{Omega} \dd{\nu} \).
 
 \end{document}

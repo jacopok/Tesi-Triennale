@@ -15,8 +15,6 @@ By integrating the velocity vector we can find the lengths of curves \(x^\mu(\la
 
 For a flat spacetime we use the Minkowski metric \(\eta_{\mu\nu}\). In general, in the presence of matter the manifold will be curved, so there will not be a coordinate transformation to cast \(g_{\mu\nu}\) in the form \(\eta_{\mu\nu}\). If we choose a certain point \(P\), however, it is possible to find a transformation in order to impose the conditions \(g_{\mu\nu}(P)=\eta_{\mu\nu}(P)\), \(\partial_\rho g_{\mu\nu}(P) = 0\) \cite[pages 49--50]{Carroll:1997ar}.
 
-\subsection{Nobili}
-
 \paragraph{Tensor calculus}
 
 The covariant derivative keeps account of the shifting of the basis vectors:
@@ -207,7 +205,7 @@ or, equivalently,
 
 We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ in the limit $M\rightarrow 0$. Its determinant is $g = -r^4 \sin^2 \theta$.
 
-\paragraph{Fluid mechanics}
+\subsection{Fluid mechanics}
 
 In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
 
@@ -242,11 +240,7 @@ For a gas of non-interacting particles, the stress-energy tensor is very simple:
 %     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
 % \end{equation}
 
-\subsection{Taub}
-
-This section summarizes my study of A. H. Taub's review of relativistic fluid dynamics, \cite{Taub:1978}.
-
-\paragraph{Nonrelativistic}
+\paragraph{Nonrelativistic fluid mechanics}
 
 Nonrelativistic fluid mechanics are described by the equations:
 
@@ -268,10 +262,14 @@ $T$ is the temperature of the fluid.
 The nonrelativistic stress tensor can be written as:
 
 \begin{equation}
-    T_{ij} = -(p + \xi \partial_k v^k ) \delta_{ij} + \eta \partial_{(i} v_{j)}
+    \sigma_{ij} = -(p - \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
 \end{equation}
 
-where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $T_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
+\begin{greenbox}
+  I flipped the sign of the term \(\xi \partial_k v^k\) since I think it is a typo in \cite[page 301]{Taub:1978}: the pressure and compression viscosity terms should have opposite signs like in \eqref{eq:components-stress-energy-tensor}, right?
+\end{greenbox}
+
+where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $\sigma_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
 
 Note that we are working in Euclidean 3D space, so the metric is the identity and upper and lower indices are equivalent.
 
@@ -462,7 +460,25 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
 
 \begin{greenbox}
   I have not done the whole computation yet. Shouldn't there be an \(\eta\) in front of \(\sigma^2\)? Is it a typo in \cite[]{Taub:1978}?
-  The heat part seems to make sense, I'm missing how \(-w^\mu u^\nu \nabla_\nu u_\mu = u_\mu (u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu)\).
+  The heat part seems to make sense, I'm missing how \(-w^\mu u^\nu \nabla_\nu u_\mu = u_\mu (u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu)\): my results are
+
+  \begin{subequations}
+  \begin{align}
+    h^\sigma _\mu \nabla_\nu \qty(2 w^{(\mu} u^{\nu)}) &=  (\delta_\mu ^\sigma + u^\sigma u_\mu) \nabla_\nu \qty(w^\mu u^\nu + u^\mu w^\nu)  \\
+    &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
+    + u^\sigma u_\mu \nabla_\nu \qty(w^\mu u^\nu + u^\mu w^\nu)  \\
+    &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
+    + u^\sigma u_\mu \qty(\cancelto{0}{ w^\mu \nabla_\nu u^\nu } + u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu + u^\mu \nabla_\nu w^\nu)  \\
+    &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
+    + u^\sigma u_\mu \qty(u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu) - u^\sigma \nabla_\nu w^\nu  \\
+    &= \nabla_\nu \qty(w^\sigma u^\nu) + w^\nu \nabla_\nu u^\sigma
+    + u^\sigma u_\mu \qty(u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu) \\
+    &\overset{?}{=} \nabla_\nu \qty(w^\sigma u^\nu) + w^\nu \nabla_\nu u^\sigma
+    - u^\sigma w_\mu a^\mu
+  \end{align}
+  \end{subequations}
+
+  so the first two terms are there, the rest does not look right.
 \end{greenbox}
 
 The vectors \(\mathscr F^\sigma _{h, V}\) are relativistic forces on the fluid due respectively to heat flow and viscosity.
@@ -654,121 +670,112 @@ Also, the RHS of \eqref{eq:full-spatial-equations-of-motion} is zero, therefore 
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
-\paragraph{Barotropic fluids}
+\paragraph{Speed of sound}
+
+Following \cite[]{Yoshida:2011}.
+We want to justify the expression \(v_s^2 = \pdv*{p}{\rho} \). We work in Minkowski spacetime, where \(g_{\mu\nu} = \eta_{\mu\nu}\), and with an ideal fluid, for which \(T_{\mu\nu} = (p+ \rho) u_\mu u_\nu + p \eta_{\mu\nu}\). Then, the equations of conservation of mass and momentum read:
+
+\begin{subequations}
+\begin{align}
+  \rho_0 \partial_\mu u^\mu + u^\mu \partial_\mu \rho_0 &= 0 & \text{mass}  \\
+  u^\mu \qty(\partial_\mu \rho - h \partial_\mu \rho_0) &=0 & \text{momentum along } u^\mu  \\
+  (p+\rho) a^\mu + h^{\mu \rho} \partial_\rho p &=0 & \text{momentum in the span of } h_{\mu\nu}
+\end{align}
+\end{subequations}
+
+where \(h\) is the specific enthalpy. If we assume small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\) (it is \emph{almost} normalized) we get our three equations, up to first order in the perturbations:
+
+\begin{subequations}
+\begin{align}
+  \partial_x (\delta u^x) &= -\frac{\partial_t (\delta \rho_0)}{\rho_0}  \\
+  \partial_t (\delta \rho) - h \partial_t (\delta \rho_0) &= 0  \\
+  -(p+ \rho) \partial_t (\delta u^x) &= \partial_x p
+\end{align}
+\end{subequations}
+
+We manipulate these by differentiating and substituting, in order to eliminate the dependence on \(\delta u^x\) and \(\rho_0\), and get:
+
+\begin{subequations}
+\begin{align}
+  \partial_t \delta \rho + (p+\rho) \partial_x (\partial u^x) &= 0 \\
+  \partial_x \delta p + (p+\rho) \partial_t (\partial u^x) &= 0
+\end{align}
+\end{subequations}
+
+which simplifies to \(\partial_{tt}^2 \delta \rho - \partial_{xx}^2 \delta p = 0\): in order to get the wave equation in the form \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\) we \emph{need} to define \(v_s^2 = \pdv*{p}{\rho}\).
+
+\paragraph{Barotropic flows}
 
 The definition of a barotropic flow is: a flow for which the density is just a function of temperature, \(\rho = \rho (p)\).
 
 \begin{greenbox}
-  What is \(d\) in \cite[equation 11.10]{Taub:1978}? Is it a typo? I do not get that equation. Also, I quote: ``Equations 11.3 and 11.5 do not hold. However, it is a consequence of equations 11.3 and...''
+  What is \(d\) in \cite[equation 11.10]{Taub:1978}? Is it a typo? I do not get that equation. Also, I quote: ``Equations 11.3 and 11.5 do not hold. However, it is a consequence of equations 11.3 and...''.
+
+  Insert here: definition of the variable \(s\).
 \end{greenbox}
 
-\subsection{Nobili, Turolla, Zampieri}
-
-See \cite{NobiliTurollaZampieri:1991dec}.
-
-The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
+The quantity \(s\) obeys the conservation law \(\nabla_\mu (s u^\mu) = 0\). We define a quantity \(Q = \log ((\rho + p)/s )\), which for \(s=\rho_0\) is the log-enthalpy. Then, the Euler equation \eqref{eq:relativistic-euler} can be substituted by
 
 \begin{equation}
-    \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
+  a^\sigma = - h^{\sigma \mu} \partial_\mu Q
 \end{equation}
 
-where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{GnedinHollon:2012}.
-
-The cooling function of the infalling gas is
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/cooling_function.pdf}
-    \caption{Cooling function graph.}
-    \label{fig:cooling-function}
-\end{figure}
+or, more explicitly:
 
 \begin{equation}
-    \begin{split}
-    \Lambda (T) &= \left(
-    \qty(
-    \num{1.42e-27}T^{1/2} \qty(
-    1 + \num{4.4e-10}T
-    ) + \num{6.0e-22}T^{-1/2}
-    )^{-1} \right. \\
-    & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
-    \right)^{-1} \si{\erg\cubic\centi\metre\per\second}
-    \end{split}
+  (\rho + p) a^\mu = -s h^{\mu\nu} \partial_\nu \qty(\frac{\rho + p}{s})
 \end{equation}
 
-The version of this equation in \textcite[equation 10]{StellingwerfBuff:1982} is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
+\begin{greenbox}
+  Unproven in \cite[]{Taub:1978}!? where does it come from?
+\end{greenbox}
 
-\subsection{Thorne's PSTF moment formalism}
+We now define a ``current'' of \(\exp(Q)\): \(V^\mu = \exp(Q) u_\mu \).
 
-Following \cite{Thorne:1981feb}.
+Then we define \(\Omega_{\mu\nu} = 2 \nabla_{(\mu} V_{\nu)}\): this satisfies \(\Omega_{\mu\nu} u^\nu = - T \partial_\mu S\) in general, and \(\Omega_{\mu\nu} u^\nu = 0\) in the isentropic case.
 
-Given any tensor \(A^{\mu_1 \dots \mu_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
+\begin{greenbox}
+  Right? Underneath equation \cite[11.14]{Taub:1978} what is meant is ``in the isentropic'' case, I think, since then \(\partial_\mu S = 0\)...
+
+  Also, what does the distinction between the two definitions in 11.14 and 11.13 mean? Is 11.13 not a subcase of 11.14?
+\end{greenbox}
+
+Then, we define
 
 \begin{equation}
-    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^P
-    = \qty(\prod_i h^{\mu_i}_{\nu_i}) A^{\nu_1 \dots \nu_k}
+  v^\mu = \frac{1}{2} \eta^{\mu \nu \rho \sigma} u_\nu \Omega_{\rho \sigma}
 \end{equation}
 
-Then, we can take the symmetric part of any (?) tensor as outlined in \Nameref{sec:notational-preface}:
+which satisfies
 
 \begin{equation}
-    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^S
-    = A^{(\mu_1 \dots \mu_k)}
+  3 u_{[\alpha} \Omega_{\beta \gamma]} = v^{\mu} \eta_{\mu \alpha \beta \gamma}
 \end{equation}
 
-We can select the trace-free part of a projected, symmetric tensor by
+\begin{greenbox}
+  The normalization does not seem right: \(\eta^{\mu\nu\rho\sigma} \eta_{\mu\alpha\beta\gamma} = -\delta^{\nu\rho\sigma}_{\alpha\beta\gamma}\), so when substituting in the result seems off by \(- 3!\)...
+\end{greenbox}
+
+We use this result to get an explicit formula for \(\Omega_{\alpha\beta}\) in terms of \(u^\mu\), \(v^\mu\).
+This comes out by multiplying by \(u^\gamma\), and is:
 
 \begin{equation}
-    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^{TF}
-    = \sum _{i=0}   ^{\lfloor k/2 \rfloor}
-    (-1)^i \frac{k! (2k-2i-1)!!}{(k-2i)! (2k-1)!! (2i)!!}
-    h^{(\alpha_1 \alpha_2} \dots h^{\alpha_{2i-1} \alpha_{2i}}
-    A^{\alpha_{2i+1} \dots \alpha_k) \beta_1 \dots \beta_i}\,_{\beta_1 \dots \beta_i}
+  \Omega _{\alpha\beta}
+  = - v^\mu u^\gamma \eta_{\mu\gamma\alpha\beta} + u_\alpha \Omega_{\beta\gamma} u^\gamma - u_\beta \Omega_{\alpha\gamma} u^\gamma
+  = - v^\mu u^\gamma \eta_{\mu\gamma\alpha\beta} + 2T (u_{[\beta} \partial_{\alpha]} S )
 \end{equation}
 
-To see what this is doing, let us consider its action on a rank-two tensor:
+We can also rewrite the perfect-fluid stress-energy tensor as \(T^{\mu\nu} = s V^\mu u^\nu +p g^{\mu\nu}\): then, since the metric has zero covariant derivative, if we look at the projection of \(T^{\mu\nu}\) along a Killing vector field \(\nabla_{(\mu} \xi_{\nu)}=0\) we get
 
 \begin{equation}
-    A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho
+  \nabla_\nu \qty(\xi_\mu T^{\mu\nu}) = \nabla_\nu \qty(\xi_\mu s V^\mu u^\nu) = 0
 \end{equation}
 
-Now, let us consider all the unit vectors \(n^\mu\) in the space normal to the velocity, which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span a three-dimensional sphere.
+but in the (barotropic?) case \(s = \rho_0\) we can use the conservation of mass to get \(\rho_0 u^\nu \nabla_\nu (\xi_\mu V^\mu) = 0\), so the quantity \(H = \xi_\mu V^\mu\) is conserved along the worldlines of the fluid.
 
-If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it into harmonics as such:
+If we are in the coordinate system which would be the LRF for an observer with velocity \(\xi^\mu\), then the conserved quantity is \(H = V^0 \).
 
-\begin{equation}
-    F(n) = \sum _{k=0}   ^{\infty}
-    \mathscr F_{\alpha_1 \dots \alpha_k} \prod_{i=0}^k n^{\alpha_i}
-\end{equation}
-
-Where the PTSF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed as
-
-\begin{equation}
-    \mathscr F_{\alpha_1 \dots \alpha_k} =
-    \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF}
-\end{equation}
-
-Now, consider a photon, whose trajectory in spacetime is parametrized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
-
-\begin{equation}
-    p = \dv{}{\xi}
-\end{equation}
-
-Now, our observer has a timelike velocity \(u^\mu\). We can find a spacelike vector \(n^\mu\) corresponding to the space-like part of the movement of the photon, or
-
-\begin{equation}
-    p^\mu = (- u^\nu p_\nu) (u^\mu + n^\mu)
-\end{equation}
-
-Now, we define a parameter \(l\) which corresponds to the space distance the photon moved through in this frame (this is \emph{not} covariant!)
-
-\begin{equation}
-    l = \int  (-u^\nu p_\nu) \dd{\xi}
-\end{equation}
-
-now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
-
-\subsection{Spherical accretion}
+\subsection{Perfect fluids' spherical accretion}
 
 We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we treat a fluid with 4-velocity $u^\mu$ in spherical coordinates, since the problem we are looking at is stationary and spherically symmetric the velocity is:
 
@@ -829,7 +836,7 @@ Substituting this into the (radial component of the) Euler equation \eqref{eq:re
 \end{subequations}
 
 \begin{greenbox}
-  In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error.
+  In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error: the term proportional to \(M/r^2\) should be positive.
 \end{greenbox}
 
 We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
@@ -955,5 +962,148 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
 \begin{greenbox}
   Typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
 \end{greenbox}
+
+\begin{greenbox}
+  To add: commentary on the equation system, its boundary conditions \(\rho_\infty\) and \(T_\infty\), and the fact that to make the system regular at \(v = v_s\) the problem becomes uniquely determined.
+\end{greenbox}
+
+\subsection{Radiative processes in spherical accretion}
+
+\paragraph{Eddington luminosity}
+
+It is the characteristic luminosity at which the radiation pressure from the photons moving outward equals the gravitational specific force on the infalling matter.
+
+The gravitational force, in the newtonian  limit, is
+
+\begin{equation}
+  F_{\text{grav}} = \frac{GMm}{r^2 }
+\end{equation}
+
+The radiation pressure can be given in terms of the luminosity \(L\) (reinserting the units of \(c\) for this) as
+
+\begin{equation}
+  P_{\text{rad}} = \frac{L}{c 4 \pi r^2}
+\end{equation}
+
+then, the radiative force is given by \(F_{\text{rad}} =  P_{\text{rad}} \kappa m\), where \(m\) is the mass of the test object and \(\kappa\) is the opacity: the per-unit-mass cross-section. We usually assume \(\kappa = \sigma_T/m_p\), that is, that the interaction between radiation and matter is all due to Thompson scattering and the matter is only composed of hydrogen atoms.
+
+Equating the forces, we get our result:
+
+\begin{equation}
+ \frac{L_{\text{Edd}}}{M} = \frac{4 \pi c G}{\kappa}
+\end{equation}
+
+In the \(\kappa = \sigma_T / m_p \approx \SI{0.04}{\metre^2 / kg}\) case, we get \(L_{\text{Edd}} / M\) to be around \SI{6.32}{\watt\per\kilo\gram} (constants' values from \cite[]{NISTReccomendedConstants:2018}).
+If we express this in units of \(L_{\odot} / M_{\odot} \approx \SI{1.93E-04}{\watt\per\kilo\gram}\) \cite[]{SunFactSheet:2018} we get \(L_{\text{Edd}} / M \approx  \num{3.27E+04} L_{\odot} / M_{\odot}\):
+the amount of radiation emitted by the Sun is much less than the Eddington limit.
+
+It is, of course, important to note that this is a limit found with many approximations: nonrelativistic gravity, spherical symmetry, only Thompson scattering, only hydrogen.
+
+\paragraph{Cooling function}
+
+From \cite{NobiliTurollaZampieri:1991dec}.
+
+The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
+
+\begin{equation}
+    \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
+\end{equation}
+
+where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{GnedinHollon:2012}.
+
+The cooling function of the infalling gas is
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/cooling_function.pdf}
+    \caption{Cooling function graph.}
+    \label{fig:cooling-function}
+\end{figure}
+
+\begin{equation}
+    \begin{split}
+    \Lambda (T) &= \left(
+    \qty(
+    \num{1.42e-27}T^{1/2} \qty(
+    1 + \num{4.4e-10}T
+    ) + \num{6.0e-22}T^{-1/2}
+    )^{-1} \right. \\
+    & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
+    \right)^{-1} \si{\erg\cubic\centi\metre\per\second}
+    \end{split}
+\end{equation}
+
+The version of this equation in \textcite[equation 10]{StellingwerfBuff:1982} is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
+
+\subsection{Thorne's PSTF moment formalism}
+
+Following \cite{Thorne:1981feb}.
+
+Given any tensor \(A^{\mu_1 \dots \mu_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
+
+\begin{equation}
+    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^P
+    = \qty(\prod_i h^{\mu_i}_{\nu_i}) A^{\nu_1 \dots \nu_k}
+\end{equation}
+
+Then, we can take the symmetric part of any (?) tensor as outlined in \Nameref{sec:notational-preface}:
+
+\begin{equation}
+    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^S
+    = A^{(\mu_1 \dots \mu_k)}
+\end{equation}
+
+We can select the trace-free part of a projected, symmetric tensor by
+
+\begin{equation}
+    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^{TF}
+    = \sum _{i=0}   ^{\lfloor k/2 \rfloor}
+    (-1)^i \frac{k! (2k-2i-1)!!}{(k-2i)! (2k-1)!! (2i)!!}
+    h^{(\alpha_1 \alpha_2} \dots h^{\alpha_{2i-1} \alpha_{2i}}
+    A^{\alpha_{2i+1} \dots \alpha_k) \beta_1 \dots \beta_i}\,_{\beta_1 \dots \beta_i}
+\end{equation}
+
+To see what this is doing, let us consider its action on a rank-two tensor:
+
+\begin{equation}
+    A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho
+\end{equation}
+
+Now, let us consider all the unit vectors \(n^\mu\) in the space normal to the velocity, which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span a three-dimensional sphere.
+
+If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it into harmonics as such:
+
+\begin{equation}
+    F(n) = \sum _{k=0}   ^{\infty}
+    \mathscr F_{\alpha_1 \dots \alpha_k} \prod_{i=0}^k n^{\alpha_i}
+\end{equation}
+
+Where the PTSF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed as
+
+\begin{equation}
+    \mathscr F_{\alpha_1 \dots \alpha_k} =
+    \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF}
+\end{equation}
+
+Now, consider a photon, whose trajectory in spacetime is parametrized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
+
+\begin{equation}
+    p = \dv{}{\xi}
+\end{equation}
+
+Now, our observer has a timelike velocity \(u^\mu\). We can find a spacelike vector \(n^\mu\) corresponding to the space-like part of the movement of the photon, or
+
+\begin{equation}
+    p^\mu = (- u^\nu p_\nu) (u^\mu + n^\mu)
+\end{equation}
+
+Now, we define a parameter \(l\) which corresponds to the space distance the photon moved through in this frame (this is \emph{not} covariant!)
+
+\begin{equation}
+    l = \int  (-u^\nu p_\nu) \dd{\xi}
+\end{equation}
+
+now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
+
 
 \end{document}

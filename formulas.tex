@@ -1337,7 +1337,7 @@ So, the \(k\)-th moment contains all the information about the \(l\)-th moments 
 
 The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\) and to the moment equations \eqref{eq:grey-moment-equations}. Since we are taking the projection onto the space-like subspaces, we can simplify the expression of the PSTF moments: all the terms which contain at least a four-velocity vanish, therefore:
 
-\begin{equation}
+\begin{equation} \label{eq:trace-free-moments-definition}
   \mathscr M^{A_k} = \qty(\int I \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
 \end{equation}
 
@@ -1351,5 +1351,51 @@ The first \emph{PSTF} moments also have physical interpretations:
    \mathscr M^{\alpha\beta} &= \int I n^\alpha n^\beta \dd{\Omega}   & \text{shears in the stress-energy tensor of radiation}
 \end{align}
 \end{subequations}
+
+\paragraph{Simplifications under assumptions of symmetry}
+
+Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \cite[]{ThorneFLammmangZytkow:1981feb}.
+
+The fiducial congruence reference, written with respect to the regular spherical coordinates \((t, r, \theta, \varphi)\), is:
+
+\begin{subequations}
+\begin{align}
+  e_t &= u^\mu = \qty(\gamma^2 / y, yv, 0,0)  \\
+  e_r &= \qty(-v \gamma^2 /y, y, 0, 0) \\
+  e_\theta &= \qty(0,0, 1/r, 0)  \\
+  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
+\end{align}
+\end{subequations}
+
+In this frame (denoted with a subscript ``fid''), we have the following expressions:
+
+\begin{subequations}
+\begin{align}
+  a^\mu &= (0,\dv*{y}{r},0,0)_{\text{fid}} \\
+  \theta &= - \frac{1}{r^2} \dv{}{r} \qty(r^2 v y)  \\
+  \sigma_{\mu\nu} &= - \dv{}{r} \qty(\frac{vy}{r}) \frac{2r}{3} \begin{bmatrix}
+  0   &   &   &  \\
+     &  1 &   &  \\
+     &   & -1/2  &  \\
+     &   &   & -1/2
+  \end{bmatrix} _{\text{fid}} \\
+  \Gamma_{\theta r \theta} &= \Gamma_{\varphi r \varphi} = \frac{y}{r}
+\end{align}
+\end{subequations}
+
+Now, we can see that the shear has been heavily simplified. This is a specific case of a general statement about the PSTF moments: in the spherically symmetric case, the \(k\)-th PSTF moment only has one independent component. This is because it satisfies the following identities:
+
+\begin{subequations}
+\begin{align}
+  \mathscr M ^{A_k} &= 0 \text{ if } A_k \text{ contains an odd number of } \theta \text{s or } \varphi \text{s}  \label{eq:id1-pstf-spherically-symmetric}  \\
+  \mathscr M ^{A_k \theta \theta} &= \mathscr M ^{A_k \varphi \varphi} = -\frac{1}{2} \mathscr M ^{A_k rr} \label{eq:id2-pstf-spherically-symmetric}
+\end{align}
+\end{subequations}
+
+The \(l\)-th Legendre polynomial is:
+
+\begin{equation}
+    P_{l}(x)=\frac{1}{2^{l}} \sum_{k=0}^{\lfloor l / 2\rfloor} \frac{(-1)^{k}(2 l-2 k) !}{k !(l-k) !(l-2 k) !} x^{l-2 k}
+\end{equation}
 
 \end{document}

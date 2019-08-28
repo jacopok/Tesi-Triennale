@@ -1214,6 +1214,23 @@ now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact si
 We want to quantify the number density of photons in relation to their momentum. We assume the radiation in unpolarized, therefore for each unit \(h^3\) cell in phase space there can be 2 photons: so we denote the distribution function of the photons as \(2N (x^\mu, p^\mu)\).
 
 It is known that the volume element \(\dd{V}_p = \dd[3]{p} / p^0 \) is Lorentz invariant (see \cite[box 22.5]{MisnerThorneWheeler:1973}).
-We can write this using the photons' frequency \(\nu = - p^\mu u_\mu / h\) as \(\dd{V}_p = \nu \dd[]{Omega} \dd{\nu} \).
+We can write this using the photons' frequency \(\nu = - p^\mu u_\mu / h\) as \(\dd{V}_p = \nu \dd[]{\Omega} \dd{\nu} \).
+
+Let us define the \emph{specific radiative intensity} as
+
+\begin{equation}
+  I_\nu = \frac{\delta E}{\delta A \delta  t \delta \nu \delta \Omega}
+  = \frac{h \nu \delta N}{\delta A \delta  t \delta \nu \delta \Omega}
+\end{equation}
+
+where \(\delta A\) denotes an infinitesimal area the photons are coming through, \(\delta t\) an infinitesimal time, \(\delta \nu\) an infinitesimal photon frequency, \(\delta \Omega\) an infinitesimal solid angle.
+
+Then, \cite[figure 22.2]{MisnerThorneWheeler:1973} the number density of photons in phase space is
+
+\begin{equation}
+  2N(x^\mu, p^\mu) = \frac{\delta N}{V_x V_p} =  \frac{\delta N}{h^3 \nu^2\delta A \delta  t \delta \nu \delta \Omega} = \frac{1}{h^4 \nu^3} I_\nu
+\end{equation}
+
+therefore \(I_\nu = 2 N \nu^3 h^4\).
 
 \end{document}

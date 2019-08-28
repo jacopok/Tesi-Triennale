@@ -1202,6 +1202,7 @@ Now, our observer has a timelike velocity \(u^\mu\). We can find a spacelike vec
     p^\mu = (- u^\nu p_\nu) (u^\mu + n^\mu)
 \end{equation}
 
+It must hold that \(u^\mu u_\mu = -1 \) while \(n^\mu n_\mu = +1 \) in order for \(p^\mu\) to be null-like.
 Now, we define a parameter \(l\) which corresponds to the space distance the photon moved through in this frame (this is \emph{not} covariant!)
 
 \begin{equation}
@@ -1302,14 +1303,42 @@ and the same is applied to the source moments \(S_\nu^{A_k} \rightarrow S^{A_k}\
 
 Since this includes the radiation intensity from all frequencies, we have direct interpretations for the first moments:
 
-\begin{equation}
-\end{equation}
-
 \begin{subequations}
 \begin{align}
    M &= \int  I_\nu \dd{\Omega} \dd{\nu}   & \text{energy density of radiation}  \\
-   M^\alpha &= \int I_\nu (n^\alpha + u^\alpha)\dd{\Omega} \dd{\nu}   & \text{energy density of radiation}  \\
+   M^\alpha &= \int I_\nu (n^\alpha + u^\alpha)\dd{\Omega} \dd{\nu}   & (M^0, M^i) = \text{(energy density of radiation, energy flux)}  \\
+   M^{\alpha\beta} &= \int I (n^\alpha + u^\alpha)(n^\beta + u^\beta)\dd{\Omega} \dd{\nu}   & \text{stress-energy tensor of radiation}
 \end{align}
 \end{subequations}
+
+\paragraph{The moment equations}
+
+These can be derived from the transport equation, see \cite[3.14]{Thorne:1981feb}. I present them only in the grey (frequency-integrated) case:
+
+\begin{equation} \label{eq:grey-moment-equations}
+  \nabla_\beta M^{A_k \beta} - (k-1) M^{A_k \beta \gamma} (\nabla_ \gamma u_\beta)= S^{A_k}
+\end{equation}
+
+Also, the moments (\(M^{A_k}\), but also \(M^{A_k}_\nu\) and \(M^{A_k}_f\)) satisfy the following:
+
+\begin{subequations}
+\begin{align}
+  \nabla_\beta M^{A_k \beta} &= 0 \\
+  u_\beta M^{A_k \beta} &= -M^{A_k} \\
+  h_{\beta \gamma} M^{A_k \beta \gamma} &= M^{A_k}
+\end{align}
+\end{subequations}
+
+So, the \(k\)-th moment contains all the information about the \(l\)-th moments with \(l\leq k\); also, to get lower-order moments we take partial traces onto space- and time-like subspaces: therefore the unique information to the \(k\)-th moment, which is not redundantly expressed in lower-order moments, is in its PFTF part:
+
+\begin{equation}
+  \mathscr M ^{A_k} = \qty(M^{A_k}) ^{PSTF}
+\end{equation}
+
+The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\) and to the moment equations \eqref{eq:grey-moment-equations}. Since we are taking the projection onto the space-like subspaces, we can simplify the expression of the PSTF moments: all the terms which contain at least a four-velocity vanish, therefore:
+
+\begin{equation}
+  \mathscr M^{A_k} = \qty(\int I_\nu \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
+\end{equation}
 
 \end{document}

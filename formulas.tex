@@ -1253,7 +1253,7 @@ Now, we want to describe the variation of the occupation number \(N\) with respe
 since the occupation number can be thought of as just a function of the spatial components of the momentum.
 
 \begin{greenbox}
-  Why so? Surely \(N = N(\nu)\) also!
+  Why so? Surely \(N = N(\nu) = N(p^0)\) also!
 \end{greenbox}
 
 Since \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\) and the covariant derivative of \(p^j\) is zero, we can compute
@@ -1323,7 +1323,7 @@ Also, the moments (\(M^{A_k}\), but also \(M^{A_k}_\nu\) and \(M^{A_k}_f\)) sati
 
 \begin{subequations}
 \begin{align}
-  \nabla_\beta M^{A_k \beta} &= 0 \\
+  M^{A_k \beta}\,_\beta &= 0 \\
   u_\beta M^{A_k \beta} &= -M^{A_k} \\
   h_{\beta \gamma} M^{A_k \beta \gamma} &= M^{A_k}
 \end{align}
@@ -1352,6 +1352,27 @@ The first \emph{PSTF} moments also have physical interpretations:
 \end{align}
 \end{subequations}
 
+We can write the stress-energy tensor \(T^{\mu\nu} = M^{\mu\nu}\) with the PSTF moments (see \cite[eq. 4.9]{Thorne:1981feb}):
+
+\begin{equation} \label{eq:PSTF-stress-energy-tensor-decomposition}
+    T^{\mu\nu} = \mathscr M u^\mu u^\nu + 2 \mathscr M ^{(\mu} u^{\nu)}
+    + \mathscr M ^{\mu\nu} + \frac{1}{3} \mathscr M h^{\mu\nu}
+\end{equation}
+
+we can compare these to \eqref{eq:components-stress-energy-tensor} to get the following identifications:
+
+\begin{subequations}
+\begin{align}
+  \mathscr M &= w = \rho  \label{eq:identification-PSTF-stress-energy-tensor-1}\\
+  \mathscr M ^\mu &= w^\mu = -\kappa h^\mu _\sigma  \qty(\partial^\sigma T + T a^\sigma) \label{eq:identification-PSTF-stress-energy-tensor-2}\\
+  \mathscr M^{\mu\nu} + \frac{1}{3} \mathscr M h^{\mu\nu}
+  &= (p - \xi \theta)h^{\mu\nu} - 2 \eta \sigma^{\mu\nu} \label{eq:identification-PSTF-stress-energy-tensor-3}
+\end{align}
+\end{subequations}
+
+but since the photons' paths are geodesics in this case \(\theta = 0\), so for the components proportional to \(h^{\mu\nu}\) of equation \eqref{eq:identification-PSTF-stress-energy-tensor-3} we just get \(\rho = \frac[i]{1}{3} p\), which is what we expect for the photon gas.
+For the traceless part of the equation, we get \(\mathscr M ^{\mu\nu} = -2 \eta \sigma^{\mu\nu}\).
+
 \paragraph{Simplifications under assumptions of symmetry}
 
 Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \cite[]{ThorneFLammmangZytkow:1981feb}.
@@ -1360,10 +1381,10 @@ The fiducial congruence reference, written with respect to the regular spherical
 
 \begin{subequations}
 \begin{align}
-  e_t &= u^\mu = \qty(\gamma^2 / y, yv, 0,0)  \\
-  e_r &= \qty(-v \gamma^2 /y, y, 0, 0) \\
-  e_\theta &= \qty(0,0, 1/r, 0)  \\
-  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
+  \hat{t} = e_t &= u^\mu = \qty(\gamma^2 / y, yv, 0,0)  \\
+  \hat{r} = e_r &= \qty(-v \gamma^2 /y, y, 0, 0) \\
+  \hat{\theta} =  e_\theta &= \qty(0,0, 1/r, 0)  \\
+  \hat{\varphi} =  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
 \end{align}
 \end{subequations}
 
@@ -1392,10 +1413,89 @@ Now, we can see that the shear has been heavily simplified. This is a specific c
 \end{align}
 \end{subequations}
 
+Equation \eqref{eq:id1-pstf-spherically-symmetric}  comes from the fact that an odd number of \(\theta\) or \(\varphi\) indices corresponds to and odd number of unit vectors which are integrated on the sphere (see the definition \eqref{eq:trace-free-moments-definition}): therefore the integrand is odd.
+
+Equation \eqref{eq:id2-pstf-spherically-symmetric} comes from two observations:
+first of all, the moments corresponding to indices \(\theta\) and \(\varphi\) respectively must be equal because of spherical symmetry; secondly the moments must be traceless, therefore the sum of the \(\theta \theta\), \(\varphi \varphi\) and \(rr\) moments must be zero (for any pair of indices).
+
+So, with these every \(k\)-th moment is fully determined by the component \(\mathscr M ^{r\dots r}\) (\(k\) \(r\)s): therefore we give it a name: \(w_k\).
+This fact is analogous to the statement that the only spherically symmetrical one of the spherical harmonics \(Y_{lm}\) is \(Y_{l0}\), therefore as in that case we have only one independent component for every \(l\).
+
+\paragraph{Legendre polynomials complement}
+
 The \(l\)-th Legendre polynomial is:
 
-\begin{equation}
+\begin{equation} \label{eq:legendre-polynomials}
     P_{l}(x)=\frac{1}{2^{l}} \sum_{k=0}^{\lfloor l / 2\rfloor} \frac{(-1)^{k}(2 l-2 k) !}{k !(l-k) !(l-2 k) !} x^{l-2 k}
 \end{equation}
+
+We can see that the coefficient of \(x^l\) is \((2l)! / (2^l (l!)^2)\). We can rewrite this making use of the identities \((2n)! = (2n-1)!! (2n)!!\) and \((2n)!! = 2^n n!\),  as:
+
+\begin{equation}
+    \frac{(2l)!}{2^l (l!)^2} = \frac{1}{l!} \frac{(2l)!}{(2l)!!} = \frac{(2l-1)!!}{l!} = \frac{(2l+1)!!}{l! (2l+1)}
+\end{equation}
+
+which is equation \cite[eq. 5.7d]{Thorne:1981feb}.
+
+\textcite[]{Thorne:1981feb} claims that
+
+\begin{equation} \label{eq:thorne-trace-free-integral-claim}
+    \int_{-1}^1 I(\mu) P_k(\mu) \qty(\frac{(2k-1)!!}{l!})^{-1} \dd{\mu} = \qty(\int_{-1}^1  I(\mu) \prod_{i=1}^k n^r \dd{\mu})^{TF}
+\end{equation}
+
+where \(n^r\) denotes the radial component of a normal vector in spherical coordinates, and \(\mu = \cos \theta\) where \(\theta\) is the azimuthal coordinate of \(n\). \(I(\mu)\) is a generic function.
+
+\paragraph{The scalar moments}
+
+It can be shown, using the identity \eqref{eq:thorne-trace-free-integral-claim}  that the definition of \(w_k\) we gave is equivalent to
+
+\begin{equation}
+    w_k = \int_{-1}^1 I(\cos \theta) P_k(\cos \theta) \qty(\frac{(2k-1)!!}{l!})^{-1} 2 \pi\dd{\cos \theta}
+\end{equation}
+
+where \(P_k\) is the \(k\)-th Legendre polynomial \eqref{eq:legendre-polynomials}.
+Then the first moments are:
+
+\begin{subequations}
+\begin{align}
+  w_0 &= \int I \dd{\Omega} & \text{radiation energy density} \\
+  w_1 &= \int I \cos \theta \dd{\Omega} & \text{radiation energy flux} \\
+  w_2 &= \int I \qty(\cos^2 \theta - \frac{1}{3}) \dd{\Omega} & \text{radiation shear stress}
+\end{align}
+\end{subequations}
+
+We can explicitly write the stress-energy tensor in terms of the \(w_k\) using \eqref{eq:PSTF-stress-energy-tensor-decomposition}:
+
+\begin{equation}
+    T^{\mu\nu} = \begin{bmatrix}
+    w_0   & w_1  & 0  & 0 \\
+    w_1   & \frac{1}{3}w_0 + w_2  &  0  & 0 \\
+      0 & 0  &  \frac{1}{3}w_0 -\frac{1}{2}w_2 &  \\
+      0 & 0  &   & \frac{1}{3}w_0 -\frac{1}{2}w_2
+    \end{bmatrix}
+\end{equation}
+
+\paragraph{The simplified moment equations}
+
+It is possible to write equations \eqref{eq:grey-moment-equations} explicitly in terms of the \(w_k\) and of derivatives wrt the fiducial basis: one gets
+
+\begin{equation}
+    \begin{split}
+        \pdv{w_{k+1}}{\hat{r}} &+[(2-k) a+(k+2) b] w_{k+1}+\pdv{w_k}{\hat{t}}+\left[\frac{4}{3} \Theta+\frac{5 k(k+1)}{2(2 k-1)(2 k+3)} \sigma\right] w_{k} + \\
+        &+\frac{k^{2}}{(2 k-1)(2 k+1)} \pdv{w_{k-1}}{\hat{r}}+\frac{k^{2}[(k+3) a+(1-k) b]}{(2 k-1)(2 k+1)} w_{k-1} +  \\
+        &-\frac{3}{2}(k-1) \sigma w_{k+2}+\frac{3(k-1)^{2} k^{2}(k+2)}{2(2 k-3)(2 k-1)^{2}(2 k+1)} \sigma w_{k-2} = s_k
+    \end{split}
+\end{equation}
+
+For \(k=0\) we get:
+
+\begin{equation}
+    \begin{split}
+        \pdv{w_{1}}{\hat{r}} &+[(2) a+2 b] w_{1}+\pdv{w_0}{\hat{t}}+\left[\frac{4}{3} \Theta\right] w_{0} + \\
+        &+\frac{0^{2}}{(-1)(+1)} \pdv{w_{0-1}}{\hat{r}}+\frac{0^{2}[(0+3) a+(1-0) b]}{(2 0-1)(2 0+1)} w_{0-1} +  \\
+        &-\frac{3}{2}(0-1) \sigma w_{0+2}+\frac{3(0-1)^{2} 0^{2}(0+2)}{2(2 0-3)(2 0-1)^{2}(2 0+1)} \sigma w_{0-2} = s_0
+    \end{split}
+\end{equation}
+
 
 \end{document}

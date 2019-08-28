@@ -1210,6 +1210,11 @@ Now, we define a parameter \(l\) which corresponds to the space distance the pho
 
 now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
 
+It holds \cite[eq. 2.17]{Thorne:1981feb}, (with the notation from \eqref{eq:covariant-acceleration-decomposition}),  that
+
+\begin{equation}
+  \dv{\nu}{l}  = (u^\mu + n^\mu) \nabla_\mu (-p^\nu u_\nu) = - \nu \qty(n_\mu a^\mu  + \frac{\theta}{3} + n_\mu n_\nu \sigma^{\mu\nu})
+\end{equation}
 
 We want to quantify the number density of photons in relation to their momentum. We assume the radiation in unpolarized, therefore for each unit \(h^3\) cell in phase space there can be 2 photons: so we denote the distribution function of the photons as \(2N (x^\mu, p^\mu)\).
 
@@ -1232,5 +1237,79 @@ Then, \cite[figure 22.2]{MisnerThorneWheeler:1973} the number density of photons
 \end{equation}
 
 therefore \(I_\nu = 2 N \nu^3 h^4\).
+
+\begin{greenbox}
+  This is from \cite[figure 22.2]{MisnerThorneWheeler:1973}, but it seems to conflict with \cite[equation 6.2]{Thorne:1981feb}!
+\end{greenbox}
+
+Now, we want to describe the variation of the occupation number \(N\) with respect to the photons' trajectories' parameter \(l\). We encapsulate all possible effects into a source term \(\mathfrak S\):
+
+\begin{equation}
+    \mathfrak S \defeq \dv{}{l} 2N(x^\mu, p^\mu) =
+    2 \qty(\pdv{N}{x^\mu} \dv{x^\mu}{l} + \pdv{N}{p^i} \dv{p^i}{l}  )
+\end{equation}
+
+since the occupation number can be thought of as just a function of the spatial components of the momentum.
+
+\begin{greenbox}
+  Why so? Surely \(N = N(\nu)\) also!
+\end{greenbox}
+
+Since \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\) and the covariant derivative of \(p^j\) is zero, we can compute
+
+\begin{equation}
+  \dv{p^j}{l} = (n^\mu + u^\mu ) \nabla_\mu p^j - \Gamma ^j _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
+  = - \Gamma ^j _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
+\end{equation}
+
+where the covariant derivative term vanishes since the photon's trajectory is a geodisic.
+
+\paragraph{Moments' definitions}
+
+In units where \(c=h=1\),
+
+\begin{subequations}
+\begin{align}
+   M _\nu ^{A_k}
+   &\defeq \int 2N \frac{\delta (\nu - (-p^\nu u_\nu))}{\nu^{k-2}} \prod_i^k p^{\alpha_i} \dd{V_p} \\
+   &= \int \qty(2N \nu^3) \frac{1}{\nu} \delta (\nu +p^\nu u_\nu) \prod_i^k \qty(\frac{p^{\alpha_i}}{\nu}) \qty(\nu \dd[]{\Omega} \dd[]{\nu})  \\
+   &= \int  I_\nu \prod_i^k \qty(n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega} \label{eq:simplified-moment-definition}
+\end{align}
+\end{subequations}
+
+This is a general procedure we can use to associate a function \(f\) (in this case we started with \(2N\)) with \(\nu^3\) times the integral \eqref{eq:simplified-moment-definition} (where one might substitute \(I _\nu\) with the function \(f\)).
+We need it for the source moments:
+
+\begin{equation}
+   S_\nu ^{A_k} = \nu^3 \int S \mathfrak S \prod_i^k (n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega}
+\end{equation}
+
+\paragraph{Redshift-adapted version}
+
+\textcite[]{Thorne:1981feb} also defines a redshift-adapted version of the moments' definition: if \(R\) is a universal redshift functions, such that \(R (p^\nu u_\nu)\) is conserved along every photon geodesic \(p^\mu \nabla_\mu p^\nu = 0\), that is, \(R\) allows us to calculate the redshift between any two points \(A\), \(B\) which are connected by a geodesic as \(\nu_A / \nu_B = R_B / R_A\).
+
+Then, we define \( M_f ^{A_k} =  M_{\nu} ^{A_k} / R\)
+
+\paragraph{Frequency-integrated version}
+
+The definition is:
+
+\begin{equation}
+   M ^{A_k} = \int   M^{A_k} _\nu \dd{\nu}
+\end{equation}
+
+and the same is applied to the source moments \(S_\nu^{A_k} \rightarrow S^{A_k}\).
+
+Since this includes the radiation intensity from all frequencies, we have direct interpretations for the first moments:
+
+\begin{equation}
+\end{equation}
+
+\begin{subequations}
+\begin{align}
+   M &= \int  I_\nu \dd{\Omega} \dd{\nu}   & \text{energy density of radiation}  \\
+   M^\alpha &= \int I_\nu (n^\alpha + u^\alpha)\dd{\Omega} \dd{\nu}   & \text{energy density of radiation}  \\
+\end{align}
+\end{subequations}
 
 \end{document}

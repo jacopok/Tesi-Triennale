@@ -1329,7 +1329,7 @@ Also, the moments (\(M^{A_k}\), but also \(M^{A_k}_\nu\) and \(M^{A_k}_f\)) sati
 \end{align}
 \end{subequations}
 
-So, the \(k\)-th moment contains all the information about the \(l\)-th moments with \(l\leq k\); also, to get lower-order moments we take partial traces onto space- and time-like subspaces: therefore the unique information to the \(k\)-th moment, which is not redundantly expressed in lower-order moments, is in its PFTF part:
+So, the \(k\)-th moment contains all the information about the \(l\)-th moments with \(l\leq k\); also, to get lower-order moments we take partial traces onto space- and time-like subspaces: therefore the unique information to the \(k\)-th moment, which is not redundantly expressed in lower-order moments, is in its PSTF part:
 
 \begin{equation}
   \mathscr M ^{A_k} = \qty(M^{A_k}) ^{PSTF}
@@ -1338,7 +1338,18 @@ So, the \(k\)-th moment contains all the information about the \(l\)-th moments 
 The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\) and to the moment equations \eqref{eq:grey-moment-equations}. Since we are taking the projection onto the space-like subspaces, we can simplify the expression of the PSTF moments: all the terms which contain at least a four-velocity vanish, therefore:
 
 \begin{equation}
-  \mathscr M^{A_k} = \qty(\int I_\nu \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
+  \mathscr M^{A_k} = \qty(\int I \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
 \end{equation}
+
+where \(I = \int I_\nu \dd{\nu}\).
+The first \emph{PSTF} moments also have physical interpretations:
+
+\begin{subequations}
+\begin{align}
+   \mathscr M &= \int  I \dd{\Omega}    & \text{energy density of radiation}  \\
+   \mathscr M^\alpha &= \int I n^\alpha\dd{\Omega}  & \text{energy flux of radiation}  \\
+   \mathscr M^{\alpha\beta} &= \int I n^\alpha n^\beta \dd{\Omega}   & \text{shears in the stress-energy tensor of radiation}
+\end{align}
+\end{subequations}
 
 \end{document}

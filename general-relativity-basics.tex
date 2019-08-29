@@ -15,6 +15,10 @@
 
 \subsection{Special relativity}
 
+In special relativity we model spacetime as an intrinsically flat semi-Riemannian manifold with metric signature \((-, +, +, +)\): instead of having 3D space and a time scalar coordinate, we denote events as points in 4D spacetime, with coordinates such as \(x^\mu = (t, x, y, z)\).
+
+This is not just semantics:
+
 In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
 
 \subsection{Differential geometry and tensor calculus}
@@ -329,5 +333,7 @@ or, equivalently,
 \end{equation}
 
 We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ in the limit $M\rightarrow 0$. Its determinant is $g = -r^4 \sin^2 \theta$.
+
+If we wanted to analyze the accretion problem without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid's contribution to the metric's curvature; however this would make the already hard problem completely intractable, therefore we assume the stress-energy tensor contributions are very small compared to the massive object's.
 
 \end{document}

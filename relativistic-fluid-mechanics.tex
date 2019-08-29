@@ -48,12 +48,14 @@ where $\varepsilon$ is the specific energy (of a type that is different from kin
 
 % \subsection{Fluid mechanics}
 
-When dealing with a continuum, we will have a certain density of particles per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$.
-
-This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
+When dealing with a continuum, we will have a certain density of particles per unit of volume, which we call $n$.
+The current of particles is then $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-velocity field of the fluid. 
+If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$, which is conserved: $\nabla_\mu(\rho_0 u^\mu) = 0$, that is, particles do not spontaneously appear or disappear nor change their mass.
 
 Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
-We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
+We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero.
+We write the sum of mass-energy and internal energy as $\rho = \rho_0 (1+\epsilon)$, the \emph{energy} density of the fluid in its Local Rest Frame, while \(\rho_0\) is the \emph{mass} density in the LRF.
+So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
 \paragraph{Stress-energy tensor} \label{par:stress-energy-tensor}
 

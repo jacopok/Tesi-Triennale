@@ -24,15 +24,17 @@ will be denoted as lower indices; the same applies to higher rank tensors.
 
 Unless otherwise specified, I will work in geometrized units, where $c = G = 1$.
 
-Take a tensor with many indices, $T_{IJ}$, where $I$ is shorthand for the $n$ indices $\mu \nu \rho \dots$ and the same applies to $J$. These indices can be symmetrized and antisymmetrized, and I will use the following conventions:
+In section \ref{sec:radiative-effects} I will use the notation from \textcite[]{Thorne:1981feb}: \(A_k\) will represent a sequence of \(k\) indices labelled as \(\alpha_i\), for \(i\) between 1 and \(k\). The same will hold for \(B_k \rightarrow \qty{\beta_i}\) etc.
+
+Take a tensor with many indices, \(T_{A_k B_j}\). These indices can be symmetrized and antisymmetrized, and I will use the following conventions:
 
 \begin{align}
-    T_{(I)J} &= \frac{1}{n!} \sum_{\sigma \in S_n} T_{\sigma(I)J} \\
-    T_{[I]J} &= \frac{1}{n!} \sum_{\sigma \in S_n} \sign{\sigma} T_{\sigma(I)J}
+    T_{(A_k) B_j } &= \frac{1}{k!} \sum_{\sigma \in S_k} T_{\sigma(A_k)J} \\
+    T_{[A_k]B_j} &= \frac{1}{k!} \sum_{\sigma \in S_k} \sign{\sigma} T_{\sigma(A_k)B_j}
 \end{align}
 
-where $S_n \ni \sigma $ is the group of permutations of $n$ elements, and $\sign{\sigma}$ is 1 if $\sigma$ is an even permutation (it can be obtained in an even number of pair swaps) and -1 otherwise.
+where \(S_k \ni \sigma \) is the group of permutations of $k$ elements, and $\sign{\sigma}$ is 1 if $\sigma$ is an even permutation (it can be obtained in an even number of pair swaps) and -1 otherwise.
 
-In section \ref{sec:radiative-effects} I will use the notation from \textcite[]{Thorne:1981feb}: \(A_k\) will represent a sequence of \(k\) indices labelled as \(\alpha_i\), for \(i\) between 1 and \(k\). The same will hold for \(B_k \rightarrow \beta_i\) etc.
+In the case a set of indices that are not nearby need to be (anti)symmetrized, I will use vertical bars: for example, \(R_{(\mu | \nu| \rho \sigma)}\) means that we take the permutations of the indices \(\mu\), \(\rho\) and \(\sigma\). 
 
 \end{document}

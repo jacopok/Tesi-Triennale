@@ -330,7 +330,7 @@ where in the last step we expressed everything wrt the tetrad coordinate system.
     + \underbrace{\sigma_{\sigma\tau}}_{\substack{\text{spatial} \\ \text{shear}}}
     + \underbrace{\frac{1}{3} \theta h_{\sigma\tau}}_{\substack{\text{spatial} \\
     \text{compression}}}
-    - \underbrace{ a_\tau u_\sigma}_{\substack{\text{temporal} \\ \text{acceleration}}} \\
+    - \underbrace{ a_\tau u_\sigma}_{ \text{acceleration}} \\
 \end{equation}
 
 \begin{enumerate}
@@ -1373,6 +1373,37 @@ we can compare these to \eqref{eq:components-stress-energy-tensor} to get the fo
 but since the photons' paths are geodesics in this case \(\theta = 0\), so for the components proportional to \(h^{\mu\nu}\) of equation \eqref{eq:identification-PSTF-stress-energy-tensor-3} we just get \(\rho = \frac[i]{1}{3} p\), which is what we expect for the photon gas.
 For the traceless part of the equation, we get \(\mathscr M ^{\mu\nu} = -2 \eta \sigma^{\mu\nu}\).
 
+\paragraph{The PSTF moment equations}
+
+We want to express the grey moment equations \eqref{eq:grey-moment-equations} in terms of the PSTF moments. This can be done as follows: an expression can be found for the full moments in terms of the PSTF moments in \cite[eq. 4.10c]{Thorne:1981feb}:
+
+\begin{equation}
+  M^{A_k} = \sum_{l=0}^k \sum_{j=0}^{\lfloor \frac{k-l}{2} \rfloor}
+  \frac{1}{(2j)!! (k-l-2j)!}  \frac{k!}{l!} \frac{(2l+1)!!}{(2l+1+2j)!!}
+  \mathscr M^{(A_l} \prod_{i=l+1}^{l+2j-1} h^{\alpha_i \alpha_{i+1}}
+  \prod_{x=l+2j+1}^k u^{\alpha_x)}
+\end{equation}
+
+where all the indices of the \(\mathscr M\), \(h\) and \(u\) are meant to be symmetrized.
+
+We insert this into the moment equations and expand, making use of the decomposition of the covariant derivative of the 4-velocity \eqref{eq:covariant-acceleration-decomposition}.
+
+Then, we take the PSTF part of the equations. This yields a very complicated expression, so here I record only the implicit formula \cite[eq. 4.11c]{Thorne:1981feb}:
+
+\begin{equation} \label{eq:PSTF-grey-moment-equations}
+  \begin{split}
+    &\left( \nabla _\beta \mathscr M ^{A_k \beta} + u^\beta \nabla_\beta \mathscr M ^{A_k}
+    + \frac{k}{2k+1} \nabla_{\alpha_k} \mathscr M ^{A_{k-1}}
+    - (k-1) \mathscr M ^{A_k \beta \gamma} \sigma_{\beta \gamma} \right.
+    - (k-1) \mathscr M ^{A_k \beta} a_\beta
+    + \frac{4}{3} \mathscr M ^{A_k} \theta \\
+    &+ \frac{5k}{2k+3} \mathscr M ^{A_{k-1} \beta} \sigma_\beta^{\alpha_k}
+    - k \mathscr M ^{A_{k-1} \beta} \omega_\beta ^{\alpha_k}
+    \left.+ \frac{k (k+3)}{2k+1} \mathscr M ^{A_{k-1}} a^{\alpha_k}
+    + \frac{(k-1) k (k+2) }{(2k-1) (2k+1)} \mathscr M ^{A_{k-2}} \sigma^{\alpha_{k-1} \alpha_k} \right)^{PSTF} = \mathscr S ^{A_k}
+  \end{split}
+\end{equation}
+
 \paragraph{Simplifications under assumptions of symmetry}
 
 Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \cite[]{ThorneFLammmangZytkow:1981feb}.
@@ -1390,11 +1421,17 @@ The fiducial congruence reference, written with respect to the regular spherical
 
 In this frame (denoted with a subscript ``fid''), we have the following expressions:
 
-\begin{subequations}
+\begin{subequations} \label{eq:spherical-coordinates-simplifications}
 \begin{align}
   a^\mu &= (0,\dv*{y}{r},0,0)_{\text{fid}} \\
   \theta &= - \frac{1}{r^2} \dv{}{r} \qty(r^2 v y)  \\
   \sigma_{\mu\nu} &= - \dv{}{r} \qty(\frac{vy}{r}) \frac{2r}{3} \begin{bmatrix}
+  0   &   &   &  \\
+     &  1 &   &  \\
+     &   & -1/2  &  \\
+     &   &   & -1/2
+  \end{bmatrix} _{\text{fid}}
+  = \sigma \begin{bmatrix}
   0   &   &   &  \\
      &  1 &   &  \\
      &   & -1/2  &  \\
@@ -1437,13 +1474,13 @@ We can see that the coefficient of \(x^l\) is \((2l)! / (2^l (l!)^2)\). We can r
 
 which is equation \cite[eq. 5.7d]{Thorne:1981feb}.
 
-\textcite[]{Thorne:1981feb} claims that
+\textcite[eqs. 5.6]{Thorne:1981feb} claims that
 
 \begin{equation} \label{eq:thorne-trace-free-integral-claim}
     \int_{-1}^1 I(\mu) P_k(\mu) \qty(\frac{(2k-1)!!}{l!})^{-1} \dd{\mu} = \qty(\int_{-1}^1  I(\mu) \prod_{i=1}^k n^r \dd{\mu})^{TF}
 \end{equation}
 
-where \(n^r\) denotes the radial component of a normal vector in spherical coordinates, and \(\mu = \cos \theta\) where \(\theta\) is the azimuthal coordinate of \(n\). \(I(\mu)\) is a generic function.
+where \(n^r\) denotes the radial component of a normal vector in spherical coordinates, \(P_k\) is the \(k\)-th Legendre polynomial and \(\mu = \cos \theta\) where \(\theta\) is the azimuthal coordinate of \(n\). \(I(\mu)\) is a generic function.
 
 \paragraph{The scalar moments}
 
@@ -1477,25 +1514,31 @@ We can explicitly write the stress-energy tensor in terms of the \(w_k\) using \
 
 \paragraph{The simplified moment equations}
 
-It is possible to write equations \eqref{eq:grey-moment-equations} explicitly in terms of the \(w_k\) and of derivatives wrt the fiducial basis: one gets
+It is possible to write equations \eqref{eq:PSTF-grey-moment-equations} explicitly in terms of the \(w_k\) and of derivatives wrt the fiducial basis: one gets \cite[eq. 5.10c]{Thorne:1981feb}
 
 \begin{equation}
-    \begin{split}
-        \pdv{w_{k+1}}{\hat{r}} &+[(2-k) a+(k+2) b] w_{k+1}+\pdv{w_k}{\hat{t}}+\left[\frac{4}{3} \Theta+\frac{5 k(k+1)}{2(2 k-1)(2 k+3)} \sigma\right] w_{k} + \\
-        &+\frac{k^{2}}{(2 k-1)(2 k+1)} \pdv{w_{k-1}}{\hat{r}}+\frac{k^{2}[(k+3) a+(1-k) b]}{(2 k-1)(2 k+1)} w_{k-1} +  \\
-        &-\frac{3}{2}(k-1) \sigma w_{k+2}+\frac{3(k-1)^{2} k^{2}(k+2)}{2(2 k-3)(2 k-1)^{2}(2 k+1)} \sigma w_{k-2} = s_k
+  \begin{split}
+    \pdv{w_{k+1}}{\hat{r}} &+[(2-k) a+(k+2) b] w_{k+1}+\pdv{w_k}{\hat{t}}+\left[\frac{4}{3} \theta+\frac{5 k(k+1)}{2(2 k-1)(2 k+3)} \sigma\right] w_{k} + \\
+    &+\frac{k^{2}}{(2 k-1)(2 k+1)} \pdv{w_{k-1}}{\hat{r}}+\frac{k^{2}[(k+3) a+(1-k) b]}{(2 k-1)(2 k+1)} w_{k-1} +  \\
+    &-\frac{3}{2}(k-1) \sigma w_{k+2}+\frac{3(k-1)^{2} k^{2}(k+2)}{2(2 k-3)(2 k-1)^{2}(2 k+1)} \sigma w_{k-2} = s_k
     \end{split}
 \end{equation}
 
-For \(k=0\) we get:
+where \(a = \dv*{y}{r} = \sqrt{a^\mu a_\mu}\) is the magnitude of the 4-acceleration, \(b = y/r\) is the extrinsic curvature, \(\theta\) is the expansion velocity, \(\sigma\) is the scalar shear --- the largest eigenvalue of the shear matrix. Explicit expressions for these are found in  \eqref{eq:spherical-coordinates-simplifications}.
+
+\textcite[]{NobiliTurollaZampieri:1991dec} only use the first two of the moment equations, so here is how the expression is simplified for \(k=0,1\):
+for \(k=0\) we get:
 
 \begin{equation}
-    \begin{split}
-        \pdv{w_{1}}{\hat{r}} &+[(2) a+2 b] w_{1}+\pdv{w_0}{\hat{t}}+\left[\frac{4}{3} \Theta\right] w_{0} + \\
-        &+\frac{0^{2}}{(-1)(+1)} \pdv{w_{0-1}}{\hat{r}}+\frac{0^{2}[(0+3) a+(1-0) b]}{(2 0-1)(2 0+1)} w_{0-1} +  \\
-        &-\frac{3}{2}(0-1) \sigma w_{0+2}+\frac{3(0-1)^{2} 0^{2}(0+2)}{2(2 0-3)(2 0-1)^{2}(2 0+1)} \sigma w_{0-2} = s_0
-    \end{split}
+    \pdv{w_{1}}{\hat{r}} +2( a+ b) w_{1}+\pdv{w_0}{\hat{t}}+\frac{4}{3} \theta w_{0} + \frac{3}{2} \sigma w_{2} = s_0
 \end{equation}
 
+For \(k=1\) we get:
+
+\begin{equation}
+    \pdv{w_{2}}{\hat{r}} + (a+3 b) w_{2}+\pdv{w_1}{\hat{t}}+\left[\frac{4}{3} \theta+ \sigma\right] w_{1} +\frac{1}{3} \pdv{w_{0}}{\hat{r}}+\frac{4 a}{3} w_{0} = s_1
+\end{equation}
+
+These have to be simplified further to be used: specifically, they can be expressed with respect to \(r\), \(v\), \(y\).
 
 \end{document}

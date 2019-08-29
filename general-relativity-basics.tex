@@ -90,7 +90,7 @@ If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) 
 
 \paragraph{Geodesics}
 
-If we have a path $x^\mu(\lambda)$, we would like to see if it is a geodesic, that is, if it is stationary with respect to path length. To do this we can stationarize the action corresponding to the lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
+If we have a path $x^\mu(\lambda)$, we would like to see if it is a geodesic, that is, if it is stationary with respect to path length. To do this we can stationarize the action corresponding to the Lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
 
 \begin{equation}
     \Ddot{x}^\mu + \Gamma^\mu_{\nu\rho} \Dot{x}^\nu \Dot{x}^\rho = 0
@@ -132,7 +132,7 @@ We call the velocity \(u^\mu = V^\mu _{(0)}\), and add to it three other vectors
 
 where the brackets around the indices denote the fact that they label four vectors, not the components of a tensor.
 
-We can choose the vectors \(V_{(i)}^\mu\) so that they are Fermi-Walker transported along the worldline defined by \(u^\mu\): this allows us to find the relativistic equivalent of a nonrotating frame of reference.
+We can choose the vectors \(V_{(i)}^\mu\) so that they are Fermi-Walker transported along the worldline defined by \(u^\mu\): this allows us to find the relativistic equivalent of a non-rotating frame of reference.
 
 It is useful to project tensors onto the space-like and time-like subspaces defined by our tetrad (and we wish to do so in a coordinate-independent manner,  so just taking the 0th and $i $-th components in the tetrad will not suffice). We therefore define the projectors:
 
@@ -186,7 +186,7 @@ Now let us take the spatial vectors of an orthonormal Fermi-Walker transported t
     X_{(a)} = V_{(a)\mu} \lambda^\mu
 \end{equation}
 
-If we differentiate \eqref{eq:tetrad-components-lambda} wrt \(s\), and use \eqref{eq:schwarz-spacetime-tube} with the fact that \(\dv{}{\tau} = \lambda^\mu \nabla_\mu \), we get:
+If we differentiate \eqref{eq:tetrad-components-lambda} with respect to \(s\), and use \eqref{eq:schwarz-spacetime-tube} with the fact that \(\dv{}{\tau} = \lambda^\mu \nabla_\mu \), we get:
 
 \begin{subequations}
 \begin{align}
@@ -198,7 +198,7 @@ If we differentiate \eqref{eq:tetrad-components-lambda} wrt \(s\), and use \eqre
 \end{align}
 \end{subequations}
 
-where in the last step we expressed everything wrt the tetrad coordinate system. Therefore, in those cordinates, the evolution of the components \(X^{(a)}\) is linear, and defined by the tetrad components of the two-form \(\nabla_\mu u_\nu\). So, we want to decompose this tensor:
+where in the last step we expressed everything with respect to the tetrad coordinate system. Therefore, in those coordinates, the evolution of the components \(X^{(a)}\) is linear, and defined by the tetrad components of the two-form \(\nabla_\mu u_\nu\). So, we want to decompose this tensor:
 
 \begin{equation} \label{eq:covariant-acceleration-decomposition}
     \nabla_\sigma u_\tau =
@@ -293,7 +293,7 @@ The equations are:
 
 The constant comes by imposing continuity with the newtonian limit, for which we have the Poisson equation \(\nabla^2 \Phi = 4 \pi \rho\), where the classical \(\rho\) is substituted by \(T_{00}\) while \(\Phi\) is substituted by \(h_{00}\), with \(g_{00} = - 1 + h_{00}\) (see \cite[eq. 4.46]{Carroll:1997ar}).
 
-They can be written in a more general way by removing the condition that the LHS vanish fo flat spacetime, and thus including there a term \(\Lambda g^{\mu\nu}\) with constant \(\Lambda\).
+They can be written in a more general way by removing the condition that the LHS vanish for flat spacetime, and thus including there a term \(\Lambda g^{\mu\nu}\) with constant \(\Lambda\).
 It is unclear whether this term should appear, and what the value of \(\Lambda\) should be.
 
 \paragraph{The Schwarzschild solution}

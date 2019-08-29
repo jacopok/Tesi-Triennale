@@ -905,7 +905,7 @@ The conservation of mass holds: if $\rho_0$ is the rest mass density of the flui
 
 In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$: therefore
 
-\begin{equation}
+\begin{equation} \label{eq:mass-conservation-integral}
   \dot{M} = 4 \pi\rho_0 yvr^2
 \end{equation}
 
@@ -1552,5 +1552,23 @@ These have to be simplified further to be used: specifically, they can be expres
 \begin{greenbox}
   How do we get rid of the time derivatives?
 \end{greenbox}
+
+\paragraph{Some properties of the accretion variables}
+
+Following \textcite[]{ThorneFLammmangZytkow:1981feb}.
+
+From equation \eqref{eq:mass-conservation-integral} we can find an expression \cite[eq. 18a]{ThorneFLammmangZytkow:1981feb} for \(y\) which only depends on \(r\) and constants:
+
+\begin{equation}
+  y = \sqrt{y^2 \qty(1 - v^2 + v^2)}
+  = \sqrt{\qty(\frac{y^2}{\gamma^2}) + y^2 v^2}
+  = \sqrt{\qty(1 - \frac{2M}{r}) + \frac{\dot{M}}{4 \pi r^2 \rho_0}}
+\end{equation}
+
+therefore \(v\) can also be expressed in terms of \(r\) and constants:
+
+\begin{equation}
+  v = \frac{\dot M}{4 \pi r^2 \rho_0 y(r)}
+\end{equation}
 
 \end{document}

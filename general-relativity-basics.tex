@@ -15,11 +15,30 @@
 
 \subsection{Special relativity}
 
-In special relativity we model spacetime as an intrinsically flat semi-Riemannian manifold with metric signature \((-, +, +, +)\): instead of having 3D space and a time scalar coordinate, we denote events as points in 4D spacetime, with coordinates such as \(x^\mu = (t, x, y, z)\).
+It is a theory which satisfies the following axioms \cite[]{Lechner:2014}:
 
-This is not just semantics:
+\begin{enumerate}
+    \item space and time are homogeneous (i. e. shift-invariant), space is isotropic (i.e. rotation-invariant);
+    \item the speed of light is the same in every inertial reference frame;
+    \item all the laws of physics are written in the same way in every inertial reference frame.
+\end{enumerate}
 
-In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
+In special relativity we model spacetime as an intrinsically flat semi-Riemannian manifold with metric signature \((-, +, +, +)\): instead of having 3D space and a time scalar coordinate, we denote events as points in 4D spacetime, with coordinates such as \(x^\mu = (t, x, y, z)\). This is called Minkowski flat spacetime.
+
+This is not just semantics: it is needed because it turns out (see for example \cite[section 1]{Lechner:2014}) that the axioms are equivalent to the conservation of the spacetime interval \(\dd{s}^2 = \eta_{\mu\nu} \dd{x}^\mu\dd{x}^\nu\), and the only transformations between inertial reference frames which leave it invariant turn out to regularly \emph{mix} time and space: they are conveniently represented in 4D spacetime as \(x^\mu \rightarrow \Lambda^\mu\,_\alpha x^\alpha + a^\mu\), with the \(\Lambda_\mu\,^\alpha\) being \((1,1)\) tensors which satisfy \(\Lambda^\mu\,_\alpha \Lambda^\nu\,_\beta \eta_{\mu\nu} = \eta_{\alpha \beta}\), and \(a^\mu\) being a 4-vector.
+
+The flat metric allows us to compute the lengths of vectors, and since it is indefinite there are nonzero vectors of positive, negative and zero spacetime length. These are respectively called spacelike, timelike and null-like.
+
+We define the proper time \(\tau\) by \(\dd{\tau} \defeq \sqrt{-\dd{s}^2} \). Unlike coordinate time \(x^0 = t\) this has the advantage of being Lorentz-invariant.
+
+We can define a tensorial velocity by differentiating the position with respect to proper time: \(u^\mu \defeq \dv*{x^\mu}{\tau}\). Defined this way, the so-called 4-velocity trasforms like a tensor. If \(\vec{v}\) is the regular three-velocity and \(v\) is its magnitude, we define \(\gamma = 1/\sqrt{1-v^2} \) and then:
+\(u^\mu = \qty(\gamma, \gamma \vec{v})\).
+
+Once we have this, we can define the 4-acceleration \(a^\mu = \dv*{u^\mu}{\tau} \) and the 4-momentum \(p^\mu = m u^\mu\), where \(m\) is the rest mass of the body at hand.
+
+The 4-velocity is a unit vector: \(u^\mu u_\mu = -1\), and by differentiating this relation we get \(u^\mu a_\mu = 0\).
+
+The 0-th component of the 4-momentum vector is the energy of the body, while the $i$-th components define a new relativistic momentum \(p^i = \gamma m v^i\): we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
 
 \subsection{Differential geometry and tensor calculus}
 
@@ -43,6 +62,8 @@ The metric defines an invariant called the \emph{spacetime interval}:
 
 \paragraph{Tensor calculus}
 
+An object such as \(\partial_\mu A^\nu\) for some vector \(A^\nu\) does not in general transform as a tensor, since the computation we should actually do is \(\partial_\mu (A^\nu e_\nu)\) where \(e_\nu\) are the basis vectors: we evaluate this with the product rule and are left with \((\partial_\mu A^\nu)e_\nu + A^\nu \partial_\mu e_\nu\). Only the first half is covariant, in flat spacetime the second half is zero but in general it is not: the way we usually confuse the derivatives of the components with the derivatives of the vector does not work here.
+
 The covariant derivative keeps account of the shifting of the basis vectors:
 
 \begin{equation}
@@ -50,6 +71,10 @@ The covariant derivative keeps account of the shifting of the basis vectors:
 \end{equation}
 
 The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors! they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$. They are not intrinsic to the manifold.
+
+The definition is posed in such a way that the objects \(\nabla_\mu A^\nu\) are tensorial. This allows us to see that the covariant derivative is the same as the coordinate derivative for scalars.
+
+We can define the covariant derivative of higher order tensor analogously; adding a Christoffel symbol for every new index. The symbols corresponding to lower indices have a minus sign: this can be seen by differentiating a scalar such as \(\nabla_\nu (A_\mu B^\mu) \overset{!}{=}  \partial_\nu (A_\mu B^\mu)\) and matching the Christoffel terms.
 
 If we have the metric (and make reasonable assumptions of the connection being torsion-free), they can be calculated as:
 

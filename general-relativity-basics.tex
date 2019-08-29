@@ -13,6 +13,10 @@
 %
 % Curvature: the Riemann tensor, the Einstein field equations, their resolution in the spherically symmetric case: the Schwarzschild metric, the approximations we will make (the fluid not being self-gravitating)
 
+\subsection{Special relativity}
+
+In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
+
 \subsection{Differential geometry and tensor calculus}
 
 \paragraph{Metric}
@@ -158,6 +162,87 @@ It can also be seen this way that \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called
     = \cancelto{0}{\xi^\mu u^\nu \nabla_\nu u_\mu} + \cancelto{0}{u^\nu u^\mu \nabla_\nu \xi_\mu} \equiv 0
 \end{equation}
 
+\paragraph{Surfaces in space-time and acceleration decomposition}
+
+Following \cite[section 4]{Taub:1978}
+We look at 4D space time in 3D space-like slices: if we have a fluid moving with velocity \(u^\mu\), we can look at the solutions of the associated differential equation: \(x^\mu (\xi^i, s)\), where \(\xi^i\) are the 3D coordinates of the starting position and \(s\) is the time at which we look at the solution. Then we can look at the ``starting'' hypersurface \(\Sigma = \qty{x^\mu (\xi^i, 0)}\).
+
+Say we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can look at the two-dimensional surface defined by the evolution of \(\xi^i(\tau)\): \(x^{\mu} (\xi^i(\tau), s) = x^\mu (\tau, s)\). If we define the ``spatial'' tangent vector \(\lambda^\mu = \dv*{x^\mu}{\tau} \), it follows from Schwarz's theorem that:
+
+\begin{equation} \label{eq:schwarz-spacetime-tube}
+    \pdv{x^\mu}{\tau}{s} =
+    \pdv{x^\mu}{s}{\tau}
+    \implies
+    \pdv{u^\mu}{\tau} = \pdv{\lambda^\mu}{s}
+\end{equation}
+
+Now let us take the spatial vectors of an orthonormal Fermi-Walker transported tetrad \(V^\mu_{(a)}\) as described in \Nameref{par:tetrads}, and express \(\lambda^\mu\) in this frame: its covariant components will be
+
+\begin{equation} \label{eq:tetrad-components-lambda}
+    X_{(a)} = V_{(a)\mu} \lambda^\mu
+\end{equation}
+
+If we differentiate \eqref{eq:tetrad-components-lambda} wrt \(s\), and use \eqref{eq:schwarz-spacetime-tube} with the fact that \(\dv{}{\tau} = \lambda^\mu \nabla_\mu \), we get:
+
+\begin{subequations}
+\begin{align}
+    \dv{X_{(a)}}{s} &= \dv{V_{(a)\mu}}{s} \lambda^\mu + V_{(a)\mu} \dv{\lambda^\mu}{s}  \\
+    &= V_{(a)}^\rho \cancelto{0}{\lambda^\mu u_\mu} a_\rho - \cancelto{0}{V_{(a)}^\rho  u_\rho} \lambda^\mu a_\mu
+    + V_{(a)}^\nu \nabla_\mu u_\nu  \\
+    &= V^\rho _{(a)} \lambda^\mu \nabla_\mu u_\rho  \\
+    &= \qty(\nabla_\mu u_\rho) V^\rho_{(a)} V^{\mu}_{(b)} X^{(b)}
+\end{align}
+\end{subequations}
+
+where in the last step we expressed everything wrt the tetrad coordinate system. Therefore, in those cordinates, the evolution of the components \(X^{(a)}\) is linear, and defined by the tetrad components of the two-form \(\nabla_\mu u_\nu\). So, we want to decompose this tensor:
+
+\begin{equation} \label{eq:covariant-acceleration-decomposition}
+    \nabla_\sigma u_\tau =
+    \underbrace{\omega_{\sigma \tau}}_{\substack{\text{spatial} \\ \text{rotation}}}
+    + \underbrace{\sigma_{\sigma\tau}}_{\substack{\text{spatial} \\ \text{shear}}}
+    + \underbrace{\frac{1}{3} \theta h_{\sigma\tau}}_{\substack{\text{spatial} \\
+    \text{compression}}}
+    - \underbrace{ a_\tau u_\sigma}_{ \text{acceleration}} \\
+\end{equation}
+
+\begin{enumerate}
+    \item \(\theta = \nabla_\mu u^\mu\) is the bare trace of the tensor, corresponding to the expansion velocity;
+    \item \(a_\mu = u^\nu \nabla_\nu u^\mu\) is the covariant acceleration;
+    \item \(\sigma_{\sigma \tau} = \qty(\nabla_{(\mu} u_{\nu)}) h^\mu_\sigma h^\nu _\tau - \frac[i]{1}{3} \theta h_{\sigma \tau} = \nabla_{(\sigma} u_{\tau)} + a_{(\sigma} u_{\tau)} - \frac[i]{1}{3} \theta h_{\sigma \tau} \) is the spatial symmetric trace-free part of the tensor, that is, the shear stress;
+    \footnote{A trick for this computation: why would a term like \(u^\mu u_\sigma \nabla_\tau u_\mu\) be zero? We can just multiply by \(1 = - u^\tau u_\tau\) to get \(-u^\mu u_\sigma u_\tau u^\tau \nabla_\tau u_\mu = \sum_\tau u_\sigma u_\tau a_\mu u^\mu = 0\).
+    \begin{greenbox}
+        Is this right? It seems like we shouldn't be able to do this... The index \(\tau\) in the starting formula was not summed and then it is so this does not sound convincing. Is there another way to see that \(u^\mu u_{(\sigma} \nabla_{\tau)} u_\mu = 0\)?
+    \end{greenbox}}
+    \item \(\omega_{\sigma \tau} = h^\nu_\sigma h^\mu_\tau \nabla_{[\nu} u_{\mu]} = \partial_{[\tau} u_{\sigma]} + a_{[\tau} u_{\sigma]}\) is the spatial rotation tensor.
+\end{enumerate}
+
+We can describe the rotation with a ``vorticity vector'':
+
+\begin{equation}
+    \omega^\mu = \frac{1}{2 \sqrt{-g}} \varepsilon^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma} = \frac{1}{2} \eta^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma}
+\end{equation}
+
+where we define the fully antisymmetric, covariant tensor \(\eta^{\mu\nu\sigma\tau} = \varepsilon^{\mu\nu\sigma\tau} / \sqrt{-g} \). With its indices lowered, it is
+\(\eta_{\mu\nu\sigma\tau} = - \varepsilon_{\mu\nu\sigma\tau} \sqrt{-g} \).
+
+Note, from \cite[pages 51--52]{Carroll:1997ar}: this is the volume form of the manifold, and it is defined this way since \(g\) is a \emph{tensor density} of weight $-2$, while the bare Levi-Civita symbol is a density of weight $+1$.
+
+\begin{greenbox}
+  The signs in \cite[]{Taub:1978} and \cite[]{Carroll:1997ar} seem to disagree though!
+\end{greenbox}
+
+By the antisymmetry in the definition we can immediately see that \(\omega^\mu u_\mu=0\). It holds that \(\omega^\mu \equiv 0 \iff u_\mu = \rho \partial_\mu f \) (locally!) for scalar \(\rho\), \(f\), since this is equivalent to \(u_\mu\) being a closed form.
+
+\(\omega_\mu\) and \(\omega_{\mu \nu}\) are ``dual'' in the sense that
+
+\begin{equation}
+    \omega _{\sigma\tau} = u^\mu \omega^\nu \eta_{\mu \nu \sigma \tau}
+\end{equation}
+
+and some other useful identities can be found in equations 7.5 through 7.7 of \cite[]{Taub:1978}.
+
+\subsection{General Relativity}
+
 \paragraph{Curvature}
 
 The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
@@ -190,7 +275,6 @@ The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{
 
 If we define the Ricci tensor \(R_{\mu\nu} = R^\rho_{\mu \rho \nu}\) and the curvature scalar \(R = R_{\mu\nu}g^{\mu\nu}\), we can rewrite \eqref{eq:bianchi-identities}  as \(\nabla_\mu R = 2 \nabla_\nu R^{\nu}_{\mu}\), which means that \(\nabla_\mu \qty(R^{\mu\nu} - \frac[i]{1}{2} R g^{\mu\nu}) = 0\).
 
-\subsection{General Relativity}
 
 \paragraph{The Einstein Field Equations}
 

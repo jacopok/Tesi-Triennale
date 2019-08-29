@@ -3,11 +3,82 @@
 
 \subsection{Nonrelativistic fluid mechanics}
 
-The equations of energy and momentum transfer of non-relativistic fluid mechanics
+Nonrelativistic fluid mechanics are described by the equations:
 
-\subsection{The relativisti fluid}
+\begin{subequations}
+\begin{align}
+    \partial_t \rho + \partial_i (\rho v^i) &= 0 &\text{conservation of mass} \\
+    \rho \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \\
+    \rho \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
+\end{align}
+\end{subequations}
 
-The relativistic fluid: the assumptions we make, the quantities we use to describe it, the energy-momentum tensor and the equations of motion
+where $\rho$ is the density of the fluid,
+$v^i$ are the components of its velocity,
+$\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the energy-momentum tensor),
+$E$ is the energy of the fluid,
+$\kappa$ is the thermal conductivity,
+$T$ is the temperature of the fluid.
+
+The nonrelativistic stress tensor can be written as:
+
+\begin{equation}
+    \sigma_{ij} = -(p - \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
+\end{equation}
+
+\begin{greenbox}
+  I flipped the sign of the term \(\xi \partial_k v^k\) since I think it is a typo in \cite[page 301]{Taub:1978}: the pressure and compression viscosity terms should have opposite signs like in \eqref{eq:components-stress-energy-tensor}, right?
+\end{greenbox}
+
+where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $\sigma_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
+
+Note that we are working in Euclidean 3D space, so the metric is the identity and upper and lower indices are equivalent.
+
+The energy is a sum of kinetic and specific energy:
+
+\begin{equation}
+    E = v^i v_i /2 + \varepsilon
+\end{equation}
+
+where $\varepsilon$ is the specific energy (of a type that is different from kinetic) per unit mass.
+
+\subsection{The relativistic fluid}
+
+% The relativistic fluid: the assumptions we make, the quantities we use to describe it, the energy-momentum tensor and the equations of motion
+
+% \subsection{Fluid mechanics}
+
+When dealing with a continuum, we will have a certain density of particles per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$.
+
+This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
+
+Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
+We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
+
+\paragraph{Stress-energy tensor} \label{par:stress-energy-tensor}
+
+The stress-energy tensor \(T^{\mu\nu}\) is a \((2,0)\) tensor, whose \(\mu, \nu\) component is the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
+
+Because of our choice of metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), sice that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
+
+For a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
+
+\begin{equation}
+    T^{\mu\nu} = \rho u^\mu u^\nu = \begin{bmatrix}
+    \rho    & 0  &  0 & 0 \\
+      0 & 0  & 0  & 0 \\
+      0 & 0  & 0  & 0 \\
+      0 & 0  & 0  & 0
+    \end{bmatrix}
+\end{equation}
+
+% Now, the vector $\rho u^\mu$ describes the flux of energy.
+% We can then write the equation for the conservation of momentum:
+%
+% \begin{equation}
+%     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
+% \end{equation}
+
 
 \subsection{Ideal fluids}
 

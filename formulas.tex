@@ -1,9 +1,9 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\subsection{Basics}
+\subsection{Tensor calculus}
 
-We can also define the Dalambertian operator $\square = \nabla_\mu \nabla^\mu = \nabla_\mu \partial^\mu$, which can only act on scalars, and it does so like:
+We can define the Dalambertian operator $\square = \nabla_\mu \nabla^\mu = \nabla_\mu \partial^\mu$, which can only act on scalars, and it does so like:
 
 \begin{equation}
     \square A = \nabla_\mu (\partial^\mu A) =  \frac{1}{\sqrt{-g}}\partial_\mu \qty(\sqrt{-g}\partial^\mu A)
@@ -14,7 +14,6 @@ If we differentiate and antisymmetrize (so, take the rotor of) an antisymmetric 
 \begin{equation}
     \nabla_{[\mu} F_{\nu\rho]} = \partial_{[\mu} F_{\nu\rho]}
 \end{equation}
-
 
 \paragraph{Lie derivative}
 
@@ -29,160 +28,6 @@ Following \cite[section 6]{Taub:1978}. The Lie derivative of a generic tensor \(
 
 Some special cases are: a scalar \(\Lie _\xi f = \xi^\rho \partial_\rho f \), a vector \(\Lie _\xi u^\mu = \xi^\rho \nabla_\rho u^\mu -u^\rho \nabla_\rho \xi^\mu\), and  an antisymmetric covariant two-tensor \(\omega_{\mu\nu} = \omega_{[\mu \nu]}\) which represents a closed form \(\nabla_{[\mu} \omega_{\nu \rho]} = 0\) we have \(\Lie _\xi \omega_{\mu\nu} =2\nabla_{[\nu} \qty( \omega_{\mu] \rho} \xi^\rho )\)
 
-\subsection{Fluid mechanics}
-
-In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
-
-When dealing with a continuum, we will have a certain density of particles per unit of volume, we call this $n$. The current of particles is then $N^\mu = n u^\mu$. If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$.
-
-This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
-
-Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
-We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
-
-\paragraph{Stress-energy tensor} \label{par:stress-energy-tensor}
-
-The stress-energy tensor \(T^{\mu\nu}\) is a \((2,0)\) tensor, whose \(\mu, \nu\) component is the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
-
-Because of our choice of metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), sice that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
-
-For a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
-
-\begin{equation}
-    T^{\mu\nu} = \rho u^\mu u^\nu = \begin{bmatrix}
-    \rho    & 0  &  0 & 0 \\
-      0 & 0  & 0  & 0 \\
-      0 & 0  & 0  & 0 \\
-      0 & 0  & 0  & 0
-    \end{bmatrix}
-\end{equation}
-
-% Now, the vector $\rho u^\mu$ describes the flux of energy.
-% We can then write the equation for the conservation of momentum:
-%
-% \begin{equation}
-%     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
-% \end{equation}
-
-\paragraph{Nonrelativistic fluid mechanics}
-
-Nonrelativistic fluid mechanics are described by the equations:
-
-\begin{subequations}
-\begin{align}
-    \partial_t \rho + \partial_i (\rho v^i) &= 0 &\text{conservation of mass} \\
-    \rho \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \\
-    \rho \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
-\end{align}
-\end{subequations}
-
-where $\rho$ is the density of the fluid,
-$v^i$ are the components of its velocity,
-$\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the energy-momentum tensor),
-$E$ is the energy of the fluid,
-$\kappa$ is the thermal conductivity,
-$T$ is the temperature of the fluid.
-
-The nonrelativistic stress tensor can be written as:
-
-\begin{equation}
-    \sigma_{ij} = -(p - \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
-\end{equation}
-
-\begin{greenbox}
-  I flipped the sign of the term \(\xi \partial_k v^k\) since I think it is a typo in \cite[page 301]{Taub:1978}: the pressure and compression viscosity terms should have opposite signs like in \eqref{eq:components-stress-energy-tensor}, right?
-\end{greenbox}
-
-where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $\sigma_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
-
-Note that we are working in Euclidean 3D space, so the metric is the identity and upper and lower indices are equivalent.
-
-The energy is a sum of kinetic and specific energy:
-
-\begin{equation}
-    E = v^i v_i /2 + \varepsilon
-\end{equation}
-
-where $\varepsilon$ is the specific energy (of a type that is different from kinetic) per unit mass.
-
-\paragraph{Surfaces in space-time and acceleration decomposition}
-
-Following \cite[section 4]{Taub:1978}
-We look at 4D space time in 3D space-like slices: if we have a fluid moving with velocity \(u^\mu\), we can look at the solutions of the associated differential equation: \(x^\mu (\xi^i, s)\), where \(\xi^i\) are the 3D coordinates of the starting position and \(s\) is the time at which we look at the solution. Then we can look at the ``starting'' hypersurface \(\Sigma = \qty{x^\mu (\xi^i, 0)}\).
-
-Say we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can look at the two-dimensional surface defined by the evolution of \(\xi^i(\tau)\): \(x^{\mu} (\xi^i(\tau), s) = x^\mu (\tau, s)\). If we define the ``spatial'' tangent vector \(\lambda^\mu = \dv*{x^\mu}{\tau} \), it follows from Schwarz's theorem that:
-
-\begin{equation} \label{eq:schwarz-spacetime-tube}
-    \pdv{x^\mu}{\tau}{s} =
-    \pdv{x^\mu}{s}{\tau}
-    \implies
-    \pdv{u^\mu}{\tau} = \pdv{\lambda^\mu}{s}
-\end{equation}
-
-Now let us take the spatial vectors of an orthonormal Fermi-Walker transported tetrad \(V^\mu_{(a)}\) as described in \Nameref{par:tetrads}, and express \(\lambda^\mu\) in this frame: its covariant components will be
-
-\begin{equation} \label{eq:tetrad-components-lambda}
-    X_{(a)} = V_{(a)\mu} \lambda^\mu
-\end{equation}
-
-If we differentiate \eqref{eq:tetrad-components-lambda} wrt \(s\), and use \eqref{eq:schwarz-spacetime-tube} with the fact that \(\dv{}{\tau} = \lambda^\mu \nabla_\mu \), we get:
-
-\begin{subequations}
-\begin{align}
-    \dv{X_{(a)}}{s} &= \dv{V_{(a)\mu}}{s} \lambda^\mu + V_{(a)\mu} \dv{\lambda^\mu}{s}  \\
-    &= V_{(a)}^\rho \cancelto{0}{\lambda^\mu u_\mu} a_\rho - \cancelto{0}{V_{(a)}^\rho  u_\rho} \lambda^\mu a_\mu
-    + V_{(a)}^\nu \nabla_\mu u_\nu  \\
-    &= V^\rho _{(a)} \lambda^\mu \nabla_\mu u_\rho  \\
-    &= \qty(\nabla_\mu u_\rho) V^\rho_{(a)} V^{\mu}_{(b)} X^{(b)}
-\end{align}
-\end{subequations}
-
-where in the last step we expressed everything wrt the tetrad coordinate system. Therefore, in those cordinates, the evolution of the components \(X^{(a)}\) is linear, and defined by the tetrad components of the two-form \(\nabla_\mu u_\nu\). So, we want to decompose this tensor:
-
-\begin{equation} \label{eq:covariant-acceleration-decomposition}
-    \nabla_\sigma u_\tau =
-    \underbrace{\omega_{\sigma \tau}}_{\substack{\text{spatial} \\ \text{rotation}}}
-    + \underbrace{\sigma_{\sigma\tau}}_{\substack{\text{spatial} \\ \text{shear}}}
-    + \underbrace{\frac{1}{3} \theta h_{\sigma\tau}}_{\substack{\text{spatial} \\
-    \text{compression}}}
-    - \underbrace{ a_\tau u_\sigma}_{ \text{acceleration}} \\
-\end{equation}
-
-\begin{enumerate}
-    \item \(\theta = \nabla_\mu u^\mu\) is the bare trace of the tensor, corresponding to the expansion velocity;
-    \item \(a_\mu = u^\nu \nabla_\nu u^\mu\) is the covariant acceleration;
-    \item \(\sigma_{\sigma \tau} = \qty(\nabla_{(\mu} u_{\nu)}) h^\mu_\sigma h^\nu _\tau - \frac[i]{1}{3} \theta h_{\sigma \tau} = \nabla_{(\sigma} u_{\tau)} + a_{(\sigma} u_{\tau)} - \frac[i]{1}{3} \theta h_{\sigma \tau} \) is the spatial symmetric trace-free part of the tensor, that is, the shear stress;
-    \footnote{A trick for this computation: why would a term like \(u^\mu u_\sigma \nabla_\tau u_\mu\) be zero? We can just multiply by \(1 = - u^\tau u_\tau\) to get \(-u^\mu u_\sigma u_\tau u^\tau \nabla_\tau u_\mu = \sum_\tau u_\sigma u_\tau a_\mu u^\mu = 0\).
-    \begin{greenbox}
-        Is this right? It seems like we shouldn't be able to do this... The index \(\tau\) in the starting formula was not summed and then it is so this does not sound convincing. Is there another way to see that \(u^\mu u_{(\sigma} \nabla_{\tau)} u_\mu = 0\)?
-    \end{greenbox}}
-    \item \(\omega_{\sigma \tau} = h^\nu_\sigma h^\mu_\tau \nabla_{[\nu} u_{\mu]} = \partial_{[\tau} u_{\sigma]} + a_{[\tau} u_{\sigma]}\) is the spatial rotation tensor.
-\end{enumerate}
-
-We can describe the rotation with a ``vorticity vector'':
-
-\begin{equation}
-    \omega^\mu = \frac{1}{2 \sqrt{-g}} \varepsilon^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma} = \frac{1}{2} \eta^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma}
-\end{equation}
-
-where we define the fully antisymmetric, covariant tensor \(\eta^{\mu\nu\sigma\tau} = \varepsilon^{\mu\nu\sigma\tau} / \sqrt{-g} \). With its indices lowered, it is
-\(\eta_{\mu\nu\sigma\tau} = - \varepsilon_{\mu\nu\sigma\tau} \sqrt{-g} \).
-
-Note, from \cite[pages 51--52]{Carroll:1997ar}: this is the volume form of the manifold, and it is defined this way since \(g\) is a \emph{tensor density} of weight $-2$, while the bare Levi-Civita symbol is a density of weight $+1$.
-
-\begin{greenbox}
-  The signs in \cite[]{Taub:1978} and \cite[]{Carroll:1997ar} seem to disagree though!
-\end{greenbox}
-
-By the antisymmetry in the definition we can immediately see that \(\omega^\mu u_\mu=0\). It holds that \(\omega^\mu \equiv 0 \iff u_\mu = \rho \partial_\mu f \) (locally!) for scalar \(\rho\), \(f\), since this is equivalent to \(u_\mu\) being a closed form.
-
-\(\omega_\mu\) and \(\omega_{\mu \nu}\) are ``dual'' in the sense that
-
-\begin{equation}
-    \omega _{\sigma\tau} = u^\mu \omega^\nu \eta_{\mu \nu \sigma \tau}
-\end{equation}
-
-and some other useful identities can be found in equations 7.5 through 7.7 of \cite[]{Taub:1978}.
 
 \paragraph{Wave velocity}
 

@@ -3,48 +3,6 @@
 
 \subsection{Basics}
 
-\paragraph{Metric}
-
-The metric tensor \(g_{\mu\nu}\) is a symmetric \((0,2)\) tensor which gives us a scalar product at every point in our manifold: \(x \cdot y = g_{\mu\nu} x^\mu y^\nu\).
-It is not intrinsic to the manifold.
-By integrating the velocity vector we can find the lengths of curves \(x^\mu(\lambda)\):
-
-\begin{equation}
-    L = \int \sqrt{g_{\mu\nu} \dv{x^\mu}{\lambda} \dv{x^\nu}{\lambda} }  \dd{\lambda}
-\end{equation}
-
-For a flat spacetime we use the Minkowski metric \(\eta_{\mu\nu}\). In general, in the presence of matter the manifold will be curved, so there will not be a coordinate transformation to cast \(g_{\mu\nu}\) in the form \(\eta_{\mu\nu}\). If we choose a certain point \(P\), however, it is possible to find a transformation in order to impose the conditions \(g_{\mu\nu}(P)=\eta_{\mu\nu}(P)\), \(\partial_\rho g_{\mu\nu}(P) = 0\) \cite[pages 49--50]{Carroll:1997ar}.
-
-\paragraph{Tensor calculus}
-
-The covariant derivative keeps account of the shifting of the basis vectors:
-
-\begin{equation}
-    \nabla_\mu A^\nu = \partial_\mu A^\nu + \Gamma^\nu _{\alpha \mu}  A^\alpha
-\end{equation}
-
-The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors! they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$. They are not intrinsic to the manifold.
-
-If we have the metric (and make reasonable assumptions of the connection being torsion-free), they can be calculated as:
-
-\begin{equation}
-    \Gamma^\mu_{\nu \rho} = \frac{1}{2} g^{\mu \alpha} \qty(
-    \partial_\rho g_{\alpha \nu} +
-    \partial_\nu g_{\alpha \rho} -
-    \partial_\alpha g_{\nu \rho}
-    ) \label{eq:christoffel-symbols-from-metric}
-\end{equation}
-
-This also tells us that they are symmetric in the lower two indices: $\Gamma ^\mu _{\nu \rho} = \Gamma ^\mu _{\rho \nu}$.
-
-The divergence of a vector field $A^\mu$ can be calculated as:
-
-\begin{equation}
-    \nabla_\mu A^\mu = \frac{1}{\sqrt{-g}}\partial_\mu \qty(\sqrt{-g}A^\mu) \label{eq:covariant-divergence}
-\end{equation}
-
-where $g$ is the determinant of the metric.
-
 We can also define the Dalambertian operator $\square = \nabla_\mu \nabla^\mu = \nabla_\mu \partial^\mu$, which can only act on scalars, and it does so like:
 
 \begin{equation}
@@ -57,132 +15,6 @@ If we differentiate and antisymmetrize (so, take the rotor of) an antisymmetric 
     \nabla_{[\mu} F_{\nu\rho]} = \partial_{[\mu} F_{\nu\rho]}
 \end{equation}
 
-The derivative with respect to proper time is $\dv{}{\tau} = u^\mu \nabla_\mu$.
-
-\index{covariant acceleration}Covariant acceleration is defined as:
-
-\begin{equation} \label{eq:covariant-acceleration-def}
-    a^\nu = u^\mu \nabla_\mu u^\nu
-\end{equation}
-
-\paragraph{Stokes' theorem}
-
-Following \cite[]{Unger:2016}.
-If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) of this manifold equipped with coordinates \(x^\mu\) a metric \(g_{\mu\nu}\), with a submanifold boundary \(\partial V\) equipped with coordinates \(y^\mu\) and the induced metric \(h_{\alpha\beta} = \qty(\pdv*{x^\mu}{y^\alpha}) \qty(\pdv*{x^\nu}{y^\beta}) g_{\mu\nu}\), and for which we have a properly oriented normal vector \(n^\mu (y)\); then for any vector \(f^\mu\) we have:
-
-\begin{equation} \label{eq:stokes-theorem}
-    \int _{V} \nabla_\mu f^\mu \sqrt{\abs{\det g}}  \dd[n]{x}  = \int _{\partial V} f^\mu  n_\mu \sqrt{\abs{\det h}} \dd[n-1]{y}
-\end{equation}
-
-\paragraph{Curvature}
-
-The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
-
-\begin{equation} \label{eq:riemann-tensor-def}
-    R ^{\mu} _{\nu \rho \sigma} V^\nu \defeq [\nabla_\rho, \nabla_\sigma]   V^\mu
-\end{equation}
-
-It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one. This result follows by direct computation from formula \eqref{eq:riemann-tensor-def}.
-
-\begin{equation}
-    R ^{\mu} _{\nu \rho \sigma} =
-     \partial_\rho \Gamma^\mu_{\nu \sigma}
-    -\partial_\sigma \Gamma^\mu_{\nu \rho}
-    +\Gamma^\mu_{\rho \lambda} \Gamma ^{\lambda} _{\sigma \nu}
-    -\Gamma^\mu_{\sigma \lambda} \Gamma ^{\lambda} _{\rho \nu}
-\end{equation}
-
-The Christoffel symbols can be nonzero if we choose certain coordinates even for flat spacetime, but the Riemann tensor is zero iff the spacetime is flat.
-
-The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{MisnerThorneWheeler:1973}:
-
-\begin{subequations}
-\begin{align}
-  \nabla _{[\lambda} R_{\mu\nu]\rho \sigma} &= 0 \label{eq:bianchi-identities}  \\
-  R_{\mu\nu\rho\sigma} &= R_{[\mu\nu][\rho\sigma]} = R_{[\rho\sigma][\mu\nu]}  \\
-  R_{[\mu\nu\rho\sigma]} &= 0 = R_{\mu[\nu\rho\sigma]}
-\end{align}
-\end{subequations}
-
-If we define the Ricci tensor \(R_{\mu\nu} = R^\rho_{\mu \rho \nu}\) and the curvature scalar \(R = R_{\mu\nu}g^{\mu\nu}\), we can rewrite \eqref{eq:bianchi-identities}  as \(\nabla_\mu R = 2 \nabla_\nu R^{\nu}_{\mu}\).
-
-\paragraph{Geodesics}
-
-If we have a path $x^\mu(\lambda)$, we would like to see if it is a geodesic, that is, if it is stationary with respect to path length. To do this we can stationarize the action corresponding to the lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
-
-\begin{equation}
-    \Ddot{x}^\mu + \Gamma^\mu_{\nu\rho} \Dot{x}^\nu \Dot{x}^\rho = 0
-\end{equation}
-
-Where $\Gamma$ are the Christoffel symbols, which can be calculated by differentiating the metric, as shown in \eqref{eq:christoffel-symbols-from-metric}. $\Lagr$ is an integral of these Lagrange equations.
-
-If the parameter $\lambda$ is taken to be the proper time $s$, then the equation is
-
-\begin{equation}
-    \dv{u^\mu}{s} + \Gamma^\mu _{\nu\rho} u^\nu u^\rho = 0
-\end{equation}
-
-Notice that this is equivalent to the covariant acceleration \eqref{eq:covariant-acceleration-def} being zero.
-
-\paragraph{Fermi-Walker transport}
-
-Take a general vector field \(V ^{\mu} (s)\) defined along a curve, with its tangent vector \(u^\mu\) whose covariant acceleration is \(a^\mu\).
-Then we say that \(V^\mu\) is transported according to Fermi-Walker iff it satisfies
-
-\begin{equation}
-    \dot{V}^\mu  = u^\nu \nabla_\nu V^\mu
-    = 2 V_\rho u^{[\mu} a^{\rho]}
-\end{equation}
-
-This condition is always satisfied by \(V^\mu = u^\mu\), since \(a^\mu u_\mu = 0\), whether or not the curve is a geodesic. The tangent vector is \emph{parallel} transported only for geodesics.
-
-The justification of this definition is the fact that we want the transformations of our our tetrad to be infinitesimal Lorentz boosts, which are generated by antisymmetric tensors, and we want to prohibit any rotations in the plane orthogonal to \(a^\mu\) and \(u^\mu\)
-
-\paragraph{Tetrads and projectors} \label{par:tetrads}
-
-We want to work in a reference in which the velocity $u^\mu$ is purely timelike. This can always be found by the equivalence principle. Such a reference can be completed into what  is called a tetrad, for which the metric becomes the Minkowski metric in a neighbourhood of the point we consider.
-
-We call the velocity \(u^\mu = V^\mu _{(0)}\), and add to it three other vectors \(V^\mu_{(i)}\) such that
-
-\begin{equation}
-    g_{\mu\nu} V^\mu _{(\alpha)} V^\nu _{(\beta)} = \eta_{(\alpha) (\beta)}
-\end{equation}
-
-where the brackets around the indices denote the fact that they label four vectors, not the components of a tensor.
-
-We can choose the vectors \(V_{(i)}^\mu\) so that they are Fermi-Walker transported along the worldline defined by \(u^\mu\): this allows us to find the relativistic equivalent of a nonrotating frame of reference.
-
-It is useful to project tensors onto the space-like and time-like subspaces defined by our tetrad (and we wish to do so in a coordinate-independent manner,  so just taking the 0th and $i $-th components in the tetrad will not suffice). We therefore define the projectors:
-
-\begin{equation}
-    h_{\mu \nu} = u_\mu u_\nu + g_{\mu \nu} \qquad \pi_{\mu\nu} = -u_\mu u_\nu
-\end{equation}
-
-respectively onto the space- and time-like subspaces.
-
-\paragraph{Killing vector fields}
-
-Following \cite[section 25.2, page 650]{MisnerThorneWheeler:1973}.
-Say there is a certain direction (for simplicity, along one of our coordinate axes) along which the metric is preserved: an \(\widetilde{\alpha}\) such that \(\partial_{\widetilde{\alpha} g_{\mu\nu}}\).
-
-Then the metric properties of curves along the manifold are unchanged if we shift their coordinate representation by a constant along the \(\widetilde{\alpha}\) coordinate axis.
-
-Let us call the direction of this translation \(\xi^\mu = \delta^\mu_{\widetilde{\alpha}}\) if we use this coordinate system. It can be shown by direct computation that
-
-\begin{equation} \label{eq:killing-vector-identity}
-    \nabla_{\nu} \xi_\mu = \frac{1}{2} \qty(\partial_{\widetilde{\alpha}}
-    g_{\mu\nu} + \partial_\nu g_{\mu\widetilde{\alpha}} -
-    \partial_\mu g_{\nu \widetilde{\alpha}})
-\end{equation}
-
-but by hypothesis the first term on the RHS of \eqref{eq:killing-vector-identity} is zero, therefore we have shown that \(\nabla_{\nu} \xi_\mu = \nabla_{[\nu} \xi_{\mu]}\) in this coordinate frame, but since this is a covariant equation it extends to every other one.
-
-It can also be seen this way that \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called \emph{Killing's equation}. This is useful since: given a geodesic \(x^\mu(\lambda)\), for which we define \(u^\mu = \dv*{x^\mu}{\lambda} \), it must be the case that \(u^\nu \nabla_\nu u^\mu = 0 \). Then, the component of \(u^\mu\) along \(\xi^\mu\) (\(u^{\widetilde{\alpha}} = u^\mu \xi_\mu\)) is conserved:
-
-\begin{equation}
-    \dv{}{\lambda} \qty(u^\mu \xi_\mu) = u^\nu \nabla_\nu \qty(u^\mu \xi_\mu)
-    = \cancelto{0}{\xi^\mu u^\nu \nabla_\nu u_\mu} + \cancelto{0}{u^\nu u^\mu \nabla_\nu \xi_\mu} \equiv 0
-\end{equation}
 
 \paragraph{Lie derivative}
 
@@ -197,23 +29,6 @@ Following \cite[section 6]{Taub:1978}. The Lie derivative of a generic tensor \(
 
 Some special cases are: a scalar \(\Lie _\xi f = \xi^\rho \partial_\rho f \), a vector \(\Lie _\xi u^\mu = \xi^\rho \nabla_\rho u^\mu -u^\rho \nabla_\rho \xi^\mu\), and  an antisymmetric covariant two-tensor \(\omega_{\mu\nu} = \omega_{[\mu \nu]}\) which represents a closed form \(\nabla_{[\mu} \omega_{\nu \rho]} = 0\) we have \(\Lie _\xi \omega_{\mu\nu} =2\nabla_{[\nu} \qty( \omega_{\mu] \rho} \xi^\rho )\)
 
-\paragraph{Useful metrics}
-
-The simplest physically relevant one is the Schwarzschild metric. It describes a spherically symmetric object of mass $M$, in spherical coordinates. Defining $\Phi = -M/r$, we have:
-
-\begin{equation}
-    \dd{s}^2 = -(1+2\Phi)\dd{t}^2 + \frac{1}{1+2\Phi} \dd{r}^2
-    + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi}) \label{eq:schwartzshild-line-element}
-\end{equation}
-
-or, equivalently,
-
-\begin{equation}
-    g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta )
-\end{equation}
-
-We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ in the limit $M\rightarrow 0$. Its determinant is $g = -r^4 \sin^2 \theta$.
-
 \subsection{Fluid mechanics}
 
 In usual relativistic single-body mechanics, we use the 4-velocity $u^\mu$ and the corresponding 4-momentum $p^\mu = m u^\mu$. The 0-th component of this vector is the energy of the body, while the $i$-th components are its momentum: we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
@@ -225,7 +40,7 @@ This satisfies a conservation equation: $\nabla_\mu(\rho_0 u^\mu) = 0$.
 Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
 We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero. We write the sum of the other two forms of energy as $\rho = \rho_0 (1+\epsilon)$. So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
-\paragraph{Stress-energy tensor}
+\paragraph{Stress-energy tensor} \label{par:stress-energy-tensor}
 
 The stress-energy tensor \(T^{\mu\nu}\) is a \((2,0)\) tensor, whose \(\mu, \nu\) component is the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
 
@@ -1037,7 +852,7 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
 \end{subequations}
 
 \begin{greenbox}
-  Are the eqrefs at page 174 in \cite{Nobili:2000} wrong? Equations 2.7.3, 5 seem not to be related at all...
+  Are the references to equations at page 174 in \cite{Nobili:2000} wrong? Equations 2.7.3, 5 seem not to be related at all...
 
   Somehow this equation comes up:
 
@@ -1066,79 +881,6 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
 \begin{greenbox}
   To add: commentary on the equation system, its boundary conditions \(\rho_\infty\) and \(T_\infty\), and the fact that to make the system regular at \(v = v_s\) the problem becomes uniquely determined.
 \end{greenbox}
-
-\subsection{Radiative processes in spherical accretion}
-
-\begin{greenbox}
-  Question posed in \cite[Introduction]{ThorneFLammmangZytkow:1981feb}: will a black hole inside a star eat it whole in a free-fall time-scale (around 1 year) or on an Eddington-limited time-scale (around \(10^8\) years)?
-  Is this known now?
-\end{greenbox}
-
-\paragraph{Eddington luminosity}
-
-It is the characteristic luminosity at which the radiation pressure from the photons moving outward equals the gravitational specific force on the infalling matter.
-
-The gravitational force, in the newtonian  limit, is
-
-\begin{equation}
-  F_{\text{grav}} = \frac{GMm}{r^2 }
-\end{equation}
-
-The radiation pressure can be given in terms of the luminosity \(L\) (reinserting the units of \(c\) for this) as
-
-\begin{equation}
-  P_{\text{rad}} = \frac{L}{c 4 \pi r^2}
-\end{equation}
-
-then, the radiative force is given by \(F_{\text{rad}} =  P_{\text{rad}} \kappa m\), where \(m\) is the mass of the test object and \(\kappa\) is the opacity: the per-unit-mass cross-section. We usually assume \(\kappa = \sigma_T/m_p\), that is, that the interaction between radiation and matter is all due to Thompson scattering and the matter is only composed of hydrogen atoms.
-
-Equating the forces, we get our result:
-
-\begin{equation}
- \frac{L_{\text{Edd}}}{M} = \frac{4 \pi c G}{\kappa}
-\end{equation}
-
-In the \(\kappa = \sigma_T / m_p \approx \SI{0.04}{\metre^2 / kg}\) case, we get \(L_{\text{Edd}} / M\) to be around \SI{6.32}{\watt\per\kilo\gram} (constants' values from \cite[]{NISTReccomendedConstants:2018}).
-If we express this in units of \(L_{\odot} / M_{\odot} \approx \SI{1.93E-04}{\watt\per\kilo\gram}\) \cite[]{SunFactSheet:2018} we get \(L_{\text{Edd}} / M \approx  \num{3.27E+04} L_{\odot} / M_{\odot}\):
-the amount of radiation emitted by the Sun is much less than the Eddington limit.
-
-It is, of course, important to note that this is a limit found with many approximations: nonrelativistic gravity, spherical symmetry, only Thompson scattering, only hydrogen.
-
-\paragraph{Cooling function}
-
-From \cite{NobiliTurollaZampieri:1991dec}.
-
-The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
-
-\begin{equation}
-    \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
-\end{equation}
-
-where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{GnedinHollon:2012}.
-
-The cooling function of the infalling gas is
-
-\begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/cooling_function.pdf}
-    \caption{Cooling function graph.}
-    \label{fig:cooling-function}
-\end{figure}
-
-\begin{equation}
-    \begin{split}
-    \Lambda (T) &= \left(
-    \qty(
-    \num{1.42e-27}T^{1/2} \qty(
-    1 + \num{4.4e-10}T
-    ) + \num{6.0e-22}T^{-1/2}
-    )^{-1} \right. \\
-    & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
-    \right)^{-1} \si{\erg\cubic\centi\metre\per\second}
-    \end{split}
-\end{equation}
-
-The version of this equation in \textcite[equation 10]{StellingwerfBuff:1982} is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
 
 \subsection{Thorne's PSTF moment formalism}
 
@@ -1562,7 +1304,7 @@ From equation \eqref{eq:mass-conservation-integral} we can find an expression \c
 \begin{equation}
   y = \sqrt{y^2 \qty(1 - v^2 + v^2)}
   = \sqrt{\qty(\frac{y^2}{\gamma^2}) + y^2 v^2}
-  = \sqrt{\qty(1 - \frac{2M}{r}) + \frac{\dot{M}}{4 \pi r^2 \rho_0}}
+  = \sqrt{\qty(1 - \frac{2M}{r}) + \qty(\frac{\dot{M}}{4 \pi r^2 \rho_0})^2}
 \end{equation}
 
 therefore \(v\) can also be expressed in terms of \(r\) and constants:
@@ -1570,5 +1312,79 @@ therefore \(v\) can also be expressed in terms of \(r\) and constants:
 \begin{equation}
   v = \frac{\dot M}{4 \pi r^2 \rho_0 y(r)}
 \end{equation}
+
+\subsection{Radiative processes}
+
+\begin{greenbox}
+  Question posed in \cite[Introduction]{ThorneFLammmangZytkow:1981feb}: will a black hole inside a star eat it whole in a free-fall time-scale (around 1 year) or on an Eddington-limited time-scale (around \(10^8\) years)?
+  Is this known now?
+\end{greenbox}
+
+\paragraph{Eddington luminosity}
+
+It is the characteristic luminosity at which the radiation pressure from the photons moving outward equals the gravitational specific force on the infalling matter.
+
+The gravitational force, in the newtonian  limit, is
+
+\begin{equation}
+  F_{\text{grav}} = \frac{GMm}{r^2 }
+\end{equation}
+
+The radiation pressure can be given in terms of the luminosity \(L\) (reinserting the units of \(c\) for this) as
+
+\begin{equation}
+  P_{\text{rad}} = \frac{L}{c 4 \pi r^2}
+\end{equation}
+
+then, the radiative force is given by \(F_{\text{rad}} =  P_{\text{rad}} \kappa m\), where \(m\) is the mass of the test object and \(\kappa\) is the opacity: the per-unit-mass cross-section. We usually assume \(\kappa = \sigma_T/m_p\), that is, that the interaction between radiation and matter is all due to Thompson scattering and the matter is only composed of hydrogen atoms.
+
+Equating the forces, we get our result:
+
+\begin{equation}
+ \frac{L_{\text{Edd}}}{M} = \frac{4 \pi c G}{\kappa}
+\end{equation}
+
+In the \(\kappa = \sigma_T / m_p \approx \SI{0.04}{\metre^2 / kg}\) case, we get \(L_{\text{Edd}} / M\) to be around \SI{6.32}{\watt\per\kilo\gram} (constants' values from \cite[]{NISTReccomendedConstants:2018}).
+If we express this in units of \(L_{\odot} / M_{\odot} \approx \SI{1.93E-04}{\watt\per\kilo\gram}\) \cite[]{SunFactSheet:2018} we get \(L_{\text{Edd}} / M \approx  \num{3.27E+04} L_{\odot} / M_{\odot}\):
+the amount of radiation emitted by the Sun is much less than the Eddington limit.
+
+It is, of course, important to note that this is a limit found with many approximations: nonrelativistic gravity, spherical symmetry, only Thompson scattering, only hydrogen.
+
+\paragraph{Cooling function}
+
+From \cite{NobiliTurollaZampieri:1991dec}.
+
+The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
+
+\begin{equation}
+    \dv{U}{t} = n^2_b \qty(\Gamma(T) - \Lambda (T))
+\end{equation}
+
+where \(U\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{GnedinHollon:2012}.
+
+The cooling function of the infalling gas is
+
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/cooling_function.pdf}
+    \caption{Cooling function graph.}
+    \label{fig:cooling-function}
+\end{figure}
+
+\begin{equation}
+    \begin{split}
+    \Lambda (T) &= \left(
+    \qty(
+    \num{1.42e-27}T^{1/2} \qty(
+    1 + \num{4.4e-10}T
+    ) + \num{6.0e-22}T^{-1/2}
+    )^{-1} \right. \\
+    & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
+    \right)^{-1} \si{\erg\cubic\centi\metre\per\second}
+    \end{split}
+\end{equation}
+
+The version of this equation in \textcite[equation 10]{StellingwerfBuff:1982} is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
+
 
 \end{document}

@@ -1185,7 +1185,7 @@ If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it
 
 Where the PTSF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed as
 
-\begin{equation}
+\begin{equation} \label{eq:PSTF-moments-function-decomposition}
     \mathscr F_{\alpha_1 \dots \alpha_k} =
     \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF}
 \end{equation}
@@ -1404,6 +1404,14 @@ Then, we take the PSTF part of the equations. This yields a very complicated exp
   \end{split}
 \end{equation}
 
+\paragraph{How to recover the intensity}
+
+Once one has solved the PSTF grey moment equations, one can compute the intensity from the moments by comparing \eqref{eq:PSTF-moments-function-decomposition} and \eqref{eq:trace-free-moments-definition}:
+
+\begin{equation}
+  I = \sum _{k=0}   ^{\infty} \frac{(2k+1)!!}{4 \pi k!} \mathscr M^{A_k} \prod_{i=1}^k n_{\alpha_i}
+\end{equation}
+
 \paragraph{Simplifications under assumptions of symmetry}
 
 Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \cite[]{ThorneFLammmangZytkow:1981feb}.
@@ -1540,5 +1548,9 @@ For \(k=1\) we get:
 \end{equation}
 
 These have to be simplified further to be used: specifically, they can be expressed with respect to \(r\), \(v\), \(y\).
+
+\begin{greenbox}
+  How do we get rid of the time derivatives?
+\end{greenbox}
 
 \end{document}

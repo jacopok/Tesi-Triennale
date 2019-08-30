@@ -419,7 +419,12 @@ These have to be simplified further to be used: specifically, they can be expres
 
 \paragraph{Some properties of the accretion variables}
 
-Following \textcite[]{ThorneFLammmangZytkow:1981feb}.
+Following \textcite[]{ThorneFLammmangZytkow:1981feb}. We are working with the following assumptions:
+
+\begin{enumerate}
+  \item spherical symmetry: \(\partial_\theta = \partial_\varphi = 0\);
+  \item stationarity: \(\partial_t = 0\).
+\end{enumerate}
 
 From equation \eqref{eq:mass-conservation-integral} we can find an expression \cite[eq. 18a]{ThorneFLammmangZytkow:1981feb} for \(y\) which only depends on \(r\) and constants:
 
@@ -439,12 +444,48 @@ therefore \(v\) can also be expressed in terms of \(r\) and constants:
 
 The source term can be written \cite[eq. 15]{ThorneFLammmangZytkow:1981feb} as
 
-\begin{equation}
-  s_k = \frac{l! (2l+1)}{(2l+1)!!} \int_{-1}^1 \dv{I}{\tau}_{\text{interaction}} P_k(\mu) 2 \pi \dd{\mu}
+\begin{equation} \label{eq:source-term}
+  s_k = \frac{l! (2l+1)}{(2l+1)!!} \int_{-1}^1 \qty(\dv{I}{\tau})_{\text{interaction}} P_k(\mu) 2 \pi \dd{\mu}
 \end{equation}
 
 \begin{greenbox}
   Why is this a proper-time derivative of the intensity instead of a derivative wrt to the photon spatial distance parameter \(l\) as in \cite[]{Thorne:1981feb}?
 \end{greenbox}
+
+Also, we can write
+
+\begin{equation} \label{eq:opacity-emissivity-definition}
+  s_k = \rho_0 (\varepsilon_k - \kappa_k w_k)
+\end{equation}
+
+where \(\rho_0\) is the rest mass density, \(w_k\) are the PSTF scalar moments, \(\varepsilon_k\) is the emissivity and \(\kappa_k\) is the opacity of the gas.
+
+Equation \eqref{eq:opacity-emissivity-definition} can be taken to be the definition of \(\varepsilon_k\) and \(\kappa_k\); we do the integral in \eqref{eq:source-term} and get constant terms and terms proportional to \(w_k\), which we split in the two terms on the RHS of \eqref{eq:opacity-emissivity-definition}.
+
+\paragraph{Bernoulli equation simplification}
+
+The Bernoulli equation can be written in the LRF as \(\nabla_\mu T^{t\mu} = 0\).
+Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
+
+\begin{equation}
+  \nabla_\mu T^{t \mu}
+  = \frac{1}{r^2 \sin \theta} \pdv{}{r} \qty(r^2 \sin\theta T^{tr})
+  = \frac{1}{r^2} \pdv{}{r} \qty(r^2 T^{tr}) = 0
+  \implies
+  r^2 T^{tr} = \const
+\end{equation}
+
+\paragraph{The moment equations with only radial derivatives}
+
+\begin{subequations}
+\begin{align}
+  w_{1}^{\prime}-v w_{0}^{\prime}
+  -v w_{2}\left[\frac{(v y)^{\prime}}{v y}-1\right]
+  +2 w_{1}\left(1+\frac{y^{\prime}}{y}\right)
+  -\frac{4}{3} v w_{0}\left[\frac{(v y)^{\prime}}{v y}+2\right]&=\frac{r R_{g} s_{0}}{y} \\
+  w_{2}^{\prime}-v w_{1}^{\prime}+\frac{1}{3} w_{0}^{\prime} +w_{2}\left(3+\frac{y^{\prime}}{y}\right)-2 v w_{1}\left[\frac{(v y)^{\prime}}{v y}+1\right]+\frac{4}{3} \frac{y^{\prime}}{y} w_{0} &=\frac{r R_{g} s_{1}}{y} 
+\end{align}
+\end{subequations}
+
 
 \end{document}

@@ -55,10 +55,9 @@ Where the PSTF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed 
 \end{equation}
 
 In particular, the function we will apply this to is the distribution of EM radiation around the BH. So, let us consider a photon, whose trajectory in spacetime is parameterized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
-
-\begin{equation}
-    p = \dv{}{\xi}
-\end{equation}
+\(
+p = \dv*{}{\xi}
+\).
 
 Now, our observer has a timelike velocity \(u^\mu\). We can find a spacelike vector \(n^\mu\) corresponding to the space-like part of the movement of the photon, or
 
@@ -199,7 +198,7 @@ So, the \(k\)-th moment contains all the information about the \(l\)-th moments 
   \mathscr M ^{A_k} = \qty(M^{A_k}) ^{PSTF}
 \end{equation}
 
-The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\) and to the moment equations \eqref{eq:grey-moment-equations}. Since we are taking the projection onto the space-like subspaces, we can simplify the expression of the PSTF moments: all the terms which contain at least a four-velocity vanish, therefore:
+The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\), to the moment equations \eqref{eq:grey-moment-equations} and to the source moments \(S^{A_k} \rightarrow \mathscr S ^{A_k}\). Since we are taking the projection onto the space-like subspaces, we can simplify the expression of the PSTF moments: all the terms which contain at least a four-velocity vanish, therefore:
 
 \begin{equation} \label{eq:trace-free-moments-definition}
   \mathscr M^{A_k} = \qty(\int I \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
@@ -354,7 +353,7 @@ which is equation \cite[eq. 5.7d]{Thorne:1981feb}.
 
 where \(n^r\) denotes the radial component of a normal vector in spherical coordinates, \(P_k\) is the \(k\)-th Legendre polynomial and \(\mu = \cos \theta\) where \(\theta\) is the azimuthal coordinate of \(n\). \(I(\mu)\) is a generic function.
 
-\paragraph{The scalar moments}
+\paragraph{The scalar moments} \label{par:scalar-moments}
 
 It can be shown, using the identity \eqref{eq:thorne-trace-free-integral-claim}  that the definition of \(w_k\) we gave is equivalent to
 
@@ -383,6 +382,25 @@ We can explicitly write the stress-energy tensor in terms of the \(w_k\) using \
       0 & 0  &   & \frac{1}{3}w_0 -\frac{1}{2}w_2
     \end{bmatrix}
 \end{equation}
+
+\paragraph{The source moments}
+
+We can get an explicit formula for the source moments \(s_k = \mathscr S ^{r\dots r}\) (\(k\) \(r\)s) with the same procedure which was used in paragraph \nameref{par:scalar-moments}:
+we get
+
+\begin{equation}
+    s_k = \int_{-1}^1 \dv{I}{l} (\cos \theta) P_k(\cos \theta) \qty(\frac{(2k-1)!!}{l!})^{-1} 2 \pi\dd{\cos \theta}
+\end{equation}
+
+where \(\dv*{I}{l} = \int \mathfrak S \nu^3 \dd{\nu}\) is the frequency-integrated  source term in the transfer equation.
+
+\begin{greenbox}
+  The derivative \(\dv*{I}{l}\) first appears in \cite[]{Thorne:1981feb} without any indices, then in \cite[section 6]{Thorne:1981feb} it gets the index ``source'', while in \cite[eq. 15]{ThorneFLammmangZytkow:1981feb} it appears with an index ``interaction'' (and the derivative becomes a proper time one).
+
+  It is not clear to me whether these all represent the same thing, or what the indices are trying to say.
+\end{greenbox}
+
+
 
 \paragraph{The simplified moment equations}
 
@@ -413,9 +431,11 @@ For \(k=1\) we get:
 
 These have to be simplified further to be used: specifically, they can be expressed with respect to \(r\), \(v\), \(y\).
 
-\paragraph{Some properties of the accretion variables}
+\paragraph{Simplifying the moment equations further}
 
-Following \textcite[]{ThorneFLammmangZytkow:1981feb}. We are working with the following assumptions:
+% Following \textcite[]{ThorneFLammmangZytkow:1981feb}.
+
+We are working with the following assumptions:
 
 \begin{enumerate}
   \item spherical symmetry: \(\partial_\theta = \partial_\varphi = 0\);
@@ -449,7 +469,7 @@ Now, we can make the scalar PSTF moment equations \eqref{eq:scalar-PSTF-moment-e
 
 We can simplify these by expanding the derivatives of products \((vyr^2)^{\prime}\) and \((vy/r)^{\prime}\):
 
-\begin{subequations} \label{eq:NTZ91-moment-equations}
+\begin{subequations} \label{eq:NTZ91-moment-equations-spherical}
 \begin{align}
   y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
   -yv w_0^{\prime}
@@ -463,7 +483,19 @@ We can simplify these by expanding the derivatives of products \((vyr^2)^{\prime
 \end{align}
 \end{subequations}
 
-Equations \eqref{eq:NTZ91-moment-equations} are the ones which appear in  \textcite[eq. 4]{NobiliTurollaZampieri:1991dec}. 
+Equations \eqref{eq:NTZ91-moment-equations-spherical} are the ones which appear in  \textcite[eq. 4]{NobiliTurollaZampieri:1991dec} and which are reported in equation \eqref{eq:NTZ91-moment-equations-logarithmic}: the only difference is that their primes denote derivatives with respect to \(\log (r / (2M))\).
+
+\begin{subequations} \label{eq:NTZ91-moment-equations-logarithmic}
+    \begin{align}
+        w_{1}^{\prime}-v w_{0}^{\prime}
+        -v w_{2}\left[\frac{(v y)^{\prime}}{v y}-1\right]
+        +2 w_{1}\left(1+\frac{y^{\prime}}{y}\right)
+        -\frac{4}{3} v w_{0}\left[\frac{(v y)^{\prime}}{v y}+2\right]&=\frac{r s_{0}}{y} \\
+        w_{2}^{\prime}-v w_{1}^{\prime}+\frac{1}{3} w_{0}^{\prime} +w_{2}\left(3+\frac{y^{\prime}}{y}\right)-2 v w_{1}\left[\frac{(v y)^{\prime}}{v y}+1\right]+\frac{4}{3} \frac{y^{\prime}}{y} w_{0} &=\frac{r s_{1}}{y}
+    \end{align}
+\end{subequations}
+
+\paragraph{Some properties of the accretion variables}
 
 From equation \eqref{eq:mass-conservation-integral} we can find an expression \cite[eq. 18a]{ThorneFLammmangZytkow:1981feb} for \(y\) which only depends on \(r\) and constants:
 
@@ -479,7 +511,7 @@ therefore \(v\) can also be expressed in terms of \(r\) and constants:
   v = \frac{\dot M}{4 \pi r^2 \rho_0 y(r)}
 \end{equation}
 
-\paragraph{The transfer equations (? to rename)}
+\paragraph{The source term}
 
 The source term can be written \cite[eq. 15]{ThorneFLammmangZytkow:1981feb} as
 
@@ -497,9 +529,28 @@ Also, we can write
   s_k = \rho_0 (\varepsilon_k - \kappa_k w_k)
 \end{equation}
 
-where \(\rho_0\) is the rest mass density, \(w_k\) are the PSTF scalar moments, \(\varepsilon_k\) is the emissivity and \(\kappa_k\) is the opacity of the gas.
+where \(\rho_0\) is the rest mass density, \(w_k\) are the PSTF scalar moments, \(\varepsilon_k\) is the \(k\)-th moment of emissivity and \(\kappa_k\) is the \(k\)-th moment of opacity of the gas.
 
 Equation \eqref{eq:opacity-emissivity-definition} can be taken to be the definition of \(\varepsilon_k\) and \(\kappa_k\); we do the integral in \eqref{eq:source-term} and get constant terms and terms proportional to \(w_k\), which we split in the two terms on the RHS of \eqref{eq:opacity-emissivity-definition}.
+
+\begin{claim}
+    If the emission is isotropic, then the emissivity moments \(\varepsilon_k\) are 0 for \(k \geq 1\).
+\end{claim}
+
+\begin{proof}
+    To show this, it would be enough to see that in the isotropic case
+
+    \begin{equation}
+        \qty(\int \dv{I}{l}_{\text{source}} \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
+        \propto \qty(\int I \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
+    \end{equation}
+
+    for \(k \geq 1\) but not for \(k = 0\).
+
+    \begin{greenbox}
+      I do not know how to prove it though.
+    \end{greenbox}
+\end{proof}
 
 \paragraph{Bernoulli equation simplification}
 
@@ -507,24 +558,13 @@ The Bernoulli equation can be written in the LRF as \(\nabla_\mu T^{t\mu} = 0\).
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
 \begin{equation}
-  \nabla_\mu T^{t \mu}
+  0=\nabla_\mu T^{t \mu}
   = \frac{1}{r^2 \sin \theta} \pdv{}{r} \qty(r^2 \sin\theta T^{tr})
-  = \frac{1}{r^2} \pdv{}{r} \qty(r^2 T^{tr}) = 0
+  = \frac{1}{r^2} \pdv{}{r} \qty(r^2 T^{tr})
   \implies
   r^2 T^{tr} = \const
 \end{equation}
 
-\paragraph{The moment equations with only radial derivatives}
-
-\begin{subequations}
-\begin{align}
-  w_{1}^{\prime}-v w_{0}^{\prime}
-  -v w_{2}\left[\frac{(v y)^{\prime}}{v y}-1\right]
-  +2 w_{1}\left(1+\frac{y^{\prime}}{y}\right)
-  -\frac{4}{3} v w_{0}\left[\frac{(v y)^{\prime}}{v y}+2\right]&=\frac{r R_{g} s_{0}}{y} \\
-  w_{2}^{\prime}-v w_{1}^{\prime}+\frac{1}{3} w_{0}^{\prime} +w_{2}\left(3+\frac{y^{\prime}}{y}\right)-2 v w_{1}\left[\frac{(v y)^{\prime}}{v y}+1\right]+\frac{4}{3} \frac{y^{\prime}}{y} w_{0} &=\frac{r R_{g} s_{1}}{y}
-\end{align}
-\end{subequations}
-
+In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\).
 
 \end{document}

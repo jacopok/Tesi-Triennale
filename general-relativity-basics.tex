@@ -34,7 +34,16 @@ We define the proper time \(\tau\) by \(\dd{\tau} \defeq \sqrt{-\dd{s}^2} \). Un
 We can define a tensorial velocity by differentiating the position with respect to proper time: \(u^\mu \defeq \dv*{x^\mu}{\tau}\). Defined this way, the so-called 4-velocity trasforms like a tensor. If \(\vec{v}\) is the regular three-velocity and \(v\) is its magnitude, we define \(\gamma = 1/\sqrt{1-v^2} \) and then:
 \(u^\mu = \qty(\gamma, \gamma \vec{v})\).
 
-Once we have this, we can define the 4-acceleration \(a^\mu = \dv*{u^\mu}{\tau} \) and the 4-momentum \(p^\mu = m u^\mu\), where \(m\) is the rest mass of the body at hand.
+Now, differentiating any function of position looks like \(\dv*{T^{A_k}(x^\mu)}{\tau} = (\nabla_\mu T^{A_k}) \dv*{x^\mu}{\tau} = u^\mu \nabla_\mu T^{A_k} \).
+
+\index{covariant acceleration}
+Once we have this, we can define the 4-acceleration:
+
+\begin{equation} \label{eq:covariant-acceleration-def}
+    a^\nu = \dv{u^\mu}{\tau}  = u^\mu \nabla_\mu u^\nu
+\end{equation}
+
+and the 4-momentum \(p^\mu = m u^\mu\), where \(m\) is the rest mass of the body at hand.
 
 The 4-velocity is a unit vector: \(u^\mu u_\mu = -1\), and by differentiating this relation we get \(u^\mu a_\mu = 0\).
 
@@ -96,13 +105,6 @@ The divergence of a vector field $A^\mu$ can be calculated as:
 
 where $g$ is the determinant of the metric.
 
-The derivative with respect to proper time is $\dv{}{\tau} = u^\mu \nabla_\mu$.
-
-\index{covariant acceleration}Covariant acceleration is defined as:
-
-\begin{equation} \label{eq:covariant-acceleration-def}
-    a^\nu = \dv{u^\mu}{\tau}  = u^\mu \nabla_\mu u^\nu
-\end{equation}
 
 \paragraph{Stokes' theorem}
 
@@ -366,7 +368,7 @@ or, equivalently,
     g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta )
 \end{equation}
 
-We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$.
+We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).
 
 If we wanted to analyze the accretion problem without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid's contribution to the metric's curvature; however this would make the already hard problem completely intractable, therefore we assume the stress-energy tensor contributions are very small compared to the massive object's.
 

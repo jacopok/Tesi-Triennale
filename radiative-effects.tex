@@ -374,13 +374,13 @@ Then the first moments are:
 
 We can explicitly write the stress-energy tensor in terms of the \(w_k\) using \eqref{eq:PSTF-stress-energy-tensor-decomposition}:
 
-\begin{equation}
+\begin{equation} \label{eq:radiation-stress-energy-tensor-fiducial}
     T^{\mu\nu} = \begin{bmatrix}
     w_0   & w_1  & 0  & 0 \\
     w_1   & \frac{1}{3}w_0 + w_2  &  0  & 0 \\
       0 & 0  &  \frac{1}{3}w_0 -\frac{1}{2}w_2 &  \\
       0 & 0  &   & \frac{1}{3}w_0 -\frac{1}{2}w_2
-    \end{bmatrix}
+  \end{bmatrix} _{\text{fid}}
 \end{equation}
 
 \paragraph{The source moments}
@@ -399,8 +399,6 @@ where \(\dv*{I}{l} = \int \mathfrak S \nu^3 \dd{\nu}\) is the frequency-integrat
 
   It is not clear to me whether these all represent the same thing, or what the indices are trying to say.
 \end{greenbox}
-
-
 
 \paragraph{The simplified moment equations}
 
@@ -537,6 +535,8 @@ Equation \eqref{eq:opacity-emissivity-definition} can be taken to be the definit
     If the emission is isotropic, then the emissivity moments \(\varepsilon_k\) are 0 for \(k \geq 1\).
 \end{claim}
 
+Because of this, we just call the one moment \(\varepsilon = \varepsilon_0\).
+
 \begin{proof}
     To show this, it would be enough to see that in the isotropic case
 
@@ -551,6 +551,33 @@ Equation \eqref{eq:opacity-emissivity-definition} can be taken to be the definit
       I do not know how to prove it though.
     \end{greenbox}
 \end{proof}
+
+The source moments given in \cite[eq. 6]{NobiliTurollaZampieri:1991dec} are:
+
+\begin{subequations}
+\begin{align}
+  s_0 &= \rho_0 \qty(\varepsilon - w_0 \qty(\kappa_0 - \kappa_{\text{es}} \frac{4 k_B}{m_e} (T - T_\gamma)))  \\
+  s_1 &= - \rho_0 w_1 \kappa_1
+\end{align}
+\end{subequations}
+
+with
+
+\begin{equation}
+    T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}
+\end{equation}
+
+\begin{greenbox}
+  I do not really understand where these come from.
+\end{greenbox}
+
+Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) ( given in \eqref{eq:cooling-function-NTZ91}):
+
+\begin{equation}
+    \varepsilon = \frac{\rho_0 \Lambda (T)}{m_p^2}
+\end{equation}
+
+to write the source term \(s_0\) as 
 
 \paragraph{Bernoulli equation simplification}
 
@@ -567,6 +594,26 @@ Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
 In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\).
 
+\paragraph{How the conservation equations change using the moment equations}
 
+The use of the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} is in simplifying the equations of motion given by \(\nabla_\mu T^{\mu\nu}\).
+
+The full energy momentum tensor of the problem is given, in the fiducial reference frame, by combining an ideal-fluid stress-energy tensor (with pressure \(P\) and rest energy density \(\rho\)) with the one given in \eqref{eq:radiation-stress-energy-tensor-fiducial}:
+
+\begin{equation}
+    T^{\mu\nu} =
+    T^{\mu\nu}_{\text{radiation}} +
+    T^{\mu\nu}_{\text{matter}} =
+    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}
+\end{equation}
+
+\begin{greenbox}
+  We want to write down the conservation equations. Do we do so in regular spherical coordinates? The transformed stress-energy tensor is really ugly:
+
+  \begin{equation}
+      T ^{\mu\nu} =
+      \left[\begin{matrix}\frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 P + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} & \gamma^{2} \left(- \frac{v \left(3 P + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right) & 0 & 0\\\gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 P + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) & y^{2} \left(P - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right) & 0 & 0\\0 & 0 & \frac{P + \frac{w_{0}}{3} - \frac{w_{2}}{2}}{r^{2}} & 0\\0 & 0 & 0 & \frac{P + \frac{w_{0}}{3} - \frac{w_{2}}{2}}{r^{2} \sin^{2}{\left(\theta \right)}}\end{matrix}\right]
+  \end{equation}
+\end{greenbox}
 
 \end{document}

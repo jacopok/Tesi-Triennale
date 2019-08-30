@@ -272,6 +272,16 @@ and some other useful identities can be found in equations 7.5 through 7.7 of \c
 
 \subsection{General Relativity}
 
+\paragraph{The Equivalence Principle}
+
+In the General theory of Relativity we make a stronger claim than that of the axioms of SR, which are only formulated for inertial reference frames.
+
+The \textbf{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally. The frame of reference in which we must write the laws to put them in special-relativistic form is called the Locally Inertial Reference Frame.
+
+Unlike special relativity, the transformation laws between LIRFs are not linear, but can be in general be represented as diffeomorphisms.
+
+We model spacetime as a manifold which has intrinsic (basis-independent) curvature; an object which is modelled in newtonian mechanics as being accelerated by a gravitational force is modelled as following a geodesic in the manifold.
+
 \paragraph{Curvature}
 
 The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
@@ -303,7 +313,6 @@ The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{
 \end{subequations}
 
 If we define the Ricci tensor \(R_{\mu\nu} = R^\rho_{\mu \rho \nu}\) and the curvature scalar \(R = R_{\mu\nu}g^{\mu\nu}\), we can rewrite \eqref{eq:bianchi-identities}  as \(\nabla_\mu R = 2 \nabla_\nu R^{\nu}_{\mu}\), which means that \(\nabla_\mu \qty(R^{\mu\nu} - \frac[i]{1}{2} R g^{\mu\nu}) = 0\).
-
 
 \paragraph{The Einstein Field Equations}
 
@@ -357,7 +366,7 @@ or, equivalently,
     g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta )
 \end{equation}
 
-We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ in the limit $M\rightarrow 0$. Its determinant is $g = -r^4 \sin^2 \theta$.
+We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$.
 
 If we wanted to analyze the accretion problem without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid's contribution to the metric's curvature; however this would make the already hard problem completely intractable, therefore we assume the stress-energy tensor contributions are very small compared to the massive object's.
 

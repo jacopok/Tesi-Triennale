@@ -577,11 +577,22 @@ Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is th
     \varepsilon = \frac{\rho_0 \Lambda (T)}{m_p^2}
 \end{equation}
 
-to write the source term \(s_0\) as 
+to write the source term \(s_0\) as
+
+\begin{equation}
+    s_0 = \frac{\rho_0^2 \Lambda (T)}{m_p^2} \qty(1 + w_0 \kappa_{\text{es}} \frac{4 k_B}{\varepsilon m_e} (T - T_\gamma) - \frac{w_0}{aT^4})
+\end{equation}
 
 \paragraph{Bernoulli equation simplification}
 
-The Bernoulli equation can be written in the LRF as \(\nabla_\mu T^{t\mu} = 0\).
+The Bernoulli equation can be written as \(\nabla_\mu T^{t\mu} = 0\).
+
+\begin{greenbox}
+  Wait, this is the conservation of the stress-energy tensor projected onto the unit time-directed vector in the \emph{spherical} reference, not the \emph{fiducial} one! If this were not the case, we would have two terms (\(\hat{r}\) and \(\hat{t}\)) in the divergence sum.
+
+  But this is a weird equation to write down...
+\end{greenbox}
+
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
 \begin{equation}

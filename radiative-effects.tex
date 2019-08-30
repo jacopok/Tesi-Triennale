@@ -284,7 +284,7 @@ The fiducial congruence reference, written with respect to the regular spherical
 
 \begin{subequations}
 \begin{align}
-  \hat{t} = e_t &= u^\mu = \qty(\gamma^2 / y, yv, 0,0)  \\
+  \hat{t} = e_t &= u^\mu = \qty(\gamma^2 / y, -yv, 0,0)  \\
   \hat{r} = e_r &= \qty(-v \gamma^2 /y, y, 0, 0) \\
   \hat{\theta} =  e_\theta &= \qty(0,0, 1/r, 0)  \\
   \hat{\varphi} =  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
@@ -388,7 +388,7 @@ We can explicitly write the stress-energy tensor in terms of the \(w_k\) using \
 
 It is possible to write equations \eqref{eq:PSTF-grey-moment-equations} explicitly in terms of the \(w_k\) and of derivatives wrt the fiducial basis: one gets \cite[eq. 5.10c]{Thorne:1981feb}
 
-\begin{equation} \eqref{eq:scalar-PSTF-moment-equations}
+\begin{equation} \label{eq:scalar-PSTF-moment-equations}
   \begin{split}
     \pdv{w_{k+1}}{\hat{r}} &+[(2-k) a+(k+2) b] w_{k+1}+\pdv{w_k}{\hat{t}}+\left[\frac{4}{3} \theta+\frac{5 k(k+1)}{2(2 k-1)(2 k+3)} \sigma\right] w_{k} + \\
     &+\frac{k^{2}}{(2 k-1)(2 k+1)} \pdv{w_{k-1}}{\hat{r}}+\frac{k^{2}[(k+3) a+(1-k) b]}{(2 k-1)(2 k+1)} w_{k-1} +  \\
@@ -426,9 +426,44 @@ Because of this, we can express the derivatives in \eqref{eq:scalar-PSTF-moment-
 
 \begin{subequations}
 \begin{align}
-  \pdv{}{\hat{t}} &=
+  \pdv{}{\hat{t}} &= \frac{\gamma^2}{y} \pdv{}{t} - yv \pdv{}{r} = - yv \pdv{}{r}  \\
+  \pdv{}{\hat{r}} &= -v \frac{\gamma^2}{y} \pdv{}{t} + y \pdv{}{r} = y \pdv{}{r}
 \end{align}
 \end{subequations}
+
+Now, we can make the scalar PSTF moment equations \eqref{eq:scalar-PSTF-moment-equations} fully explicit: denoting derivation with respect to \(r\) with a prime, we have
+
+\begin{subequations}
+\begin{align}
+  y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
+  -yv w_0^{\prime}
+  - \frac{4}{3} \frac{w_0}{r^2} \qty(r^2 v y)^{\prime}
+  - w_2 r \qty(\frac{vy}{r})^{\prime} &= s_0  \\
+  y w_2^{\prime} + \qty(y^{\prime} + \frac{3y}{r})w_2
+  - yv w_1 ^{\prime} - \frac{4}{3r^2} \qty(r^2 vy)^{\prime} w_1
+  - \frac{2r}{3} \qty(\frac{vy}{r})^{\prime} w_1
+  + \frac{y}{3} w_0^{\prime} + \frac{4}{3} y^{\prime} w_0
+  &= s_1
+\end{align}
+\end{subequations}
+
+We can simplify these by expanding the derivatives of products \((vyr^2)^{\prime}\) and \((vy/r)^{\prime}\):
+
+\begin{subequations} \label{eq:NTZ91-moment-equations}
+\begin{align}
+  y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
+  -yv w_0^{\prime}
+  - \frac{4}{3} w_0 \qty((v y)^{\prime} + \frac{2vy}{r})
+  - w_2 \qty((vy)^{\prime} - \frac{vy}{r}) &= s_0  \\
+  y w_2^{\prime} + \qty(y^{\prime} + \frac{3y}{r})w_2
+  - yv w_1 ^{\prime}
+  - 2 w_1 \qty((vy)' + \frac{vy}{r})
+  + \frac{y}{3} w_0^{\prime} + \frac{4}{3} y^{\prime} w_0
+  &= s_1
+\end{align}
+\end{subequations}
+
+Equations \eqref{eq:NTZ91-moment-equations} are the ones which appear in  \textcite[eq. 4]{NobiliTurollaZampieri:1991dec}. 
 
 From equation \eqref{eq:mass-conservation-integral} we can find an expression \cite[eq. 18a]{ThorneFLammmangZytkow:1981feb} for \(y\) which only depends on \(r\) and constants:
 

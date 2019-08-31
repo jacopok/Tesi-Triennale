@@ -566,10 +566,10 @@ with
 \begin{equation}
     T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}
 \end{equation}
-
-\begin{greenbox}
-  I do not really understand where these come from.
-\end{greenbox}
+%
+% \begin{greenbox}
+%   I do not really understand where these come from.
+% \end{greenbox}
 
 Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) ( given in \eqref{eq:cooling-function-NTZ91}):
 
@@ -580,8 +580,24 @@ Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is th
 to write the source term \(s_0\) as
 
 \begin{equation}
-    s_0 = \frac{\rho_0^2 \Lambda (T)}{m_p^2} \qty(1 + w_0 \kappa_{\text{es}} \frac{4 k_B}{\varepsilon m_e} (T - T_\gamma) - \frac{w_0}{aT^4})
+    s_0 = \frac{\rho_0^2 \Lambda (T)}{m_p^2} \qty(1 + w_0 \qty(\kappa_{\text{es}} \frac{4 k_B}{\varepsilon m_e} (T - T_\gamma) - \frac{1}{aT^4}))
 \end{equation}
+
+As for the \(s_1\) term, we model \(\kappa_1\) as
+
+\begin{equation}
+  \kappa_1 = \kappa_{\text{es}} + \expval{\kappa_{\text{ff}}}
+  = \kappa_{\text{es}} + \SI{6.4e22}{\centi\metre\square\per\gram} \rho_0 T^{-7/2}
+\end{equation}
+
+where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives wrt temperature of the radiation intensities at specific frequencies (which are related to the grey zeroth moment by \(w_0 = \int I_\nu \dd{\nu}\)).
+
+\begin{equation}
+  \frac{1}{\expval{\kappa_{\text{ff}}}} =
+  \frac{ \displaystyle\int _{0}   ^{\infty}  \dv{I_\nu}{T} \frac{1}{\kappa_\nu^{\text{ff}}} \dd{\nu}}
+  {  \displaystyle \int _{0}   ^{\infty} \dv{I_\nu}{T} \dd{\nu}}
+\end{equation}
+
 
 \paragraph{Bernoulli equation simplification}
 
@@ -590,7 +606,7 @@ The Bernoulli equation can be written as \(\nabla_\mu T^{t\mu} = 0\).
 \begin{greenbox}
   Wait, this is the conservation of the stress-energy tensor projected onto the unit time-directed vector in the \emph{spherical} reference, not the \emph{fiducial} one! If this were not the case, we would have two terms (\(\hat{r}\) and \(\hat{t}\)) in the divergence sum.
 
-  But this is a weird equation to write down...
+  Usually one would expect the Bernoulli equation to be projected along the fluid's 4-velocity.
 \end{greenbox}
 
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
@@ -626,5 +642,38 @@ The full energy momentum tensor of the problem is given, in the fiducial referen
       \left[\begin{matrix}\frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 P + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} & \gamma^{2} \left(- \frac{v \left(3 P + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right) & 0 & 0\\\gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 P + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) & y^{2} \left(P - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right) & 0 & 0\\0 & 0 & \frac{P + \frac{w_{0}}{3} - \frac{w_{2}}{2}}{r^{2}} & 0\\0 & 0 & 0 & \frac{P + \frac{w_{0}}{3} - \frac{w_{2}}{2}}{r^{2} \sin^{2}{\left(\theta \right)}}\end{matrix}\right]
   \end{equation}
 \end{greenbox}
+
+\begin{claim}
+
+These conservation laws can be projected onto \(\hat{t}\) and \(\hat{r}\) and cast into \cite[eq. A7]{NobiliTurollaZampieri:1991dec}:
+
+\begin{subequations} \label{eq:fiducial-projected-conservation}
+\begin{align}
+    (P+\rho) \dv{y}{r}
+    +y \dv{P}{r}
+    +\frac{4}{3} w_{0} \dv{y}{r}
+    +\frac{1}{3} y \dv{w_0}{r}
+    +\frac{1}{y v r^{2}} \dv{}{r}\left(y^{2} v^{2} r^{2} w_{1}\right)
+    +\frac{1}{r^{3}} \dv{}{r}\left(r^{3} y w_{2}\right) &=0 \\
+    \dv{\rho}{r}
+    -\frac{P+\rho}{\rho_{0}}
+    \dv{\rho_{0}}{r}
+    +\dv{w_0}{r}
+    +\frac{4}{3} \frac{w_{0}}{y v r^{2}} \dv{}{r}\left(y v r^{2}\right)
+    +\frac{1}{y^{2} v r^{2}} \dv{}{r}\left(y^{2} r^{2} w_{1}\right)
+    +w_{2} \frac{r}{y v} \dv{}{r}\left(\frac{y v}{r}\right) &=0
+\end{align}
+\end{subequations}
+\end{claim}
+
+By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} into the equations \eqref{eq:fiducial-projected-conservation} we get the simplified conservation equations we will work with, to which we add the continuity equation \eqref{eq:differential-continuity}. Here, as in \cite[]{NobiliTurollaZampieri:1991dec}, primes denote differentiation with respect to \(\log r\).
+
+\begin{subequations}
+\begin{align}
+  (P + \rho) \frac{y'}{y} + P^\prime + \frac{2rM s_1}{y}  &= 0  \\
+  \rho^\prime - (P + \rho) \frac{\rho_0^\prime}{\rho_0} + \frac{2rM s_0}{vy}   &=0  \\
+  \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0
+\end{align}
+\end{subequations}
 
 \end{document}

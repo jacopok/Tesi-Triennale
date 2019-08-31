@@ -1,7 +1,9 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\subsection{Tensor calculus}
+\subsection{Relativity}
+
+\paragraph{Tensor calculus}
 
 We can define the Dalambertian operator $\square = \nabla_\mu \nabla^\mu = \nabla_\mu \partial^\mu$, which can only act on scalars, and it does so like:
 
@@ -27,6 +29,18 @@ Following \cite[section 6]{Taub:1978}. The Lie derivative of a generic tensor \(
 \end{equation}
 
 Some special cases are: a scalar \(\Lie _\xi f = \xi^\rho \partial_\rho f \), a vector \(\Lie _\xi u^\mu = \xi^\rho \nabla_\rho u^\mu -u^\rho \nabla_\rho \xi^\mu\), and  an antisymmetric covariant two-tensor \(\omega_{\mu\nu} = \omega_{[\mu \nu]}\) which represents a closed form \(\nabla_{[\mu} \omega_{\nu \rho]} = 0\) we have \(\Lie _\xi \omega_{\mu\nu} =2\nabla_{[\nu} \qty( \omega_{\mu] \rho} \xi^\rho )\)
+
+\paragraph{The General Relativity postulates}    
+
+We can formalize the mathematical postulates which determine our theory of relativity (see \cite[section 3.2]{HawkingEllis:1973}):
+
+\begin{enumerate}
+    \item The laws of physics are tensor laws in a 4-dimensional manifold with metric signature \(+2\);
+    \item there exists a stress-energy tensor \(T^{\mu\nu}\) which: transforms as a \((2,0)\) tensor, is symmetric, is conserved (\(\nabla_\mu T^{\mu\nu} = 0\)), is nonzero only in the regions which contain matter or radiation;
+    \item Local causality: every physical curve (which represents an object's path) must admit a reparametrization with tangent vector \(u^\mu\) such that \(u^\mu u_\mu = -1\);
+    \item global causality: there are no closed timelike curves;
+    \item the Einstein Field Equations \eqref{eq:EFE} hold.
+\end{enumerate}
 
 \subsection{Fluid dynamics}
 
@@ -324,7 +338,7 @@ The cooling function of the infalling gas is
     \label{fig:cooling-function}
 \end{figure}
 
-\begin{equation} \label{eq:cooling-function-NTZ91} 
+\begin{equation} \label{eq:cooling-function-NTZ91}
     \begin{split}
     \Lambda (T) &= \left(
     \qty(

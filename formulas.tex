@@ -30,7 +30,35 @@ Following \cite[section 6]{Taub:1978}. The Lie derivative of a generic tensor \(
 
 Some special cases are: a scalar \(\Lie _\xi f = \xi^\rho \partial_\rho f \), a vector \(\Lie _\xi u^\mu = \xi^\rho \nabla_\rho u^\mu -u^\rho \nabla_\rho \xi^\mu\), and  an antisymmetric covariant two-tensor \(\omega_{\mu\nu} = \omega_{[\mu \nu]}\) which represents a closed form \(\nabla_{[\mu} \omega_{\nu \rho]} = 0\) we have \(\Lie _\xi \omega_{\mu\nu} =2\nabla_{[\nu} \qty( \omega_{\mu] \rho} \xi^\rho )\)
 
-\paragraph{The General Relativity postulates}    
+\paragraph{vorticity vector}
+
+
+We can describe the rotation with a ``vorticity vector'':
+
+\begin{equation}
+    \omega^\mu = \frac{1}{2 \sqrt{-g}} \varepsilon^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma} = \frac{1}{2} \eta^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma}
+\end{equation}
+
+where we define the fully antisymmetric, covariant tensor \(\eta^{\mu\nu\sigma\tau} = \varepsilon^{\mu\nu\sigma\tau} / \sqrt{-g} \). With its indices lowered, it is
+\(\eta_{\mu\nu\sigma\tau} = - \varepsilon_{\mu\nu\sigma\tau} \sqrt{-g} \).
+
+Note, from \cite[pages 51--52]{Carroll:1997ar}: this is the volume form of the manifold, and it is defined this way since \(g\) is a \emph{tensor density} of weight $-2$, while the bare Levi-Civita symbol is a density of weight $+1$.
+
+\begin{greenbox}
+  The signs in \cite[]{Taub:1978} and \cite[]{Carroll:1997ar} seem to disagree though!
+\end{greenbox}
+
+By the antisymmetry in the definition we can immediately see that \(\omega^\mu u_\mu=0\). It holds that \(\omega^\mu \equiv 0 \iff u_\mu = \rho \partial_\mu f \) (locally!) for scalar \(\rho\), \(f\), since this is equivalent to \(u_\mu\) being a closed form.
+
+\(\omega_\mu\) and \(\omega_{\mu \nu}\) are ``dual'' in the sense that
+
+\begin{equation}
+    \omega _{\sigma\tau} = u^\mu \omega^\nu \eta_{\mu \nu \sigma \tau}
+\end{equation}
+
+and some other useful identities can be found in equations 7.5 through 7.7 of \cite[]{Taub:1978}.
+
+\paragraph{The General Relativity postulates}
 
 We can formalize the mathematical postulates which determine our theory of relativity (see \cite[section 3.2]{HawkingEllis:1973}):
 

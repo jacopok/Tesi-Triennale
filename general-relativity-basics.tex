@@ -15,7 +15,7 @@
 
 \subsection{Special relativity}
 
-It is a theory which satisfies the following axioms \cite[]{Lechner:2014}:
+Special Relativity is a theory which satisfies the following axioms \cite[]{Lechner:2014}:
 
 \begin{enumerate}
     \item space and time are homogeneous (i. e. shift-invariant), space is isotropic (i.e. rotation-invariant);
@@ -23,9 +23,11 @@ It is a theory which satisfies the following axioms \cite[]{Lechner:2014}:
     \item all the laws of physics are written in the same way in every inertial reference frame.
 \end{enumerate}
 
-In special relativity we model spacetime as an intrinsically flat semi-Riemannian manifold with metric signature \((-, +, +, +)\): instead of having 3D space and a time scalar coordinate, we denote events as points in 4D spacetime, with coordinates such as \(x^\mu = (t, x, y, z)\). This is called Minkowski flat spacetime.
+In special relativity, instead of having vectors in 3D space and a time scalar coordinate, we denote events as points in 4D spacetime, which is an intrinsically flat semi-Riemannian manifold with metric signature \((-, +, +, +)\), with coordinates such as \(x^\mu = (t, x, y, z)\).
+This is called Minkowski flat spacetime.
 
-This is not just semantics: it is needed because it turns out (see for example \cite[section 1]{Lechner:2014}) that the axioms are equivalent to the conservation of the spacetime interval \(\dd{s}^2 = \eta_{\mu\nu} \dd{x}^\mu\dd{x}^\nu\), and the only transformations between inertial reference frames which leave it invariant turn out to regularly \emph{mix} time and space: they are conveniently represented in 4D spacetime as \(x^\mu \rightarrow \Lambda^\mu\,_\alpha x^\alpha + a^\mu\), with the \(\Lambda_\mu\,^\alpha\) being \((1,1)\) tensors which satisfy \(\Lambda^\mu\,_\alpha \Lambda^\nu\,_\beta \eta_{\mu\nu} = \eta_{\alpha \beta}\), and \(a^\mu\) being a 4-vector.
+This difference is not just semantic: the spacetime formalism is needed because the axioms are equivalent to the conservation of the spacetime interval \(\dd{s}^2 = \eta_{\mu\nu} \dd{x}^\mu\dd{x}^\nu\), and the only transformations between inertial reference frames which leave it invariant regularly \emph{mix} time and space:
+they are  represented in 4D spacetime as \(x^\mu \rightarrow \Lambda^\mu\,_\alpha x^\alpha + a^\mu\), with the \(\Lambda_\mu\,^\alpha\) being \((1,1)\) tensors which satisfy \(\Lambda^\mu\,_\alpha \Lambda^\nu\,_\beta \eta_{\mu\nu} = \eta_{\alpha \beta}\), and \(a^\mu\) being a generic constant 4-vector.
 
 The flat metric allows us to compute the lengths of vectors, and since it is indefinite there are nonzero vectors of positive, negative and zero spacetime length. These are respectively called spacelike, timelike and null-like.
 
@@ -43,9 +45,9 @@ Once we have this, we can define the 4-acceleration:
     a^\nu = \dv{u^\mu}{\tau}  = u^\mu \nabla_\mu u^\nu
 \end{equation}
 
-and the 4-momentum \(p^\mu = m u^\mu\), where \(m\) is the rest mass of the body at hand.
+The 4-velocity is a unit vector: \(u^\mu u_\mu = -1\), and by differentiating this relation we get the often used identity \(u^\mu a_\mu = 0\).
 
-The 4-velocity is a unit vector: \(u^\mu u_\mu = -1\), and by differentiating this relation we get \(u^\mu a_\mu = 0\).
+We also define the 4-momentum \(p^\mu = m u^\mu\), where \(m\) is the rest mass of the body at hand.
 
 The 0-th component of the 4-momentum vector is the energy of the body, while the $i$-th components define a new relativistic momentum \(p^i = \gamma m v^i\): we then have $p^\mu p_\mu = m^2 = E^2 - \abs{p}^2$.
 
@@ -71,7 +73,8 @@ The metric defines an invariant called the \emph{spacetime interval}:
 
 \paragraph{Tensor calculus}
 
-An object such as \(\partial_\mu A^\nu\) for some vector \(A^\nu\) does not in general transform as a tensor, since the computation we should actually do is \(\partial_\mu (A^\nu e_\nu)\) where \(e_\nu\) are the basis vectors: we evaluate this with the product rule and are left with \((\partial_\mu A^\nu)e_\nu + A^\nu \partial_\mu e_\nu\). Only the first half is covariant, in flat spacetime the second half is zero but in general it is not: the way we usually confuse the derivatives of the components with the derivatives of the vector does not work here.
+An object such as \(\partial_\mu A^\nu\) for some vector \(A^\nu\) does not in general transform as a tensor, since quantity we should actually compute is \(\partial_\mu (A^\nu e_\nu)\) where \(e_\nu\) are the basis vectors: we evaluate this with the product rule and are left with \((\partial_\mu A^\nu)e_\nu + A^\nu \partial_\mu e_\nu\).
+If we only had the first half the derivative would be covariant: in flat spacetime the second half is zero but in general it is not: confusing the derivatives of the components with the derivatives of the vector does not work here.
 
 The covariant derivative keeps account of the shifting of the basis vectors:
 
@@ -117,7 +120,8 @@ If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) 
 
 \paragraph{Geodesics}
 
-If we have a path $x^\mu(\lambda)$, we would like to see if it is a geodesic, that is, if it is stationary with respect to path length. To do this we can stationarize the action corresponding to the Lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
+A path $x^\mu(\lambda)$ is called a \emph{geodesic} if it is stationary with respect to path length.
+To check whether a given path is a geodesic we can stationarize the action corresponding to the Lagrangian $\Lagr (x, \Dot{x}) = g_{\mu\nu} \Dot{x}^\mu \Dot{x}^\nu$ (where we use the notation $\Dot{x} = \dv*{x}{\lambda}$). The Lagrange equations then are:
 
 \begin{equation}
     \Ddot{x}^\mu + \Gamma^\mu_{\nu\rho} \Dot{x}^\nu \Dot{x}^\rho = 0
@@ -145,13 +149,13 @@ Then we say that \(V^\mu\) is transported according to Fermi-Walker iff it satis
 
 This condition is always satisfied by \(V^\mu = u^\mu\), since \(a^\mu u_\mu = 0\), whether or not the curve is a geodesic. The tangent vector is \emph{parallel} transported only for geodesics.
 
-The justification of this definition is the fact that we want the transformations of our our tetrad to be infinitesimal Lorentz boosts, which are generated by antisymmetric tensors, and we want to prohibit any rotations in the plane orthogonal to \(a^\mu\) and \(u^\mu\).
+The justification of this definition is the fact that we want the transformations of our tetrad to be infinitesimal Lorentz boosts, which are generated by antisymmetric tensors, and we want to prohibit any rotations in the plane orthogonal to \(a^\mu\) and \(u^\mu\).
 
 \paragraph{Tetrads and projectors} \label{par:tetrads}
 
 We want to work in a reference in which the velocity $u^\mu$ is purely timelike. This can always be found by the equivalence principle. Such a reference can be completed into what  is called a tetrad, for which the metric becomes the Minkowski metric in a neighbourhood of the point we consider.
 
-We call the velocity \(u^\mu = V^\mu _{(0)}\), and add to it three other vectors \(V^\mu_{(i)}\) such that
+We call the velocity \(u^\mu = V^\mu _{(0)}\) and complement it with three other vectors \(V^\mu_{(i)}\) such that
 
 \begin{equation}
     g_{\mu\nu} V^\mu _{(\alpha)} V^\nu _{(\beta)} = \eta_{(\alpha) (\beta)}
@@ -172,7 +176,7 @@ respectively onto the space- and time-like subspaces.
 \paragraph{Killing vector fields}
 
 Following \cite[section 25.2, page 650]{MisnerThorneWheeler:1973}.
-Say there is a certain direction (for simplicity, along one of our coordinate axes) along which the metric is preserved: an \(\widetilde{\alpha}\) such that \(\partial_{\widetilde{\alpha} g_{\mu\nu}}\).
+Suppose there is a certain direction (which, for simplicity, we assume to be along one of our coordinate axes) along which the metric is preserved: an \(\widetilde{\alpha}\) such that \(\partial_{\widetilde{\alpha}} g_{\mu\nu} =0\).
 
 Then the metric properties of curves along the manifold are unchanged if we shift their coordinate representation by a constant along the \(\widetilde{\alpha}\) coordinate axis.
 
@@ -186,7 +190,7 @@ Let us call the direction of this translation \(\xi^\mu = \delta^\mu_{\widetilde
 
 but by hypothesis the first term on the RHS of \eqref{eq:killing-vector-identity} is zero, therefore we have shown that \(\nabla_{\nu} \xi_\mu = \nabla_{[\nu} \xi_{\mu]}\) in this coordinate frame, but since this is a covariant equation it extends to every other one.
 
-It can also be seen this way that \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called \emph{Killing's equation}. This is useful since: given a geodesic \(x^\mu(\lambda)\), for which we define \(u^\mu = \dv*{x^\mu}{\lambda} \), it must be the case that \(u^\nu \nabla_\nu u^\mu = 0 \). Then, the component of \(u^\mu\) along \(\xi^\mu\) (\(u^{\widetilde{\alpha}} = u^\mu \xi_\mu\)) is conserved:
+This can equivalently be stated by writing \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called \emph{Killing's equation}. This is useful since: given a geodesic \(x^\mu(\lambda)\), for which we define \(u^\mu = \dv*{x^\mu}{\lambda} \), it must be the case that \(u^\nu \nabla_\nu u^\mu = 0 \). Then, the component of \(u^\mu\) along \(\xi^\mu\) (\(u^{\widetilde{\alpha}} = u^\mu \xi_\mu\)) is conserved:
 
 \begin{equation}
     \dv{}{\lambda} \qty(u^\mu \xi_\mu) = u^\nu \nabla_\nu \qty(u^\mu \xi_\mu)
@@ -198,7 +202,7 @@ It can also be seen this way that \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called
 Following \cite[section 4]{Taub:1978}
 We look at 4D space time in 3D space-like slices: if we have a fluid moving with velocity \(u^\mu\), we can look at the solutions of the associated differential equation: \(x^\mu (\xi^i, s)\), where \(\xi^i\) are the 3D coordinates of the starting position and \(s\) is the time at which we look at the solution. Then we can look at the ``starting'' hypersurface \(\Sigma = \qty{x^\mu (\xi^i, 0)}\).
 
-Say we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can look at the two-dimensional surface defined by the evolution of \(\xi^i(\tau)\): \(x^{\mu} (\xi^i(\tau), s) = x^\mu (\tau, s)\). If we define the ``spatial'' tangent vector \(\lambda^\mu = \dv*{x^\mu}{\tau} \), it follows from Schwarz's theorem that:
+Suppose we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can look at the two-dimensional surface defined by the evolution of \(\xi^i(\tau)\): \(x^{\mu} (\xi^i(\tau), s) \defeq x^\mu (\tau, s)\). If we define the ``spatial'' tangent vector \(\lambda^\mu = \dv*{x^\mu}{\tau} \), it follows from Schwarz's theorem that:
 
 \begin{equation} \label{eq:schwarz-spacetime-tube}
     \pdv{x^\mu}{\tau}{s} =
@@ -240,37 +244,10 @@ where in the last step we expressed everything with respect to the tetrad coordi
     \item \(\theta = \nabla_\mu u^\mu\) is the bare trace of the tensor, corresponding to the expansion velocity;
     \item \(a_\mu = u^\nu \nabla_\nu u^\mu\) is the covariant acceleration;
     \item \(\sigma_{\sigma \tau} = \qty(\nabla_{(\mu} u_{\nu)}) h^\mu_\sigma h^\nu _\tau - \frac[i]{1}{3} \theta h_{\sigma \tau} = \nabla_{(\sigma} u_{\tau)} + a_{(\sigma} u_{\tau)} - \frac[i]{1}{3} \theta h_{\sigma \tau} \) is the spatial symmetric trace-free part of the tensor, that is, the shear stress;
-    \footnote{A trick for this computation: why would a term like \(u^\mu u_\sigma \nabla_\tau u_\mu\) be zero? We can just multiply by \(1 = - u^\tau u_\tau\) to get \(-u^\mu u_\sigma u_\tau u^\tau \nabla_\tau u_\mu = \sum_\tau u_\sigma u_\tau a_\mu u^\mu = 0\).
-    \begin{greenbox}
-        Is this right? It seems like we shouldn't be able to do this... The index \(\tau\) in the starting formula was not summed and then it is so this does not sound convincing. Is there another way to see that \(u^\mu u_{(\sigma} \nabla_{\tau)} u_\mu = 0\)?
-    \end{greenbox}}
-    \item \(\omega_{\sigma \tau} = h^\nu_\sigma h^\mu_\tau \nabla_{[\nu} u_{\mu]} = \partial_{[\tau} u_{\sigma]} + a_{[\tau} u_{\sigma]}\) is the spatial rotation tensor.
+    \item \(\omega_{\sigma \tau} = h^\nu_\sigma h^\mu_\tau \nabla_{[\nu} u_{\mu]} = \partial_{[\tau} u_{\sigma]} + a_{[\tau} u_{\sigma]}\) is the spatial (antisymmetric, trace-free) rotation tensor.
 \end{enumerate}
 
-We can describe the rotation with a ``vorticity vector'':
-
-\begin{equation}
-    \omega^\mu = \frac{1}{2 \sqrt{-g}} \varepsilon^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma} = \frac{1}{2} \eta^{\mu\nu\sigma\tau} u_\nu \partial_\tau u_{\sigma}
-\end{equation}
-
-where we define the fully antisymmetric, covariant tensor \(\eta^{\mu\nu\sigma\tau} = \varepsilon^{\mu\nu\sigma\tau} / \sqrt{-g} \). With its indices lowered, it is
-\(\eta_{\mu\nu\sigma\tau} = - \varepsilon_{\mu\nu\sigma\tau} \sqrt{-g} \).
-
-Note, from \cite[pages 51--52]{Carroll:1997ar}: this is the volume form of the manifold, and it is defined this way since \(g\) is a \emph{tensor density} of weight $-2$, while the bare Levi-Civita symbol is a density of weight $+1$.
-
-\begin{greenbox}
-  The signs in \cite[]{Taub:1978} and \cite[]{Carroll:1997ar} seem to disagree though!
-\end{greenbox}
-
-By the antisymmetry in the definition we can immediately see that \(\omega^\mu u_\mu=0\). It holds that \(\omega^\mu \equiv 0 \iff u_\mu = \rho \partial_\mu f \) (locally!) for scalar \(\rho\), \(f\), since this is equivalent to \(u_\mu\) being a closed form.
-
-\(\omega_\mu\) and \(\omega_{\mu \nu}\) are ``dual'' in the sense that
-
-\begin{equation}
-    \omega _{\sigma\tau} = u^\mu \omega^\nu \eta_{\mu \nu \sigma \tau}
-\end{equation}
-
-and some other useful identities can be found in equations 7.5 through 7.7 of \cite[]{Taub:1978}.
+To verify the formulas given for \(\sigma_{\sigma \tau}\) and \(\omega_{\sigma \tau}\) it is enough to expand the definitions, simplifying the terms which contain products of the 4-acceleration and the 4-velocity; also the terms such as \(u^\mu u_{\tau}\nabla_{\sigma} u_\mu \) vanish since \( 0= u_{\tau} \nabla_{\sigma} (u^\mu u_\mu) = 2 u^\mu u_{\tau}\nabla_{\sigma} u_\mu\).
 
 \subsection{General Relativity}
 
@@ -278,15 +255,15 @@ and some other useful identities can be found in equations 7.5 through 7.7 of \c
 
 In the General theory of Relativity we make a stronger claim than that of the axioms of SR, which are only formulated for inertial reference frames.
 
-The \textbf{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally. The frame of reference in which we must write the laws to put them in special-relativistic form is called the Locally Inertial Reference Frame.
+The \emph{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally. The frame of reference in which we must write the laws to put them in special-relativistic form is called the Locally Inertial Reference Frame.
 
 Unlike special relativity, the transformation laws between LIRFs are not linear, but can be in general be represented as diffeomorphisms.
 
-We model spacetime as a manifold which has intrinsic (basis-independent) curvature; an object which is modelled in newtonian mechanics as being accelerated by a gravitational force is modelled as following a geodesic in the manifold.
+We model spacetime as a manifold which has intrinsic (basis-independent) curvature; an object which is modelled in newtonian mechanics as being accelerated by a gravitational force is modelled in general relativity as following a geodesic in the manifold.
 
 \paragraph{Curvature}
 
-The curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
+The intrinsic curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
 
 \begin{equation} \label{eq:riemann-tensor-def}
     R ^{\mu} _{\nu \rho \sigma} V^\nu \defeq [\nabla_\rho, \nabla_\sigma]   V^\mu

@@ -49,7 +49,7 @@ where $\varepsilon$ is the specific energy (of a type that is different from kin
 % \subsection{Fluid mechanics}
 
 When dealing with a continuum, we will have a certain density of particles per unit of volume, which we call $n$.
-The current of particles is then $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-velocity field of the fluid. 
+The current of particles is then $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-velocity field of the fluid.
 If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$, which is conserved: $\nabla_\mu(\rho_0 u^\mu) = 0$, that is, particles do not spontaneously appear or disappear nor change their mass.
 
 Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
@@ -357,20 +357,77 @@ Also, the RHS of \eqref{eq:full-spatial-equations-of-motion} is zero, therefore 
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
 
-\subsection{Perfect fluids' spherical accretion}
+\subsection{Bondi accretion: the adiabatic case}
 
-We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element}; we treat a fluid with 4-velocity $u^\mu$ in spherical coordinates, since the problem we are looking at is stationary and spherically symmetric the velocity is:
+We now apply the formalism developed in this section to the problem of spherical accretion into a black hole, without considering any kind of radiative transfer: we only look at the \emph{adiabatic} case.
 
-\begin{equation}
-    u^\mu = \begin{pmatrix}
-        \gamma^2 / y\\
-        yv\\
-        0\\
-        0
-    \end{pmatrix}
-\end{equation}
+We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element} and make the following assumptions:
 
-where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi}$ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
+\begin{enumerate}
+  \item spherical symmetry: \(\partial_\theta = \partial_\varphi = 0\);
+  \item stationarity: \(\partial_t = 0\).
+\end{enumerate}
+
+The comoving tetrad defined by the fluid's motion is called the \emph{fiducial congruence reference}.
+
+\begin{claim}
+When written with respect to the regular spherical coordinates \((t, r, \theta, \varphi)\) it is:
+
+\begin{subequations} \label{eq:fiducial-frame}
+    \begin{align}
+        \hat{t} = e_t &= u^\mu = \qty(\gamma^2 / y, -yv, 0,0)  \\
+        \hat{r} = e_r &= a^\mu / \sqrt{a^\rho a_\rho} = \qty(-v \gamma^2 /y, y, 0, 0) \\
+        \hat{\theta} =  e_\theta &= \qty(0,0, 1/r, 0)  \\
+        \hat{\varphi} =  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
+    \end{align}
+\end{subequations}
+
+where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi} = \gamma \sqrt{1 - 2M/r} $ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
+\end{claim}
+
+\begin{proof}
+    First of all, we prove that we can form a comoving tetrad by rescaling the vectors \((u^\mu, a^\mu, e_\theta, e_\varphi)\). They are clearly orthogonal, let us show that they are Fermi-Walker transported (see equation \eqref{eq:fermi-walker-transport}); notice that the condition of being FW-transported is 1-homogeneous, so proving it before or after normalization makes no difference.
+    For the velocity \(u^\mu \propto \hat{t}\)  we have
+
+    \begin{equation}
+        u^\nu \nabla_\nu u^\mu = a^\mu = u_\rho \qty(u^\mu a^\rho - u^\rho a^\mu) = - (u_\rho u^\rho) a^\mu
+    \end{equation}
+
+    For the acceleration \(a^\mu \propto \hat{r} \) we need the following identity: \(0=\dv*{(u^\mu a_\mu)}{\tau} =a^\mu a_\mu + u^\mu \dv*{a_\mu}{\tau} \). We multiply this by \(u^\mu\) to get: \(u^\mu (a^\rho a_\rho) = \dv*{a^\mu}{\tau}\).
+
+    Then, we can prove:
+
+    \begin{equation}
+      u^\nu \nabla_\nu a^\mu
+      = a_\rho (u^\mu a^\rho)
+      = a_\rho (u^\mu a^\rho - u^\rho a^\mu)
+    \end{equation}
+
+    In the proof for the \(\hat{\theta} \) and \(\hat\varphi\) vectors, the RHS vanishes immediately since the time-radial surface to which the velocity and acceleration belong is orthogonal to the sphere's surface; the LHS instead vanishes since it is a derivative with respect to proper time, therefore along the fluid's flow lines, which all lie in the time-radial surface.
+
+    Now, we need to show that the velocity and the acceleration actually have the form shown in \eqref{eq:fiducial-frame}: for the velocity, it is enough to impose the normalization \(u^\mu u_\mu = -1 \), and to consider an observer with velocity  \(k^\mu\) who is stationary with respect to the spherical coordinates: by normalization their 4-velocity will surely look like \(k^\mu = (1/\sqrt{g_{00}}, 0,0,0)\), and the local transformation between the frames will be a Lorentz transformation with factor \(\gamma\) defined by the fluid's velocity, therefore it must hold that \(\gamma = - k^\mu u_\mu\).
+
+    Since \(g_{00} = - y^2 / \gamma^2\) we have:
+
+    \begin{equation}
+      \gamma = k^\mu u^\nu g_{\mu\nu} = u^0 \frac{g_{00}}{\sqrt{-g_{00}} }
+      = u^0 \sqrt{-g_{00}} = u^0 \frac{y}{\gamma}
+    \end{equation}
+
+    which gives us \(u^0 = \gamma^2 / y\), while for \(u^1\) we must impose (already knowing that \(u^2 = u^3 = 0\)):
+
+    \begin{subequations}
+    \begin{align}
+      -1 &= (u^0)^2 g_{00} + (u^1)^2 g_{11} \\
+      &= -\qty(\frac{\gamma^2}{y})^2 \qty(\frac{y}{\gamma} )^2 + (u^1)^2 \frac{\gamma^2}{y^2} \\
+      -1 + \gamma^2 &= (u^1)^2 \frac{\gamma^2}{y^2} \\
+      y^2 (-\frac{1}{\gamma^2}  + 1) &= (u^1)^2 \\
+      y^2 v^2 &= (u^1)^2
+    \end{align}
+    \end{subequations}
+
+    As for \(a^\mu\), we need not compute the derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = 0\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(a^0 y^2 + a^1 v \gamma^2 = 0\), and with 
+\end{proof}
 
 The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
 
@@ -378,7 +435,7 @@ The conservation of mass holds: if $\rho_0$ is the rest mass density of the flui
     \dv{}{r} \qty(\rho_0 yvr^2) = 0
 \end{equation}
 
-\(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
+For any function \(Q\),  \(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
 
 \begin{equation} \label{eq:differential-continuity}
   \dv{\log \rho_0}{\log r} +

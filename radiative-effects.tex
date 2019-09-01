@@ -275,22 +275,13 @@ Once one has solved the PSTF grey moment equations, one can compute the intensit
   I = \sum _{k=0}   ^{\infty} \frac{(2k+1)!!}{4 \pi k!} \mathscr M^{A_k} \prod_{i=1}^k n_{\alpha_i}
 \end{equation}
 
+\subsection{Generalized Bondi accretion}
+
 \paragraph{Simplifications under assumptions of symmetry}
 
 Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \cite[]{ThorneFLammmangZytkow:1981feb}.
 
-The fiducial congruence reference, written with respect to the regular spherical coordinates \((t, r, \theta, \varphi)\), is:
-
-\begin{subequations}
-\begin{align}
-  \hat{t} = e_t &= u^\mu = \qty(\gamma^2 / y, -yv, 0,0)  \\
-  \hat{r} = e_r &= \qty(-v \gamma^2 /y, y, 0, 0) \\
-  \hat{\theta} =  e_\theta &= \qty(0,0, 1/r, 0)  \\
-  \hat{\varphi} =  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
-\end{align}
-\end{subequations}
-
-In this frame (denoted with a subscript ``fid''), we have the following expressions:
+In the fiducial frame defined in \eqref{eq:fiducial-frame}  (denoted with a subscript ``fid''), we have the following expressions:
 
 \begin{subequations} \label{eq:spherical-coordinates-simplifications}
 \begin{align}
@@ -433,14 +424,7 @@ These have to be simplified further to be used: specifically, they can be expres
 
 % Following \textcite[]{ThorneFLammmangZytkow:1981feb}.
 
-We are working with the following assumptions:
-
-\begin{enumerate}
-  \item spherical symmetry: \(\partial_\theta = \partial_\varphi = 0\);
-  \item stationarity: \(\partial_t = 0\).
-\end{enumerate}
-
-Because of this, we can express the derivatives in \eqref{eq:scalar-PSTF-moment-equations} as:
+Because of the hypothesis of stationarity, we can express the derivatives in \eqref{eq:scalar-PSTF-moment-equations} as:
 
 \begin{subequations}
 \begin{align}
@@ -601,13 +585,13 @@ where the second term is the conventional approximation of the \emph{Rosseland m
 
 \paragraph{Bernoulli equation simplification}
 
-The Bernoulli equation can be written as \(\nabla_\mu T^{t\mu} = 0\).
+The ``Bernoulli equation'' can be written as \(\nabla_\mu T^{t\mu} = 0\) in the spherical reference trame --- that is, by projecting the conservation of the stress-energy tensor onto the
 
-\begin{greenbox}
-  Wait, this is the conservation of the stress-energy tensor projected onto the unit time-directed vector in the \emph{spherical} reference, not the \emph{fiducial} one! If this were not the case, we would have two terms (\(\hat{r}\) and \(\hat{t}\)) in the divergence sum.
-
-  Usually one would expect the Bernoulli equation to be projected along the fluid's 4-velocity.
-\end{greenbox}
+% \begin{greenbox}
+%   Wait, this is the conservation of the stress-energy tensor projected onto the unit time-directed vector in the \emph{spherical} reference, not the \emph{fiducial} one! If this were not the case, we would have two terms (\(\hat{r}\) and \(\hat{t}\)) in the divergence sum.
+%
+%   Usually one would expect the Bernoulli equation to be projected along the fluid's 4-velocity.
+% \end{greenbox}
 
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 

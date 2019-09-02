@@ -3,38 +3,42 @@
 
 \subsection{Nonrelativistic fluid mechanics}
 
-Nonrelativistic fluid mechanics are described by the equations:
+Nonrelativistic (compressible) fluid mechanics are described by the equations:
 
 \begin{subequations}
 \begin{align}
-    \partial_t \rho + \partial_i (\rho v^i) &= 0 &\text{conservation of mass} \\
-    \rho \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \\
-    \rho \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
+    \partial_t \rho_0 + \partial_i (\rho_0 v^i) &= 0 &\text{conservation of mass} \\
+    \rho_0 \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \\
+    \rho_0 \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
 \end{align}
 \end{subequations}
 
-where $\rho$ is the density of the fluid,
-$v^i$ are the components of its velocity,
-$\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the energy-momentum tensor),
-$E$ is the energy of the fluid,
+where $\rho_0$ is the density of the fluid,
+$v^i$ are the components of the velocity vector field,
+$\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the stress-energy tensor \(T^{ij}\) ),
+$E$ is the energy density of the fluid,
 $\kappa$ is the thermal conductivity,
-$T$ is the temperature of the fluid.
+$T$ is the temperature  field of the fluid.
 
 The nonrelativistic stress tensor can be written as:
 
 \begin{equation}
-    \sigma_{ij} = -(p - \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
+    \sigma_{ij} = -(p + \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
 \end{equation}
 
 \begin{greenbox}
-  I flipped the sign of the term \(\xi \partial_k v^k\) since I think it is a typo in \cite[page 301]{Taub:1978}: the pressure and compression viscosity terms should have opposite signs like in \eqref{eq:components-stress-energy-tensor}, right?
+  Why is the sign of the term \(\xi \partial_k v^k\) reported in \cite[page 301]{Taub:1978} plus?
+
+  It seems to be inconsistent with the relativistic formulation \eqref{eq:components-stress-energy-tensor}.
+
+  However, if I change it the reasoning in the next paragraph stops working, unless that is also wrong and the identity is \(\xi = - 2 \eta /3\).
 \end{greenbox}
 
 where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $\sigma_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
 
 Note that we are working in Euclidean 3D space, so the metric is the identity and upper and lower indices are equivalent.
 
-The energy is a sum of kinetic and specific energy:
+The energy density is a sum of kinetic and specific energy:
 
 \begin{equation}
     E = v^i v_i /2 + \varepsilon
@@ -48,22 +52,29 @@ where $\varepsilon$ is the specific energy (of a type that is different from kin
 
 % \subsection{Fluid mechanics}
 
-When dealing with a continuum, we will have a certain density of particles per unit of volume, which we call $n$.
-The current of particles is then $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-velocity field of the fluid.
-If these particles have a certain rest mass $m_0$, we can then define the vector $\rho_0 u^\mu = m_0 n u^\mu = m_0 N^\mu$, which is conserved: $\nabla_\mu(\rho_0 u^\mu) = 0$, that is, particles do not spontaneously appear or disappear nor change their mass.
+We want to develop a formalism to treat a fluid dynamics problem in the presence of relativistic speeds and strong gravitational fields, such as in spherical accretion onto a black hole. It will have to be fully relativistic: the conservation laws will have to be written as tensorial equations.
+
+We treat the fluid as a continuous medium which will have a certain density of particles per unit of volume $n$: that is, what we consider ``infinitesimal'' is not actually arbitrarily small but should be considered much smaller than the characteristic lengths of the problem, while still containing many particles.
+
+The 4-current of particles is $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-velocity field of the fluid.
+If these particles have a certain rest mass $m_0$, we can then define the rest-mass-flow vector $\rho_0 u^\mu = m_0 N^\mu$, which is conserved: $\nabla_\mu(\rho_0 u^\mu) = 0$, since particles do not spontaneously appear or disappear nor change their rest mass.
+The presence of particles with different rest masses can be easily accounted for by adding the mass flow vectors.
 
 Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
 We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero.
+
+Do note that, since our volume element is not actually arbitrarily small, being in the LRF only means that, locally, the average velocity of the fluid is purely timelike: the temperature can be nonzero, so in the LRF the particles in the volume element will still have isotropically distributed nonzero velocities.
+
 We write the sum of mass-energy and internal energy as $\rho = \rho_0 (1+\epsilon)$, the \emph{energy} density of the fluid in its Local Rest Frame, while \(\rho_0\) is the \emph{mass} density in the LRF.
 So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
 \paragraph{Stress-energy tensor} \label{par:stress-energy-tensor}
 
-The stress-energy tensor \(T^{\mu\nu}\) is a \((2,0)\) tensor, whose \(\mu, \nu\) component is the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
+The stress-energy tensor \(T^{\mu\nu}\) is a symmetric \((2,0)\) tensor whose \(\mu, \nu\) component is defined as the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
 
 Because of our choice of metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), sice that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
 
-For a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
+To give an example: for a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
 
 \begin{equation}
     T^{\mu\nu} = \rho u^\mu u^\nu = \begin{bmatrix}
@@ -74,12 +85,14 @@ For a gas of non-interacting particles, the stress-energy tensor is very simple:
     \end{bmatrix}
 \end{equation}
 
-% Now, the vector $\rho u^\mu$ describes the flux of energy.
-% We can then write the equation for the conservation of momentum:
-%
-% \begin{equation}
-%     f^\mu = \nabla_\nu (\rho u^\mu u^\nu)
-% \end{equation}
+The fact that momentum is conserved (which follows by Noether's theorem applied to the translational invariance of spacetime) can be expressed as the statement that the stress-energy tensor is conserved: \(\nabla_\mu T^{\mu\nu} = 0\).
+
+In our example, this can be written as
+
+\begin{equation}
+  \rho (a^\nu + u^\nu (\nabla_\mu u^\mu)) + u^\nu \dv{\rho}{\tau} = 0
+\end{equation}
+
 
 \paragraph{Relativistic non-ideal fluid dynamics}
 
@@ -91,7 +104,7 @@ Any stress-energy tensor can be decomposed in its space and time-like parts in t
     T_{\mu \nu} = w u_\mu u_\nu + w_\mu u_\nu + u_\mu w_\nu + w _{\mu \nu}
 \end{equation}
 
-where
+where \cite[eqs. 8.2, 8.3, 8.5]{Taub:1948}:
 
 \begin{subequations} \label{eq:components-stress-energy-tensor}
 \begin{align}
@@ -101,8 +114,11 @@ where
 \end{align}
 \end{subequations}
 
+Do note that by definition the tensors \(w^\mu\) and \(w^{\mu\nu}\) are purely spatial: \(u^\mu w_\mu = u^\mu w_{\mu \nu} = 0\).
+
 For the definition of the acceleration, vorticity etc. see equation \eqref{eq:covariant-acceleration-decomposition}.
-As in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy.
+
+As in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
 
 \begin{greenbox}
     The fact that the decomposition can be written in this way is not proven in \cite[]{Taub:1978}, but it seems like a proof can be found in \cite[]{Eckart:1940}, which is locked behind a paywall.
@@ -114,19 +130,9 @@ Equivalently, we can write
 \begin{align}
   T_{\mu\nu} &= T_{\mu\nu}^p && - T_{\mu\nu}^V &&+ T_{\mu\nu}^h  \\
   &= w u_\mu u_\nu + p h_{\mu\nu} &&-\xi \theta h_{\mu\nu} - 2 \eta \sigma_{\mu\nu} &&+2w_{(\mu} u_{\nu)}  \\
-  &\text{perfect fluid} && \text{viscous stresses} && \text{heat conduction}
+  &\text{perfect fluid} && \text{viscous stresses} && \text{heat conduction} \nonumber
 \end{align}
 \end{subequations}
-
-It holds \cite[]{Taub:1948} that:
-
-\begin{equation}
-0
-\leq 3p
-\leq \frac{3}{2}p + \sqrt{\qty(\frac{3}{2}p)^2 + \rho_0^2}
-\leq \rho = \rho_0 (1 + \varepsilon)
-\leq \rho_0 + 3p
-\end{equation}
 
 \paragraph{Forces}
 
@@ -138,7 +144,7 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
   h^\sigma_\mu \nabla_\nu \qty(T^{\mu\nu}_V - T^{\mu\nu}_h)  \\
   (\rho + p) a^\sigma + h^\sigma_\nu \partial^\nu p &= h^\sigma_\mu \nabla_\nu \qty(
   +\xi \theta h^{\mu\nu} + 2 \eta \sigma^{\mu\nu} - 2w^{(\mu} u^{\nu)})  \\
-  &= \underbrace{\nabla_\nu T^{\mu\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
+  &= \underbrace{\nabla_\nu T^{\sigma\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
   \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}} \label{eq:full-spatial-equations-of-motion}
 \end{align}
 \end{subequations}
@@ -426,7 +432,7 @@ where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and 
     \end{align}
     \end{subequations}
 
-    As for \(a^\mu\), we need not compute the derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = 0\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(a^0 y^2 + a^1 v \gamma^2 = 0\), and with 
+    As for \(a^\mu\), we need not compute the derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = 0\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(a^0 y^2 + a^1 v \gamma^2 = 0\), and with
 \end{proof}
 
 The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:

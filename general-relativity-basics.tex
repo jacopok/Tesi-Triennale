@@ -247,7 +247,7 @@ where in the last step we expressed everything with respect to the tetrad coordi
     \item \(\omega_{\sigma \tau} = h^\nu_\sigma h^\mu_\tau \nabla_{[\nu} u_{\mu]} = \partial_{[\tau} u_{\sigma]} + a_{[\tau} u_{\sigma]}\) is the spatial (antisymmetric, trace-free) rotation tensor.
 \end{enumerate}
 
-To verify the formulas given for \(\sigma_{\sigma \tau}\) and \(\omega_{\sigma \tau}\) it is enough to expand the definitions, simplifying the terms which contain products of the 4-acceleration and the 4-velocity; also the terms such as \(u^\mu u_{\tau}\nabla_{\sigma} u_\mu \) vanish since \( 0= u_{\tau} \nabla_{\sigma} (u^\mu u_\mu) = 2 u^\mu u_{\tau}\nabla_{\sigma} u_\mu\).
+To verify the formulas given for \(\sigma_{\sigma \tau}\) and \(\omega_{\sigma \tau}\) it is enough to expand the definitions, simplifying the terms which contain products of the 4-acceleration and the 4-velocity; also, the terms such as \(u^\mu u_{\tau}\nabla_{\sigma} u_\mu \) vanish since \( 0= u_{\tau} \nabla_{\sigma} (u^\mu u_\mu) = 2 u^\mu u_{\tau}\nabla_{\sigma} u_\mu\).
 
 \subsection{General Relativity}
 
@@ -255,11 +255,11 @@ To verify the formulas given for \(\sigma_{\sigma \tau}\) and \(\omega_{\sigma \
 
 In the General theory of Relativity we make a stronger claim than that of the axioms of SR, which are only formulated for inertial reference frames.
 
-The \emph{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally. The frame of reference in which we must write the laws to put them in special-relativistic form is called the Locally Inertial Reference Frame.
+The \emph{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally. The frame of reference in which we must write the laws to put them in special-relativistic form is called the Locally Inertial Reference Frame or Local Rest Frame.
 
 Unlike special relativity, the transformation laws between LIRFs are not linear, but can be in general be represented as diffeomorphisms.
 
-We model spacetime as a manifold which has intrinsic (basis-independent) curvature; an object which is modelled in newtonian mechanics as being accelerated by a gravitational force is modelled in general relativity as following a geodesic in the manifold.
+We model spacetime as a manifold which has intrinsic (basis-independent) curvature; an object which is modelled in newtonian mechanics as being in free fall, accelerated by a gravitational force, is modelled in general relativity as following a geodesic in the manifold.
 
 \paragraph{Curvature}
 
@@ -269,7 +269,7 @@ The intrinsic curvature of spacetime is fully described by the Riemann curvature
     R ^{\mu} _{\nu \rho \sigma} V^\nu \defeq [\nabla_\rho, \nabla_\sigma]   V^\mu
 \end{equation}
 
-It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one. This result follows by direct computation from formula \eqref{eq:riemann-tensor-def}.
+It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one. This result follows by expanding all the covariant derivatives in formula \eqref{eq:riemann-tensor-def}.
 
 \begin{equation}
     R ^{\mu} _{\nu \rho \sigma} =
@@ -291,12 +291,12 @@ The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{
 \end{align}
 \end{subequations}
 
-If we define the Ricci tensor \(R_{\mu\nu} = R^\rho_{\mu \rho \nu}\) and the curvature scalar \(R = R_{\mu\nu}g^{\mu\nu}\), we can rewrite \eqref{eq:bianchi-identities}  as \(\nabla_\mu R = 2 \nabla_\nu R^{\nu}_{\mu}\), which means that \(\nabla_\mu \qty(R^{\mu\nu} - \frac[i]{1}{2} R g^{\mu\nu}) = 0\).
+If we define the Ricci tensor \(R_{\mu\nu} = R^\rho_{\mu \rho \nu}\) and the curvature scalar \(R = R_{\mu\nu}g^{\mu\nu}\), we can derive from \eqref{eq:bianchi-identities} the \emph{contracted Bianchi identity}  \(\nabla_\mu R = 2 \nabla_\nu R^{\nu}_{\mu}\), which means that \(\nabla_\mu \qty(R^{\mu\nu} - \frac[i]{1}{2} R g^{\mu\nu}) = 0\).
 
 \paragraph{The Einstein Field Equations}
 
 They describe the way the presence of matter changes the geometry of spacetime.
-They involve the \emph{stress-energy tensor} \(T^{\mu\nu}\) which is defined in \Nameref{par:stress-energy-tensor} and the Einstein tensor \(G^{\mu\nu} = R^{\mu\nu} - \frac[i]{1}{2} R g^{\mu\nu}\), which is the only independent tensor which: can be constructed from only the Riemann tensor and the metric, which vanishes for flat spacetime and which identically satisfies the conservation laws \(\nabla_\mu G^{\mu\nu} = 0\).
+They involve the \emph{stress-energy tensor} \(T^{\mu\nu}\) which is defined in \Nameref{par:stress-energy-tensor} and the Einstein tensor \(G^{\mu\nu} = R^{\mu\nu} - \frac[i]{1}{2} R g^{\mu\nu}\), which is the only independent tensor satisfying the following properties: it can be constructed from only the Riemann tensor and the metric, it vanishes for flat spacetime and it identically satisfies the conservation laws \(\nabla_\mu G^{\mu\nu} = 0\).
 
 The equations are:
 
@@ -304,16 +304,17 @@ The equations are:
   G^{\mu\nu} = 8 \pi T^{\mu\nu}
 \end{equation}
 
-The constant comes by imposing continuity with the newtonian limit, for which we have the Poisson equation \(\nabla^2 \Phi = 4 \pi \rho\), where the classical \(\rho\) is substituted by \(T_{00}\) while \(\Phi\) is substituted by \(h_{00}\), with \(g_{00} = - 1 + h_{00}\) (see \cite[eq. 4.46]{Carroll:1997ar}).
+The constant comes by imposing continuity with the newtonian limit, in which we know the gravitational field \(\Phi\) is determined by the matter density \(\rho_0\) according to the Poisson equation \(\nabla^2 \Phi = 4 \pi \rho_0\), where the classical \(\rho_0\) is substituted in the relativistic formulation by \(T_{00}\) while \(\Phi\) is substituted by \(h_{00}\), with \(g_{00} = - 1 + h_{00}\) (see \cite[eq. 4.46]{Carroll:1997ar}).
 
-They can be written in a more general way by removing the condition that the LHS vanish for flat spacetime, and thus including there a term \(\Lambda g^{\mu\nu}\) with constant \(\Lambda\).
+They can be written in a more general way by removing the condition that the LHS vanish for flat spacetime, and thus including there a \emph{cosmological constant}  term \(\Lambda g^{\mu\nu}\) with constant \(\Lambda\).
 It is unclear whether this term should appear, and what the value of \(\Lambda\) should be.
 
 \paragraph{The Schwarzschild solution}
 
 Following \cite[section 7]{Carroll:1997ar}.
 
-The EFE are generally very difficult to solve, but in certain special cases they can be dealt with. The simplest nontrivial one is that of a central mass \(M\) described with spherical coordinates \((t, r, \theta, \varphi)\) and in the presence of spherical symmetry.
+The EFE are generally very difficult to solve, but they admit analytical solutions in certain special cases.
+One of the simplest is that of a central mass \(M\) described with spherical coordinates \((t, r, \theta, \varphi)\) and in the presence of spherical symmetry.
 
 One imposes the condition that the stress energy tensor be identically zero for radii greater than a certain (arbitrarily small) radius, \(r > r_c\).
 
@@ -345,8 +346,8 @@ or, equivalently,
     g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta )
 \end{equation}
 
-We can see that it approaches the flat metric $\eta_{\mu\nu} = \diag\qty(-, +, +, +)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).
+We can see that it approaches the spherical-coordinates flat metric $\eta_{\mu\nu} ^{\prime} = \diag\qty(-1, 1, r^2, r^2 \sin ^2 \theta)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).
 
-If we wanted to analyze the accretion problem without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid's contribution to the metric's curvature; however this would make the already hard problem completely intractable, therefore we assume the stress-energy tensor contributions are very small compared to the massive object's.
+If we wanted to analyze the accretion problem without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid when solving the Einstein Field Equations; however this would make the already hard problem completely intractable and it is reasonable to assume that the gas falling into a black hole is relatively light compared to the black hole itself, therefore we analyze the accretion problem with a fixed Schwarzschild metric.
 
 \end{document}

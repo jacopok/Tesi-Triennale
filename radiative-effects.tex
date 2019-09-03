@@ -100,11 +100,7 @@ Then, \cite[figure 22.2]{MisnerThorneWheeler:1973} the number density of photons
   2N(x^\mu, p^\mu) = \frac{\delta N}{V_x V_p} =  \frac{\delta N}{h^3 \nu^2\delta A \delta  t \delta \nu \delta \Omega} = \frac{1}{h^4 \nu^3} I_\nu
 \end{equation}
 
-therefore \(I_\nu = 2 N \nu^3 h^4\).
-
-\begin{greenbox}
-  This is from \cite[figure 22.2]{MisnerThorneWheeler:1973}, but it seems to conflict with \cite[equation 6.2]{Thorne:1981feb}!
-\end{greenbox}
+therefore \(I_\nu = 2 N \nu^3 h\).
 
 Now, we want to describe the variation of the occupation number \(N\) with respect to the photons' trajectories' parameter \(l\). We encapsulate all possible effects into a source term \(\mathfrak S\):
 
@@ -574,7 +570,7 @@ As for the \(s_1\) term, we model \(\kappa_1\) as
   = \kappa_{\text{es}} + \SI{6.4e22}{\centi\metre\square\per\gram} \rho_0 T^{-7/2}
 \end{equation}
 
-where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives wrt temperature of the radiation intensities at specific frequencies (which are related to the grey zeroth moment by \(w_0 = \int I_\nu \dd{\nu}\)).
+where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives wrt temperature of the radiation intensities at specific frequencies (which are related to the grey zeroth moment by \(w_0 = \int I_\nu \dd{\nu}\)) \cite[eq. 1.110]{Ryb}.
 
 \begin{equation}
   \frac{1}{\expval{\kappa_{\text{ff}}}} =
@@ -646,7 +642,7 @@ In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an add
 We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho_0 y) \), and recognize the expression for the specific enthalpy \(h\).
 
 \begin{equation}
-    y^2 (1+v^2) L - y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) = \const 
+    y^2 (1+v^2) L - y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) = \const
 \end{equation}
 
 

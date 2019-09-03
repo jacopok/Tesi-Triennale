@@ -582,10 +582,39 @@ where the second term is the conventional approximation of the \emph{Rosseland m
   {  \displaystyle \int _{0}   ^{\infty} \dv{I_\nu}{T} \dd{\nu}}
 \end{equation}
 
+\paragraph{How the conservation equations change using the moment equations}
+
+The use of the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} is in simplifying the equations of motion given by \(\nabla_\mu T^{\mu\nu}\).
+
+The full energy momentum tensor of the problem is given, in the fiducial reference frame, by combining an ideal-fluid stress-energy tensor (with pressure \(P\) and rest energy density \(\rho\)) with the one given in \eqref{eq:radiation-stress-energy-tensor-fiducial}:
+
+\begin{equation}
+    T^{\mu\nu} =
+    T^{\mu\nu}_{\text{radiation}} +
+    T^{\mu\nu}_{\text{matter}} =
+    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}
+\end{equation}
+
+\begin{greenbox}
+  We want to write down the conservation equations. Do we do so in regular spherical coordinates? The transformed stress-energy tensor is really ugly:
+\end{greenbox}
+
+The \(t,r\) by \(t, r\) components of the stress-energy tensor in spherical coordinates look like:
+
+\begin{equation} \label{eq:spherical-coordinates-full-stress-energy-tensor}
+      \left[
+      \begin{matrix}
+      \frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 P + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} &
+      \gamma^{2} \left(- \frac{v \left(3 P + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right)\\
+      \gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 P + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) &
+      y^{2} \left(P - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right)
+    \end{matrix}
+      \right]
+\end{equation}
 
 \paragraph{Bernoulli equation simplification}
 
-The ``Bernoulli equation'' can be written as \(\nabla_\mu T^{t\mu} = 0\) in the spherical reference trame --- that is, by projecting the conservation of the stress-energy tensor onto the
+The ``Bernoulli equation'' can be written as \(\nabla_\mu T^{t\mu} = 0\) in the spherical reference trame --- that is, by projecting the conservation of the stress-energy tensor onto the time-like unit vector in the spherical coordinate system.
 
 % \begin{greenbox}
 %   Wait, this is the conservation of the stress-energy tensor projected onto the unit time-directed vector in the \emph{spherical} reference, not the \emph{fiducial} one! If this were not the case, we would have two terms (\(\hat{r}\) and \(\hat{t}\)) in the divergence sum.
@@ -603,29 +632,23 @@ Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
   r^2 T^{tr} = \const
 \end{equation}
 
-In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\).
-
-\paragraph{How the conservation equations change using the moment equations}
-
-The use of the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} is in simplifying the equations of motion given by \(\nabla_\mu T^{\mu\nu}\).
-
-The full energy momentum tensor of the problem is given, in the fiducial reference frame, by combining an ideal-fluid stress-energy tensor (with pressure \(P\) and rest energy density \(\rho\)) with the one given in \eqref{eq:radiation-stress-energy-tensor-fiducial}:
+In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\). The quantity which is conserved is the $(0,1)$ matrix element which appears in \eqref{eq:spherical-coordinates-full-stress-energy-tensor}. We can simplify it by expressing it in terms of the luminosity \(L\) which is \(L = 4 \pi r^2 w_1\): we get
 
 \begin{equation}
-    T^{\mu\nu} =
-    T^{\mu\nu}_{\text{radiation}} +
-    T^{\mu\nu}_{\text{matter}} =
-    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}
+  4 \pi r^2 \qty(\gamma^2 (1+ v^2) \frac{L}{4 \pi r^2} - v \gamma^2 \qty(p + \rho + w_2 + \frac{4}{3} w_0)) = \const
 \end{equation}
 
 \begin{greenbox}
-  We want to write down the conservation equations. Do we do so in regular spherical coordinates? The transformed stress-energy tensor is really ugly:
-
-  \begin{equation}
-      T ^{\mu\nu} =
-      \left[\begin{matrix}\frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 P + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} & \gamma^{2} \left(- \frac{v \left(3 P + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right) & 0 & 0\\\gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 P + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) & y^{2} \left(P - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right) & 0 & 0\\0 & 0 & \frac{P + \frac{w_{0}}{3} - \frac{w_{2}}{2}}{r^{2}} & 0\\0 & 0 & 0 & \frac{P + \frac{w_{0}}{3} - \frac{w_{2}}{2}}{r^{2} \sin^{2}{\left(\theta \right)}}\end{matrix}\right]
-  \end{equation}
+    I must have done something wrong: the constant multiplying everything is \(y^2\) instead of \(\gamma^2\) in \cite[]{ThorneFLammmangZytkow:1981feb} and \cite[]{NobiliTurollaZampieri:1991dec}.
+    I will change it now and figure it out later.
 \end{greenbox}
+
+We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho_0 y) \), and recognize the expression for the specific enthalpy \(h\).
+
+\begin{equation}
+    y^2 (1+v^2) L - y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) = \const 
+\end{equation}
+
 
 \begin{claim}
 
@@ -650,7 +673,7 @@ These conservation laws can be projected onto \(\hat{t}\) and \(\hat{r}\) and ca
 \end{subequations}
 \end{claim}
 
-By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} into the equations \eqref{eq:fiducial-projected-conservation} we get the simplified conservation equations we will work with, to which we add the continuity equation \eqref{eq:differential-continuity}. Here, as in \cite[]{NobiliTurollaZampieri:1991dec}, primes denote differentiation with respect to \(\log r\).
+By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} into the equations \eqref{eq:fiducial-projected-conservation} we get the simplified conservation equations we will work with, to which we add the continuity equation \eqref{eq:differential-continuity}. Here, as in \cite[]{NobiliTurollaZampieri:1991dec}, primes denote differentiation with respect to \(\log r\). The complete system we need to solve is:
 
 \begin{subequations}
 \begin{align}

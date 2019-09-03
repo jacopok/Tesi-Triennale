@@ -123,39 +123,6 @@ From this it can be shown that \(1-v^2 = (1+(u^\mu n_\mu)^2)^{-1}\), and then \(
 
 Will skip most of this section. A spacetime is stationary if it admits a timelike Killing vector field? \textcite[]{Ehlers:1971} proved that from a hypothesis of stationarity we get \(\nabla_\mu S^\mu = 0\).
 
-\paragraph{Speed of sound}
-
-Following \cite[]{Yoshida:2011}.
-We want to justify the expression \(v_s^2 = \pdv*{p}{\rho} \). We work in Minkowski spacetime, where \(g_{\mu\nu} = \eta_{\mu\nu}\), and with an ideal fluid, for which \(T_{\mu\nu} = (p+ \rho) u_\mu u_\nu + p \eta_{\mu\nu}\). Then, the equations of conservation of mass and momentum read:
-
-\begin{subequations}
-\begin{align}
-  \rho_0 \partial_\mu u^\mu + u^\mu \partial_\mu \rho_0 &= 0 & \text{mass}  \\
-  u^\mu \qty(\partial_\mu \rho - h \partial_\mu \rho_0) &=0 & \text{momentum along } u^\mu  \\
-  (p+\rho) a^\mu + h^{\mu \rho} \partial_\rho p &=0 & \text{momentum in the span of } h_{\mu\nu}
-\end{align}
-\end{subequations}
-
-where \(h\) is the specific enthalpy. If we assume small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\) (it is \emph{almost} normalized) we get our three equations, up to first order in the perturbations:
-
-\begin{subequations}
-\begin{align}
-  \partial_x (\delta u^x) &= -\frac{\partial_t (\delta \rho_0)}{\rho_0}  \\
-  \partial_t (\delta \rho) - h \partial_t (\delta \rho_0) &= 0  \\
-  -(p+ \rho) \partial_t (\delta u^x) &= \partial_x p
-\end{align}
-\end{subequations}
-
-We manipulate these by differentiating and substituting, in order to eliminate the dependence on \(\delta u^x\) and \(\rho_0\), and get:
-
-\begin{subequations}
-\begin{align}
-  \partial_t \delta \rho + (p+\rho) \partial_x (\partial u^x) &= 0 \\
-  \partial_x \delta p + (p+\rho) \partial_t (\partial u^x) &= 0
-\end{align}
-\end{subequations}
-
-which simplifies to \(\partial_{tt}^2 \delta \rho - \partial_{xx}^2 \delta p = 0\): in order to get the wave equation in the form \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\) we \emph{need} to define \(v_s^2 = \pdv*{p}{\rho}\).
 
 \paragraph{Barotropic flows}
 

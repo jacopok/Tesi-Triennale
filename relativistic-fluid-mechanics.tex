@@ -185,7 +185,7 @@ Because of the conservation of the stress-energy tensor, we have:
     \nabla_\nu \qty(u_\mu T ^{\mu \nu}) = T^{\mu \nu} \nabla_\nu u_\mu
 \end{equation}
 
-Let us also consider the expression of the differential per-unit-rest-mass entropy as a definition for the scalar entropy \(S\):
+Let us also consider the \emph{fundamental thermodynamic relation}, which follows from the first and second principles in classical thermodynamics, as a definition for the scalar per-unit-rest-mass entropy \(S\):
 
 \begin{equation} \label{eq:differential-entropy}
     T\dd{S} = \dd{\varepsilon} + p \dd{\frac{1}{\rho_0}}
@@ -337,7 +337,7 @@ Let us also consider the expression of the differential per-unit-rest-mass entro
     Thus we have proved the equation in \eqref{eq:second-principle-thermodynamics}, the inequality follows directly from the fact that we are considering square moduli of spacelike vectors, and the coefficients such as \(\xi\) are assumed to be positive.
 \end{proof}
 
-If we assume that the fluid is in equilibrium (\(\nabla_\mu S^\mu = 0\)) then we must have \(\theta = 0\) (no compression), \(\sigma_{\mu\nu} = 0 \) (no shear stresses), \(w_\mu=0\) (no heat conduction which is not equal to \(-\kappa T a_\mu\)... doesn't have the same ring to it).
+If we assume that the fluid is in equilibrium (\(\nabla_\mu S^\mu = 0\)) then we must have \(\theta = 0\) (no compression), \(\sigma_{\mu\nu} = 0 \) (no shear stresses), \(w_\mu=0\): the interpretation of this last equation is slightly harder, but it is equivalent to the statement that, in the LRF, the log-temperature gradient is purely spatial and it defines the acceleration, by \(a_\sigma = - \partial_\sigma \log T\).
 
 % \subsection{Ideal fluids}
 %
@@ -354,14 +354,53 @@ They are described by the following stress-energy tensor:
     T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu} = \rho_0 h u^{\mu} u^\nu + p g^{\mu\nu}
 \end{equation}
 
-where \(h = (p + \rho) / \rho_0\) is the enthalpy. If our fluid is ideal then the RHS of \eqref{eq:second-principle-thermodynamics} is zero and so is \(w^\mu\),
-therefore \(T \nabla_\mu S^\mu = T \nabla_\mu \qty(\rho_0 S u^\mu) = T \rho_0 u^\mu \partial_\mu S\) by the continuity equation. So, unless \(\rho_0\) and \(T\) are not zero, \(S\) is conserved along the world-lines of the fluid.
+where \(h = (p + \rho) / \rho_0\) is the specific enthalpy.
+If our fluid is ideal then the RHS of \eqref{eq:second-principle-thermodynamics} is zero and so is \(w^\mu\),
+therefore \(T \nabla_\mu S^\mu = T \nabla_\mu \qty(\rho_0 S u^\mu) = T \rho_0 u^\mu \partial_\mu S\) by the continuity equation.
+So, \(S\) is conserved along the world-lines of the fluid.
 
 Also, the RHS of \eqref{eq:full-spatial-equations-of-motion} is zero, therefore we get the Euler equation:
 
 \begin{equation} \label{eq:relativistic-euler}
     (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
 \end{equation}
+
+\paragraph{Speed of sound}
+
+Following \cite[]{Yoshida:2011}.
+
+The definition of the adiabatic speed of sound is \(v_s^2 = (\pdv*{p}{\rho})_s\): here we give a justification for it.
+
+We work in Minkowski spacetime, where \(g_{\mu\nu} = \eta_{\mu\nu}\), and with an ideal fluid, for which \(T_{\mu\nu} = (p+ \rho) u_\mu u_\nu + p \eta_{\mu\nu}\). Then, the equations of conservation of mass and momentum read:
+
+\begin{subequations}
+\begin{align}
+  \rho_0 \partial_\mu u^\mu + u^\mu \partial_\mu \rho_0 &= 0 & \text{mass}  \\
+  u^\mu \qty(\partial_\mu \rho - h \partial_\mu \rho_0) &=0 & \text{momentum along } u^\mu  \\
+  (p+\rho) a^\mu + h^{\mu \rho} \partial_\rho p &=0 & \text{momentum in the span of } h_{\mu\nu}
+\end{align}
+\end{subequations}
+
+where \(h\) is the specific enthalpy. If we assume small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\) (it is \emph{almost} normalized) we get our three equations, up to first order in the perturbations:
+
+\begin{subequations}
+\begin{align}
+  \partial_x (\delta u^x) &= -\frac{\partial_t (\delta \rho_0)}{\rho_0}  \\
+  \partial_t (\delta \rho) - h \partial_t (\delta \rho_0) &= 0  \\
+  -(p+ \rho) \partial_t (\delta u^x) &= \partial_x p
+\end{align}
+\end{subequations}
+
+We manipulate these by differentiating and substituting, in order to eliminate the dependence on \(\delta u^x\) and \(\rho_0\), and get:
+
+\begin{subequations}
+\begin{align}
+  \partial_t \delta \rho + (p+\rho) \partial_x (\partial u^x) &= 0 \\
+  \partial_x \delta p + (p+\rho) \partial_t (\partial u^x) &= 0
+\end{align}
+\end{subequations}
+
+which simplifies to \(\partial_{tt}^2 \delta \rho - \partial_{xx}^2 \delta p = 0\): in order to get the wave equation in the form \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\) we \emph{need} to define \(v_s^2 = \pdv*{p}{\rho}\).
 
 \subsection{Bondi accretion: the adiabatic case}
 
@@ -388,7 +427,7 @@ When written with respect to the regular spherical coordinates \((t, r, \theta, 
     \end{align}
 \end{subequations}
 
-where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and $y=\gamma \sqrt{1+2\Phi} = \gamma \sqrt{1 - 2M/r} $ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
+where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\gamma \sqrt{1+2\Phi} = \gamma \sqrt{1 - 2M/r} $ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
 \end{claim}
 
 \begin{proof}
@@ -416,7 +455,7 @@ where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and 
     Since \(g_{00} = - y^2 / \gamma^2\) we have:
 
     \begin{equation}
-      \gamma = k^\mu u^\nu g_{\mu\nu} = u^0 \frac{g_{00}}{\sqrt{-g_{00}} }
+      \gamma = - k^\mu u^\nu g_{\mu\nu} = - u^0 \frac{g_{00}}{\sqrt{-g_{00}} }
       = u^0 \sqrt{-g_{00}} = u^0 \frac{y}{\gamma}
     \end{equation}
 
@@ -432,7 +471,10 @@ where we define the Lorentz factor as usual, $\gamma = \qty(1-v^2)^{-1/2}$, and 
     \end{align}
     \end{subequations}
 
-    As for \(a^\mu\), we need not compute the derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = 0\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(a^0 y^2 + a^1 v \gamma^2 = 0\), and with
+    As for \(a^\mu\), we need not compute the covariant derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = u^\mu \hat{r}^\nu g_{\mu\nu} = 0\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(\hat{r}^0 y^2 + \hat{r} ^1 v \gamma^2 = 0\) and the second one to \((\hat{r}^0)^2 (- y^2 / \gamma^2) + (\hat{r})^1 (\gamma^2 / y^2) = 1\), since we know the other two components of the acceleration are zero.
+    Solving this system for the two unknown components yields precisely the desired expression.
+
+    The \(\hat{\theta}\) and \(\hat{\varphi}\) vectors just need to be rescaled, and they will need to become \(1 / \sqrt{g_{22}}\) and \(1/\sqrt{g_{33}}\) respectively.
 \end{proof}
 
 The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
@@ -494,7 +536,7 @@ We also have the equation for the variation of the total internal energy, which 
     \pdv{\rho}{\rho_0} = \frac{p + \rho}{\rho_0} \defeq h
 \end{equation}
 
-(where we have defined $h$, the specific enthalpy).
+where $h$ is the specific enthalpy.
 
 \paragraph{The Bernoulli equation}
 
@@ -517,7 +559,7 @@ Then, following \textcite[section 6.3]{Gourgoulhon:2006bn} we find that \(\dd{p}
   \frac{1}{\rho + p} \dv{p}{r}  =  \dv{\log h}{r}
 \end{equation}
 
-we can substitute the results in \eqref{eq:log-y-conservation} and \eqref{eq:log-h-conservation} into \eqref{eq:ideal-euler}:
+so we can substitute the results in \eqref{eq:log-y-conservation} and \eqref{eq:log-h-conservation} into \eqref{eq:ideal-euler}:
 
 \begin{equation}
   \dv{\log h}{r} + \dv{\log y }{r} = \dv{\log (hy) }{r} = 0
@@ -563,7 +605,7 @@ This can be rewritten as
   \end{equation}
 \end{greenbox}
 
-Coming back to \eqref{eq:relativistic-euler},  we get:
+Coming back to the Euler equation \eqref{eq:relativistic-euler},  we get:
 
 \begin{equation}
   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
@@ -593,22 +635,25 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
     \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
   \end{equation}
 
-  and we wind up with the system
-
-  \begin{subequations}
-  \begin{align}
-    (v^2-v_s^2) \dv{\log \rho_0}{\log r} &= - 2v^2 + \frac{M}{y^2 r}  \\
-    (v^2-v_s^2) \dv{\log yv }{\log r} &=  2v_s^2 - \frac{M}{y^2 r}  \\
-    \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
-  \end{align}
-  \end{subequations}
-
+  and we wind up with the system shown later,
   but I do not see at all how to get to it, it does not seem to work!
   If we add the first two equations we get back \eqref{eq:differential-continuity} which is good but that is the only part which seems to make sense.
 \end{greenbox}
 
+The equations can be cast into the system:
+
+\begin{subequations}
+\begin{align}
+  (v^2-v_s^2) \dv{\log \rho_0}{\log r} &= - 2v^2 + \frac{M}{y^2 r}  \\
+  (v^2-v_s^2) \dv{\log yv }{\log r} &=  2v_s^2 - \frac{M}{y^2 r}  \\
+  \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+\end{align}
+\end{subequations}
+
+which can be solved numerically: we have a critical point when the velocity \(v\) reaches the speed of sound, since there the Jacobian becomes singular.
+
 \begin{greenbox}
-  Typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
+  Likely typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
 \end{greenbox}
 
 \begin{greenbox}

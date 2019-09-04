@@ -1,57 +1,49 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-
-% The influence of radiative heat transfer (and of viscosity) on spherically symmetrical stationary accretion
-
 \subsection{Thorne's PSTF moment formalism}
 
 Following \cite{Thorne:1981feb}.
 
-Given any tensor \(A^{\mu_1 \dots \mu_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
-
+Given any tensor \(A^{\mu_1 \dots \mu_k} = A^{M_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
 \begin{equation}
-    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^P
-    = \qty(\prod_i h^{\mu_i}_{\nu_i}) A^{\nu_1 \dots \nu_k}
+    A^{M_k} \rightarrow \qty(A^{M_k})^P
+    = \qty(\prod_{i=1}^k h^{\mu_i}_{\nu_i}) A^{M_k} \,.
 \end{equation}
 
-Then, we can take the symmetric part of any (?) tensor as outlined in \Nameref{sec:notational-preface}:
-
+Then, we can take the symmetric part of any tensor as outlined in \Nameref{sec:notational-preface}:
 \begin{equation}
-    A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^S
-    = A^{(\mu_1 \dots \mu_k)}
+    A^{M_k} \rightarrow \qty(A^{M_k})^S
+    = A^{(M_k)} \,.
 \end{equation}
 
 We can select the trace-free part of a projected, symmetric tensor by
-
 \begin{equation}
     A^{\mu_1 \dots \mu_k} \rightarrow \qty(A^{\mu_1 \dots \mu_k})^{TF}
     = \sum _{i=0}   ^{\lfloor k/2 \rfloor}
     (-1)^i \frac{k! (2k-2i-1)!!}{(k-2i)! (2k-1)!! (2i)!!}
     h^{(\alpha_1 \alpha_2} \dots h^{\alpha_{2i-1} \alpha_{2i}}
-    A^{\alpha_{2i+1} \dots \alpha_k) \beta_1 \dots \beta_i}\,_{\beta_1 \dots \beta_i}
+    A^{\alpha_{2i+1} \dots \alpha_k) \beta_1 \dots \beta_i}\,_{\beta_1 \dots \beta_i} \,.
 \end{equation}
 
 To see what this is doing, let us consider its action on a rank-two projected tensor: it is just the subtraction of its trace,
-
 \begin{equation}
-    A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho
+    A^{\mu\nu} \rightarrow A^{\mu\nu} - \frac{1}{3} h^{\mu\nu} A^{\rho}_\rho \,.
 \end{equation}
 
-Now, let us consider all the unit vectors \(n^\mu\) in the space normal to the velocity, which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span a three-dimensional sphere.
+Now, let us consider all the unit vectors \(n^\mu\) in the space normal to the velocity, which have \(n_\mu u^\mu = 0\) and \(n^\mu n_\mu = 1\). They span the sphere \(S^2\).
 
-If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it into harmonics as such:
+If we have a function \(F\colon S^2 \rightarrow \mathbb R\), we can decompose it into harmonics as:
 
 \begin{equation}
     F(n) = \sum _{k=0}   ^{\infty}
     \mathscr F_{\alpha_1 \dots \alpha_k} \prod_{i=0}^k n^{\alpha_i}
 \end{equation}
-
-Where the PSTF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed as
+where the PSTF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed as
 
 \begin{equation} \label{eq:PSTF-moments-function-decomposition}
     \mathscr F_{\alpha_1 \dots \alpha_k} =
-    \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF}
+    \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF} \,.
 \end{equation}
 
 In particular, the function we will apply this to is the distribution of EM radiation around the BH. So, let us consider a photon, whose trajectory in spacetime is parameterized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
@@ -570,7 +562,7 @@ As for the \(s_1\) term, we model \(\kappa_1\) as
   = \kappa_{\text{es}} + \SI{6.4e22}{\centi\metre\square\per\gram} \rho_0 T^{-7/2}
 \end{equation}
 
-where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives wrt temperature of the radiation intensities at specific frequencies (which are related to the grey zeroth moment by \(w_0 = \int I_\nu \dd{\nu}\)) \cite[eq. 1.110]{Ryb}.
+where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives wrt temperature of the radiation intensities at specific frequencies (which are related to the grey zeroth moment by \(w_0 = \int I_\nu \dd{\nu}\)) \cite[eq. 1.110]{RybickiLightman:2004}.
 
 \begin{equation}
   \frac{1}{\expval{\kappa_{\text{ff}}}} =
@@ -642,9 +634,11 @@ In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an add
 We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho_0 y) \), and recognize the expression for the specific enthalpy \(h\).
 
 \begin{equation}
-    y^2 (1+v^2) L - y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) = \const
+    y^2 (1+v^2) L - y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) \defeq \dot{E}
+    = \const
 \end{equation}
 
+This is the total luminosity of the accretion process.
 
 \begin{claim}
 
@@ -678,5 +672,19 @@ By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} i
   \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0
 \end{align}
 \end{subequations}
+
+To solve these equations, we wish to express them in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
+To this end, we rewrite the gradients of \(\rho\) and \(P\) in terms of \(\rho_0\) and \(T\); we also put these in a form that will give us logarithmic derivatives:
+
+\begin{subequations}
+\begin{align}
+  \rho'  &= \rho_0 \qty(\pdv{\rho}{\rho_0})_T \frac{\rho_0'}{\rho_0}
+      + T \qty(\pdv{\rho}{T} )_{\rho_0} \frac{T'}{T} \\
+  P'  &= \rho_0 \qty(\pdv{P}{\rho_0})_T \frac{\rho_0'}{\rho_0}
+      + T \qty(\pdv{P}{T} )_{\rho_0} \frac{T'}{T}
+\end{align}
+\end{subequations}
+
+where the lower indices \(T\) and \(\rho_0\) on the derivatives mean that the denoted quantity should be held constant when differentiating.
 
 \end{document}

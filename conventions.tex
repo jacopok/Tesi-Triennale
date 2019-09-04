@@ -11,17 +11,13 @@ I will always use the abuse of notation in which a vector is denoted by its comp
 
 Take a diffeomorphism $x \rightarrow y$, with Jacobian matrix $\pdv*{y^\mu}{x^\nu}$.
 The indices of contravariant vectors, transforming as
-
 \begin{equation}
     V^\mu \rightarrow \qty( \pdv{y^\mu}{x^\nu})  V^\nu
 \end{equation}
-
 will be denoted as upper indices, while the indices of covariant vectors, transforming as
-
 \begin{equation}
 V_\mu \rightarrow \qty( \pdv{x^\nu}{y^\mu})  V_\nu
 \end{equation}
-
 will be denoted as lower indices; the same applies to higher rank tensors.
 
 Unless otherwise specified, I will work in geometrized units, where $c = G = 1$.
@@ -29,12 +25,10 @@ Unless otherwise specified, I will work in geometrized units, where $c = G = 1$.
 In section \ref{sec:radiative-effects} I will use the notation from \textcite[]{Thorne:1981feb}: \(A_k\) will represent a sequence of \(k\) indices labelled as \(\alpha_i\), for \(i\) between 1 and \(k\). The same will hold for \(B_k \rightarrow \qty{\beta_i}\) etc.
 
 Take a tensor with many indices, \(T_{A_k B_j}\). These indices can be symmetrized and antisymmetrized, and I will use the following conventions:
-
 \begin{align}
     T_{(A_k) B_j } &= \frac{1}{k!} \sum_{\sigma \in S_k} T_{\sigma(A_k)J} \\
     T_{[A_k]B_j} &= \frac{1}{k!} \sum_{\sigma \in S_k} \sign{\sigma} T_{\sigma(A_k)B_j}
 \end{align}
-
 where \(S_k \ni \sigma \) is the group of permutations of $k$ elements, and $\sign{\sigma}$ is 1 if $\sigma$ is an even permutation (it can be obtained in an even number of pair swaps) and -1 otherwise.
 
 In the case a set of indices that are not nearby need to be (anti)symmetrized, I will use vertical bars: for example, \(R_{(\mu | \nu| \rho \sigma)}\) means that we take the permutations of the indices \(\mu\), \(\rho\) and \(\sigma\).

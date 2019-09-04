@@ -1,7 +1,7 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-\subsection{Nonrelativistic fluid mechanics}
+\subsection{Nonrelativistic fluid mechanics} \label{sec:nonrelativisti-fluid-mechanics}
 
 Nonrelativistic (compressible) fluid mechanics are described by the equations:
 
@@ -12,7 +12,6 @@ Nonrelativistic (compressible) fluid mechanics are described by the equations:
     \rho_0 \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
 \end{align}
 \end{subequations}
-
 where $\rho_0$ is the density of the fluid,
 $v^i$ are the components of the velocity vector field,
 $\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the stress-energy tensor \(T^{ij}\) ),
@@ -23,28 +22,18 @@ $T$ is the temperature  field of the fluid.
 The nonrelativistic stress tensor can be written as:
 
 \begin{equation}
-    \sigma_{ij} = -(p + \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
+    \sigma_{ij} = -(p - \xi \partial_k v^k ) \delta_{ij} + 2 \eta \partial_{(i} v_{j)}
 \end{equation}
-
-\begin{greenbox}
-  Why is the sign of the term \(\xi \partial_k v^k\) reported in \cite[page 301]{Taub:1978} plus?
-
-  It seems to be inconsistent with the relativistic formulation \eqref{eq:components-stress-energy-tensor}.
-
-  However, if I change it the reasoning in the next paragraph stops working, unless that is also wrong and the identity is \(\xi = - 2 \eta /3\).
-\end{greenbox}
-
-where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the compression viscosity. We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $\sigma_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = 2\eta/3$.
+where $p$ is the (isotropic) pressure, $\eta$ the viscosity, $\xi$ is the bulk viscosity.\footnote{For consistency with the later sections, here we define \(\xi\) with the opposite sign to what appears in \cite[page 301]{Taub:1978}.} We are assuming that the normal stresses are only those exerted by pressure, so the diagonal terms $\sigma_{ii}$ (not summed) must just be $-p$. So, the term $-\xi \partial_k v^k$ must equal $\eta \partial_{(i} v_{i)} = 2\eta \partial_i v_i$ (not summed). Therefore, by isotropy, $\xi = -2\eta/3$.
 
 Note that we are working in Euclidean 3D space, so the metric is the identity and upper and lower indices are equivalent.
 
-The energy density is a sum of kinetic and specific energy:
+The energy density is a sum of kinetic and specific energies:
 
 \begin{equation}
     E = v^i v_i /2 + \varepsilon
 \end{equation}
-
-where $\varepsilon$ is the specific energy (of a type that is different from kinetic) per unit mass.
+where $\varepsilon$ is the specific internal energy per unit mass.
 
 \subsection{The relativistic fluid}
 
@@ -52,9 +41,9 @@ where $\varepsilon$ is the specific energy (of a type that is different from kin
 
 % \subsection{Fluid mechanics}
 
-We want to develop a formalism to treat a fluid dynamics problem in the presence of relativistic speeds and strong gravitational fields, such as in spherical accretion onto a black hole. It will have to be fully relativistic: the conservation laws will have to be written as tensorial equations.
+We want to develop a formalism to treat a fluid dynamical problem in the presence of relativistic speeds and strong gravitational fields, such as in spherical accretion onto a black hole. It will have to be fully relativistic: the conservation laws will have to be written as tensorial equations.
 
-We treat the fluid as a continuous medium which will have a certain density of particles per unit of volume $n$: that is, what we consider ``infinitesimal'' is not actually arbitrarily small but should be considered much smaller than the characteristic lengths of the problem, while still containing many particles.
+We treat the fluid as a continuous medium which will have a certain density of particles per unit volume $n$: that is, what we consider ``infinitesimal'' is not actually arbitrarily small but should be considered much smaller than the characteristic lengths of the problem, while still containing many particles.
 
 The 4-current of particles is $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-velocity field of the fluid.
 If these particles have a certain rest mass $m_0$, we can then define the rest-mass-flow vector $\rho_0 u^\mu = m_0 N^\mu$, which is conserved: $\nabla_\mu(\rho_0 u^\mu) = 0$, since particles do not spontaneously appear or disappear nor change their rest mass.
@@ -70,9 +59,13 @@ So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
 \paragraph{Stress-energy tensor} \label{par:stress-energy-tensor}
 
-The stress-energy tensor \(T^{\mu\nu}\) is a symmetric \((2,0)\) tensor whose \(\mu, \nu\) component is defined as the flow of the \(\mu\)-th component of four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
+The stress-energy tensor \(T^{\mu\nu}\) is a symmetric \((2,0)\) tensor whose \(\mu, \nu\) component is defined as the flux of \(\mu\)-th component of the four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
 
-Because of our choice of metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), sice that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
+\begin{greenbox}
+  I corrected ``flow'' to ``flux'': was that it?
+\end{greenbox}
+
+Because of our choice of the metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), since that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
 
 To give an example: for a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
 
@@ -82,35 +75,32 @@ To give an example: for a gas of non-interacting particles, the stress-energy te
       0 & 0  & 0  & 0 \\
       0 & 0  & 0  & 0 \\
       0 & 0  & 0  & 0
-    \end{bmatrix}
+    \end{bmatrix}\,.
 \end{equation}
 
-The fact that momentum is conserved (which follows by Noether's theorem applied to the translational invariance of spacetime) can be expressed as the statement that the stress-energy tensor is conserved: \(\nabla_\mu T^{\mu\nu} = 0\).
+The fact that momentum is conserved (which follows from Noether's theorem applied to the translational invariance of spacetime) can be expressed as the statement that the stress-energy tensor is conserved: \(\nabla_\mu T^{\mu\nu} = 0\).
 
 In our example, this can be written as
 
 \begin{equation}
-  \rho (a^\nu + u^\nu (\nabla_\mu u^\mu)) + u^\nu \dv{\rho}{\tau} = 0
+  \rho (a^\nu + u^\nu (\nabla_\mu u^\mu)) + u^\nu \dv{\rho}{\tau} = 0\,.
 \end{equation}
-
 
 \paragraph{Relativistic non-ideal fluid dynamics}
 
-The dynamics of the fluid are described by the conservation of the stress-energy tensor \(\nabla_\mu T ^{\mu \nu} =0\) and the conservation of mass \(\nabla_\mu (\rho_0 u^\mu) =0\).
+The evolution of the fluid is described by the conservation of the stress-energy tensor \(\nabla_\mu T ^{\mu \nu} =0\) and the conservation of mass \(\nabla_\mu (\rho_0 u^\mu) =0\).
 
-Any stress-energy tensor can be decomposed in its space and time-like parts in the local rest frame of the fluid:
+Any stress-energy tensor can be decomposed into its space and time-like parts in the local rest frame of the fluid:
 
 \begin{equation} \label{eq:stress-energy-tensor-decomposition}
     T_{\mu \nu} = w u_\mu u_\nu + w_\mu u_\nu + u_\mu w_\nu + w _{\mu \nu}
 \end{equation}
-
 where \cite[eqs. 8.2, 8.3, 8.5]{Taub:1948}:
-
 \begin{subequations} \label{eq:components-stress-energy-tensor}
 \begin{align}
-  w &=  T _{\mu \nu} u^\mu u^\nu = \rho_0 (1 + \varepsilon) = \rho & \text{rest mass} \\
+  w &=  T _{\mu \nu} u^\mu u^\nu = \rho_0 (1 + \varepsilon) = \rho & \text{rest energy} \\
   w_\mu &= T _{\nu \sigma} h^\sigma _\mu u^\nu  = -\kappa h_\mu ^\sigma  \qty(\partial_\sigma T + T a_\sigma) & \text{heat conduction} \\
-  w_{\mu \nu} &= T_{\rho \sigma} h^\rho _\mu h^\sigma_\nu = \qty(p - \xi \theta) h_{\mu \nu} - 2 \eta \sigma_{\mu \nu}  & \text{pressure and viscous stresses}
+  w_{\mu \nu} &= T_{\rho \sigma} h^\rho _\mu h^\sigma_\nu = \qty(p - \xi \theta) h_{\mu \nu} - 2 \eta \sigma_{\mu \nu}  & \text{pressure and viscous stresses.}
 \end{align}
 \end{subequations}
 
@@ -118,25 +108,24 @@ Do note that by definition the tensors \(w^\mu\) and \(w^{\mu\nu}\) are purely s
 
 For the definition of the acceleration, vorticity etc. see equation \eqref{eq:covariant-acceleration-decomposition}.
 
-As in the nonrelativistic section \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
+As in section \nameref{sec:nonrelativisti-fluid-mechanics} \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
 
 \begin{greenbox}
     The fact that the decomposition can be written in this way is not proven in \cite[]{Taub:1978}, but it seems like a proof can be found in \cite[]{Eckart:1940}, which is locked behind a paywall.
 \end{greenbox}
 
 Equivalently, we can write
-
 \begin{subequations} \label{eq:stress-energy-tensor-decomposition-2}
 \begin{align}
   T_{\mu\nu} &= T_{\mu\nu}^p && - T_{\mu\nu}^V &&+ T_{\mu\nu}^h  \\
   &= w u_\mu u_\nu + p h_{\mu\nu} &&-\xi \theta h_{\mu\nu} - 2 \eta \sigma_{\mu\nu} &&+2w_{(\mu} u_{\nu)}  \\
-  &\text{perfect fluid} && \text{viscous stresses} && \text{heat conduction} \nonumber
+  &\text{perfect fluid} && \text{viscous stresses} && \text{heat conduction.} \nonumber
 \end{align}
 \end{subequations}
 
-\paragraph{Forces}
+\paragraph{Viscous and heat-flow relativistic forces}
 
-If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy tensor given in \eqref{eq:stress-energy-tensor-decomposition-2}, that is, look at the spatial components of the conservation equations, we get:
+If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy tensor given in \eqref{eq:stress-energy-tensor-decomposition-2}, that is, consider the spatial components of the conservation equations, we get:
 
 \begin{subequations}
 \begin{align}
@@ -144,33 +133,34 @@ If we apply \(h^\sigma_\mu \nabla_\nu\) to the formulation of the stress-energy 
   h^\sigma_\mu \nabla_\nu \qty(T^{\mu\nu}_V - T^{\mu\nu}_h)  \\
   (\rho + p) a^\sigma + h^\sigma_\nu \partial^\nu p &= h^\sigma_\mu \nabla_\nu \qty(
   +\xi \theta h^{\mu\nu} + 2 \eta \sigma^{\mu\nu} - 2w^{(\mu} u^{\nu)})  \\
-  &= \underbrace{\nabla_\nu T^{\sigma\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
-  \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}} \label{eq:full-spatial-equations-of-motion}
+  &= \underbrace{\nabla_\nu T^{\sigma\nu}_V - u^\sigma \qty(\frac{\xi \theta^2}{3} +2 \eta \sigma_{\mu\nu} \sigma^{\mu\nu})}_{\substack{\mathscr F ^\sigma _V}}
+  \underbrace{ - \nabla_\nu (w^\sigma u^\nu) - w^\nu \nabla_\nu u^\sigma + a_\mu w^\mu u^\sigma  }_{\substack{\mathscr F ^\sigma _h}} \,.
+  \label{eq:full-spatial-equations-of-motion}
 \end{align}
 \end{subequations}
 
-\begin{greenbox}
-  Shouldn't there be an \(\eta\) in front of \(\sigma^2\)? Is it a typo in \cite[]{Taub:1978}?
-  The heat part does not seem to make sense, I'm missing how \(-w^\mu u^\nu \nabla_\nu u_\mu = u_\mu (u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu)\): my results are
-
-  \begin{subequations}
-  \begin{align}
-    h^\sigma _\mu \nabla_\nu \qty(2 w^{(\mu} u^{\nu)}) &=  (\delta_\mu ^\sigma + u^\sigma u_\mu) \nabla_\nu \qty(w^\mu u^\nu + u^\mu w^\nu)  \\
-    &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
-    + u^\sigma u_\mu \nabla_\nu \qty(w^\mu u^\nu + u^\mu w^\nu)  \\
-    &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
-    + u^\sigma u_\mu \qty(\cancelto{0}{ w^\mu \nabla_\nu u^\nu } + u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu + u^\mu \nabla_\nu w^\nu)  \\
-    &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
-    + u^\sigma u_\mu \qty(u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu) - u^\sigma \nabla_\nu w^\nu  \\
-    &= \nabla_\nu \qty(w^\sigma u^\nu) + w^\nu \nabla_\nu u^\sigma
-    + u^\sigma u_\mu \qty(u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu) \\
-    &\overset{?}{=} \nabla_\nu \qty(w^\sigma u^\nu) + w^\nu \nabla_\nu u^\sigma
-    - u^\sigma w_\mu a^\mu
-  \end{align}
-  \end{subequations}
-
-  so the first two terms are there, the rest does not look right.
-\end{greenbox}
+% \begin{greenbox}
+%   Shouldn't there be an \(\eta\) in front of \(\sigma^2\)? Is it a typo in \cite[]{Taub:1978}?
+%   The heat part does not seem to make sense, I'm missing how \(-w^\mu u^\nu \nabla_\nu u_\mu = u_\mu (u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu)\): my results are
+%
+%   \begin{subequations}
+%   \begin{align}
+%     h^\sigma _\mu \nabla_\nu \qty(2 w^{(\mu} u^{\nu)}) &=  (\delta_\mu ^\sigma + u^\sigma u_\mu) \nabla_\nu \qty(w^\mu u^\nu + u^\mu w^\nu)  \\
+%     &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
+%     + u^\sigma u_\mu \nabla_\nu \qty(w^\mu u^\nu + u^\mu w^\nu)  \\
+%     &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
+%     + u^\sigma u_\mu \qty(\cancelto{0}{ w^\mu \nabla_\nu u^\nu } + u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu + u^\mu \nabla_\nu w^\nu)  \\
+%     &= \nabla_\nu \qty(w^\sigma u^\nu) + \nabla_\nu (u^\sigma w^\nu)
+%     + u^\sigma u_\mu \qty(u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu) - u^\sigma \nabla_\nu w^\nu  \\
+%     &= \nabla_\nu \qty(w^\sigma u^\nu) + w^\nu \nabla_\nu u^\sigma
+%     + u^\sigma u_\mu \qty(u^\nu \nabla_\nu w^\mu + w^\nu \nabla_\nu u^\mu) \\
+%     &\overset{?}{=} \nabla_\nu \qty(w^\sigma u^\nu) + w^\nu \nabla_\nu u^\sigma
+%     - u^\sigma w_\mu a^\mu
+%   \end{align}
+%   \end{subequations}
+%
+%   so the first two terms are there, the rest does not look right.
+% \end{greenbox}
 
 The vectors \(\mathscr F^\sigma _{h, V}\) are relativistic forces on the fluid due respectively to heat flow and viscosity.
 
@@ -182,13 +172,13 @@ In the perfect fluid case the RHS is zero we simply get Euler's equation from \e
 Because of the conservation of the stress-energy tensor, we have:
 
 \begin{equation} \label{eq:velocity-stress-energy-tensor-identity}
-    \nabla_\nu \qty(u_\mu T ^{\mu \nu}) = T^{\mu \nu} \nabla_\nu u_\mu
+    \nabla_\nu \qty(u_\mu T ^{\mu \nu}) = T^{\mu \nu} \nabla_\nu u_\mu \,.
 \end{equation}
 
-Let us also consider the \emph{fundamental thermodynamic relation}, which follows from the first and second principles in classical thermodynamics, as a definition for the scalar per-unit-rest-mass entropy \(S\):
+Let us also consider the \emph{fundamental thermodynamic relation}, which follows from the first and second principles in classical thermodynamics, as a definition for the scalar entropy per unit rest mass \(S\):
 
 \begin{equation} \label{eq:differential-entropy}
-    T\dd{S} = \dd{\varepsilon} + p \dd{\frac{1}{\rho_0}}
+    T\dd{S} = \dd{\varepsilon} + p \dd{\frac{1}{\rho_0}} \,.
 \end{equation}
 
 \begin{claim}
@@ -197,7 +187,6 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
     \begin{equation} \label{eq:second-principle-thermodynamics}
         T \nabla_\mu S^\mu = \xi \theta^2 + 2 \eta \sigma_{\mu\nu} \sigma^{\mu\nu} + \frac{w^\mu w_\mu}{\kappa T} \geq 0
     \end{equation}
-
     where we define \(S^\mu = \rho_0 S u^\mu + w^\mu /T\).
 \end{claim}
 
@@ -216,16 +205,11 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
     \begin{align}
         \nabla_\nu \qty(u_\mu T ^{\mu \nu}) &= \nabla_\nu \left( w \underbrace{u_\mu u^\mu}_{-1} u^\nu + \underbrace{u_\mu w^\mu}_{0} u^\nu + \underbrace{ u_\mu u^\mu}_{-1} w^\nu + \underbrace{u_\mu w ^{\mu \nu}}_{0}\right) \\
          &= \nabla_\nu \qty(- u^\nu \rho_0 (1 + \varepsilon) - w^\nu) \\
-         &=  - \rho_0 u^\nu \partial_\nu \varepsilon - \nabla_\nu w^\nu
-         % &= - \rho_0 u^\nu \partial_\nu \varepsilon + \kappa \qty( \nabla_\nu \qty(\partial^\nu T + T a^\nu) + \nabla_\nu \qty(u^\nu u_\sigma \qty(\partial^\sigma T + T a^\sigma)))  \\
-         % &= - \rho_0 u^\nu \partial_\nu \varepsilon + \kappa \qty(
-         % \qty(\nabla^\nu + 2 a^\nu + \theta u^\nu + u^\alpha u^\nu \nabla_\alpha
-         % ) \partial_\nu T + T \nabla_\nu a^\nu
-         % )
+         &=  - \rho_0 u^\nu \partial_\nu \varepsilon - \nabla_\nu w^\nu\,.
     \end{align}
     \end{subequations}
 
-    In the RHS of \eqref{eq:velocity-stress-energy-tensor-identity} as well many terms are cancelled because they contain contractions of space and timelike indices: we get
+    In the RHS of \eqref{eq:velocity-stress-energy-tensor-identity} many terms are cancelled as well because they contain contractions of space and timelike indices: we get
 
     \begin{subequations}
     \begin{align}
@@ -237,22 +221,18 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
       \qty(\omega_{\mu\nu} + \sigma_{\mu\nu} + \frac{\theta h_{\mu\nu}}{3})
       + a_\mu \qty(-\kappa h^\mu _\sigma  \qty(\partial^\sigma T + T a^\sigma))  \\
       &= \qty(p - \xi \theta) \theta - 2 \eta \sigma_{\mu\nu} \sigma^{\mu\nu}
-      - \kappa a_\mu \partial^\mu T - \kappa T a_\mu a^\mu
+      - \kappa a_\mu \partial^\mu T - \kappa T a_\mu a^\mu \,.
     \end{align}
     \end{subequations}
 
     So far, we have:
 
     \begin{equation} \label{eq:step1-second-principle-proof}
-        - \rho_0 u^\nu \partial_\nu \varepsilon %+ \kappa \qty(
-    %    \qty(\nabla^\nu + 3 a^\nu + \theta u^\nu + u^\alpha u^\nu \nabla_\alpha
-    %    ) \partial_\nu T + T (\nabla_\nu + a_\nu) a^\nu
-    %    )
+        - \rho_0 u^\nu \partial_\nu \varepsilon
         - \nabla_\nu w^\nu
         = \qty(p - \xi \theta) \theta - 2 \eta \sigma_{\mu\nu} \sigma^{\mu\nu}
-        - \kappa a_\mu \partial^\mu T - \kappa T a_\mu a^\mu
+        - \kappa a_\mu \partial^\mu T - \kappa T a_\mu a^\mu \,.
     \end{equation}
-
 
     Let us rearrange \eqref{eq:step1-second-principle-proof} in a convenient way:
 
@@ -264,9 +244,8 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
         % )
         - \nabla_\nu w^\nu
         + \xi \theta^2 + 2 \eta \sigma_{\mu\nu} \sigma^{\mu\nu}
-        + \kappa a_\mu \partial^\mu T + \kappa T a_\mu a^\mu
+        + \kappa a_\mu \partial^\mu T + \kappa T a_\mu a^\mu \,.
     \end{equation}
-
 
     Now let us consider a quantity we wish to obtain from these manipulations:
     \(T \nabla_\mu S^\mu\). It can be expanded using the continuity equation into:
@@ -274,28 +253,27 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
     \begin{equation} \label{eq:entropy-vector-identity}
         T \nabla_\mu S^\mu
         = T \nabla_\mu \qty(\rho_0 S u^\mu + \frac 1T w^\mu )
-        = T \rho_0 u^\mu \partial_\mu S + \nabla_\mu w^\mu - w^\mu \frac{\nabla_\mu T}{T}
+        = T \rho_0 u^\mu \partial_\mu S + \nabla_\mu w^\mu - w^\mu \frac{\nabla_\mu T}{T} \,.
     \end{equation}
 
-    Let us turn the differentials in \eqref{eq:differential-entropy} into proper-time derivatives: \(\dd \rightarrow \dv*{}{\tau} = u^\mu \partial_\mu \). Also, we can use the continuity equation to see that \(u^\mu \partial_\mu \rho_0 = - \rho_0 \theta\).
+    We can turn the differentials in \eqref{eq:differential-entropy} into proper-time derivatives: \(\dd \rightarrow \dv*{}{\tau} = u^\mu \partial_\mu \). Also, we can use the continuity equation to see that \(u^\mu \partial_\mu \rho_0 = - \rho_0 \theta\).
     Then \eqref{eq:differential-entropy} becomes:
 
     \begin{equation} \label{eq:differential-entropy-explicit}
-        T \dv{S}{\tau}  = \dv{\varepsilon}{\tau} - \frac{p}{\rho_0^2} \dv{\rho_0}{\tau}  =\dv{\varepsilon}{\tau} + \frac{p \theta}{\rho_0}
+        T \dv{S}{\tau}  = \dv{\varepsilon}{\tau} - \frac{p}{\rho_0^2} \dv{\rho_0}{\tau}  =\dv{\varepsilon}{\tau} + \frac{p \theta}{\rho_0} \,.
     \end{equation}
 
-    Then we can write the LHS of \eqref{eq:step2-second-principle-proof}, using the identities in
+    So we can write the LHS of \eqref{eq:step2-second-principle-proof}, using the identities in
     equation \eqref{eq:entropy-vector-identity} and \eqref{eq:differential-entropy-explicit}:
 
     \begin{equation} \label{eq:step3-second-principle-proof}
         \rho_0 \qty(u^\nu \partial_\nu \varepsilon + \frac{p \theta}{\rho_0})
         = \rho_0 T u^\nu \partial_\nu S
-        = T\nabla_\mu S^\mu - \nabla_\mu w^\mu + \frac{1}{T} w^\mu \nabla_\mu T
+        = T\nabla_\mu S^\mu - \nabla_\mu w^\mu + \frac{1}{T} w^\mu \nabla_\mu T\,.
     \end{equation}
 
     Let us substitute \eqref{eq:step3-second-principle-proof} into \eqref{eq:step2-second-principle-proof},
     and then subtract the desired result \eqref{eq:second-principle-thermodynamics}  from the equation: this way, if we get an identity the proof will be complete (this may seem circular, but it is done just for convenience in the algebraic manipulations: to get a more rigorous argument one may just reverse the steps, using the identity \eqref{eq:step-second-principle-proof-after-subtraction} in equation \eqref{eq:step-second-principle-proof-before-subtraction} to get equation \eqref{eq:second-principle-thermodynamics}).
-
     \begin{subequations}
     \begin{align}
       T\nabla_\mu S^\mu - \nabla_\mu w^\mu + \frac{1}{T} w^\mu \nabla_\mu T &=
@@ -309,20 +287,18 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
       - \frac{w^\mu w_\mu}{\kappa T} \label{eq:step-second-principle-proof-after-subtraction} \\
       + \frac{1}{T} w^\mu \nabla_\mu T &=
       + \kappa a_\mu \partial^\mu T + \kappa T a_\mu a^\mu
-      - \frac{w^\mu w_\mu}{\kappa T} \label{eq:step4-second-principle-proof}
+      - \frac{w^\mu w_\mu}{\kappa T} \,. \label{eq:step4-second-principle-proof}
     \end{align}
     \end{subequations}
 
     The last term in \eqref{eq:step4-second-principle-proof} looks like:
-
     \begin{equation} \label{eq:step5-second-principle-proof}
         \frac{w^\mu w_\mu}{\kappa T} = \frac{1}{\kappa T }
         \kappa^2 h^\sigma _\mu h^{\mu\nu} \qty(\partial_\sigma T + T a_\sigma) \qty(\partial_\nu T + T a_\nu)
-        = \kappa \qty(\frac{h^{\mu\nu}}{T} \partial_\mu T \partial_\nu T + 2 a^\mu \partial_\mu T + T a_\mu a^\mu)
+        = \kappa \qty(\frac{h^{\mu\nu}}{T} \partial_\mu T \partial_\nu T + 2 a^\mu \partial_\mu T + T a_\mu a^\mu) \,.
     \end{equation}
 
     Inserting the identity in \eqref{eq:step5-second-principle-proof}  and making the last \(w^\mu\) explicit in \eqref{eq:step4-second-principle-proof} we get:
-
     \begin{subequations}
     \begin{align}
       -\frac{1}{T} \kappa h^\mu _\sigma  \qty(\partial^\sigma T + T a^\sigma) \partial_\mu T  &= + \kappa a_\mu \partial^\mu T + \kappa T a_\mu a^\mu
@@ -353,7 +329,6 @@ They are described by the following stress-energy tensor:
 \begin{equation}
     T^{\mu\nu} = \rho u^\mu u^\nu + p h^{\mu\nu} = \rho_0 h u^{\mu} u^\nu + p g^{\mu\nu}
 \end{equation}
-
 where \(h = (p + \rho) / \rho_0\) is the specific enthalpy.
 If our fluid is ideal then the RHS of \eqref{eq:second-principle-thermodynamics} is zero and so is \(w^\mu\),
 therefore \(T \nabla_\mu S^\mu = T \nabla_\mu \qty(\rho_0 S u^\mu) = T \rho_0 u^\mu \partial_\mu S\) by the continuity equation.
@@ -362,7 +337,7 @@ So, \(S\) is conserved along the world-lines of the fluid.
 Also, the RHS of \eqref{eq:full-spatial-equations-of-motion} is zero, therefore we get the Euler equation:
 
 \begin{equation} \label{eq:relativistic-euler}
-    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p
+    (p+\rho) a^\mu = - h^{\mu \nu} \partial_\nu p \,.
 \end{equation}
 
 \paragraph{Speed of sound}
@@ -381,30 +356,31 @@ We work in Minkowski spacetime, where \(g_{\mu\nu} = \eta_{\mu\nu}\), and with a
 \end{align}
 \end{subequations}
 
-where \(h\) is the specific enthalpy. If we assume small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\) (it is \emph{almost} normalized) we get our three equations, up to first order in the perturbations:
+where \(h\) is the specific enthalpy. If we assume small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\)
+(the normalization condition is satisfied to first order in \(\delta u^x\)) we get our three equations, up to first order in the perturbations:
 
 \begin{subequations}
 \begin{align}
   \partial_x (\delta u^x) &= -\frac{\partial_t (\delta \rho_0)}{\rho_0}  \\
   \partial_t (\delta \rho) - h \partial_t (\delta \rho_0) &= 0  \\
-  -(p+ \rho) \partial_t (\delta u^x) &= \partial_x p
+  -(p+ \rho) \partial_t (\delta u^x) &= \partial_x p \,.
 \end{align}
 \end{subequations}
 
 We manipulate these by differentiating and substituting, in order to eliminate the dependence on \(\delta u^x\) and \(\rho_0\), and get:
-
 \begin{subequations}
 \begin{align}
   \partial_t \delta \rho + (p+\rho) \partial_x (\partial u^x) &= 0 \\
   \partial_x \delta p + (p+\rho) \partial_t (\partial u^x) &= 0
 \end{align}
 \end{subequations}
+which simplifies to \(\partial_{tt}^2 \delta \rho - \partial_{xx}^2 \delta p = 0\).
 
-which simplifies to \(\partial_{tt}^2 \delta \rho - \partial_{xx}^2 \delta p = 0\): in order to get the wave equation in the form \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\) we \emph{need} to define \(v_s^2 = \pdv*{p}{\rho}\).
+We can write this as the wave equation \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\), where we to define \(v_s^2 = \pdv*{p}{\rho}\), the square of the characteristic velocity of propagation \(v_s\).
 
 \subsection{Bondi accretion: the adiabatic case}
 
-We now apply the formalism developed in this section to the problem of spherical accretion into a black hole, without considering any kind of radiative transfer: we only look at the \emph{adiabatic} case.
+We now apply the formalism developed in this section to the problem of spherical accretion into a black hole the \emph{adiabatic} case: we model the gas as an ideal fluid.
 
 We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element} and make the following assumptions:
 
@@ -416,7 +392,7 @@ We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element} and 
 The comoving tetrad defined by the fluid's motion is called the \emph{fiducial congruence reference}.
 
 \begin{claim}
-When written with respect to the regular spherical coordinates \((t, r, \theta, \varphi)\) it is:
+When written with respect to the usual spherical coordinates \((t, r, \theta, \varphi)\) it is:
 
 \begin{subequations} \label{eq:fiducial-frame}
     \begin{align}
@@ -426,8 +402,7 @@ When written with respect to the regular spherical coordinates \((t, r, \theta, 
         \hat{\varphi} =  e_ \varphi &= \qty(0,0,0, 1/(r \sin(\theta)))
     \end{align}
 \end{subequations}
-
-where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\gamma \sqrt{1+2\Phi} = \gamma \sqrt{1 - 2M/r} $ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
+where \(\gamma\) is the Lorentz factor, $\gamma = 1/\sqrt{1-v^2}$, and $y=\gamma \sqrt{1+2\Phi} = \gamma \sqrt{1 - 2M/r} $ is the ``energy-at-infinity per unit rest mass'' (see \cite[equation 3]{ThorneFLammmangZytkow:1981feb}).
 \end{claim}
 
 \begin{proof}
@@ -435,7 +410,7 @@ where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\
     For the velocity \(u^\mu \propto \hat{t}\)  we have
 
     \begin{equation}
-        u^\nu \nabla_\nu u^\mu = a^\mu = u_\rho \qty(u^\mu a^\rho - u^\rho a^\mu) = - (u_\rho u^\rho) a^\mu
+        u^\nu \nabla_\nu u^\mu = a^\mu = u_\rho \qty(u^\mu a^\rho - u^\rho a^\mu) = - (u_\rho u^\rho) a^\mu \,.
     \end{equation}
 
     For the acceleration \(a^\mu \propto \hat{r} \) we need the following identity: \(0=\dv*{(u^\mu a_\mu)}{\tau} =a^\mu a_\mu + u^\mu \dv*{a_\mu}{\tau} \). We multiply this by \(u^\mu\) to get: \(u^\mu (a^\rho a_\rho) = \dv*{a^\mu}{\tau}\).
@@ -445,12 +420,12 @@ where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\
     \begin{equation}
       u^\nu \nabla_\nu a^\mu
       = a_\rho (u^\mu a^\rho)
-      = a_\rho (u^\mu a^\rho - u^\rho a^\mu)
+      = a_\rho (u^\mu a^\rho - u^\rho a^\mu)\,.
     \end{equation}
 
     In the proof for the \(\hat{\theta} \) and \(\hat\varphi\) vectors, the RHS vanishes immediately since the time-radial surface to which the velocity and acceleration belong is orthogonal to the sphere's surface; the LHS instead vanishes since it is a derivative with respect to proper time, therefore along the fluid's flow lines, which all lie in the time-radial surface.
 
-    Now, we need to show that the velocity and the acceleration actually have the form shown in \eqref{eq:fiducial-frame}: for the velocity, it is enough to impose the normalization \(u^\mu u_\mu = -1 \), and to consider an observer with velocity  \(k^\mu\) who is stationary with respect to the spherical coordinates: by normalization their 4-velocity will surely look like \(k^\mu = (1/\sqrt{g_{00}}, 0,0,0)\), and the local transformation between the frames will be a Lorentz transformation with factor \(\gamma\) defined by the fluid's velocity, therefore it must hold that \(\gamma = - k^\mu u_\mu\).
+    Now, we need to show that the velocity and the acceleration actually have the form shown in \eqref{eq:fiducial-frame}: for the velocity, it is enough to impose the normalization \(u^\mu u_\mu = -1 \), and to consider an observer with velocity  \(k^\mu\) who is stationary with respect to the spherical coordinates: by normalization their 4-velocity will be \(k^\mu = (1/\sqrt{g_{00}}, 0,0,0)\), and the local transformation between the frames will be a Lorentz transformation with factor \(\gamma\) defined by the fluid's velocity, therefore it must hold that \(\gamma = - k^\mu u_\mu\).
 
     Since \(g_{00} = - y^2 / \gamma^2\) we have:
 
@@ -458,7 +433,6 @@ where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\
       \gamma = - k^\mu u^\nu g_{\mu\nu} = - u^0 \frac{g_{00}}{\sqrt{-g_{00}} }
       = u^0 \sqrt{-g_{00}} = u^0 \frac{y}{\gamma}
     \end{equation}
-
     which gives us \(u^0 = \gamma^2 / y\), while for \(u^1\) we must impose (already knowing that \(u^2 = u^3 = 0\)):
 
     \begin{subequations}
@@ -467,11 +441,11 @@ where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\
       &= -\qty(\frac{\gamma^2}{y})^2 \qty(\frac{y}{\gamma} )^2 + (u^1)^2 \frac{\gamma^2}{y^2} \\
       -1 + \gamma^2 &= (u^1)^2 \frac{\gamma^2}{y^2} \\
       y^2 (-\frac{1}{\gamma^2}  + 1) &= (u^1)^2 \\
-      y^2 v^2 &= (u^1)^2
+      y^2 v^2 &= (u^1)^2 \,.
     \end{align}
     \end{subequations}
 
-    As for \(a^\mu\), we need not compute the covariant derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = u^\mu \hat{r}^\nu g_{\mu\nu} = 0\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(\hat{r}^0 y^2 + \hat{r} ^1 v \gamma^2 = 0\) and the second one to \((\hat{r}^0)^2 (- y^2 / \gamma^2) + (\hat{r})^1 (\gamma^2 / y^2) = 1\), since we know the other two components of the acceleration are zero.
+    As for \(a^\mu\), we need not compute the covariant derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = 0= u^\mu \hat{r}^\nu g_{\mu\nu}\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(\hat{r}^0 y^2 + \hat{r} ^1 v \gamma^2 = 0\) and the second one to \((\hat{r}^0)^2 (- y^2 / \gamma^2) + (\hat{r}^1)^2 (\gamma^2 / y^2) = 1\), since we know the other two components of the acceleration are zero.
     Solving this system for the two unknown components yields precisely the desired expression.
 
     The \(\hat{\theta}\) and \(\hat{\varphi}\) vectors just need to be rescaled, and they will need to become \(1 / \sqrt{g_{22}}\) and \(1/\sqrt{g_{33}}\) respectively.
@@ -480,20 +454,20 @@ where we define the Lorentz factor as usual, $\gamma = 1/\sqrt{1-v^2}$, and $y=\
 The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
 
 \begin{equation} \label{eq:integral-continuity}
-    \dv{}{r} \qty(\rho_0 yvr^2) = 0
+    \dv{}{r} \qty(\rho_0 yvr^2) = 0 \,.
 \end{equation}
 
 For any function \(Q\),  \(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
 
 \begin{equation} \label{eq:differential-continuity}
   \dv{\log \rho_0}{\log r} +
-  \dv{\log yv}{\log r} + 2 = 0
+  \dv{\log yv}{\log r} + 2 = 0 \,.
 \end{equation}
 
-In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant wrt the radius must be $\Dot{M} / (4\pi)$: therefore
+In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant with respect to the radius must be $\Dot{M} / (4\pi)$: therefore
 
 \begin{equation} \label{eq:mass-conservation-integral}
-  \dot{M} = 4 \pi\rho_0 yvr^2
+  \dot{M} = 4 \pi\rho_0 yvr^2 \,.
 \end{equation}
 
 We also have the Euler equation \eqref{eq:relativistic-euler}.
@@ -503,13 +477,12 @@ The only interesting component of this is the radial one, so we need to calculat
 \begin{equation}
   \Gamma^1_{\mu \nu} = \left[\begin{matrix}\frac{M \left(- 2 M + r\right)}{r^{3}} & 0 & 0 & 0\\0 & \frac{M}{r \left(2 M - r\right)} & 0 & 0\\0 & 0 & 2 M - r & 0\\0 & 0 & 0 & \left(2 M - r\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
 \end{equation}
-
 while the proper-time derivative is \(\dv*{}{\tau} = u^\mu \partial_\mu = yv\partial_1\).
 Plugging in the expression for the only relevant component of \(h^{\mu\nu}\), \(h^{11} = g^{11} + u^1 u^1 = (1 + 2 \Phi) (1 + v^2 \gamma^2) = y^2\)
-we get, after lengthy computation,
+we get, after a lengthy computation,
 
 \begin{equation}
-  a^1 = y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2})
+  a^1 = y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) \,.
 \end{equation}
 
 Substituting this into the (radial component of the) Euler equation \eqref{eq:relativistic-euler} we get
@@ -517,14 +490,14 @@ Substituting this into the (radial component of the) Euler equation \eqref{eq:re
 \begin{subequations}
 \begin{align}
   (p + \rho) y^2 \qty(\gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}) &= - h^{1 1} \partial_1 p = - y^2 \partial_1 p \\
-   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + \frac{1}{p + \rho} \dv{p}{r} &= 0
+   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + \frac{1}{p + \rho} \dv{p}{r} &= 0 \,.
   \label{eq:ideal-euler}
 \end{align}
 \end{subequations}
 
-\begin{greenbox}
-  In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error: the term proportional to \(M/r^2\) should be positive.
-\end{greenbox}
+% \begin{greenbox}
+%   In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error: the term proportional to \(M/r^2\) should be positive.
+% \end{greenbox}
 
 We also have the equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
@@ -547,10 +520,10 @@ From these we can show that
 \end{claim}
 
 \begin{proof}
-First of all, by direct computation it can be shown that
+First of all, by direct computation it can be shown from the definition of \(y\) that
 
 \begin{equation} \label{eq:log-y-conservation}
-  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} = \dv{\log y }{r}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2} = \dv{\log y }{r} \,.
 \end{equation}
 
 Then, following \textcite[section 6.3]{Gourgoulhon:2006bn} we find that \(\dd{p} = \rho_0 \dd{h}\) in the isentropic case, therefore
@@ -558,19 +531,17 @@ Then, following \textcite[section 6.3]{Gourgoulhon:2006bn} we find that \(\dd{p}
 \begin{equation} \label{eq:log-h-conservation}
   \frac{1}{\rho + p} \dv{p}{r}  =  \dv{\log h}{r}
 \end{equation}
-
 so we can substitute the results in \eqref{eq:log-y-conservation} and \eqref{eq:log-h-conservation} into \eqref{eq:ideal-euler}:
 
 \begin{equation}
-  \dv{\log h}{r} + \dv{\log y }{r} = \dv{\log (hy) }{r} = 0
+  \dv{\log h}{r} + \dv{\log y }{r} = \dv{\log (hy) }{r} = 0 \,.
 \end{equation}
-
 \end{proof}
 
-In the nonrelativistic, weak-field limit this  becomes the classical conservation of density of energy:
+In the nonrelativistic, weak-field limit this becomes the classical conservation of density of energy:
 
 \begin{equation}
-    \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const
+    \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const \,.
 \end{equation}
 
 Also, we can rewrite the last term of the Euler equation \eqref{eq:ideal-euler} using \eqref{eq:enthalpy-definition}  as:
@@ -582,13 +553,12 @@ Also, we can rewrite the last term of the Euler equation \eqref{eq:ideal-euler} 
   \pdv{\rho}{p}   \partial_1 p =
   \frac{v_s^2}{\rho_0} \partial_1\rho_0
 \end{equation}
-
 where we define the speed of sound \(v_s^2 = (\pdv*{p}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process).
 
 This can be rewritten as
 
 \begin{equation}
-  \dd{p} = \pdv{p}{\rho} \pdv{\rho}{\rho_0} \dd{\rho_0} = v_s^2 h \dd{\rho_0}
+  \dd{p} = \pdv{p}{\rho} \pdv{\rho}{\rho_0} \dd{\rho_0} = v_s^2 h \dd{\rho_0} \,.
 \end{equation}
 
 \begin{greenbox}
@@ -609,7 +579,7 @@ Coming back to the Euler equation \eqref{eq:relativistic-euler},  we get:
 
 \begin{equation}
   \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
-  + \frac{v_s^2 }{\rho_0}\dv{\rho_0}{r} = 0
+  + \frac{v_s^2 }{\rho_0}\dv{\rho_0}{r} = 0 \,.
 \end{equation}
 
 We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):
@@ -622,7 +592,7 @@ We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x 
   % \frac{1 - (1-v^2)}{1}  \dv{\log v}{\log r} + \frac{M}{(y^2) r}
   % + (1-v^2)\frac{v_s^2}{1} \dv{\log \rho_0}{\log r}  &= 0 \\
   v^2  \dv{\log v}{\log r} + \frac{M}{y^2 r}
-  + (1-v^2) v_s^2 \dv{\log \rho_0}{\log r}  &= 0
+  + (1-v^2) v_s^2 \dv{\log \rho_0}{\log r}  &= 0 \,.
 \end{align}
 \end{subequations}
 
@@ -649,12 +619,11 @@ The equations can be cast into the system:
   \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
 \end{align}
 \end{subequations}
-
 which can be solved numerically: we have a critical point when the velocity \(v\) reaches the speed of sound, since there the Jacobian becomes singular.
 
-\begin{greenbox}
-  Likely typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
-\end{greenbox}
+% \begin{greenbox}
+%   Likely typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
+% \end{greenbox}
 
 \begin{greenbox}
   To add: commentary on the equation system, its boundary conditions \(\rho_\infty\) and \(T_\infty\), and the fact that to make the system regular at \(v = v_s\) the problem becomes uniquely determined.

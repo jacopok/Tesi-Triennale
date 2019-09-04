@@ -27,7 +27,7 @@ In special relativity, instead of having vectors in 3D space and a time scalar c
 This is called Minkowski flat spacetime.
 
 This difference is not just semantic: the spacetime formalism is needed because the axioms are equivalent to the conservation of the spacetime interval \(\dd{s}^2 = \eta_{\mu\nu} \dd{x}^\mu\dd{x}^\nu\), and the only transformations between inertial reference frames which leave it invariant regularly \emph{mix} time and space:
-they are  represented in 4D spacetime as \(x^\mu \rightarrow \Lambda^\mu\,_\alpha x^\alpha + a^\mu\), with the \(\Lambda_\mu\,^\alpha\) being \((1,1)\) tensors which satisfy \(\Lambda^\mu\,_\alpha \Lambda^\nu\,_\beta \eta_{\mu\nu} = \eta_{\alpha \beta}\), and \(a^\mu\) being a generic constant 4-vector.
+they are  represented in 4D spacetime as \(x^\mu \rightarrow \Lambda\indices{^\mu_\alpha} x^\alpha + a^\mu\), with the \(\Lambda\indices{_\mu^\alpha}\) being \((1,1)\) tensors which satisfy \(\Lambda\indices{^\mu_\alpha} \Lambda\indices{^\nu_\beta} \eta_{\mu\nu} = \eta_{\alpha \beta}\), and \(a^\mu\) being a generic constant 4-vector.
 
 The flat metric allows us to compute the lengths of vectors, and since it is indefinite there are nonzero vectors of positive, negative and zero spacetime length. These are respectively called spacelike, timelike and null-like.
 
@@ -40,9 +40,8 @@ Now, differentiating any function of position looks like \(\dv*{T^{A_k}(x^\mu)}{
 
 \index{covariant acceleration}
 Once we have this, we can define the 4-acceleration:
-
 \begin{equation} \label{eq:covariant-acceleration-def}
-    a^\nu = \dv{u^\mu}{\tau}  = u^\mu \nabla_\mu u^\nu
+    a^\nu = \dv{u^\mu}{\tau}  = u^\mu \nabla_\mu u^\nu \,.
 \end{equation}
 
 The 4-velocity is a unit vector: \(u^\mu u_\mu = -1\), and by differentiating this relation we get the often used identity \(u^\mu a_\mu = 0\).
@@ -58,31 +57,28 @@ The 0-th component of the 4-momentum vector is the energy of the body, while the
 The metric tensor \(g_{\mu\nu}\) is a symmetric \((0,2)\) tensor which defines a scalar product at every point in our manifold: \(x \cdot y = g_{\mu\nu} x^\mu y^\nu\).
 It is not intrinsic to the manifold.
 By integrating the velocity vector we can find the lengths of curves \(x^\mu(\lambda)\):
-
 \begin{equation}
-    L = \int \sqrt{g_{\mu\nu} \dv{x^\mu}{\lambda} \dv{x^\nu}{\lambda} }  \dd{\lambda}
+    L = \int \sqrt{g_{\mu\nu} \dv{x^\mu}{\lambda} \dv{x^\nu}{\lambda} }  \dd{\lambda} \,.
 \end{equation}
 
 For a flat spacetime we use the Minkowski metric \(\eta_{\mu\nu}\). In general, in the presence of matter the manifold will be curved, so there will not be a coordinate transformation to cast \(g_{\mu\nu}\) in the form \(\eta_{\mu\nu}\). If we choose a certain point \(P\), however, it is possible to find a transformation in order to impose the conditions \(g_{\mu\nu}(P)=\eta_{\mu\nu}(P)\), \(\partial_\rho g_{\mu\nu}(P) = 0\) \cite[pages 49--50]{Carroll:1997ar}.
 
 The metric defines an invariant called the \emph{spacetime interval}:
-
 \begin{equation}
-  \dd{s}^2 = g_{\mu\nu} \dd{x^\mu}\dd{x^\nu}
+  \dd{s}^2 = g_{\mu\nu} \dd{x^\mu}\dd{x^\nu}\,.
 \end{equation}
 
 \paragraph{Tensor calculus}
 
-An object such as \(\partial_\mu A^\nu\) for some vector \(A^\nu\) does not in general transform as a tensor, since quantity we should actually compute is \(\partial_\mu (A^\nu e_\nu)\) where \(e_\nu\) are the basis vectors: we evaluate this with the product rule and are left with \((\partial_\mu A^\nu)e_\nu + A^\nu \partial_\mu e_\nu\).
+An object such as \(\partial_\mu A^\nu\) for some vector \(A^\nu\) does not in general transform as a tensor. The quantity we should actually compute is \(\partial_\mu (A^\nu e_\nu)\) where \(e_\nu\) are the basis vectors: we evaluate this with the product rule and are left with \((\partial_\mu A^\nu)e_\nu + A^\nu \partial_\mu e_\nu\).
 If we only had the first half the derivative would be covariant: in flat spacetime the second half is zero but in general it is not: confusing the derivatives of the components with the derivatives of the vector does not work here.
 
 The covariant derivative keeps account of the shifting of the basis vectors:
-
 \begin{equation}
-    \nabla_\mu A^\nu = \partial_\mu A^\nu + \Gamma^\nu _{\alpha \mu}  A^\alpha
+    \nabla_\mu A^\nu = \partial_\mu A^\nu + \Gamma^\nu _{\alpha \mu}  A^\alpha \,.
 \end{equation}
 
-The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors! they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$. They are not intrinsic to the manifold.
+The rank-3 objects $\Gamma$ are called Christoffel symbols. They are not tensors: they depend on the choice of basis $e_\alpha$, and they satisfy $\nabla _\mu e_\alpha = \Gamma ^\nu _{\mu \alpha} e_\nu$. They are not intrinsic to the manifold.
 
 The definition is posed in such a way that the objects \(\nabla_\mu A^\nu\) are tensorial. This allows us to see that the covariant derivative is the same as the coordinate derivative for scalars.
 
@@ -90,24 +86,21 @@ We can define the covariant derivative of higher order tensor analogously; addin
 
 If we have the metric (and make reasonable assumptions of the connection being torsion-free), they can be calculated as:
 
-\begin{equation}
+\begin{equation}  \label{eq:christoffel-symbols-from-metric}
     \Gamma^\mu_{\nu \rho} = \frac{1}{2} g^{\mu \alpha} \qty(
     \partial_\rho g_{\alpha \nu} +
     \partial_\nu g_{\alpha \rho} -
     \partial_\alpha g_{\nu \rho}
-    ) \label{eq:christoffel-symbols-from-metric}
+    )\,.
 \end{equation}
 
 This also tells us that they are symmetric in the lower two indices: $\Gamma ^\mu _{\nu \rho} = \Gamma ^\mu _{\rho \nu}$.
 
 The divergence of a vector field $A^\mu$ can be calculated as:
-
 \begin{equation}
     \nabla_\mu A^\mu = \frac{1}{\sqrt{-g}}\partial_\mu \qty(\sqrt{-g}A^\mu) \label{eq:covariant-divergence}
 \end{equation}
-
 where $g$ is the determinant of the metric.
-
 
 \paragraph{Stokes' theorem}
 
@@ -115,7 +108,7 @@ Following \cite[]{Unger:2016}.
 If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) of this manifold equipped with coordinates \(x^\mu\) a metric \(g_{\mu\nu}\), with a submanifold boundary \(\partial V\) equipped with coordinates \(y^\mu\) and the induced metric \(h_{\alpha\beta} = \qty(\pdv*{x^\mu}{y^\alpha}) \qty(\pdv*{x^\nu}{y^\beta}) g_{\mu\nu}\), and for which we have a properly oriented normal vector \(n^\mu (y)\); then for any vector \(f^\mu\) we have:
 
 \begin{equation} \label{eq:stokes-theorem}
-    \int _{V} \nabla_\mu f^\mu \sqrt{\abs{\det g}}  \dd[n]{x}  = \int _{\partial V} f^\mu  n_\mu \sqrt{\abs{\det h}} \dd[n-1]{y}
+    \int _{V} \nabla_\mu f^\mu \sqrt{\abs{\det g}}  \dd[n]{x}  = \int _{\partial V} f^\mu  n_\mu \sqrt{\abs{\det h}} \dd[n-1]{y} \,.
 \end{equation}
 
 \paragraph{Geodesics}
@@ -126,13 +119,12 @@ To check whether a given path is a geodesic we can stationarize the action corre
 \begin{equation}
     \Ddot{x}^\mu + \Gamma^\mu_{\nu\rho} \Dot{x}^\nu \Dot{x}^\rho = 0
 \end{equation}
-
-where $\Gamma$ are the Christoffel symbols, which can be calculated by differentiating the metric, as shown in \eqref{eq:christoffel-symbols-from-metric}. $\Lagr$ is an integral of these Lagrange equations.
+where $\Gamma^\mu_{\nu \rho}$ are the Christoffel symbols, which can be calculated by differentiating the metric, as shown in \eqref{eq:christoffel-symbols-from-metric}. $\Lagr$ is an integral of these Lagrange equations.
 
 If the parameter $\lambda$ is taken to be the proper time $s$, then the equation is
 
 \begin{equation}
-    \dv{u^\mu}{s} + \Gamma^\mu _{\nu\rho} u^\nu u^\rho = 0
+    \dv{u^\mu}{s} + \Gamma^\mu _{\nu\rho} u^\nu u^\rho = 0 \,.
 \end{equation}
 
 Notice that this is equivalent to the covariant acceleration \eqref{eq:covariant-acceleration-def} being zero.
@@ -144,7 +136,7 @@ Then we say that \(V^\mu\) is transported according to Fermi-Walker iff it satis
 
 \begin{equation} \label{eq:fermi-walker-transport}
     \dot{V}^\mu  = u^\nu \nabla_\nu V^\mu
-    = 2 V_\rho u^{[\mu} a^{\rho]}
+    = 2 V_\rho u^{[\mu} a^{\rho]} \,.
 \end{equation}
 
 This condition is always satisfied by \(V^\mu = u^\mu\), since \(a^\mu u_\mu = 0\), whether or not the curve is a geodesic. The tangent vector is \emph{parallel} transported only for geodesics.
@@ -160,7 +152,6 @@ We call the velocity \(u^\mu = V^\mu _{(0)}\) and complement it with three other
 \begin{equation}
     g_{\mu\nu} V^\mu _{(\alpha)} V^\nu _{(\beta)} = \eta_{(\alpha) (\beta)}
 \end{equation}
-
 where the brackets around the indices denote the fact that they label four vectors, not the components of a tensor.
 
 We can choose the vectors \(V_{(i)}^\mu\) so that they are Fermi-Walker transported along the worldline defined by \(u^\mu\): this allows us to find the relativistic equivalent of a non-rotating frame of reference.
@@ -168,9 +159,8 @@ We can choose the vectors \(V_{(i)}^\mu\) so that they are Fermi-Walker transpor
 It is useful to project tensors onto the space-like and time-like subspaces defined by our tetrad (and we wish to do so in a coordinate-independent manner,  so just taking the 0th and $i $-th components in the tetrad will not suffice). We therefore define the projectors:
 
 \begin{equation}
-    h_{\mu \nu} = u_\mu u_\nu + g_{\mu \nu} \qquad \pi_{\mu\nu} = -u_\mu u_\nu
+    h_{\mu \nu} = u_\mu u_\nu + g_{\mu \nu} \qquad \qquad \pi_{\mu\nu} = -u_\mu u_\nu
 \end{equation}
-
 respectively onto the space- and time-like subspaces.
 
 \paragraph{Killing vector fields}
@@ -187,14 +177,13 @@ Let us call the direction of this translation \(\xi^\mu = \delta^\mu_{\widetilde
     g_{\mu\nu} + \partial_\nu g_{\mu\widetilde{\alpha}} -
     \partial_\mu g_{\nu \widetilde{\alpha}})
 \end{equation}
-
 but by hypothesis the first term on the RHS of \eqref{eq:killing-vector-identity} is zero, therefore we have shown that \(\nabla_{\nu} \xi_\mu = \nabla_{[\nu} \xi_{\mu]}\) in this coordinate frame, but since this is a covariant equation it extends to every other one.
 
 This can equivalently be stated by writing \(\nabla_{(\nu} \xi_{\mu)}=0\): this is called \emph{Killing's equation}. This is useful since: given a geodesic \(x^\mu(\lambda)\), for which we define \(u^\mu = \dv*{x^\mu}{\lambda} \), it must be the case that \(u^\nu \nabla_\nu u^\mu = 0 \). Then, the component of \(u^\mu\) along \(\xi^\mu\) (\(u^{\widetilde{\alpha}} = u^\mu \xi_\mu\)) is conserved:
 
 \begin{equation}
     \dv{}{\lambda} \qty(u^\mu \xi_\mu) = u^\nu \nabla_\nu \qty(u^\mu \xi_\mu)
-    = \cancelto{0}{\xi^\mu u^\nu \nabla_\nu u_\mu} + \cancelto{0}{u^\nu u^\mu \nabla_\nu \xi_\mu} \equiv 0
+    = \cancelto{0}{\xi^\mu u^\nu \nabla_\nu u_\mu} + \cancelto{0}{u^\nu u^\mu \nabla_\nu \xi_\mu} \equiv 0 \,.
 \end{equation}
 
 \paragraph{Surfaces in space-time and acceleration decomposition}
@@ -208,13 +197,13 @@ Suppose we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can look at the t
     \pdv{x^\mu}{\tau}{s} =
     \pdv{x^\mu}{s}{\tau}
     \implies
-    \pdv{u^\mu}{\tau} = \pdv{\lambda^\mu}{s}
+    \pdv{u^\mu}{\tau} = \pdv{\lambda^\mu}{s} \,.
 \end{equation}
 
 Now let us take the spatial vectors of an orthonormal Fermi-Walker transported tetrad \(V^\mu_{(a)}\) as described in \Nameref{par:tetrads}, and express \(\lambda^\mu\) in this frame: its covariant components will be
 
 \begin{equation} \label{eq:tetrad-components-lambda}
-    X_{(a)} = V_{(a)\mu} \lambda^\mu
+    X_{(a)} = V_{(a)\mu} \lambda^\mu \,.
 \end{equation}
 
 If we differentiate \eqref{eq:tetrad-components-lambda} with respect to \(s\), and use \eqref{eq:schwarz-spacetime-tube} with the fact that \(\dv{}{\tau} = \lambda^\mu \nabla_\mu \), we get:
@@ -228,7 +217,6 @@ If we differentiate \eqref{eq:tetrad-components-lambda} with respect to \(s\), a
     &= \qty(\nabla_\mu u_\rho) V^\rho_{(a)} V^{\mu}_{(b)} X^{(b)}
 \end{align}
 \end{subequations}
-
 where in the last step we expressed everything with respect to the tetrad coordinate system. Therefore, in those coordinates, the evolution of the components \(X^{(a)}\) is linear, and defined by the tetrad components of the two-form \(\nabla_\mu u_\nu\). So, we want to decompose this tensor:
 
 \begin{equation} \label{eq:covariant-acceleration-decomposition}
@@ -255,9 +243,10 @@ To verify the formulas given for \(\sigma_{\sigma \tau}\) and \(\omega_{\sigma \
 
 In the General theory of Relativity we make a stronger claim than that of the axioms of SR, which are only formulated for inertial reference frames.
 
-The \emph{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally. The frame of reference in which we must write the laws to put them in special-relativistic form is called the Locally Inertial Reference Frame or Local Rest Frame.
+The \emph{Einstein Equivalence Principle} states \cite[100]{Carroll:1997ar} that in small enough regions of spacetime the laws of physics are those of special relativity, and we cannot detect gravitational effect locally.
+The frame of reference in which we must write the laws for them to appear in their special-relativistic form is called the Locally Inertial Reference Frame or Local Rest Frame (LRF).
 
-Unlike special relativity, the transformation laws between LIRFs are not linear, but can be in general be represented as diffeomorphisms.
+Unlike special relativity, the transformation laws between different reference frames are not linear, but can be in general be represented as diffeomorphisms.
 
 We model spacetime as a manifold which has intrinsic (basis-independent) curvature; an object which is modelled in newtonian mechanics as being in free fall, accelerated by a gravitational force, is modelled in general relativity as following a geodesic in the manifold.
 
@@ -266,7 +255,7 @@ We model spacetime as a manifold which has intrinsic (basis-independent) curvatu
 The intrinsic curvature of spacetime is fully described by the Riemann curvature tensor, which is a fourth rank tensor: for any generic vector \(V^\mu\),
 
 \begin{equation} \label{eq:riemann-tensor-def}
-    R ^{\mu} _{\nu \rho \sigma} V^\nu \defeq [\nabla_\rho, \nabla_\sigma]   V^\mu
+    R ^{\mu} _{\nu \rho \sigma} V^\nu \defeq [\nabla_\rho, \nabla_\sigma]   V^\mu \,.
 \end{equation}
 
 It can be calculated using the Christoffel symbols, and while they are not tensors \(R ^{\mu} _{\nu \rho \sigma}\) is one. This result follows by expanding all the covariant derivatives in formula \eqref{eq:riemann-tensor-def}.
@@ -283,11 +272,13 @@ The Christoffel symbols can be nonzero if we choose certain coordinates even for
 
 The Riemann tensor satisfies the following identities \cite[eqs. 8.45 and 8.76]{MisnerThorneWheeler:1973}:
 
+\vspace{-.5cm}
+
 \begin{subequations}
 \begin{align}
   \nabla _{[\lambda} R_{\mu\nu]\rho \sigma} &= 0 \label{eq:bianchi-identities}  \\
   R_{\mu\nu\rho\sigma} &= R_{[\mu\nu][\rho\sigma]} = R_{[\rho\sigma][\mu\nu]}  \\
-  R_{[\mu\nu\rho\sigma]} &= 0 = R_{\mu[\nu\rho\sigma]}
+  R_{[\mu\nu\rho\sigma]} &= 0 = R_{\mu[\nu\rho\sigma]} \,.
 \end{align}
 \end{subequations}
 
@@ -301,7 +292,7 @@ They involve the \emph{stress-energy tensor} \(T^{\mu\nu}\) which is defined in 
 The equations are:
 
 \begin{equation} \label{eq:EFE}
-  G^{\mu\nu} = 8 \pi T^{\mu\nu}
+  G^{\mu\nu} = 8 \pi T^{\mu\nu} \,.
 \end{equation}
 
 The constant comes by imposing continuity with the newtonian limit, in which we know the gravitational field \(\Phi\) is determined by the matter density \(\rho_0\) according to the Poisson equation \(\partial_i \partial^i \Phi = 4 \pi \rho_0\).
@@ -326,14 +317,12 @@ One can write down the most general possible spherically symmetric metric, which
   \dd{s} ^2 = -e^{2 \alpha(r, t)} \dd{t}^2 + e^{2 \beta(r, t)} \dd{r}^2
   + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi})
 \end{equation}
-
 and plug this into the equations \(G_{\mu\nu} = 0 \implies R_{\mu\nu} = 0 \) for all \(r>r_c\). One gets the result that the metric possesses a timelike Killing vector field which is orthogonal to a family of hypersurfaces \(t = \const\): therefore it is \emph{static}, unchanging with time.
 \(\alpha\) and \(\beta\) only depend on \(r\), and one gets the result that
 
 \begin{equation}
   e^{2 \alpha(r)} = e^{-2 \beta(r)} = \qty(1 + \frac{C}{r})
 \end{equation}
-
 for some \(C\). By continuity with the weak-field limit, for which one has the newtonian gravitational field \(\Phi = -M/r\) and \(g_{00} = - (1 + 2 \Phi)\), one sets \(C = -2M\).
 Keeping the notation \(\Phi = -M/r\) we have:
 
@@ -341,11 +330,10 @@ Keeping the notation \(\Phi = -M/r\) we have:
     \dd{s}^2 = -(1+2\Phi)\dd{t}^2 + \frac{1}{1+2\Phi} \dd{r}^2
     + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi}) \label{eq:schwartzshild-line-element}
 \end{equation}
-
 or, equivalently,
 
 \begin{equation}
-    g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta )
+    g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta ) \,.
 \end{equation}
 
 We can see that it approaches the spherical-coordinates flat metric $\eta_{\mu\nu} ^{\prime} = \diag\qty(-1, 1, r^2, r^2 \sin ^2 \theta)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).

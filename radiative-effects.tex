@@ -46,7 +46,7 @@ where the PSTF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed 
     \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF} \,.
 \end{equation}
 
-In particular, the function we will apply this to is the distribution of EM radiation around the BH. So, let us consider a photon, whose trajectory in spacetime is parameterized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
+In particular, the function we will apply this to is the distribution of EM radiation around the BH. So, we consider a photon, whose trajectory in spacetime is parameterized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
 \(
 p = \dv*{}{\xi}
 \).
@@ -54,22 +54,21 @@ p = \dv*{}{\xi}
 Now, our observer has a timelike velocity \(u^\mu\). We can find a spacelike vector \(n^\mu\) corresponding to the space-like part of the movement of the photon, or
 
 \begin{equation}
-    p^\mu = (- u^\nu p_\nu) (u^\mu + n^\mu)
+  p^\mu = (- u^\nu p_\nu) (u^\mu + n^\mu)\,.
 \end{equation}
 
 It must hold that \(u^\mu u_\mu = -1 \) while \(n^\mu n_\mu = +1 \) in order for \(p^\mu\) to be null-like.
-Now, we define a parameter \(l\) which corresponds to the space distance the photon moved through in this frame (this is \emph{not} covariant!)
+Now, we define a parameter \(l\) which corresponds to the space distance the photon moved through in this frame (\(l\)  is \emph{not} covariant!)
 
 \begin{equation}
     l = \int  (-u^\nu p_\nu) \dd{\xi}
 \end{equation}
+now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\).
 
-now, \(\dv*{}{l} \) is parallel to \(p\) but it has different length, in fact since \(\dv*{l}{\xi} = (-u^\nu p_\nu) \) it is \(\dv*{}{l} = u + n \).
-
-It holds \cite[eq. 2.17]{Thorne:1981feb}, (with the notation from \eqref{eq:covariant-acceleration-decomposition}),  that
+It holds (\cite[eq. 2.17]{Thorne:1981feb}, with the notation from \eqref{eq:covariant-acceleration-decomposition}), that
 
 \begin{equation}
-  \dv{\nu}{l}  = (u^\mu + n^\mu) \nabla_\mu (-p^\nu u_\nu) = - \nu \qty(n_\mu a^\mu  + \frac{\theta}{3} + n_\mu n_\nu \sigma^{\mu\nu})
+  \dv{\nu}{l}  = (u^\mu + n^\mu) \nabla_\mu (-p^\nu u_\nu) = - \nu \qty(n_\mu a^\mu  + \frac{\theta}{3} + n_\mu n_\nu \sigma^{\mu\nu})\,.
 \end{equation}
 
 We want to quantify the number density of photons in relation to their momentum. We assume the radiation in unpolarized, therefore for each unit \(h^3\) cell in phase space there can be 2 photons: so we denote the distribution function of the photons as \(2N (x^\mu, p^\mu)\).
@@ -86,10 +85,10 @@ Let us define the \emph{specific radiative intensity} as
 
 where \(\delta A\) denotes an infinitesimal area the photons are coming through, \(\delta t\) an infinitesimal time, \(\delta \nu\) an infinitesimal photon frequency, \(\delta \Omega\) an infinitesimal solid angle.
 
-Then, \cite[figure 22.2]{MisnerThorneWheeler:1973} the number density of photons in phase space is
+Then, the number density of photons in phase space is \cite[figure 22.2]{MisnerThorneWheeler:1973}
 
 \begin{equation}
-  2N(x^\mu, p^\mu) = \frac{\delta N}{V_x V_p} =  \frac{\delta N}{h^3 \nu^2\delta A \delta  t \delta \nu \delta \Omega} = \frac{1}{h^4 \nu^3} I_\nu
+  \frac{2N(x^\mu, p^\mu)}{h^3} = \frac{\delta N}{V_x V_p} =  \frac{\delta N}{h^3 \nu^2\delta A \delta  t \delta \nu \delta \Omega} = \frac{1}{h^4 \nu^3} I_\nu
 \end{equation}
 
 therefore \(I_\nu = 2 N \nu^3 h\).
@@ -98,58 +97,56 @@ Now, we want to describe the variation of the occupation number \(N\) with respe
 
 \begin{equation}
     \mathfrak S \defeq \dv{}{l} 2N(x^\mu, p^\mu) =
-    2 \qty(\pdv{N}{x^\mu} \dv{x^\mu}{l} + \pdv{N}{p^i} \dv{p^i}{l}  )
+    2 \qty(\pdv{N}{x^\mu} \dv{x^\mu}{l} + \pdv{N}{p^\mu} \dv{p^\mu}{l}  )
 \end{equation}
-
 since the occupation number can be thought of as just a function of the spatial components of the momentum.
 
-\begin{greenbox}
-  Why so? Surely \(N = N(\nu) = N(p^0)\) also!
-\end{greenbox}
-
-Since \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\) and the covariant derivative of \(p^j\) is zero, we can compute
-
+Since \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\) and the covariant derivative of \(p^\gamma\) is zero, we can compute
 \begin{equation}
-  \dv{p^j}{l} = (n^\mu + u^\mu ) \nabla_\mu p^j - \Gamma ^j _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
-  = - \Gamma ^j _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
+  \dv{p^\gamma}{l} = (n^\mu + u^\mu ) \nabla_\mu p^\gamma - \Gamma ^\gamma _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
+  = - \Gamma ^\gamma _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
 \end{equation}
-
 where the covariant derivative term vanishes since the photon's trajectory is a geodesic.
 
 \paragraph{Moments' definitions}
 
-In units where \(c=h=1\),
+In this subsection I will follow \textcite[]{Thorne:1981feb} in his usage of units where \(c=h=1\).
+
+We define the (unprojected) \(k\)-th \emph{moments} of radiative transfer:
 
 \begin{subequations}
 \begin{align}
    M _\nu ^{A_k}
    &\defeq \int 2N \frac{\delta (\nu - (-p^\nu u_\nu))}{\nu^{k-2}} \prod_i^k p^{\alpha_i} \dd{V_p} \\
    &= \int \qty(2N \nu^3) \frac{1}{\nu} \delta (\nu +p^\nu u_\nu) \prod_i^k \qty(\frac{p^{\alpha_i}}{\nu}) \qty(\nu \dd[]{\Omega} \dd[]{\nu})  \\
-   &= \int  I_\nu \prod_i^k \qty(n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega} \label{eq:simplified-moment-definition}
+   &= \int  I_\nu \prod_i^k \qty(n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega}\,. \label{eq:simplified-moment-definition}
 \end{align}
 \end{subequations}
+
+\begin{greenbox}
+  Write better.
+\end{greenbox}
 
 This is a general procedure we can use to associate a function \(f\) (in this case we started with \(2N\)) with \(\nu^3\) times the integral \eqref{eq:simplified-moment-definition} (where one might substitute \(I _\nu\) with the function \(f\)).
 We need it for the source moments:
 
 \begin{equation}
-   S_\nu ^{A_k} = \nu^3 \int S \mathfrak S \prod_i^k (n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega}
+   S_\nu ^{A_k} = \nu^3 \int S \mathfrak S \prod_i^k (n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega} \,.
 \end{equation}
 
 \paragraph{Redshift-adapted version}
 
 \textcite[]{Thorne:1981feb} also defines a redshift-adapted version of the moments' definition: if \(R\) is a universal redshift functions, such that \(R (p^\nu u_\nu)\) is conserved along every photon geodesic \(p^\mu \nabla_\mu p^\nu = 0\), that is, \(R\) allows us to calculate the redshift between any two points \(A\), \(B\) which are connected by a geodesic as \(\nu_A / \nu_B = R_B / R_A\).
 
-Then, we define \( M_f ^{A_k} =  M_{\nu} ^{A_k} / R\)
+Then, we define \( M_f ^{A_k} =  M_{\nu} ^{A_k} / R\).
 
 \paragraph{Frequency-integrated version}
 
-The definition is:
+We may not wish to consider the frequency dependence of the radiation, but instead to treat all radiative transfer ``in bulk'': to this end, we define the frequency-integrated moments:
 
 \begin{equation}
-   M ^{A_k} = \int   M^{A_k} _\nu \dd{\nu}
+   M ^{A_k} = \int M^{A_k} _\nu \dd{\nu}
 \end{equation}
-
 and the same is applied to the source moments \(S_\nu^{A_k} \rightarrow S^{A_k}\).
 
 Since this includes the radiation intensity from all frequencies, we have direct interpretations for the first moments:
@@ -158,32 +155,31 @@ Since this includes the radiation intensity from all frequencies, we have direct
 \begin{align}
    M &= \int  I_\nu \dd{\Omega} \dd{\nu}   & \text{energy density of radiation}  \\
    M^\alpha &= \int I_\nu (n^\alpha + u^\alpha)\dd{\Omega} \dd{\nu}   & (M^0, M^i) = \text{(energy density of radiation, energy flux)}  \\
-   M^{\alpha\beta} &= \int I (n^\alpha + u^\alpha)(n^\beta + u^\beta)\dd{\Omega} \dd{\nu}   & \text{stress-energy tensor of radiation}
+   M^{\alpha\beta} &= \int I (n^\alpha + u^\alpha)(n^\beta + u^\beta)\dd{\Omega} \dd{\nu}   & \text{stress-energy tensor of radiation.}
 \end{align}
 \end{subequations}
 
 \paragraph{The moment equations}
 
-These can be derived from the transport equation, see \cite[3.14]{Thorne:1981feb}. I present them only in the grey (frequency-integrated) case:
+These can be derived from the transport equation, see \cite[eq. 3.14]{Thorne:1981feb}. I present them only in the grey (frequency-integrated) case:
 
 \begin{equation} \label{eq:grey-moment-equations}
-  \nabla_\beta M^{A_k \beta} - (k-1) M^{A_k \beta \gamma} (\nabla_ \gamma u_\beta)= S^{A_k}
+  \nabla_\beta M^{A_k \beta} - (k-1) M^{A_k \beta \gamma} (\nabla_ \gamma u_\beta)= S^{A_k} \,.
 \end{equation}
 
-Also, the moments (\(M^{A_k}\), but also \(M^{A_k}_\nu\) and \(M^{A_k}_f\)) satisfy the following:
-
+The moments (the frequency-integrated \(M^{A_k}\), but also the full moments \(M^{A_k}_\nu\) and the redshift-adapted ones \(M^{A_k}_f\)) satisfy the following:
 \begin{subequations}
 \begin{align}
   M^{A_k \beta}\,_\beta &= 0 \\
   u_\beta M^{A_k \beta} &= -M^{A_k} \\
-  h_{\beta \gamma} M^{A_k \beta \gamma} &= M^{A_k}
+  h_{\beta \gamma} M^{A_k \beta \gamma} &= M^{A_k} \,.
 \end{align}
 \end{subequations}
 
 So, the \(k\)-th moment contains all the information about the \(l\)-th moments with \(l\leq k\); also, to get lower-order moments we take partial traces onto space- and time-like subspaces: therefore the unique information to the \(k\)-th moment, which is not redundantly expressed in lower-order moments, is in its PSTF part:
 
 \begin{equation}
-  \mathscr M ^{A_k} = \qty(M^{A_k}) ^{PSTF}
+  \mathscr M ^{A_k} = \qty(M^{A_k}) ^{PSTF} \,.
 \end{equation}
 
 The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\), to the moment equations \eqref{eq:grey-moment-equations} and to the source moments \(S^{A_k} \rightarrow \mathscr S ^{A_k}\). Since we are taking the projection onto the space-like subspaces, we can simplify the expression of the PSTF moments: all the terms which contain at least a four-velocity vanish, therefore:
@@ -191,7 +187,6 @@ The same can be applied to \(M^{A_k}_\nu\) and \(M^{A_k}_f\), to the moment equa
 \begin{equation} \label{eq:trace-free-moments-definition}
   \mathscr M^{A_k} = \qty(\int I \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
 \end{equation}
-
 where \(I = \int I_\nu \dd{\nu}\).
 The first \emph{PSTF} moments also have physical interpretations:
 
@@ -199,7 +194,7 @@ The first \emph{PSTF} moments also have physical interpretations:
 \begin{align}
    \mathscr M &= \int  I \dd{\Omega}    & \text{energy density of radiation}  \\
    \mathscr M^\alpha &= \int I n^\alpha\dd{\Omega}  & \text{energy flux of radiation}  \\
-   \mathscr M^{\alpha\beta} &= \int I n^\alpha n^\beta \dd{\Omega}   & \text{shears in the stress-energy tensor of radiation}
+   \mathscr M^{\alpha\beta} &= \int I n^\alpha n^\beta \dd{\Omega}   & \text{shears in the stress-energy tensor of radiation.}
 \end{align}
 \end{subequations}
 
@@ -209,8 +204,7 @@ We can write the stress-energy tensor \(T^{\mu\nu} = M^{\mu\nu}\) with the PSTF 
     T^{\mu\nu} = \mathscr M u^\mu u^\nu + 2 \mathscr M ^{(\mu} u^{\nu)}
     + \mathscr M ^{\mu\nu} + \frac{1}{3} \mathscr M h^{\mu\nu}
 \end{equation}
-
-we can compare these to \eqref{eq:components-stress-energy-tensor} to get the following identifications:
+and compare these to the expression of the components of the stress-energy tensor \eqref{eq:components-stress-energy-tensor} to get the following identifications:
 
 \begin{subequations}
 \begin{align}
@@ -220,8 +214,7 @@ we can compare these to \eqref{eq:components-stress-energy-tensor} to get the fo
   &= (p - \xi \theta)h^{\mu\nu} - 2 \eta \sigma^{\mu\nu} \label{eq:identification-PSTF-stress-energy-tensor-3}
 \end{align}
 \end{subequations}
-
-but since the photons' paths are geodesics in this case \(\theta = 0\), so for the components proportional to \(h^{\mu\nu}\) of equation \eqref{eq:identification-PSTF-stress-energy-tensor-3} we just get \(\rho = \frac[i]{1}{3} p\), which is what we expect for the photon gas.
+and since the photons' paths are geodesics in this case \(\theta = 0\), for the components proportional to \(h^{\mu\nu}\) of equation \eqref{eq:identification-PSTF-stress-energy-tensor-3} we just get \(\rho = \frac[i]{1}{3} p\), which is what we expect for a photon gas.
 For the traceless part of the equation, we get \(\mathscr M ^{\mu\nu} = -2 \eta \sigma^{\mu\nu}\).
 
 \paragraph{The PSTF moment equations}
@@ -234,12 +227,11 @@ We want to express the grey moment equations \eqref{eq:grey-moment-equations} in
   \mathscr M^{(A_l} \prod_{i=l+1}^{l+2j-1} h^{\alpha_i \alpha_{i+1}}
   \prod_{x=l+2j+1}^k u^{\alpha_x)}
 \end{equation}
-
 where all the indices of the \(\mathscr M\), \(h\) and \(u\) are meant to be symmetrized.
 
 We insert this into the moment equations and expand, making use of the decomposition of the covariant derivative of the 4-velocity \eqref{eq:covariant-acceleration-decomposition}.
 
-Then, we take the PSTF part of the equations. This yields a very complicated expression, so here I record only the implicit formula \cite[eq. 4.11c]{Thorne:1981feb}:
+Then, we should take the PSTF part of the equations. This yields a very complicated expression, so here I record only the implicit formula given in \textcite[eq. 4.11c]{Thorne:1981feb}:
 
 \begin{equation} \label{eq:PSTF-grey-moment-equations}
   \begin{split}
@@ -251,7 +243,7 @@ Then, we take the PSTF part of the equations. This yields a very complicated exp
     &+ \frac{5k}{2k+3} \mathscr M ^{A_{k-1} \beta} \sigma_\beta^{\alpha_k}
     - k \mathscr M ^{A_{k-1} \beta} \omega_\beta ^{\alpha_k}
     \left.+ \frac{k (k+3)}{2k+1} \mathscr M ^{A_{k-1}} a^{\alpha_k}
-    + \frac{(k-1) k (k+2) }{(2k-1) (2k+1)} \mathscr M ^{A_{k-2}} \sigma^{\alpha_{k-1} \alpha_k} \right)^{PSTF} = \mathscr S ^{A_k}
+    + \frac{(k-1) k (k+2) }{(2k-1) (2k+1)} \mathscr M ^{A_{k-2}} \sigma^{\alpha_{k-1} \alpha_k} \right)^{PSTF} = \mathscr S ^{A_k} \,.
   \end{split}
 \end{equation}
 
@@ -260,16 +252,16 @@ Then, we take the PSTF part of the equations. This yields a very complicated exp
 Once one has solved the PSTF grey moment equations, one can compute the intensity from the moments by comparing \eqref{eq:PSTF-moments-function-decomposition} and \eqref{eq:trace-free-moments-definition}:
 
 \begin{equation}
-  I = \sum _{k=0}   ^{\infty} \frac{(2k+1)!!}{4 \pi k!} \mathscr M^{A_k} \prod_{i=1}^k n_{\alpha_i}
+  I = \sum _{k=0}   ^{\infty} \frac{(2k+1)!!}{4 \pi k!} \mathscr M^{A_k} \prod_{i=1}^k n_{\alpha_i}\,.
 \end{equation}
 
 \subsection{Generalized Bondi accretion}
 
 \paragraph{Simplifications under assumptions of symmetry}
 
-Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \cite[]{ThorneFLammmangZytkow:1981feb}.
+Instead of treating the general case as is done in \cite[]{Thorne:1981feb}, we describe the specific choices made under the assumption of spherical symmetry, following \textcite[]{ThorneFLammmangZytkow:1981feb}.
 
-In the fiducial frame defined in \eqref{eq:fiducial-frame}  (denoted with a subscript ``fid''), we have the following expressions:
+The fiducial frame defined in \eqref{eq:fiducial-frame} can still be used here: we  denote with a subscript ``fid'' the tensors expressed in that basis. We get the following expressions:
 
 \begin{subequations} \label{eq:spherical-coordinates-simplifications}
 \begin{align}
@@ -287,20 +279,20 @@ In the fiducial frame defined in \eqref{eq:fiducial-frame}  (denoted with a subs
      &   & -1/2  &  \\
      &   &   & -1/2
   \end{bmatrix} _{\text{fid}} \\
-  \Gamma_{\theta r \theta} &= \Gamma_{\varphi r \varphi} = \frac{y}{r}
+  \Gamma_{\theta r \theta} &= \Gamma_{\varphi r \varphi} = \frac{y}{r}\,.
 \end{align}
 \end{subequations}
 
-Now, we can see that the shear has been heavily simplified. This is a specific case of a general statement about the PSTF moments: in the spherically symmetric case, the \(k\)-th PSTF moment only has one independent component. This is because it satisfies the following identities:
+We can see that the shear has been heavily simplified. This is a specific case of a general statement about the PSTF moments: in the spherically symmetric case, the \(k\)-th PSTF moment only has one independent component. This is because it satisfies the following identities:
 
 \begin{subequations}
 \begin{align}
   \mathscr M ^{A_k} &= 0 \text{ if } A_k \text{ contains an odd number of } \theta \text{s or } \varphi \text{s}  \label{eq:id1-pstf-spherically-symmetric}  \\
-  \mathscr M ^{A_k \theta \theta} &= \mathscr M ^{A_k \varphi \varphi} = -\frac{1}{2} \mathscr M ^{A_k rr} \label{eq:id2-pstf-spherically-symmetric}
+  \mathscr M ^{A_k \theta \theta} &= \mathscr M ^{A_k \varphi \varphi} = -\frac{1}{2} \mathscr M ^{A_k rr} \,. \label{eq:id2-pstf-spherically-symmetric}
 \end{align}
 \end{subequations}
 
-Equation \eqref{eq:id1-pstf-spherically-symmetric}  comes from the fact that an odd number of \(\theta\) or \(\varphi\) indices corresponds to and odd number of unit vectors which are integrated on the sphere (see the definition \eqref{eq:trace-free-moments-definition}): therefore the integrand is odd.
+Equation \eqref{eq:id1-pstf-spherically-symmetric} comes from the fact that an odd number of \(\theta\) or \(\varphi\) indices corresponds to and odd number of unit vectors which are integrated on the sphere (see the definition \eqref{eq:trace-free-moments-definition}): therefore the integrand is odd.
 
 Equation \eqref{eq:id2-pstf-spherically-symmetric} comes from two observations:
 first of all, the moments corresponding to indices \(\theta\) and \(\varphi\) respectively must be equal because of spherical symmetry; secondly the moments must be traceless, therefore the sum of the \(\theta \theta\), \(\varphi \varphi\) and \(rr\) moments must be zero (for any pair of indices).
@@ -313,7 +305,7 @@ This fact is analogous to the statement that the only spherically symmetrical on
 The \(l\)-th Legendre polynomial is:
 
 \begin{equation} \label{eq:legendre-polynomials}
-    P_{l}(x)=\frac{1}{2^{l}} \sum_{k=0}^{\lfloor l / 2\rfloor} \frac{(-1)^{k}(2 l-2 k) !}{k !(l-k) !(l-2 k) !} x^{l-2 k}
+    P_{l}(x)=\frac{1}{2^{l}} \sum_{k=0}^{\lfloor l / 2\rfloor} \frac{(-1)^{k}(2 l-2 k) !}{k !(l-k) !(l-2 k) !} x^{l-2 k} \,.
 \end{equation}
 
 We can see that the coefficient of \(x^l\) is \((2l)! / (2^l (l!)^2)\). We can rewrite this making use of the identities \((2n)! = (2n-1)!! (2n)!!\) and \((2n)!! = 2^n n!\),  as:
@@ -321,15 +313,13 @@ We can see that the coefficient of \(x^l\) is \((2l)! / (2^l (l!)^2)\). We can r
 \begin{equation}
     \frac{(2l)!}{2^l (l!)^2} = \frac{1}{l!} \frac{(2l)!}{(2l)!!} = \frac{(2l-1)!!}{l!} = \frac{(2l+1)!!}{l! (2l+1)}
 \end{equation}
-
 which is equation \cite[eq. 5.7d]{Thorne:1981feb}.
 
-\textcite[eqs. 5.6]{Thorne:1981feb} claims that
+In \textcite[eqs. 5.6]{Thorne:1981feb} we find the statement that:
 
 \begin{equation} \label{eq:thorne-trace-free-integral-claim}
     \int_{-1}^1 I(\mu) P_k(\mu) \qty(\frac{(2k-1)!!}{l!})^{-1} \dd{\mu} = \qty(\int_{-1}^1  I(\mu) \prod_{i=1}^k n^r \dd{\mu})^{TF}
 \end{equation}
-
 where \(n^r\) denotes the radial component of a normal vector in spherical coordinates, \(P_k\) is the \(k\)-th Legendre polynomial and \(\mu = \cos \theta\) where \(\theta\) is the azimuthal coordinate of \(n\). \(I(\mu)\) is a generic function.
 
 \paragraph{The scalar moments} \label{par:scalar-moments}
@@ -339,7 +329,6 @@ It can be shown, using the identity \eqref{eq:thorne-trace-free-integral-claim} 
 \begin{equation}
     w_k = \int_{-1}^1 I(\cos \theta) P_k(\cos \theta) \qty(\frac{(2k-1)!!}{l!})^{-1} 2 \pi\dd{\cos \theta}
 \end{equation}
-
 where \(P_k\) is the \(k\)-th Legendre polynomial \eqref{eq:legendre-polynomials}.
 Then the first moments are:
 
@@ -347,7 +336,7 @@ Then the first moments are:
 \begin{align}
   w_0 &= \int I \dd{\Omega} & \text{radiation energy density} \\
   w_1 &= \int I \cos \theta \dd{\Omega} & \text{radiation energy flux} \\
-  w_2 &= \int I \qty(\cos^2 \theta - \frac{1}{3}) \dd{\Omega} & \text{radiation shear stress}
+  w_2 &= \int I \qty(\cos^2 \theta - \frac{1}{3}) \dd{\Omega} & \text{radiation shear stress.}
 \end{align}
 \end{subequations}
 
@@ -359,7 +348,7 @@ We can explicitly write the stress-energy tensor in terms of the \(w_k\) using \
     w_1   & \frac{1}{3}w_0 + w_2  &  0  & 0 \\
       0 & 0  &  \frac{1}{3}w_0 -\frac{1}{2}w_2 &  \\
       0 & 0  &   & \frac{1}{3}w_0 -\frac{1}{2}w_2
-  \end{bmatrix} _{\text{fid}}
+  \end{bmatrix} _{\text{fid}}\,.
 \end{equation}
 
 \paragraph{The source moments}
@@ -370,14 +359,13 @@ we get
 \begin{equation}
     s_k = \int_{-1}^1 \dv{I}{l} (\cos \theta) P_k(\cos \theta) \qty(\frac{(2k-1)!!}{l!})^{-1} 2 \pi\dd{\cos \theta}
 \end{equation}
-
 where \(\dv*{I}{l} = \int \mathfrak S \nu^3 \dd{\nu}\) is the frequency-integrated  source term in the transfer equation.
 
-\begin{greenbox}
-  The derivative \(\dv*{I}{l}\) first appears in \cite[]{Thorne:1981feb} without any indices, then in \cite[section 6]{Thorne:1981feb} it gets the index ``source'', while in \cite[eq. 15]{ThorneFLammmangZytkow:1981feb} it appears with an index ``interaction'' (and the derivative becomes a proper time one).
-
-  It is not clear to me whether these all represent the same thing, or what the indices are trying to say.
-\end{greenbox}
+% \begin{greenbox}
+%   The derivative \(\dv*{I}{l}\) first appears in \cite[]{Thorne:1981feb} without any indices, then in \cite[section 6]{Thorne:1981feb} it gets the index ``source'', while in \cite[eq. 15]{ThorneFLammmangZytkow:1981feb} it appears with an index ``interaction'' (and the derivative becomes a proper time one).
+%
+%   It is not clear to me whether these all represent the same thing, or what the indices are trying to say.
+% \end{greenbox}
 
 \paragraph{The simplified moment equations}
 
@@ -390,20 +378,19 @@ It is possible to write equations \eqref{eq:PSTF-grey-moment-equations} explicit
     &-\frac{3}{2}(k-1) \sigma w_{k+2}+\frac{3(k-1)^{2} k^{2}(k+2)}{2(2 k-3)(2 k-1)^{2}(2 k+1)} \sigma w_{k-2} = s_k
     \end{split}
 \end{equation}
-
 where \(a = \dv*{y}{r} = \sqrt{a^\mu a_\mu}\) is the magnitude of the 4-acceleration, \(b = y/r\) is the extrinsic curvature, \(\theta\) is the expansion velocity, \(\sigma\) is the scalar shear --- the largest eigenvalue of the shear matrix. Explicit expressions for these are found in  \eqref{eq:spherical-coordinates-simplifications}.
 
-\textcite[]{NobiliTurollaZampieri:1991dec} only use the first two of the moment equations, so here is how the expression is simplified for \(k=0,1\):
+\textcite[]{NobiliTurollaZampieri:1991dec} only used the first two of the moment equations, so here is how the expression is simplified for \(k=0,1\):
 for \(k=0\) we get:
 
 \begin{equation}
-    \pdv{w_{1}}{\hat{r}} +2( a+ b) w_{1}+\pdv{w_0}{\hat{t}}+\frac{4}{3} \theta w_{0} + \frac{3}{2} \sigma w_{2} = s_0
+    \pdv{w_{1}}{\hat{r}} +2( a+ b) w_{1}+\pdv{w_0}{\hat{t}}+\frac{4}{3} \theta w_{0} + \frac{3}{2} \sigma w_{2} = s_0\,.
 \end{equation}
 
 For \(k=1\) we get:
 
 \begin{equation}
-    \pdv{w_{2}}{\hat{r}} + (a+3 b) w_{2}+\pdv{w_1}{\hat{t}}+\left[\frac{4}{3} \theta+ \sigma\right] w_{1} +\frac{1}{3} \pdv{w_{0}}{\hat{r}}+\frac{4 a}{3} w_{0} = s_1
+    \pdv{w_{2}}{\hat{r}} + (a+3 b) w_{2}+\pdv{w_1}{\hat{t}}+\left[\frac{4}{3} \theta+ \sigma\right] w_{1} +\frac{1}{3} \pdv{w_{0}}{\hat{r}}+\frac{4 a}{3} w_{0} = s_1\,.
 \end{equation}
 
 These have to be simplified further to be used: specifically, they can be expressed with respect to \(r\), \(v\), \(y\).
@@ -417,12 +404,11 @@ Because of the hypothesis of stationarity, we can express the derivatives in \eq
 \begin{subequations}
 \begin{align}
   \pdv{}{\hat{t}} &= \frac{\gamma^2}{y} \pdv{}{t} - yv \pdv{}{r} = - yv \pdv{}{r}  \\
-  \pdv{}{\hat{r}} &= -v \frac{\gamma^2}{y} \pdv{}{t} + y \pdv{}{r} = y \pdv{}{r}
+  \pdv{}{\hat{r}} &= -v \frac{\gamma^2}{y} \pdv{}{t} + y \pdv{}{r} = y \pdv{}{r}\,.
 \end{align}
 \end{subequations}
 
 Now, we can make the scalar PSTF moment equations \eqref{eq:scalar-PSTF-moment-equations} fully explicit: denoting derivation with respect to \(r\) with a prime, we have
-
 \begin{subequations}
 \begin{align}
   y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
@@ -433,12 +419,11 @@ Now, we can make the scalar PSTF moment equations \eqref{eq:scalar-PSTF-moment-e
   - yv w_1 ^{\prime} - \frac{4}{3r^2} \qty(r^2 vy)^{\prime} w_1
   - \frac{2r}{3} \qty(\frac{vy}{r})^{\prime} w_1
   + \frac{y}{3} w_0^{\prime} + \frac{4}{3} y^{\prime} w_0
-  &= s_1
+  &= s_1\,.
 \end{align}
 \end{subequations}
 
 We can simplify these by expanding the derivatives of products \((vyr^2)^{\prime}\) and \((vy/r)^{\prime}\):
-
 \begin{subequations} \label{eq:NTZ91-moment-equations-spherical}
 \begin{align}
   y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
@@ -449,7 +434,7 @@ We can simplify these by expanding the derivatives of products \((vyr^2)^{\prime
   - yv w_1 ^{\prime}
   - 2 w_1 \qty((vy)' + \frac{vy}{r})
   + \frac{y}{3} w_0^{\prime} + \frac{4}{3} y^{\prime} w_0
-  &= s_1
+  &= s_1\,.
 \end{align}
 \end{subequations}
 
@@ -461,7 +446,7 @@ Equations \eqref{eq:NTZ91-moment-equations-spherical} are the ones which appear 
         -v w_{2}\left[\frac{(v y)^{\prime}}{v y}-1\right]
         +2 w_{1}\left(1+\frac{y^{\prime}}{y}\right)
         -\frac{4}{3} v w_{0}\left[\frac{(v y)^{\prime}}{v y}+2\right]&=\frac{r s_{0}}{y} \\
-        w_{2}^{\prime}-v w_{1}^{\prime}+\frac{1}{3} w_{0}^{\prime} +w_{2}\left(3+\frac{y^{\prime}}{y}\right)-2 v w_{1}\left[\frac{(v y)^{\prime}}{v y}+1\right]+\frac{4}{3} \frac{y^{\prime}}{y} w_{0} &=\frac{r s_{1}}{y}
+        w_{2}^{\prime}-v w_{1}^{\prime}+\frac{1}{3} w_{0}^{\prime} +w_{2}\left(3+\frac{y^{\prime}}{y}\right)-2 v w_{1}\left[\frac{(v y)^{\prime}}{v y}+1\right]+\frac{4}{3} \frac{y^{\prime}}{y} w_{0} &=\frac{r s_{1}}{y}\,.
     \end{align}
 \end{subequations}
 
@@ -474,11 +459,10 @@ From equation \eqref{eq:mass-conservation-integral} we can find an expression \c
   = \sqrt{\qty(\frac{y^2}{\gamma^2}) + y^2 v^2}
   = \sqrt{\qty(1 - \frac{2M}{r}) + \qty(\frac{\dot{M}}{4 \pi r^2 \rho_0})^2}
 \end{equation}
-
 therefore \(v\) can also be expressed in terms of \(r\) and constants:
 
 \begin{equation}
-  v = \frac{\dot M}{4 \pi r^2 \rho_0 y(r)}
+  v = \frac{\dot M}{4 \pi r^2 \rho_0 y(r)}\,.
 \end{equation}
 
 \paragraph{The source term}
@@ -486,43 +470,31 @@ therefore \(v\) can also be expressed in terms of \(r\) and constants:
 The source term can be written \cite[eq. 15]{ThorneFLammmangZytkow:1981feb} as
 
 \begin{equation} \label{eq:source-term}
-  s_k = \frac{l! (2l+1)}{(2l+1)!!} \int_{-1}^1 \qty(\dv{I}{\tau})_{\text{interaction}} P_k(\mu) 2 \pi \dd{\mu}
+  s_k = \frac{l! (2l+1)}{(2l+1)!!} \int_{-1}^1 \dv{I}{l} P_k(\mu) 2 \pi \dd{\mu}\,.
 \end{equation}
 
-\begin{greenbox}
-  Why is this a proper-time derivative of the intensity instead of a derivative wrt to the photon spatial distance parameter \(l\) as in \cite[]{Thorne:1981feb}?
-\end{greenbox}
+% \begin{greenbox}
+%   Why is this a proper-time derivative of the intensity instead of a derivative wrt to the photon spatial distance parameter \(l\) as in \cite[]{Thorne:1981feb}?
+% \end{greenbox}
 
-Also, we can write
+The general relation for the change in intensity is
+
+\begin{equation}
+  \dv{I_\nu}{l} = \rho_0 \qty(\varepsilon_\nu - \kappa_\nu I_\nu )
+\end{equation}
+where \(\rho_0\) is the rest mass density, while \(\varepsilon_\nu\) and \(\kappa_\nu\) are the specific coefficients of emission and absorption. If we integrate this relation over all frequencies and take its \(k\)-th moment, we get
 
 \begin{equation} \label{eq:opacity-emissivity-definition}
   s_k = \rho_0 (\varepsilon_k - \kappa_k w_k)
 \end{equation}
+where \(w_k\) are the PSTF scalar moments, \(\varepsilon_k\) is the \(k\)-th moment of emissivity and \(\kappa_k\) is the \(k\)-th moment of opacity of the gas.
 
-where \(\rho_0\) is the rest mass density, \(w_k\) are the PSTF scalar moments, \(\varepsilon_k\) is the \(k\)-th moment of emissivity and \(\kappa_k\) is the \(k\)-th moment of opacity of the gas.
+Equation \eqref{eq:opacity-emissivity-definition} can be taken to be a practical definition of \(\varepsilon_k\) and \(\kappa_k\); we do the integral in \eqref{eq:source-term} and get constant terms and terms proportional to \(w_k\), which we split into the two terms on the RHS of \eqref{eq:opacity-emissivity-definition}.
 
-Equation \eqref{eq:opacity-emissivity-definition} can be taken to be the definition of \(\varepsilon_k\) and \(\kappa_k\); we do the integral in \eqref{eq:source-term} and get constant terms and terms proportional to \(w_k\), which we split in the two terms on the RHS of \eqref{eq:opacity-emissivity-definition}.
+We will only consider the \(k=0\) and \(k=1\) moments.
+If the emission is isotropic, then the emissivity moment \(\varepsilon_1\) is 0 since its definition contains an integral of the product of an even and odd function.
 
-\begin{claim}
-    If the emission is isotropic, then the emissivity moments \(\varepsilon_k\) are 0 for \(k \geq 1\).
-\end{claim}
-
-Because of this, we just call the one moment \(\varepsilon = \varepsilon_0\).
-
-\begin{proof}
-    To show this, it would be enough to see that in the isotropic case
-
-    \begin{equation}
-        \qty(\int \dv{I}{l}_{\text{source}} \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
-        \propto \qty(\int I \prod_i n^{\alpha_i} \dd{\Omega})^{TF}
-    \end{equation}
-
-    for \(k \geq 1\) but not for \(k = 0\).
-
-    \begin{greenbox}
-      I do not know how to prove it though.
-    \end{greenbox}
-\end{proof}
+Because of this, we just call the one moment we need \(\varepsilon = \varepsilon_0\).
 
 The source moments given in \cite[eq. 6]{NobiliTurollaZampieri:1991dec} are:
 
@@ -532,27 +504,25 @@ The source moments given in \cite[eq. 6]{NobiliTurollaZampieri:1991dec} are:
   s_1 &= - \rho_0 w_1 \kappa_1
 \end{align}
 \end{subequations}
-
 with
 
 \begin{equation}
-    T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}
+    T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}\,.
 \end{equation}
 %
 % \begin{greenbox}
 %   I do not really understand where these come from.
 % \end{greenbox}
 
-Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) ( given in \eqref{eq:cooling-function-NTZ91}):
+Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) (given in \eqref{eq:cooling-function-NTZ91}):
 
 \begin{equation}
     \varepsilon = \frac{\rho_0 \Lambda (T)}{m_p^2}
 \end{equation}
-
 to write the source term \(s_0\) as
 
 \begin{equation}
-    s_0 = \frac{\rho_0^2 \Lambda (T)}{m_p^2} \qty(1 + w_0 \qty(\kappa_{\text{es}} \frac{4 k_B}{\varepsilon m_e} (T - T_\gamma) - \frac{1}{aT^4}))
+    s_0 = \frac{\rho_0^2 \Lambda (T)}{m_p^2} \qty(1 - \frac{w_0}{aT^4}) + \rho_0 \kappa_{\text{es}} w_0 \frac{4 k_B}{m_e} (T - T_\gamma)\,.
 \end{equation}
 
 As for the \(s_1\) term, we model \(\kappa_1\) as
@@ -562,17 +532,59 @@ As for the \(s_1\) term, we model \(\kappa_1\) as
   = \kappa_{\text{es}} + \SI{6.4e22}{\centi\metre\square\per\gram} \rho_0 T^{-7/2}
 \end{equation}
 
-where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives wrt temperature of the radiation intensities at specific frequencies (which are related to the grey zeroth moment by \(w_0 = \int I_\nu \dd{\nu}\)) \cite[eq. 1.110]{RybickiLightman:2004}.
+where the second term is the conventional approximation of the \emph{Rosseland mean opacity} computed taking into account only free-free transitions: the definition of the RMO is a harmonic mean of the opacities at every frequency, weighted by the derivatives with respect to temperature of the Planck function\footnote{The Planck function \cite[eq. 1.51]{RybickiLightman:2004}, here given reintroducing \(c\) explicitly,
+\[
+B_\nu = \frac{2h \nu^3 c^{-2}}{\exp(h\nu / k_B T) - 1}
+\]
+quantifies the spectral radiance emitted by a blackbody.
+}
+at specific frequencies \cite[eq. 1.110]{RybickiLightman:2004}.
 
 \begin{equation}
   \frac{1}{\expval{\kappa_{\text{ff}}}} =
-  \frac{ \displaystyle\int _{0}   ^{\infty}  \dv{I_\nu}{T} \frac{1}{\kappa_\nu^{\text{ff}}} \dd{\nu}}
-  {  \displaystyle \int _{0}   ^{\infty} \dv{I_\nu}{T} \dd{\nu}}
+  \frac{ \displaystyle\int _{0}   ^{\infty}  \dv{B_\nu}{T} \frac{1}{\kappa_\nu^{\text{ff}}} \dd{\nu}}
+  {  \displaystyle \int _{0}   ^{\infty} \dv{B_\nu}{T} \dd{\nu}}
 \end{equation}
+
+The expression we get for \(s_1\) is:
+\begin{equation}
+  s_1 = - \rho_0 w_1 \qty(\kappa_{\text{es}} + \SI{6.4e22}{\centi\metre\square\per\gram} \rho_0 T^{-7/2}) \,.
+\end{equation}
+
+\paragraph{Cooling function}
+
+The cooling function \(\Lambda (T)\) is defined by the following relation, which describes the variation in the energy density by radiative processes:
+
+\begin{equation}
+    \dv{\rho}{\tau} = n^2_b \qty(\Gamma(T) - \Lambda (T))
+\end{equation}
+where \(\rho\) is the energy density (measured in \si{\erg\per\cubic\centi\metre}), \(n_b\) is the baryon density (measured in \si{\per\cubic\centi\metre}), while \(\Gamma\) and \(\Lambda\) are the heating and cooling functions, both measured in \si{\erg\cubic\centi\metre\per\second}, see \cite[equation 1]{GnedinHollon:2012}.
+
+The cooling function of the infalling gas is plotted in figure \ref{fig:cooling-function} and given in equation \eqref{eq:cooling-function-NTZ91}:
+\begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{figures/cooling_function.pdf}
+    \caption{Cooling function graph.}
+    \label{fig:cooling-function}
+\end{figure}
+\begin{equation} \label{eq:cooling-function-NTZ91}
+    \begin{split}
+    \Lambda (T) &= \left(
+    \qty(
+    \num{1.42e-27}T^{1/2} \qty(
+    1 + \num{4.4e-10}T
+    ) + \num{6.0e-22}T^{-1/2}
+    )^{-1} \right. \\
+    & \quad \left. + \num{e25} \qty(\frac{T}{\SI{1.5849e4}{K}})^{-12}
+    \right)^{-1} \si{\erg\cubic\centi\metre\per\second} \,.
+    \end{split}
+\end{equation}
+
+%The version of this equation in \textcite[equation 10]{StellingwerfBuff:1982} is similar: the first constant is \(\SI{2.4e-27}{} \) instead of \(\SI{1.42e-27}{} \), and the factor \(\qty(1 + \SI{4.4e-10}{}T)\) is just \(1\).
 
 \paragraph{How the conservation equations change using the moment equations}
 
-The use of the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} is in simplifying the equations of motion given by \(\nabla_\mu T^{\mu\nu}\).
+The way we use the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} to study the accretion problem is by using them to simplify the conservation equations \(\nabla_\mu T^{\mu\nu}\).
 
 The full energy momentum tensor of the problem is given, in the fiducial reference frame, by combining an ideal-fluid stress-energy tensor (with pressure \(P\) and rest energy density \(\rho\)) with the one given in \eqref{eq:radiation-stress-energy-tensor-fiducial}:
 
@@ -580,14 +592,10 @@ The full energy momentum tensor of the problem is given, in the fiducial referen
     T^{\mu\nu} =
     T^{\mu\nu}_{\text{radiation}} +
     T^{\mu\nu}_{\text{matter}} =
-    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}
+    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}\,.
 \end{equation}
 
-\begin{greenbox}
-  We want to write down the conservation equations. Do we do so in regular spherical coordinates? The transformed stress-energy tensor is really ugly:
-\end{greenbox}
-
-The \(t,r\) by \(t, r\) components of the stress-energy tensor in spherical coordinates look like:
+The \(t,r\) by \(t, r\) components of the stress-energy tensor in spherical coordinates are:
 
 \begin{equation} \label{eq:spherical-coordinates-full-stress-energy-tensor}
       \left[
@@ -597,45 +605,36 @@ The \(t,r\) by \(t, r\) components of the stress-energy tensor in spherical coor
       \gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 P + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) &
       y^{2} \left(P - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right)
     \end{matrix}
-      \right]
+      \right] \,.
 \end{equation}
 
-\paragraph{Bernoulli equation simplification}
+\paragraph{The total luminosity \(\dot{E}\)}
 
-The ``Bernoulli equation'' can be written as \(\nabla_\mu T^{t\mu} = 0\) in the spherical reference trame --- that is, by projecting the conservation of the stress-energy tensor onto the time-like unit vector in the spherical coordinate system.
-
-% \begin{greenbox}
-%   Wait, this is the conservation of the stress-energy tensor projected onto the unit time-directed vector in the \emph{spherical} reference, not the \emph{fiducial} one! If this were not the case, we would have two terms (\(\hat{r}\) and \(\hat{t}\)) in the divergence sum.
-%
-%   Usually one would expect the Bernoulli equation to be projected along the fluid's 4-velocity.
-% \end{greenbox}
+We can project the conservation of the stress energy tensor along the unit vector in the temporal direction in the spherical reference frame, \((e_t)_\nu\): we get  \((e_t)_\nu \nabla_\mu T^{\nu\mu} = \nabla_\mu T_0^\mu = 0\).
 
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
 \begin{equation}
-  0=\nabla_\mu T^{t \mu}
-  = \frac{1}{r^2 \sin \theta} \pdv{}{r} \qty(r^2 \sin\theta T^{tr})
-  = \frac{1}{r^2} \pdv{}{r} \qty(r^2 T^{tr})
+  0=\nabla_\mu T_t^{\mu}
+  = \frac{1}{r^2 \sin \theta} \pdv{}{r} \qty(r^2 \sin\theta T_t^{r})
+  = \frac{1}{r^2} \pdv{}{r} \qty(r^2 T_t^{r})
   \implies
-  r^2 T^{tr} = \const
+  r^2 T_t^{r} = \const \,.
 \end{equation}
 
-In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\). The quantity which is conserved is the $(0,1)$ matrix element which appears in \eqref{eq:spherical-coordinates-full-stress-energy-tensor}. We can simplify it by expressing it in terms of the luminosity \(L\) which is \(L = 4 \pi r^2 w_1\): we get
+In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\).
+
+The quantity which is conserved is \(r^2 g_{tt}T^{tr}\), where \(T^{tr}\) is the $(0,1)$ matrix element which appears in \eqref{eq:spherical-coordinates-full-stress-energy-tensor}. We can simplify it by expressing it in terms of the luminosity \(L\) which is \(L = 4 \pi r^2 w_1\): we get
 
 \begin{equation}
-  4 \pi r^2 \qty(\gamma^2 (1+ v^2) \frac{L}{4 \pi r^2} - v \gamma^2 \qty(p + \rho + w_2 + \frac{4}{3} w_0)) = \const
+  4 \pi r^2 g_{tt} \qty(\gamma^2 (1+ v^2) \frac{L}{4 \pi r^2} - v \gamma^2 \qty(p + \rho + w_2 + \frac{4}{3} w_0)) = \const\,.
 \end{equation}
 
-\begin{greenbox}
-    I must have done something wrong: the constant multiplying everything is \(y^2\) instead of \(\gamma^2\) in \cite[]{ThorneFLammmangZytkow:1981feb} and \cite[]{NobiliTurollaZampieri:1991dec}.
-    I will change it now and figure it out later.
-\end{greenbox}
-
-We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho_0 y) \), and recognize the expression for the specific enthalpy \(h\).
+We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho_0 y) \), and recognize the expression for the specific enthalpy \(h\) and for \(y =- g_{tt} \gamma^2\):
 
 \begin{equation}
-    y^2 (1+v^2) L - y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) \defeq \dot{E}
-    = \const
+    -y^2 (1+v^2) L + y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) \defeq \dot{E}
+    = \const\,.
 \end{equation}
 
 This is the total luminosity of the accretion process.
@@ -669,7 +668,7 @@ By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} i
 \begin{align}
   (P + \rho) \frac{y'}{y} + P^\prime + \frac{2rM s_1}{y}  &= 0  \\
   \rho^\prime - (P + \rho) \frac{\rho_0^\prime}{\rho_0} + \frac{2rM s_0}{vy}   &=0  \\
-  \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0
+  \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0\,.
 \end{align}
 \end{subequations}
 
@@ -684,7 +683,35 @@ To this end, we rewrite the gradients of \(\rho\) and \(P\) in terms of \(\rho_0
       + T \qty(\pdv{P}{T} )_{\rho_0} \frac{T'}{T}
 \end{align}
 \end{subequations}
-
 where the lower indices \(T\) and \(\rho_0\) on the derivatives mean that the denoted quantity should be held constant when differentiating.
+
+\paragraph{Eddington luminosity}
+
+It is the characteristic luminosity at which the radiation pressure from the photons moving outward equals the gravitational specific force on the infalling matter.
+
+The gravitational force, in the newtonian  limit, is
+
+\begin{equation}
+  F_{\text{grav}} = \frac{GMm}{r^2 }\,.
+\end{equation}
+
+The radiation pressure can be given in terms of the luminosity \(L\) (reinserting the units of \(c\) for this) as
+
+\begin{equation}
+  P_{\text{rad}} = \frac{L}{c 4 \pi r^2}\,,
+\end{equation}
+then, the radiative force is given by \(F_{\text{rad}} =  P_{\text{rad}} \kappa m\), where \(m\) is the mass of the test object and \(\kappa\) is the opacity: the per-unit-mass cross-section. We usually assume \(\kappa = \sigma_T/m_p\), that is, that the interaction between radiation and matter is all due to Thompson scattering and the matter is only composed of hydrogen atoms.
+
+Equating the forces, we get our result:
+
+\begin{equation}
+ \frac{L_{\text{Edd}}}{M} = \frac{4 \pi c G}{\kappa}\,.
+\end{equation}
+
+In the \(\kappa = \sigma_T / m_p \approx \SI{0.04}{\metre^2 / kg}\) case, we get \(L_{\text{Edd}} / M\) to be around \SI{6.32}{\watt\per\kilo\gram} (constants' values from \cite[]{NISTReccomendedConstants:2018}).
+If we express this in units of \(L_{\odot} / M_{\odot} \approx \SI{1.93E-04}{\watt\per\kilo\gram}\) \cite[]{SunFactSheet:2018} we get \(L_{\text{Edd}} / M \approx  \num{3.27E+04} L_{\odot} / M_{\odot}\):
+the amount of radiation emitted by the Sun is much less than the Eddington limit.
+
+It is, of course, important to note that this is a limit found with many approximations: nonrelativistic gravity, spherical symmetry, only Thompson scattering, only hydrogen.
 
 \end{document}

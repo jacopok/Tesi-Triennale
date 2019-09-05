@@ -188,10 +188,11 @@ This can equivalently be stated by writing \(\nabla_{(\nu} \xi_{\mu)}=0\): this 
 
 \paragraph{Surfaces in space-time and acceleration decomposition}
 
-Following \cite[section 4]{Taub:1978}
-We look at 4D space time in 3D space-like slices: if we have a fluid moving with velocity \(u^\mu\), we can look at the solutions of the associated differential equation: \(x^\mu (\xi^i, s)\), where \(\xi^i\) are the 3D coordinates of the starting position and \(s\) is the time at which we look at the solution. Then we can look at the ``starting'' hypersurface \(\Sigma = \qty{x^\mu (\xi^i, 0)}\).
+Following \cite[section 4]{Taub:1978}.
+We consider 3D space-like slices in 4D space-time: if a fluid is moving with velocity \(u^\mu\), we denote the solutions of the differential equation associated with the vector field as \(x^\mu (\xi^i, s)\), where \(\xi^i\) are the 3D coordinates of the starting position and \(s\) is the time at which we look at the solution. Then the ``starting'' hypersurface is \(\Sigma = \qty{x^\mu (\xi^i, 0)}\).
 
-Suppose we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can look at the two-dimensional surface defined by the evolution of \(\xi^i(\tau)\): \(x^{\mu} (\xi^i(\tau), s) \defeq x^\mu (\tau, s)\). If we define the ``spatial'' tangent vector \(\lambda^\mu = \dv*{x^\mu}{\tau} \), it follows from Schwarz's theorem that:
+Suppose we have a curve \(\xi^i(\tau)\) in \(\Sigma\). Then we can define the two-dimensional surface defined by the evolution of \(\xi^i(\tau)\): \(x^{\mu} (\xi^i(\tau), s) \defeq x^\mu (\tau, s)\).
+If we also define the ``spatial'' tangent vector \(\lambda^\mu = \dv*{x^\mu}{\tau} \), it follows from Schwarz's theorem that:
 
 \begin{equation} \label{eq:schwarz-spacetime-tube}
     \pdv{x^\mu}{\tau}{s} =
@@ -338,6 +339,5 @@ or, equivalently,
 
 We can see that it approaches the spherical-coordinates flat metric $\eta_{\mu\nu} ^{\prime} = \diag\qty(-1, 1, r^2, r^2 \sin ^2 \theta)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).
 
-If we wanted to analyze the accretion problem without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid when solving the Einstein Field Equations; however this would make the already hard problem completely intractable and it is reasonable to assume that the gas falling into a black hole is relatively light compared to the black hole itself, therefore we analyze the accretion problem with a fixed Schwarzschild metric.
 
 \end{document}

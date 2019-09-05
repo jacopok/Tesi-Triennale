@@ -67,7 +67,7 @@ The stress-energy tensor \(T^{\mu\nu}\) is a symmetric \((2,0)\) tensor whose \(
 
 Because of our choice of the metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), since that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
 
-To give an example: for a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to look at the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
+To give an example: for a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to obtain the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
 
 \begin{equation}
     T^{\mu\nu} = \rho u^\mu u^\nu = \begin{bmatrix}
@@ -90,6 +90,9 @@ In our example, this can be written as
 
 The evolution of the fluid is described by the conservation of the stress-energy tensor \(\nabla_\mu T ^{\mu \nu} =0\) and the conservation of mass \(\nabla_\mu (\rho_0 u^\mu) =0\).
 
+If we wanted to analyze our fluids without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid when solving the Einstein Field Equations: this can be done but it makes the geometry of the system significantly harder to work with, and since we wish to consider other effects such as heat transfer and viscosity throughout the fluid we assume the fluid is not self-gravitating, that is, we solve the conservation equations in a fixed Schwarzschild metric background.
+This assumption is reasonable in our case:
+
 Any stress-energy tensor can be decomposed into its space and time-like parts in the local rest frame of the fluid:
 
 \begin{equation} \label{eq:stress-energy-tensor-decomposition}
@@ -108,7 +111,7 @@ Do note that by definition the tensors \(w^\mu\) and \(w^{\mu\nu}\) are purely s
 
 For the definition of the acceleration, vorticity etc. see equation \eqref{eq:covariant-acceleration-decomposition}.
 
-As in section \nameref{sec:nonrelativisti-fluid-mechanics} \(\eta\) is the viscosity, \(\xi\) is the compression viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
+As in section \nameref{sec:nonrelativisti-fluid-mechanics} \(\eta\) is the viscosity, \(\xi\) is the bulk viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
 
 \begin{greenbox}
     The fact that the decomposition can be written in this way is not proven in \cite[]{Taub:1978}, but it seems like a proof can be found in \cite[]{Eckart:1940}, which is locked behind a paywall.
@@ -380,9 +383,9 @@ We can write this as the wave equation \(\qty(v_s^{-2} \partial_{tt}^2 - \partia
 
 \subsection{Bondi accretion: the adiabatic case}
 
-We now apply the formalism developed in this section to the problem of spherical accretion into a black hole the \emph{adiabatic} case: we model the gas as an ideal fluid.
+We now apply the formalism developed in this section to the problem of spherical accretion into a black hole the \emph{adiabatic} case, where we model the gas as an ideal fluid.
 
-We work with the Schwarzschild metric \eqref{eq:schwartzshild-line-element} and make the following assumptions:
+We assume the geometry of the spacetime is described by the Schwarzschild metric \eqref{eq:schwartzshild-line-element} and make the following assumptions:
 
 \begin{enumerate}
   \item spherical symmetry: \(\partial_\theta = \partial_\varphi = 0\);

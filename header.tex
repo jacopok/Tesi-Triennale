@@ -32,7 +32,6 @@ sorting=ynt
 %parentesi che si ridimensionano...
 \usepackage{physics}
 
-
 %Ridimensiona i margini
 \usepackage[margin=2cm]{geometry}
 
@@ -90,11 +89,12 @@ sorting=ynt
 \renewcommand{\frac}[3][d]{\ifthenelse{\equal{#1}{d}}{\oldfrac{#2}{#3}}{\nicefrac{#2}{#3}}}
 
 \let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}\\}
+%\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}\\}
+\renewcommand{\paragraph}[1]{\subsubsection{#1}}
 
 %Font bello per la matematica
 \usepackage[sc]{mathpazo}
-\linespread{1.05}         % Palladio needs more leading (space between lines)
+\linespread{1.10}         % Palladio needs more leading (space between lines)
 \usepackage[T1]{fontenc}
 
 \usepackage{tocloft}

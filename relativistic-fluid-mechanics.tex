@@ -4,12 +4,11 @@
 \subsection{Nonrelativistic fluid mechanics} \label{sec:nonrelativisti-fluid-mechanics}
 
 Nonrelativistic (compressible) fluid mechanics are described by the equations:
-
 \begin{subequations}
 \begin{align}
-    \partial_t \rho_0 + \partial_i (\rho_0 v^i) &= 0 &\text{conservation of mass} \\
-    \rho_0 \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \\
-    \rho_0 \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy}
+    \partial_t \rho_0 + \partial_i (\rho_0 v^i) &= 0 &\text{conservation of mass} \label{eq:classical-conservation-mass}\\
+    \rho_0 \qty(\partial_t v^i + v^j \partial_j v^i) &= \partial_j \sigma^{ij} &\text{conservation of momentum}  \label{eq:classical-conservation-momentum}\\
+    \rho_0 \partial_t E + v^i \partial_i E &= \partial_i \qty(\sigma^{ij}v_j + \kappa\partial^i T) &\text{conservation of energy} \label{eq:classical-conservation-energy}
 \end{align}
 \end{subequations}
 where $\rho_0$ is the density of the fluid,
@@ -18,6 +17,8 @@ $\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negati
 $E$ is the energy density of the fluid,
 $\kappa$ is the thermal conductivity,
 $T$ is the temperature  field of the fluid.
+
+We use the compressible formulation in order for these to be closer to their relativistic counterpart, for which compressive effects cannot be ignored.
 
 The nonrelativistic stress tensor can be written as:
 
@@ -61,10 +62,6 @@ So, $\epsilon$ is the ratio of the internal non-mass energy to the mass.
 
 The stress-energy tensor \(T^{\mu\nu}\) is a symmetric \((2,0)\) tensor whose \(\mu, \nu\) component is defined as the flux of \(\mu\)-th component of the four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
 
-\begin{greenbox}
-  I corrected ``flow'' to ``flux'': was that it?
-\end{greenbox}
-
 Because of our choice of the metric signature, the spatial part of the tensor corresponds to the \emph{negative} of the classical continuum-mechanics stress tensor: \(T^{ij} = - \sigma^{ij}\), since that tensor describes the stresses \emph{on} the ``box'' of fluid \cite[]{Moretti:2016}.
 
 To give an example: for a gas of non-interacting particles, the stress-energy tensor is very simple: the momentum density is \(\rho u^\mu\), and then to obtain the flow through a surface of constant \(x^\nu\) we just need to multiply by \(u^\nu\), so in the Local Rest Frame we have:
@@ -91,7 +88,7 @@ In our example, this can be written as
 The evolution of the fluid is described by the conservation of the stress-energy tensor \(\nabla_\mu T ^{\mu \nu} =0\) and the conservation of mass \(\nabla_\mu (\rho_0 u^\mu) =0\).
 
 If we wanted to analyze our fluids without \emph{any} approximation we would need to consider the stress-energy tensor of the fluid when solving the Einstein Field Equations: this can be done but it makes the geometry of the system significantly harder to work with, and since we wish to consider other effects such as heat transfer and viscosity throughout the fluid we assume the fluid is not self-gravitating, that is, we solve the conservation equations in a fixed Schwarzschild metric background.
-This assumption is reasonable in our case:
+This assumption is reasonable in our case: the components of the stress-energy tensor of the infalling gas that are much smaller than those of the black hole.
 
 Any stress-energy tensor can be decomposed into its space and time-like parts in the local rest frame of the fluid:
 
@@ -125,6 +122,11 @@ Equivalently, we can write
   &\text{perfect fluid} && \text{viscous stresses} && \text{heat conduction.} \nonumber
 \end{align}
 \end{subequations}
+
+In the nonrelativistic limit the velocity is approximately \(u^\mu = (1, v^i)\), so the conservation of mass becomes \eqref{eq:classical-conservation-mass}, while we can obtain both
+the conservation of energy \eqref{eq:classical-conservation-energy}
+and the conservation of momentum \eqref{eq:classical-conservation-momentum}
+from the four equations of conservation of the stress-energy tensor.
 
 \paragraph{Viscous and heat-flow relativistic forces}
 

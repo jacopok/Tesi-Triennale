@@ -293,4 +293,89 @@ equations \eqref{eq:rankine-hugoniot-1}, \eqref{eq:rankine-hugoniot-2} and \eqre
   Is this known now?
 \end{greenbox}
 
+\subsection{Old adiabatic accretion}
+
+
+Also, we can rewrite the last term of the Euler equation \eqref{eq:ideal-euler} using \eqref{eq:enthalpy-definition}  as:
+
+\begin{equation}
+  \frac{\partial_1 p}{p + \rho} =
+  \frac{\rho_0}{\rho_0} \frac{\partial_1 p}{p + \rho} =
+  \frac{1}{\rho_0} \pdv{p}{\rho} \pdv{\rho_0}{\rho}
+  \pdv{\rho}{p}   \partial_1 p =
+  \frac{v_s^2}{\rho_0} \partial_1\rho_0
+\end{equation}
+where we define the speed of sound \(v_s^2 = (\pdv*{p}{\rho})_s\) (the index \(s\) means the derivative is to be taken at constant entropy, and for an adiabatic process).
+
+This can be rewritten as
+
+\begin{equation}
+  \dd{p} = \pdv{p}{\rho} \pdv{\rho}{\rho_0} \dd{\rho_0} = v_s^2 h \dd{\rho_0} \,.
+\end{equation}
+
+\begin{greenbox}
+  Somehow in \cite[page 175]{Nobili:2000} this becomes:
+
+  \begin{equation}
+    \dv{\log p }{\log r} = \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+  \end{equation}
+
+  but it seems to me it should be
+
+  \begin{equation}
+  \dv{\log p }{\log r} = \frac{p+\rho}{p} v_s^2 \dv{\log \rho_0}{\log r }
+  \end{equation}
+\end{greenbox}
+
+Coming back to the Euler equation \eqref{eq:relativistic-euler},  we get:
+
+\begin{equation}
+  \gamma^2 v \dv{v}{r} + \frac{M}{(1+ 2 \Phi) r^2}
+  + \frac{v_s^2 }{\rho_0}\dv{\rho_0}{r} = 0 \,.
+\end{equation}
+
+We can replace every occcurence of \((\partial x) / x \) with \(\partial \log x \):
+
+\begin{subequations}
+\begin{align}
+  \gamma^2 v^2 \dv{\log v}{r} + \frac{M}{(1+ 2 \Phi) r^2} + v_s^2 \dv{\log \rho_0}{r}  &= 0 \\
+  \frac{\gamma^2 - 1}{r}  \dv{\log v}{\log r} + \frac{M}{(y^2/\gamma^2) r^2}
+  + \frac{v_s^2}{r} \dv{\log \rho_0}{\log r}  &= 0  \\
+  % \frac{1 - (1-v^2)}{1}  \dv{\log v}{\log r} + \frac{M}{(y^2) r}
+  % + (1-v^2)\frac{v_s^2}{1} \dv{\log \rho_0}{\log r}  &= 0 \\
+  v^2  \dv{\log v}{\log r} + \frac{M}{y^2 r}
+  + (1-v^2) v_s^2 \dv{\log \rho_0}{\log r}  &= 0 \,.
+\end{align}
+\end{subequations}
+
+\begin{greenbox}
+  Are the references to equations at page 174 in \cite{Nobili:2000} wrong? Equations 2.7.3, 5 seem not to be related at all...
+
+  Somehow this equation comes up:
+
+  \begin{equation}
+    \dv{\log \rho_0 }{r} + \gamma^2 v^2 \dv{\log v }{r}  + \frac{2 v^2}{r} + \frac{M}{(1+2 \Phi) r^2} = 0
+  \end{equation}
+
+  and we wind up with the system shown later,
+  but I do not see at all how to get to it, it does not seem to work!
+  If we add the first two equations we get back \eqref{eq:differential-continuity} which is good but that is the only part which seems to make sense.
+\end{greenbox}
+
+The equations can be cast into the system:
+
+\begin{subequations}
+\begin{align}
+  (v^2-v_s^2) \dv{\log \rho_0}{\log r} &= - 2v^2 + \frac{M}{y^2 r}  \\
+  (v^2-v_s^2) \dv{\log yv }{\log r} &=  2v_s^2 - \frac{M}{y^2 r}  \\
+  \dv{\log p }{\log r} &= \rho_0 v_s^2 \dv{\log \rho_0}{\log r }
+\end{align}
+\end{subequations}
+which can be solved numerically: we have a critical point when the velocity \(v\) reaches the speed of sound, since there the Jacobian becomes singular.
+
+% \begin{greenbox}
+%   Likely typo in \cite[page 175]{Nobili:2000}: shouldn't it be ``il movimento avviene nella direzione opposta (\(v>0, \dot{M}>0)\))''?
+% \end{greenbox}
+
+
 \end{document}

@@ -112,7 +112,7 @@ where the covariant derivative term vanishes since the photon's trajectory is a 
 
 In this subsection I will follow \textcite[]{Thorne:1981feb} in his usage of units where \(c=h=1\).
 
-We define the (unprojected) \(k\)-th \emph{moments} of radiative transfer:
+We define the (unprojected) \(k\)-th moments of radiative transfer:
 
 \begin{subequations}
 \begin{align}
@@ -123,12 +123,8 @@ We define the (unprojected) \(k\)-th \emph{moments} of radiative transfer:
 \end{align}
 \end{subequations}
 
-\begin{greenbox}
-  Write better.
-\end{greenbox}
-
-This is a general procedure we can use to associate a function \(f\) (in this case we started with \(2N\)) with \(\nu^3\) times the integral \eqref{eq:simplified-moment-definition} (where one might substitute \(I _\nu\) with the function \(f\)).
-We need it for the source moments:
+In general, we can compute the \(k\)-th moments of any function just as here we computed those of \(2N = I_\nu / \nu^3\):
+if we apply this procedure to the the source term \(\mathfrak S\) we get the following moments:
 
 \begin{equation}
    S_\nu ^{A_k} = \nu^3 \int S \mathfrak S \prod_i^k (n^{\alpha_i} + u^{\alpha_i}) \dd[]{\Omega} \,.
@@ -595,7 +591,7 @@ The full energy momentum tensor of the problem is given, in the fiducial referen
     \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}\,.
 \end{equation}
 
-The \(t,r\) by \(t, r\) components of the stress-energy tensor in spherical coordinates are:
+The \(t,r\) by \(t, r\) components of the stress-energy tensor with contravariant indices in spherical coordinates are:
 
 \begin{equation} \label{eq:spherical-coordinates-full-stress-energy-tensor}
       \left[
@@ -673,17 +669,7 @@ By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} i
 \end{subequations}
 
 To solve these equations, we wish to express them in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
-To this end, we rewrite the gradients of \(\rho\) and \(P\) in terms of \(\rho_0\) and \(T\); we also put these in a form that will give us logarithmic derivatives:
-
-\begin{subequations}
-\begin{align}
-  \rho'  &= \rho_0 \qty(\pdv{\rho}{\rho_0})_T \frac{\rho_0'}{\rho_0}
-      + T \qty(\pdv{\rho}{T} )_{\rho_0} \frac{T'}{T} \\
-  P'  &= \rho_0 \qty(\pdv{P}{\rho_0})_T \frac{\rho_0'}{\rho_0}
-      + T \qty(\pdv{P}{T} )_{\rho_0} \frac{T'}{T}
-\end{align}
-\end{subequations}
-where the lower indices \(T\) and \(\rho_0\) on the derivatives mean that the denoted quantity should be held constant when differentiating.
+To this end,
 
 \paragraph{Eddington luminosity}
 

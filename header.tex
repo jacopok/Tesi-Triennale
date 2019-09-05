@@ -34,7 +34,7 @@ sorting=ynt
 
 
 %Ridimensiona i margini
-\usepackage[margin=1.8cm]{geometry}
+\usepackage[margin=2cm]{geometry}
 
 %Etichette per le sotto-immagini
 \usepackage{caption}
@@ -88,6 +88,9 @@ sorting=ynt
 \usepackage{ifthen}
 \let\oldfrac\frac
 \renewcommand{\frac}[3][d]{\ifthenelse{\equal{#1}{d}}{\oldfrac{#2}{#3}}{\nicefrac{#2}{#3}}}
+
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}\\}
 
 %Font bello per la matematica
 \usepackage[sc]{mathpazo}

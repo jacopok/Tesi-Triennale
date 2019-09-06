@@ -409,34 +409,34 @@ Because of the hypothesis of stationarity, we can express the derivatives in \eq
 Now, we can make the scalar PSTF moment equations \eqref{eq:scalar-PSTF-moment-equations} fully explicit: denoting derivation with respect to \(r\) with a prime, we have
 \begin{subequations}
 \begin{align}
-  y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
-  -yv w_0^{\prime}
-  - \frac{4}{3} \frac{w_0}{r^2} \qty(r^2 v y)^{\prime}
-  - w_2 r \qty(\frac{vy}{r})^{\prime} &= s_0  \\
-  y w_2^{\prime} + \qty(y^{\prime} + \frac{3y}{r})w_2
-  - yv w_1 ^{\prime} - \frac{4}{3r^2} \qty(r^2 vy)^{\prime} w_1
-  - \frac{2r}{3} \qty(\frac{vy}{r})^{\prime} w_1
-  + \frac{y}{3} w_0^{\prime} + \frac{4}{3} y^{\prime} w_0
+  y \dv{w_1}{r} + 2 \qty(\dv{y}{r} + \frac{y}{r}) w_1
+  -yv \dv{w_0}{r}
+  - \frac{4}{3} \frac{w_0}{r^2} \dv{}{r}\qty(r^2 v y)
+  - w_2 r \dv{}{r}\qty(\frac{vy}{r}) &= s_0  \\
+  y \dv{w_2}{r} + \qty(\dv{y}{r} + \frac{3y}{r})w_2
+  - yv \dv{w_1 }{r} - \frac{4}{3r^2} \dv{}{r}\qty(r^2 vy) w_1
+  - \frac{2r}{3} \dv{}{r}\qty(\frac{vy}{r}) w_1
+  + \frac{y}{3} \dv{w_0}{r} + \frac{4}{3} \dv{y}{r} w_0
   &= s_1\,.
 \end{align}
 \end{subequations}
 
-We can simplify these by expanding the derivatives of products \((vyr^2)^{\prime}\) and \((vy/r)^{\prime}\):
+We can simplify these by expanding the derivatives of products \(\dv{(vyr^2)}{r}\) and \(\dv{(vy/r)}{r}\):
 \begin{subequations} \label{eq:NTZ91-moment-equations-spherical}
 \begin{align}
-  y w_1^{\prime} + 2 \qty(y^{\prime} + \frac{y}{r}) w_1
-  -yv w_0^{\prime}
-  - \frac{4}{3} w_0 \qty((v y)^{\prime} + \frac{2vy}{r})
-  - w_2 \qty((vy)^{\prime} - \frac{vy}{r}) &= s_0  \\
-  y w_2^{\prime} + \qty(y^{\prime} + \frac{3y}{r})w_2
-  - yv w_1 ^{\prime}
-  - 2 w_1 \qty((vy)' + \frac{vy}{r})
-  + \frac{y}{3} w_0^{\prime} + \frac{4}{3} y^{\prime} w_0
+  y \dv{w_1}{r} + 2 \qty(\dv{y}{r} + \frac{y}{r}) w_1
+  -yv \dv{w_0}{r}
+  - \frac{4}{3} w_0 \qty(\dv{(v y)}{r} + \frac{2vy}{r})
+  - w_2 \qty(\dv{(vy)}{r} - \frac{vy}{r}) &= s_0  \\
+  y \dv{w_2}{r} + \qty(\dv{y}{r} + \frac{3y}{r})w_2
+  - yv \dv{w_1 }{r}
+  - 2 w_1 \qty(\dv{(vy)}{r} + \frac{vy}{r})
+  + \frac{y}{3} \dv{w_0}{r} + \frac{4}{3} \dv{y}{r} w_0
   &= s_1\,.
 \end{align}
 \end{subequations}
 
-Equations \eqref{eq:NTZ91-moment-equations-spherical} are the ones which appear in  \textcite[eq. 4]{NobiliTurollaZampieri:1991dec} and which are reported in equation \eqref{eq:NTZ91-moment-equations-logarithmic}: the only difference is that their primes denote derivatives with respect to \(\log (r / (2M))\).
+Equations \eqref{eq:NTZ91-moment-equations-spherical} are the ones which appear in  \textcite[eq. 4]{NobiliTurollaZampieri:1991dec} and which are reported in equation \eqref{eq:NTZ91-moment-equations-logarithmic}, with the notation of primes denoting differentiation with respect to \(\log r\):\footnote{Do note that in the paper \cite[]{NobiliTurollaZampieri:1991dec} the letter \(r\) is used to denote the adimensional radial coordinate \(r / (2M)\).}
 
 \begin{subequations} \label{eq:NTZ91-moment-equations-logarithmic}
     \begin{align}
@@ -457,7 +457,7 @@ From equation \eqref{eq:mass-conservation-integral} we can find an expression \c
   = \sqrt{\qty(\frac{y^2}{\gamma^2}) + y^2 v^2}
   = \sqrt{\qty(1 - \frac{2M}{r}) + \qty(\frac{\dot{M}}{4 \pi r^2 \rho_0})^2}
 \end{equation}
-therefore \(v\) can also be expressed in terms of \(r\) and constants:
+therefore by the continuity equation \(v\) can also be expressed in terms of \(r\) and constants:
 
 \begin{equation}
   v = \frac{\dot M}{4 \pi r^2 \rho_0 y(r)}\,.
@@ -508,13 +508,17 @@ with
     T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}\,.
 \end{equation}
 
-Do note that the determination of \(T_\gamma\) with the definition given is impossible if only the frequency-integrated transfer problem is solved: a reasonable assumption is needed in order to avoid having to do that. 
-%
-% \begin{greenbox}
-%   I do not really understand where these come from.
-% \end{greenbox}
+Do note that the determination of the radiation temperature \(T_\gamma\) with the definition given is impossible if only the frequency-integrated transfer problem is solved: a reasonable approximation has to be made in order to compute it in this case.
 
-Further, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) (given in \eqref{eq:cooling-function-NTZ91}):
+\textcite[eq. 17]{NobiliTurollaZampieri:1991dec}, following the works of Park and Ostriker, propose the following differential equation for the determination of the logarithmic derivative of \(T_\gamma\) when the temperature profile is known:
+%
+\begin{equation} \label{eq:T-gamma-differential-equation}
+  \frac{T_\gamma ^{\prime}}{T_\gamma} = \frac{4 k_B T \max (\tau, \tau^2)}{m_e} \frac{T - T_\gamma}{T}\,.
+\end{equation}
+%
+where \(\tau\) is the adimensional optical depth. This differential equation has to be solved simultaneously with the ones which will be found later.
+
+Furthermore, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) (given in \eqref{eq:cooling-function-NTZ91}):
 
 \begin{equation}
     \varepsilon = \frac{\rho_0 \Lambda (T)}{m_p^2}
@@ -678,7 +682,7 @@ By adding the continuity equation \eqref{eq:differential-continuity} to the equa
 We can expresse these in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
 To this end, we apply the same manipulations used in section \ref{par:adiabatic-equations-of-motion} and thus get \cite[eqs. 15]{NobiliTurollaZampieri:1991dec}:
 %
-\begin{subequations}
+\begin{subequations} \label{eq:simplified-full-equations-of-motion}
 \begin{align}
   (v^2 - v_s^2) \frac{(yv) ^{\prime}}{yv} - 2 v_s^2 + \frac{M}{y^2 r}
   + \frac{r}{yv (p + \rho)} \qty((\Gamma-1)s_0 + v s_1) &= 0  \\
@@ -703,6 +707,30 @@ Their expressions will in general be unknown: they are however defined in terms 
 \end{subequations}
 %
 where \(F = 2 (T/\SI{1}{K}) \exp(\SI{-1.58e5}{K}/T)\) and the quantity \(F/(1+F)\) is the approximate degree of collisional ionization, \(\theta = k_B T / m_e\) while \(\eta\) is defined with the use of the Bessel functions of order \(n\), \(K_n\):  \(\eta = K_3 (\theta^{-1}) / K_2 (\theta^{-1})\); \(m_p\) and \(m_e\) are the masses of the proton and of the electron, \(k_B\) is the Boltzmann gas constant, while \(E_H\) is the Hartree energy (?).
+
+\paragraph{Solutions}
+
+The full system of differential equations which has to be solved is composed of the two grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic}, the three equations of motion \eqref{eq:simplified-full-equations-of-motion}, plus the equation for the radiation temperature \eqref{eq:T-gamma-differential-equation}, to be solved in the six unknowns \(w_0, w_1, \rho_0, yv, T, T_\gamma\).
+
+The shear moment \(w_2\) also appears in the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic}, but it cannot be determined simultaneously. A \emph{closure relation} is a reasonable approximation for the behaviour of \(w_2\): what is assumed is
+%
+\begin{equation}
+  w_2 = f(\tau) w_0 = \frac{2}{3} \frac{1}{1+ \tau^n} w_0
+\end{equation}
+%
+where \(\tau\) is the electron scattering optical depth, which is defined \cite[eqs. 1.25, 1.26]{RybickiLightman:2004} as the function along photon paths such that the incoming intensity diminishes as \(I = I_0 e^{-\tau}\); \(f(\tau)\) is called the variable Eddington factor, while \(n \in \mathbb N\) can be chosen to reproduce different behaviours.
+The error introduced by this approximation is typically of the order of \(\SI{15}{\percent}\) \cite[]{TurollaNobili:1988}.
+
+The flow is called optically thick when, along a typical photon path (which in our case will be radial) \(\tau \gg 1\), and optically thin when \(\tau \sim 0\).
+In these two cases \(f(\tau)\) approaches 0 and \(\frac[i]{2}{3}\) respectively.
+
+If we substitute the closure relation into the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} and solve for \(w_l\), where \(l=0,1\), we get an equation of the form \cite[eq. 18]{NobiliTurollaZampieri:1991dec}:
+
+\begin{equation}
+  \qty(v^2 - v f(\tau) - \frac{1}{3}) w_l^{\prime} = \text{a function of }\, r, w_0, w_1, v, v', l \,.
+\end{equation}
+
+This adds a singularity to the system beyond the one at \(v=v_s\) discussed in section \ref{par:adiabatic-equations-of-motion}. This singularity is located at the zeroes of the Legendre polynomial \(P_2 (v)\) (see \eqref{eq:legendre-polynomials}, the order of the polynomial is \(2 = 1+ l_{\text{max}}\) where \(l_{\text{max}}=1\) is the maximum order of moments considered) in the optically thick limit, and at \(v \rightarrow 1\) in the optically thin limit.
 
 \paragraph{Eddington luminosity}
 

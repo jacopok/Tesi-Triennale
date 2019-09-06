@@ -394,6 +394,8 @@ We assume the geometry of the spacetime is described by the Schwarzschild metric
   \item stationarity: \(\partial_t = 0\).
 \end{enumerate}
 
+\paragraph{Fiducial congruence}
+
 The comoving tetrad defined by the fluid's motion is called the \emph{fiducial congruence reference}.
 
 \begin{claim}
@@ -456,17 +458,10 @@ where \(\gamma\) is the Lorentz factor ($\gamma = 1/\sqrt{1-v^2}$), and $y=\gamm
     The \(\hat{\theta}\) and \(\hat{\varphi}\) vectors just need to be rescaled, and they will need to become \(1 / \sqrt{g_{22}}\) and \(1/\sqrt{g_{33}}\) respectively.
 \end{proof}
 
-The conservation of mass holds: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
+The first equation we consider is the conservation of mass: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
 
 \begin{equation} \label{eq:integral-continuity}
     \dv{}{r} \qty(\rho_0 yvr^2) = 0 \,.
-\end{equation}
-
-For any function \(Q\),  \(\dv*{Q}{r} = 0\) is equivalent to \(\dv*{\log Q }{\log r} = 0 \), therefore we can recast \eqref{eq:integral-continuity} into
-
-\begin{equation} \label{eq:differential-continuity}
-  \dv{\log \rho_0}{\log r} +
-  \dv{\log yv}{\log r} + 2 = 0 \,.
 \end{equation}
 
 In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mass rate $\Dot{M}$ at a certain radius is $\rho_0 (r) v(r) 4\pi r^2$. Then, by continuity to the newtonian limit, the quantity which is constant with respect to the radius must be $\Dot{M} / (4\pi)$: therefore
@@ -475,9 +470,8 @@ In the newtonian limit both $\gamma$ and $y$ approach 1; also, the infalling mas
   \dot{M} = 4 \pi\rho_0 yvr^2 \,.
 \end{equation}
 
-We also have the Euler equation \eqref{eq:relativistic-euler}.
-
-The only interesting component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the radial Schwarzschild Christoffel coefficients:
+The second equation we consider is the Euler equation \eqref{eq:relativistic-euler}, which follows from the spatial projection of the conservation of the stress-energy tensor:
+because of spherical symmetry, the only nontrivial component of this is the radial one, so we need to calculate \(a^1 = u^\mu \nabla_\mu u^1 = \dv*{u^1}{\tau} + \Gamma^1_{\mu \nu} u^\mu u^\nu \). To do this we will need the radial Schwarzschild Christoffel coefficients:
 
 \begin{equation}
   \Gamma^1_{\mu \nu} = \left[\begin{matrix}\frac{M \left(- 2 M + r\right)}{r^{3}} & 0 & 0 & 0\\0 & \frac{M}{r \left(2 M - r\right)} & 0 & 0\\0 & 0 & 2 M - r & 0\\0 & 0 & 0 & \left(2 M - r\right) \sin^{2}{\left(\theta \right)}\end{matrix}\right]
@@ -504,15 +498,15 @@ Substituting this into the (radial component of the) Euler equation \eqref{eq:re
 %   In equations 3.12.7, 8 in \cite{Nobili:2000} there is most definitely a sign error: the term proportional to \(M/r^2\) should be positive.
 % \end{greenbox}
 
-Also, from the projection of the conservation of the ideal fluid stress energy tensor onto the 4-velocity,
+The third equation we consider is the projection of the conservation of the ideal fluid stress energy tensor onto the 4-velocity,
 \(-u_\mu \nabla_\nu T^{\mu\nu}= 0 \),
 which can be written as
-\(\dv*{\rho}{\tau} + (p + \rho) \theta = 0 \)
-and the conservation of mass, which can be written as
+\(\dv*{\rho}{\tau} + (p + \rho) \theta = 0 \);
+using the conservation of mass, it can be cast into
 \(\dv*{\rho_0}{\tau} + \rho_0 \theta = 0 \)
 or
 \(\theta = - \rho_0^{-1} \dv*{\rho_0}{\tau} \)
-we get an equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
+therefore we get an equation for the variation of the total internal energy, which holds for ideal fluids at constant entropy:
 
 \begin{equation} \label{eq:enthalpy-definition}
     \dv{\rho}{\tau} = \frac{p+\rho}{\rho_0} \dv{\rho_0}{\tau}
@@ -557,7 +551,18 @@ In the nonrelativistic, weak-field limit this becomes the classical conservation
     \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const \,.
 \end{equation}
 
-We can reframe the equations we found as the following system, in which we introduce the notation of primes denoting derivatives with respect to \(\log r \), which properly speaking would be ill-defined but we understand to mean \(\dv*{}{\log r} \defeq r \dv*{}{r} \):
+\paragraph{The full adiabatic equations of motion} \label{par:adiabatic-equations-of-motion}
+
+We want to write the equations of motion with the formalism of logarithmic derivatives: we express all the derivatives which were with respect to \(r\),  \(\dv*{}{r} \), with derivatives with respect to \(\log r \), which properly speaking would be ill-defined but we understand to mean \(\dv*{}{\log r} \defeq r \dv*{}{r} \); a more formal approach to this definition would be to use an adimensional radial coordinate \(r/(2M)\), but for consistency with \cite[]{Nobili:2000} I will not use that notation.
+
+We can recast the mass conservation equation \eqref{eq:integral-continuity} using logarithmic derivatives, since when a quantity has zero derivative its logarithm also does:
+
+\begin{equation} \label{eq:differential-continuity}
+  \dv{\log \rho_0}{\log r} +
+  \dv{\log yv}{\log r} + 2 = 0 \,.
+\end{equation}
+
+With the same approach we can reframe all the equations we found as the following system, in which we introduce the notation of primes denoting derivatives with respect to \(\log r\):
 %
 \begin{subequations}
 \begin{align}
@@ -578,16 +583,17 @@ In order to reframe these we rewrite the gradients of \(\rho\) and \(P\) in term
 \end{align}
 \end{subequations}
 %
-where the subscripts \(T\) and \(\rho_0\) on the derivatives mean that the denoted quantity should be held constant when differentiating; the parameters \(A\), \(B\), \(a\) and \(b\) are defined by:
+where the parameters \(A\), \(B\), \(a\) and \(b\) are defined by:
 
 \begin{subequations}
 \begin{align}
   A &= \frac{\rho_0}{p + \rho} \qty(\pdv{\rho}{\rho_0})_T
   &B = \frac{T}{p + \rho} \qty(\pdv{\rho}{T})_{\rho_0} \\
   a &= \frac{\rho_0}{p + \rho} \qty(\pdv{p}{\rho_0})_T
-  &b = \frac{T}{p + \rho} \qty(\pdv{p}{T})_{\rho_0}
+  &b = \frac{T}{p + \rho} \qty(\pdv{p}{T})_{\rho_0} \,;
 \end{align}
 \end{subequations}
+the subscripts \(T\) and \(\rho_0\) on the derivatives mean that the denoted quantity should be held constant when differentiating.
 
 These are related by the reciprocity relation \cite[eq. B3]{Flammang:1982}: \(A + b = 1\).
 
@@ -595,10 +601,10 @@ When inserting these relations into equation \eqref{eq:accretion-energy} we get:
 %
 \begin{subequations}
 \begin{align}
-  0 &= A \frac{\rho_0 '}{\rho_0} + B \frac{T ^{\prime}}{T} - \frac{\rho_0 ^{\prime}}{\rho_0}  \\
+  0 &=\qty( A \frac{\rho_0 '}{\rho_0} + B \frac{T ^{\prime}}{T} - \frac{\rho_0 ^{\prime}}{\rho_0}) (p+ \rho) \\
   &= \frac{T ^{\prime}}{T} + \frac{A-1}{B} \frac{\rho_0 ^{\prime}}{\rho_0 }  \\
-  \frac{T ^{\prime}}{T} &= \frac{b}{B} \frac{\rho_0 ^{\prime}}{\rho_0}
-  = (\Gamma - 1) \frac{\rho_0  ^{\prime}}{\rho_0  }
+  &= \frac{T ^{\prime}}{T} - \frac{b}{B} \frac{\rho_0 ^{\prime}}{\rho_0} \\
+  &= \frac{T ^{\prime}}{T} - (\Gamma - 1) \frac{\rho_0  ^{\prime}}{\rho_0  } \label{eq:simplified-energy}
 \end{align}
 \end{subequations}
 %
@@ -611,13 +617,29 @@ When we insert the relations into equation \eqref{eq:accretion-euler} we get:
   0 &= \frac{y ^{\prime}}{y} + a \frac{\rho_0 ^{\prime}}{\rho_0} + b \frac{T ^{\prime}}{T}  \\
   &= \frac{y ^{\prime}}{y} + a \frac{\rho_0 ^{\prime}}{\rho_0} + \frac{b^2}{B} \frac{\rho_0 ^{\prime}}{\rho_0}   \\
   &= \frac{y ^{\prime}}{y} + v_s^2 \qty(-2- \frac{(yv) ^{\prime}}{yv})    \\
-  &= \qty(\gamma^2 v^2 \frac{v ^{\prime}}{v} + \frac{M \gamma^2}{y^2 r} ) + -v_s^2 \qty(2 + \frac{(yv) ^{\prime}}{yv})    \\
-  &\overset{?}{=}  (v^2 - v_s^2) \frac{(yv) ^{\prime}}{yv} - 2 v_s^2 + \frac{M}{y^2r} 
+  &= \qty(\frac{(yv) ^{\prime}}{yv} - \frac{v ^{\prime}}{v} ) + -v_s^2 \qty(2 + \frac{(yv) ^{\prime}}{yv})    \\
+  &=  (v^2 - v_s^2) \frac{(yv) ^{\prime}}{yv} - 2 v_s^2 + \frac{M}{y^2r} \label{eq:simplified-euler}
+\end{align}
+\end{subequations}
+%
+where: we used the fact that \(v_s^2 = \qty(\pdv*{p}{\rho})_s = a + b^2 / B = a + b (\Gamma - 1)\) \cite[eq. B12]{Flammang:1982}, the energy equation \eqref{eq:simplified-energy}, the conservation of mass equation \eqref{eq:differential-continuity}, and the identity we now derive, starting from the expression for the logarithmic derivative of \(y\) \eqref{eq:log-y-conservation}:
+%
+\begin{subequations}
+\begin{align}
+  \frac{y ^{\prime}}{y}  &=  \gamma^2 v^2 \frac{v ^{\prime}}{v} + \frac{M \gamma^2}{y^2 r}  \\
+  &= (\gamma^2 - 1) \frac{v ^{\prime}}{v} + \frac{M \gamma^2}{y^2 r}  \\
+  &= \gamma^2 \qty(\frac{v ^{\prime}}{v} + \frac{M}{y^2 r}) - \frac{v ^{\prime}}{v}  \\
+  (1-v^2) \frac{(yv) ^{\prime}}{yv} &= \frac{v ^{\prime}}{v} + \frac{M}{y^2 r}  \\
+  \frac{(yv) ^{\prime}}{yv}- \frac{v ^{\prime}}{v}  &= v^2 \frac{(yv) ^{\prime}}{yv} + \frac{M}{y^2 r}  \\
+  \frac{y ^{\prime}}{y} &= v^2 \frac{(yv) ^{\prime}}{yv} + \frac{M}{y^2 r}
 \end{align}
 \end{subequations}
 
-\begin{greenbox}
-  To add: commentary on the equation system, its boundary conditions \(\rho_\infty\) and \(T_\infty\), and the fact that to make the system regular at \(v = v_s\) the problem becomes uniquely determined.
-\end{greenbox}
+The system which describes the motion is then given by equations \eqref{eq:simplified-energy}, \eqref{eq:simplified-euler} and \eqref{eq:accretion-mass}, which remains unchanged.
+This is a system of three first-order differential equations in the varibles \(T\), \(yv\) and \(\rho_0\) (\(y\) and \(v\) can be recovered since we have an explicit definition in the form \(y = y(v)\)), which would ordinarily need three boundary conditions, but there is a mechanism by which we only need two.
+
+When \(v = v_s\), the logarithmic derivative of \(yv\) term in \eqref{eq:simplified-euler} vanishes: then, either \(r = 2 v_s y^2 /M\) or the logarithmic derivative diverges. Since the latter condition is unphysical, we must consider the former, which defines a radius \(r_s\), and impose \(v(r_s)=v_s\).
+
+This constrains the accceptable solutions, and allows the accretive motion to be fully determined by just imposing two conditions, such as \(\rho_0 (r \rightarrow \infty) = \rho_\infty\) and \(T (r \rightarrow \infty) = T_\infty\).
 
 \end{document}

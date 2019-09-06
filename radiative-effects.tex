@@ -3,7 +3,9 @@
 
 \subsection{Thorne's PSTF moment formalism}
 
-Following \cite{Thorne:1981feb}.
+The PSTF moment formalism was developed by \textcite{Thorne:1981feb} in order to give a way to consider the radiation energy transfer problem to an arbitrarily high degree of accuracy: it is fully relativistic, and --- in the presence of certain simmetries, such that it is possible to use its scalar-moments version, which will be developed in section \ref{par:scalar-moments} --- it gives rise to an infinite number of ordinary linear first-order differential equations for the various scalar moments, which can be truncated at a certain order.
+
+We start by introducing the mathematical operations which will need to be applied to the moment tensors.
 
 Given any tensor \(A^{\mu_1 \dots \mu_k} = A^{M_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
 \begin{equation}
@@ -505,6 +507,8 @@ with
 \begin{equation}
     T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}\,.
 \end{equation}
+
+Do note that the determination of \(T_\gamma\) with the definition given is impossible if only the frequency-integrated transfer problem is solved: a reasonable assumption is needed in order to avoid having to do that. 
 %
 % \begin{greenbox}
 %   I do not really understand where these come from.
@@ -629,47 +633,76 @@ The quantity which is conserved is \(r^2 g_{tt}T^{tr}\), where \(T^{tr}\) is the
 We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho_0 y) \), and recognize the expression for the specific enthalpy \(h\) and for \(y^2 =- g_{tt} \gamma^2\):
 
 \begin{equation}
-    -y^2 (1+v^2) L + y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) \defeq \dot{E}
+    -y^2 (1+v^2) L + y \dot{M} \qty(h + \frac{4w_0/3 + w_2}{\rho_0}) \defeq -\dot{E}
     = \const\,.
 \end{equation}
 
 This is the total luminosity of the accretion process.
 
-\begin{claim}
+\paragraph{The full equations of motion}
 
-These conservation laws can be projected onto \(\hat{t}\) and \(\hat{r}\) and cast into \cite[eq. A7]{NobiliTurollaZampieri:1991dec}:
+The conservation of the stress-energy tensor can be projected onto \(\hat{t}\) and \(\hat{r}\) and cast into \cite[eq. A7]{NobiliTurollaZampieri:1991dec}:
 
 \begin{subequations} \label{eq:fiducial-projected-conservation}
 \begin{align}
     (P+\rho) \dv{y}{r}
     +y \dv{P}{r}
+    \underbrace{
     +\frac{4}{3} w_{0} \dv{y}{r}
     +\frac{1}{3} y \dv{w_0}{r}
     +\frac{1}{y v r^{2}} \dv{}{r}\left(y^{2} v^{2} r^{2} w_{1}\right)
-    +\frac{1}{r^{3}} \dv{}{r}\left(r^{3} y w_{2}\right) &=0 \\
+    +\frac{1}{r^{3}} \dv{}{r}\left(r^{3} y w_{2}\right)}_{s_1} &=0 \\
     \dv{\rho}{r}
     -\frac{P+\rho}{\rho_{0}}
     \dv{\rho_{0}}{r}
+    \underbrace{
     +\dv{w_0}{r}
     +\frac{4}{3} \frac{w_{0}}{y v r^{2}} \dv{}{r}\left(y v r^{2}\right)
     +\frac{1}{y^{2} v r^{2}} \dv{}{r}\left(y^{2} r^{2} w_{1}\right)
-    +w_{2} \frac{r}{y v} \dv{}{r}\left(\frac{y v}{r}\right) &=0
+    +w_{2} \frac{r}{y v} \dv{}{r}\left(\frac{y v}{r}\right)}_{s_0/(yv)} &=0
 \end{align}
 \end{subequations}
-\end{claim}
+%
+where the identifications come from a reframing of the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} (see \cite[eq. A8]{NobiliTurollaZampieri:1991dec}).
 
-By plugging the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} into the equations \eqref{eq:fiducial-projected-conservation} we get the simplified conservation equations we will work with, to which we add the continuity equation \eqref{eq:differential-continuity}. Here, as in \cite[]{NobiliTurollaZampieri:1991dec}, primes denote differentiation with respect to \(\log r\). The complete system we need to solve is:
-
+By adding the continuity equation \eqref{eq:differential-continuity} to the equations \eqref{eq:fiducial-projected-conservation} --- which are reworked slightly to get the expressions of logarithmic derivatives --- we get the full system of the simplified conservation equations we will work with. Here, as in \cite[]{NobiliTurollaZampieri:1991dec} and as in section \ref{par:adiabatic-equations-of-motion}, primes denote differentiation with respect to \(\log r\).
+%
 \begin{subequations}
 \begin{align}
-  (P + \rho) \frac{y'}{y} + P^\prime + \frac{2rM s_1}{y}  &= 0  \\
-  \rho^\prime - (P + \rho) \frac{\rho_0^\prime}{\rho_0} + \frac{2rM s_0}{vy}   &=0  \\
-  \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0\,.
+  (P + \rho) \frac{y'}{y} + P^\prime + \frac{r s_1}{y}  &= 0  \\
+  \rho^\prime - (P + \rho) \frac{\rho_0^\prime}{\rho_0} + \frac{r s_0}{vy}   &=0  \\
+  \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0
 \end{align}
 \end{subequations}
 
-To solve these equations, we wish to express them in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
-To this end,
+We can expresse these in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
+To this end, we apply the same manipulations used in section \ref{par:adiabatic-equations-of-motion} and thus get \cite[eqs. 15]{NobiliTurollaZampieri:1991dec}:
+%
+\begin{subequations}
+\begin{align}
+  (v^2 - v_s^2) \frac{(yv) ^{\prime}}{yv} - 2 v_s^2 + \frac{M}{y^2 r}
+  + \frac{r}{yv (p + \rho)} \qty((\Gamma-1)s_0 + v s_1) &= 0  \\
+  \frac{T ^{\prime}}{T} - (\Gamma - 1)\frac{\rho_0 ^{\prime}}{\rho_0} - \frac{r s_0}{Bvy (p+\rho)}  &= 0  \\
+  \frac{(yv) ^{\prime}}{yv} + \frac{\rho_0 ^{\prime}}{\rho_0} + 2 &=0
+\end{align}
+\end{subequations}
+%
+where \(\Gamma\), \(B\), and \(v_s^2\) are those defined in section \ref{par:adiabatic-equations-of-motion}.
+
+\begin{greenbox}
+  The sign of the source term in the energy equation is a minus: why? it seems like it should be a plus. To get the first equation, however, we need the minus.
+\end{greenbox}
+
+Their expressions will in general be unknown: they are however defined in terms of derivatives of \(\rho\) and \(p\), so if we can write an equation for those variables in terms of \(T\) and \(\rho_0\) we can compute all the desired thermodynamic variables. The desired equations of state, which need to account both for slow-moving and fully relativitic regimes, are \cite[eqs. 16]{NobiliTurollaZampieri:1991dec}:
+%
+\begin{subequations}
+\begin{align}
+  p &= \qty(1 + \frac{F}{1+F}) \frac{\rho_0 k_B T}{m_p}  \\
+  \rho &= \rho_0 +  \qty( \frac{3}{2} \frac{F}{(1+F)} + \qty(\frac{\eta-1}{\theta} - 1)) \frac{\rho_0 k_B T}{m_p} + \qty(1 - \frac{F}{1+F} ) \frac{\rho_0 E_H}{m_p}
+\end{align}
+\end{subequations}
+%
+where \(F = 2 (T/\SI{1}{K}) \exp(\SI{-1.58e5}{K}/T)\) and the quantity \(F/(1+F)\) is the approximate degree of collisional ionization, \(\theta = k_B T / m_e\) while \(\eta\) is defined with the use of the Bessel functions of order \(n\), \(K_n\):  \(\eta = K_3 (\theta^{-1}) / K_2 (\theta^{-1})\); \(m_p\) and \(m_e\) are the masses of the proton and of the electron, \(k_B\) is the Boltzmann gas constant, while \(E_H\) is the Hartree energy (?).
 
 \paragraph{Eddington luminosity}
 

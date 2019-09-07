@@ -5,6 +5,10 @@
 
 The PSTF moment formalism was developed by \textcite{Thorne:1981feb} in order to give a way to consider the radiation energy transfer problem to an arbitrarily high degree of accuracy: it is fully relativistic, and --- in the presence of certain simmetries, such that it is possible to use its scalar-moments version, which will be developed in section \ref{par:scalar-moments} --- it gives rise to an infinite number of ordinary linear first-order differential equations for the various scalar moments, which can be truncated at a certain order.
 
+In the presence of those symmetries the scalar moments fully describe the radiation; truncating the sequence of differential equations at order \(6 \divisionsymbol 8\) probably gives a reasonably high degree of accuracy in all cases \cite[p. 1285]{TurollaNobili:1988}.
+
+\paragraph{Mathematical introduction}
+
 We start by introducing the mathematical operations which will need to be applied to the moment tensors.
 
 Given any tensor \(A^{\mu_1 \dots \mu_k} = A^{M_k}\) we can use the tensor \(h^{\mu\nu}\) to project it into the space-like subspace defined by the velocity \(u^\mu\):
@@ -48,7 +52,7 @@ where the PSTF moments \(\mathscr F_{\alpha_1 \dots \alpha_k}\) can be computed 
     \frac{(2k+1)!!}{4 \pi k!} \qty(\int F \prod_{i=0}^k n^{\alpha_i}  \dd{\Omega}  )^{TF} \,.
 \end{equation}
 
-In particular, the function we will apply this to is the distribution of EM radiation around the BH. So, we consider a photon, whose trajectory in spacetime is parameterized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
+In particular, the function we will apply this to is the distribution of electromagnetic radiation around the black hole. So, we consider a photon, whose trajectory in spacetime is parameterized as \(\gamma(\xi)\), with a choice of \(\xi\) such that the photon's momentum is
 \(
 p = \dv*{}{\xi}
 \).
@@ -103,12 +107,11 @@ Now, we want to describe the variation of the occupation number \(N\) with respe
 \end{equation}
 since the occupation number can be thought of as just a function of the spatial components of the momentum.
 
-Since \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\) and the covariant derivative of \(p^\gamma\) is zero, we can compute
+Since \(\dv*{}{l} = (n^\mu + u^\mu) \partial_\mu\) and the covariant derivative of \(p^\gamma\) is zero (since the photon's trajectory is a geodesic), we can compute
 \begin{equation}
   \dv{p^\gamma}{l} = (n^\mu + u^\mu ) \nabla_\mu p^\gamma - \Gamma ^\gamma _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
-  = - \Gamma ^\gamma _{\alpha \beta} p^\alpha (u^\beta + n^\beta)
+  = - \Gamma ^\gamma _{\alpha \beta} p^\alpha (u^\beta + n^\beta) \,.
 \end{equation}
-where the covariant derivative term vanishes since the photon's trajectory is a geodesic.
 
 \paragraph{Moments' definitions}
 
@@ -153,7 +156,7 @@ Since this includes the radiation intensity from all frequencies, we have direct
 \begin{align}
    M &= \int  I_\nu \dd{\Omega} \dd{\nu}   & \text{energy density of radiation}  \\
    M^\alpha &= \int I_\nu (n^\alpha + u^\alpha)\dd{\Omega} \dd{\nu}   & (M^0, M^i) = \text{(energy density of radiation, energy flux)}  \\
-   M^{\alpha\beta} &= \int I (n^\alpha + u^\alpha)(n^\beta + u^\beta)\dd{\Omega} \dd{\nu}   & \text{stress-energy tensor of radiation.}
+   M^{\alpha\beta} &= \int I_\nu (n^\alpha + u^\alpha)(n^\beta + u^\beta)\dd{\Omega} \dd{\nu}   & \text{stress-energy tensor of radiation.}
 \end{align}
 \end{subequations}
 
@@ -203,7 +206,7 @@ We can write the stress-energy tensor \(T^{\mu\nu} = M^{\mu\nu}\) with the PSTF 
     + \mathscr M ^{\mu\nu} + \frac{1}{3} \mathscr M h^{\mu\nu}
 \end{equation}
 and compare these to the expression of the components of the stress-energy tensor \eqref{eq:components-stress-energy-tensor} to get the following identifications:
-
+%
 \begin{subequations}
 \begin{align}
   \mathscr M &= w = \rho  \label{eq:identification-PSTF-stress-energy-tensor-1}\\
@@ -237,7 +240,7 @@ Then, we should take the PSTF part of the equations. This yields a very complica
     + \frac{k}{2k+1} \nabla_{\alpha_k} \mathscr M ^{A_{k-1}}
     - (k-1) \mathscr M ^{A_k \beta \gamma} \sigma_{\beta \gamma} \right.
     - (k-1) \mathscr M ^{A_k \beta} a_\beta
-    + \frac{4}{3} \mathscr M ^{A_k} \theta \\
+    + \frac{4}{3} \mathscr M ^{A_k} \theta + \\
     &+ \frac{5k}{2k+3} \mathscr M ^{A_{k-1} \beta} \sigma_\beta^{\alpha_k}
     - k \mathscr M ^{A_{k-1} \beta} \omega_\beta ^{\alpha_k}
     \left.+ \frac{k (k+3)}{2k+1} \mathscr M ^{A_{k-1}} a^{\alpha_k}
@@ -247,7 +250,7 @@ Then, we should take the PSTF part of the equations. This yields a very complica
 
 \paragraph{How to recover the intensity}
 
-Once one has solved the PSTF grey moment equations, one can compute the intensity from the moments by comparing \eqref{eq:PSTF-moments-function-decomposition} and \eqref{eq:trace-free-moments-definition}:
+Once we solve the PSTF grey moment equations, can compute the intensity from the moments by comparing \eqref{eq:PSTF-moments-function-decomposition} and \eqref{eq:trace-free-moments-definition}:
 
 \begin{equation}
   I = \sum _{k=0}   ^{\infty} \frac{(2k+1)!!}{4 \pi k!} \mathscr M^{A_k} \prod_{i=1}^k n_{\alpha_i}\,.
@@ -323,13 +326,14 @@ where \(n^r\) denotes the radial component of a normal vector in spherical coord
 \paragraph{The scalar moments} \label{par:scalar-moments}
 
 It can be shown, using the identity \eqref{eq:thorne-trace-free-integral-claim}  that the definition of \(w_k\) we gave is equivalent to
-
+%
 \begin{equation}
     w_k = \int_{-1}^1 I(\cos \theta) P_k(\cos \theta) \qty(\frac{(2k-1)!!}{l!})^{-1} 2 \pi\dd{\cos \theta}
 \end{equation}
+%
 where \(P_k\) is the \(k\)-th Legendre polynomial \eqref{eq:legendre-polynomials}.
 Then the first moments are:
-
+%
 \begin{subequations}
 \begin{align}
   w_0 &= \int I \dd{\Omega} & \text{radiation energy density} \\
@@ -351,7 +355,7 @@ We can explicitly write the radiation stress-energy tensor in terms of the \(w_k
 
 \paragraph{The source moments}
 
-We can get an explicit formula for the source moments \(s_k = \mathscr S ^{r\dots r}\) (\(k\) \(r\)s) with the same procedure which was used in paragraph \nameref{par:scalar-moments}:
+We can get an explicit formula for the source moments \(s_k = \mathscr S ^{r\dots r}\) (\(k\) \(r\)s) with the same procedure which was used in section \ref{par:scalar-moments}:
 we get
 
 \begin{equation}
@@ -398,7 +402,7 @@ These have to be simplified further to be used: specifically, they can be expres
 % Following \textcite[]{ThorneFLammmangZytkow:1981feb}.
 
 Because of the hypothesis of stationarity, we can express the derivatives in \eqref{eq:scalar-PSTF-moment-equations} as:
-
+%
 \begin{subequations}
 \begin{align}
   \pdv{}{\hat{t}} &= \frac{\gamma^2}{y} \pdv{}{t} - yv \pdv{}{r} = - yv \pdv{}{r}  \\
@@ -421,7 +425,7 @@ Now, we can make the scalar PSTF moment equations \eqref{eq:scalar-PSTF-moment-e
 \end{align}
 \end{subequations}
 
-We can simplify these by expanding the derivatives of products \(\dv{(vyr^2)}{r}\) and \(\dv{(vy/r)}{r}\):
+We can simplify these by expanding the derivatives of products \(\dv*{(vyr^2)}{r}\) and \(\dv*{(vy/r)}{r}\):
 \begin{subequations} \label{eq:NTZ91-moment-equations-spherical}
 \begin{align}
   y \dv{w_1}{r} + 2 \qty(\dv{y}{r} + \frac{y}{r}) w_1
@@ -437,7 +441,7 @@ We can simplify these by expanding the derivatives of products \(\dv{(vyr^2)}{r}
 \end{subequations}
 
 Equations \eqref{eq:NTZ91-moment-equations-spherical} are the ones which appear in  \textcite[eq. 4]{NobiliTurollaZampieri:1991dec} and which are reported in equation \eqref{eq:NTZ91-moment-equations-logarithmic}, with the notation of primes denoting differentiation with respect to \(\log r\):\footnote{Do note that in the paper \cite[]{NobiliTurollaZampieri:1991dec} the letter \(r\) is used to denote the adimensional radial coordinate \(r / (2M)\).}
-
+%
 \begin{subequations} \label{eq:NTZ91-moment-equations-logarithmic}
     \begin{align}
         w_{1}^{\prime}-v w_{0}^{\prime}
@@ -492,7 +496,7 @@ Equation \eqref{eq:opacity-emissivity-definition} can be taken to be a practical
 We will only consider the \(k=0\) and \(k=1\) moments.
 If the emission is isotropic, then the emissivity moment \(\varepsilon_1\) is 0 since its definition contains an integral of the product of an even and odd function.
 
-Because of this, we just call the one moment we need \(\varepsilon = \varepsilon_0\).
+Because of this, we just call the one emissivity moment we need \(\varepsilon = \varepsilon_0\).
 
 The source moments given in \cite[eq. 6]{NobiliTurollaZampieri:1991dec} are:
 
@@ -516,7 +520,7 @@ Do note that the determination of the radiation temperature \(T_\gamma\) with th
   \frac{T_\gamma ^{\prime}}{T_\gamma} = \frac{4 k_B T \max (\tau, \tau^2)}{m_e} \frac{T - T_\gamma}{T}\,.
 \end{equation}
 %
-where \(\tau\) is the adimensional optical depth. This differential equation has to be solved simultaneously with the ones which will be found later.
+where \(\tau\) is the adimensional optical depth, which will be defined in \ref{sec:closures-singularities}. This differential equation has to be solved simultaneously with the ones which will be found later.
 
 Furthermore, we use the facts that \(\varepsilon / \kappa_0 = a T^4\) if there is thermodynamic equilibrium and that we have the following expression for the emissivity \(\varepsilon\) in terms of the cooling function \(\Lambda (T)\) (given in \eqref{eq:cooling-function-NTZ91}):
 
@@ -590,13 +594,13 @@ The cooling function of the infalling gas is plotted in figure \ref{fig:cooling-
 
 The way we use the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} to study the accretion problem is by using them to simplify the conservation equations \(\nabla_\mu T^{\mu\nu}\).
 
-The full energy momentum tensor of the problem is given, in the fiducial reference frame, by combining an ideal-fluid stress-energy tensor (with pressure \(P\) and rest energy density \(\rho\)) with the one given in \eqref{eq:radiation-stress-energy-tensor-fiducial}:
+The full energy momentum tensor of the problem is given, in the fiducial reference frame, by combining an ideal-fluid stress-energy tensor (with pressure \(p\) and rest energy density \(\rho\)) with the one given in \eqref{eq:radiation-stress-energy-tensor-fiducial}:
 
 \begin{equation}
     T^{\mu\nu} =
     T^{\mu\nu}_{\text{radiation}} +
     T^{\mu\nu}_{\text{matter}} =
-    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & P + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & P + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}\,.
+    \left[\begin{matrix}\rho + w_{0} & w_{1} & 0 & 0\\w_{1} & p + \frac{w_{0}}{3} + w_{2} & 0 & 0\\0 & 0 & p + \frac{w_{0}}{3} - \frac{w_{2}}{2} & 0\\0 & 0 & 0 & p + \frac{w_{0}}{3} - \frac{w_{2}}{2}\end{matrix}\right] _{\text{fid}}\,.
 \end{equation}
 
 The \(t,r\) by \(t, r\) components of the stress-energy tensor with contravariant indices in spherical coordinates are:
@@ -604,17 +608,17 @@ The \(t,r\) by \(t, r\) components of the stress-energy tensor with contravarian
 \begin{equation} \label{eq:spherical-coordinates-full-stress-energy-tensor}
       \left[
       \begin{matrix}
-      \frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 P + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} &
-      \gamma^{2} \left(- \frac{v \left(3 P + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right)\\
-      \gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 P + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) &
-      y^{2} \left(P - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right)
+      \frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 p + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} &
+      \gamma^{2} \left(- \frac{v \left(3 p + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right)\\
+      \gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 p + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) &
+      y^{2} \left(p - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right)
     \end{matrix}
       \right] \,.
 \end{equation}
 
 \paragraph{The total luminosity \(\dot{E}\)}
 
-We can project the conservation of the stress energy tensor along the unit vector in the temporal direction in the spherical reference frame, \((e_t)_\nu\): we get  \((e_t)_\nu \nabla_\mu T^{\nu\mu} = \nabla_\mu T_0^\mu = 0\).
+We can project the conservation of the stress energy tensor along the unit vector in the temporal direction in the spherical reference frame, \((e_t)_\nu\): we get  \((e_t)_\nu \nabla_\mu T^{\nu\mu} = \nabla_\mu T_t^\mu = 0\).
 
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
@@ -628,7 +632,7 @@ Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
 In \cite[before eq. 18c]{ThorneFLammmangZytkow:1981feb} this appears with an additional immaterial factor of \(4 \pi\).
 
-The quantity which is conserved is \(r^2 g_{tt}T^{tr}\), where \(T^{tr}\) is the $(0,1)$ matrix element which appears in \eqref{eq:spherical-coordinates-full-stress-energy-tensor}. We can simplify it by expressing it in terms of the luminosity \(L\) which is \(L = 4 \pi r^2 w_1\): we get
+The quantity which is conserved is \(r^2 g_{tt}T^{tr}\), where \(T^{tr}\) is the $(0,1)$ matrix element which appears in \eqref{eq:spherical-coordinates-full-stress-energy-tensor}. We can simplify it by expressing it in terms of the radiation luminosity \(L\) which is \(L = 4 \pi r^2 w_1\): we get
 
 \begin{equation}
   4 \pi r^2 g_{tt} \qty(\gamma^2 (1+ v^2) \frac{L}{4 \pi r^2} - v \gamma^2 \qty(p + \rho + w_2 + \frac{4}{3} w_0)) = \const\,.
@@ -641,23 +645,23 @@ We can also substitute in the expression for \(v = \dot{M} / \qty(4 \pi r^2 \rho
     = \const\,.
 \end{equation}
 
-This is the total luminosity of the accretion process.
+This is the total luminosity of the accretion process (while \(L\) is only the \emph{radiation} luminosity).
 
 \paragraph{The full equations of motion}
 
 The conservation of the stress-energy tensor can be projected onto \(\hat{t}\) and \(\hat{r}\) and cast into \cite[eq. A7]{NobiliTurollaZampieri:1991dec}:
-
+%
 \begin{subequations} \label{eq:fiducial-projected-conservation}
 \begin{align}
-    (P+\rho) \dv{y}{r}
-    +y \dv{P}{r}
+    (p+\rho) \dv{y}{r}
+    +y \dv{p}{r}
     \underbrace{
     +\frac{4}{3} w_{0} \dv{y}{r}
     +\frac{1}{3} y \dv{w_0}{r}
     +\frac{1}{y v r^{2}} \dv{}{r}\left(y^{2} v^{2} r^{2} w_{1}\right)
     +\frac{1}{r^{3}} \dv{}{r}\left(r^{3} y w_{2}\right)}_{s_1} &=0 \\
     \dv{\rho}{r}
-    -\frac{P+\rho}{\rho_{0}}
+    -\frac{p+\rho}{\rho_{0}}
     \dv{\rho_{0}}{r}
     \underbrace{
     +\dv{w_0}{r}
@@ -673,13 +677,13 @@ By adding the continuity equation \eqref{eq:differential-continuity} to the equa
 %
 \begin{subequations}
 \begin{align}
-  (P + \rho) \frac{y'}{y} + P^\prime + \frac{r s_1}{y}  &= 0  \\
-  \rho^\prime - (P + \rho) \frac{\rho_0^\prime}{\rho_0} + \frac{r s_0}{vy}   &=0  \\
+  (p + \rho) \frac{y'}{y} + p^\prime + \frac{r s_1}{y}  &= 0  \\
+  \rho^\prime - (p + \rho) \frac{\rho_0^\prime}{\rho_0} + \frac{r s_0}{vy}   &=0  \\
   \frac{(vy)^\prime}{vy} + \frac{\rho_0 ^\prime}{\rho_0} + 2 &=0
 \end{align}
 \end{subequations}
 
-We can expresse these in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
+We can express these in terms of the variables \((yv)(r)\), \(\rho_0(r)\) and \(T(r)\).
 To this end, we apply the same manipulations used in section \ref{par:adiabatic-equations-of-motion} and thus get \cite[eqs. 15]{NobiliTurollaZampieri:1991dec}:
 %
 \begin{subequations} \label{eq:simplified-full-equations-of-motion}
@@ -692,10 +696,10 @@ To this end, we apply the same manipulations used in section \ref{par:adiabatic-
 \end{subequations}
 %
 where \(\Gamma\), \(B\), and \(v_s^2\) are those defined in section \ref{par:adiabatic-equations-of-motion}.
-
-\begin{greenbox}
-  The sign of the source term in the energy equation is a minus: why? it seems like it should be a plus. To get the first equation, however, we need the minus.
-\end{greenbox}
+%
+% \begin{greenbox}
+%   The sign of the source term in the energy equation is a minus: why? it seems like it should be a plus. To get the first equation, however, we need the minus.
+% \end{greenbox}
 
 Their expressions will in general be unknown: they are however defined in terms of derivatives of \(\rho\) and \(p\), so if we can write an equation for those variables in terms of \(T\) and \(\rho_0\) we can compute all the desired thermodynamic variables. The desired equations of state, which need to account both for slow-moving and fully relativitic regimes, are \cite[eqs. 16]{NobiliTurollaZampieri:1991dec}:
 %
@@ -706,9 +710,9 @@ Their expressions will in general be unknown: they are however defined in terms 
 \end{align}
 \end{subequations}
 %
-where \(F = 2 (T/\SI{1}{K}) \exp(\SI{-1.58e5}{K}/T)\) and the quantity \(F/(1+F)\) is the approximate degree of collisional ionization, \(\theta = k_B T / m_e\) while \(\eta\) is defined with the use of the Bessel functions of order \(n\), \(K_n\):  \(\eta = K_3 (\theta^{-1}) / K_2 (\theta^{-1})\); \(m_p\) and \(m_e\) are the masses of the proton and of the electron, \(k_B\) is the Boltzmann gas constant, while \(E_H\) is the Hartree energy (?).
+where \(F = 2 (T/\SI{1}{K}) \exp(\SI{-1.58e5}{K}/T)\) and the quantity \(F/(1+F)\) is the approximate degree of collisional ionization, \(\theta = k_B T / m_e\) while \(\eta\) is defined with the use of the modified Bessel functions of order \(n\), \(K_n\):  \(\eta = K_3 (\theta^{-1}) / K_2 (\theta^{-1})\); \(m_p\) and \(m_e\) are the masses of the proton and of the electron, \(k_B\) is the Boltzmann gas constant, while \(E_H\) is the Hartree energy.
 
-\paragraph{Closures and singularities}
+\paragraph{Closures and singularities} \label{sec:closures-singularities}
 
 The full system of differential equations which has to be solved is composed of the two grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic}, the three equations of motion \eqref{eq:simplified-full-equations-of-motion}, plus the equation for the radiation temperature \eqref{eq:T-gamma-differential-equation}, to be solved in the six unknowns \(w_0, w_1, \rho_0, yv, T, T_\gamma\).
 
@@ -776,17 +780,17 @@ where \(M_\odot \approx \SI{2e30}{kg}\) is the mass of the Sun.
 It is the characteristic luminosity at which the radiation pressure from the photons moving outward equals the gravitational specific force on the infalling matter.
 
 The gravitational force, in the newtonian  limit, is
-
+%
 \begin{equation}
   F_{\text{grav}} = \frac{GMm}{r^2 }\,.
 \end{equation}
 
 The radiation pressure can be given in terms of the luminosity \(L\) (reinserting the units of \(c\) for this) as
-
+%
 \begin{equation}
   P_{\text{rad}} = \frac{L}{c 4 \pi r^2}\,,
 \end{equation}
-then, the radiative force is given by \(F_{\text{rad}} =  P_{\text{rad}} \kappa m\), where \(m\) is the mass of the test object and \(\kappa\) is the opacity: the per-unit-mass cross-section. We usually assume \(\kappa = \sigma_T/m_p\), that is, that the interaction between radiation and matter is all due to Thompson scattering and the matter is only composed of hydrogen atoms.
+then, the radiative force on a test object of mass \(m\) is given by \(F_{\text{rad}} =  P_{\text{rad}} \kappa m\), where \(\kappa\) is the specific opacity: the per-unit-mass cross-section of the interaction. We usually assume \(\kappa = \sigma_T/m_p\), that is, that the interaction between radiation and matter is all due to Thompson scattering and the matter is only composed of hydrogen atoms.
 
 Equating the forces, we get our result:
 
@@ -804,7 +808,7 @@ only hydrogen.
 \paragraph{Solutions}
 
 The solutions of the differential equation system, obtained numerically, include the profiles of all the variables at hand: a particularly interesting one is the variation of the luminosity \(L = 4 \pi r^2 w_1\) with respect to the accretion rate \(\dot{M}\).
-To plot these adimensional units are used: the luminosity is rescaled by the Eddington luminosity, defining \(l = L / L_{\text{Edd}}\); the accretion rate can also be rescaled by the luminosity if we are working in natural units (otherwise we would need to use \(\dot{M}_{\text{Edd}} c^2 = L_{\text{Edd}}\)), defining \(\dot{m} = \dot{M} / L_{\text{Edd}}\). The results are shown in figure \ref{fig:logl-logm}.
+To plot these, adimensional units are used: the luminosity is rescaled by the Eddington luminosity, defining \(l = L / L_{\text{Edd}}\); the accretion rate can also be rescaled by the luminosity if we are working in natural units (otherwise we would need to use \(\dot{M}_{\text{Edd}} c^2 = L_{\text{Edd}}\)), defining \(\dot{m} = \dot{M} / L_{\text{Edd}}\). The results are shown in figure \ref{fig:logl-logm}.
 
 \begin{figure}[ht]
     \centering
@@ -816,9 +820,5 @@ To plot these adimensional units are used: the luminosity is rescaled by the Edd
 The ratio between \(l\) and \(\dot{m}\) is called the \emph{efficiency} \(e\), and it represents the fraction of the mass of the infalling gas which gets converted to energy in the accretion process.
 
 The numerical solutions for spherical accretion show two branches: the high-luminosity one has \(e \sim \num{5e-5} \divisionsymbol \num{9e-5}\), while the low-luminosity one has \(e \sim \num{9e-8} \divisionsymbol \num{9e-7}\).
-
-In non-radial motion around a Schwarzschild black hole the efficiency can be as high as \(e \sim \num{5.7e-2}\) \cite[eq. 2.8.5]{Nobili:2000}.
-
-This shows that, in general, spherical accretion has a very low luminosity.
 
 \end{document}

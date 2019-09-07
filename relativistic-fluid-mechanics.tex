@@ -13,7 +13,7 @@ Nonrelativistic (compressible) fluid mechanics are described by the equations:
 \end{subequations}
 where $\rho_0$ is the density of the fluid,
 $v^i$ are the components of the velocity vector field,
-$\sigma^{ij}$ is the classical stress tensor (or, equivalently, the \emph{negative} of the  space-like components of the stress-energy tensor \(T^{ij}\) ),
+$\sigma^{ij}$ is the classical stress tensor. %(or, equivalently, the \emph{negative} of the  space-like components of the stress-energy tensor \(T^{ij}\) ),
 $E$ is the energy density of the fluid,
 $\kappa$ is the thermal conductivity,
 $T$ is the temperature  field of the fluid.
@@ -34,7 +34,7 @@ The energy density is a sum of kinetic and specific energies:
 \begin{equation}
     E = v^i v_i /2 + \varepsilon
 \end{equation}
-where $\varepsilon$ is the specific internal energy per unit mass.
+where $\varepsilon$ is the specific internal energy.
 
 \subsection{The relativistic fluid}
 
@@ -50,7 +50,7 @@ The 4-current of particles is $N^\mu = n u^\mu$, where \(u^\mu\) is the 4-veloci
 If these particles have a certain rest mass $m_0$, we can then define the rest-mass-flow vector $\rho_0 u^\mu = m_0 N^\mu$, which is conserved: $\nabla_\mu(\rho_0 u^\mu) = 0$, since particles do not spontaneously appear or disappear nor change their rest mass.
 The presence of particles with different rest masses can be easily accounted for by adding the mass flow vectors.
 
-Particles in a fluid can have three kinds of energy we concern ourselves with: mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
+Particles in a fluid can have three kinds of energy we concern ourselves with: rest mass, kinetic energy and other forms of energy (thermal, chemical, nuclear\dots).
 We can always perform a change of coordinates to bring us to a frame in which the kinetic energy is zero.
 
 Do note that, since our volume element is not actually arbitrarily small, being in the LRF only means that, locally, the average velocity of the fluid is purely timelike: the temperature can be nonzero, so in the LRF the particles in the volume element will still have isotropically distributed nonzero velocities.
@@ -93,7 +93,7 @@ This assumption is reasonable in our case: the components of the stress-energy t
 Any stress-energy tensor can be decomposed into its space and time-like parts in the local rest frame of the fluid:
 
 \begin{equation} \label{eq:stress-energy-tensor-decomposition}
-    T_{\mu \nu} = w u_\mu u_\nu + w_\mu u_\nu + u_\mu w_\nu + w _{\mu \nu}
+    T_{\mu \nu} = w u_\mu u_\nu + 2 w_{(\mu} u_{\nu)} + w _{\mu \nu}
 \end{equation}
 where \cite[eqs. 8.2, 8.3, 8.5]{Taub:1948}:
 \begin{subequations} \label{eq:components-stress-energy-tensor}
@@ -106,9 +106,9 @@ where \cite[eqs. 8.2, 8.3, 8.5]{Taub:1948}:
 
 Do note that by definition the tensors \(w^\mu\) and \(w^{\mu\nu}\) are purely spatial: \(u^\mu w_\mu = u^\mu w_{\mu \nu} = 0\).
 
-For the definition of the acceleration, vorticity etc. see equation \eqref{eq:covariant-acceleration-decomposition}.
+For the definition of the acceleration, vorticity etc.\ see equation \eqref{eq:covariant-acceleration-decomposition}.
 
-As in section \nameref{sec:nonrelativisti-fluid-mechanics} \(\eta\) is the viscosity, \(\xi\) is the bulk viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
+As in section \ref{sec:nonrelativisti-fluid-mechanics} \(\eta\) is the viscosity, \(\xi\) is the bulk viscosity,  \(\kappa\) is the thermal conductivity, \(T\) is the temperature field, \(p\) is the pressure field, \(\rho_0\) is the rest mass density while \(\rho = \rho_0 (1 + \varepsilon)\) is the rest energy density.
 
 % \begin{greenbox}
 %     The fact that the decomposition can be written in this way is not proven in \cite[]{Taub:1978}, but it seems like a proof can be found in \cite[]{Eckart:1940}, which is locked behind a paywall.
@@ -126,7 +126,7 @@ Equivalently, we can write
 In the nonrelativistic limit the velocity is approximately \(u^\mu = (1, v^i)\), so the conservation of mass becomes \eqref{eq:classical-conservation-mass}, while we can obtain both
 the conservation of energy \eqref{eq:classical-conservation-energy}
 and the conservation of momentum \eqref{eq:classical-conservation-momentum}
-from the four equations of conservation of the stress-energy tensor.
+from the four equations of conservation of the stress-energy tensor, projected respectively onto the span of the 4-velocity and the subspace orthogonal to it.
 
 \paragraph{Viscous and heat-flow relativistic forces}
 
@@ -167,12 +167,10 @@ If we consider the spatial components of the conservation equations by applying 
 %   so the first two terms are there, the rest does not look right.
 % \end{greenbox}
 
-The vectors \(\mathscr F^\sigma _{h, V}\) are relativistic forces on the fluid due respectively to heat flow and viscosity.
+The vectors \(\mathscr F^\sigma _{V, h}\) are relativistic forces on the fluid due respectively to viscosity and heat flow.
+The equations in \eqref{eq:full-spatial-equations-of-motion} are four, but they were projected into a three-dimensional subspace so their component along the velocity is trivial, therefore we say that, practically speaking, they are three independent equations: the relativistic generalization of the Navier-Stokes equations.
 
-In the perfect fluid case the RHS is zero we simply get Euler's equation from \eqref{eq:full-spatial-equations-of-motion}.
-
-\paragraph{The Second Principle in GR}
-
+\paragraph{The Second Principle in General Relativity}
 
 Because of the conservation of the stress-energy tensor, we have:
 
@@ -315,7 +313,7 @@ Let us also consider the \emph{fundamental thermodynamic relation}, which follow
     \end{align}
     \end{subequations}
 
-    Thus we have proved the equation in \eqref{eq:second-principle-thermodynamics}, the inequality follows directly from the fact that we are considering square moduli of spacelike vectors, and the coefficients such as \(\xi\) are assumed to be positive.
+    Thus we have proved the equation in \eqref{eq:second-principle-thermodynamics}; the inequality follows directly from the fact that we are considering square moduli of spacelike vectors, and the coefficients such as \(\xi\) are assumed to be positive.
 \end{proof}
 
 If we assume that the fluid is in equilibrium (\(\nabla_\mu S^\mu = 0\)) then we must have \(\theta = 0\) (no compression), \(\sigma_{\mu\nu} = 0 \) (no shear stresses), \(w_\mu=0\): the interpretation of this last equation is slightly harder, but it is equivalent to the statement that, in the LRF, the log-temperature gradient is purely spatial and it defines the acceleration, by \(a_\sigma = - \partial_\sigma \log T\).
@@ -328,7 +326,7 @@ If we assume that the fluid is in equilibrium (\(\nabla_\mu S^\mu = 0\)) then we
 
 \paragraph{Ideal fluids}
 
-They are fluids with \(\eta=\xi=\kappa=0\), that is, without viscosity (neither compressive nor shear) nor heat transmission.
+They are fluids with \(\eta=\xi=\kappa=0\), that is, without viscosity (neither bulk nor shear) nor heat transmission.
 They are described by the following stress-energy tensor:
 
 \begin{equation}
@@ -361,8 +359,10 @@ We work in Minkowski spacetime, where \(g_{\mu\nu} = \eta_{\mu\nu}\), and with a
 \end{align}
 \end{subequations}
 
-where \(h\) is the specific enthalpy. If we assume small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\)
-(the normalization condition is satisfied to first order in \(\delta u^x\)) we get our three equations, up to first order in the perturbations:
+where \(h\) is the specific enthalpy.
+If we consider small perturbations \(p \rightarrow p + \delta p\), \(\rho_0 \rightarrow \rho_0 + \delta \rho_0\), \(\rho \rightarrow \rho + \partial \rho\), \(u^\mu \rightarrow (1, \delta u^x, 0, 0)\)
+(the normalization condition is satisfied to first order in \(\delta u^x\))
+we get the following simplification of our three equations, up to first order in the perturbations:
 
 \begin{subequations}
 \begin{align}
@@ -381,7 +381,7 @@ We manipulate these by differentiating and substituting, in order to eliminate t
 \end{subequations}
 which simplifies to \(\partial_{tt}^2 \delta \rho - \partial_{xx}^2 \delta p = 0\).
 
-We can write this as the wave equation \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\), where we to define \(v_s^2 = \pdv*{p}{\rho}\), the square of the characteristic velocity of propagation \(v_s\).
+We can write this as the wave equation \(\qty(v_s^{-2} \partial_{tt}^2 - \partial_{xx}^2 ) \delta p = 0\), where we define \(v_s^2 = \pdv*{p}{\rho}\), the square of the characteristic velocity of propagation \(v_s\).
 
 \subsection{Bondi accretion: the adiabatic case}
 
@@ -451,12 +451,16 @@ where \(\gamma\) is the Lorentz factor ($\gamma = 1/\sqrt{1-v^2}$), and $y=\gamm
       y^2 v^2 &= (u^1)^2 \,.
     \end{align}
     \end{subequations}
+    %
+    we now have a choice for the sign of the radial component of the velocity: since we are modelling acccretion, we choose \(u^1 < 0\) (with \(v>0\)).
 
     As for \(a^\mu\), we need not compute the covariant derivative since the two components of the normalized vector we want are determined by \(u^\mu a_\mu = 0= u^\mu \hat{r}^\nu g_{\mu\nu}\) and the normalization condition \(\hat{r} \cdot \hat{r} = 1\). The first one translates to \(\hat{r}^0 y^2 + \hat{r} ^1 v \gamma^2 = 0\) and the second one to \((\hat{r}^0)^2 (- y^2 / \gamma^2) + (\hat{r}^1)^2 (\gamma^2 / y^2) = 1\), since we know the other two components of the acceleration are zero.
     Solving this system for the two unknown components yields precisely the desired expression.
 
     The \(\hat{\theta}\) and \(\hat{\varphi}\) vectors just need to be rescaled, and they will need to become \(1 / \sqrt{g_{22}}\) and \(1/\sqrt{g_{33}}\) respectively.
 \end{proof}
+
+\paragraph{The equations of motion}
 
 The first equation we consider is the conservation of mass: if $\rho_0$ is the rest mass density of the fluid, we must have $\nabla_\mu \qty(\rho_0 u^\mu) =0$. This, using the formula for covariant divergence \eqref{eq:covariant-divergence}, yields:
 
@@ -551,9 +555,9 @@ In the nonrelativistic, weak-field limit this becomes the classical conservation
     \gamma h \sqrt{1+2\Phi} \approx \frac{p}{\rho_0} + \frac{v^2}{2} - \frac{M}{r} + \epsilon = \const \,.
 \end{equation}
 
-\paragraph{The full adiabatic equations of motion} \label{par:adiabatic-equations-of-motion}
+\paragraph{Simplifying the equations of motion} \label{par:adiabatic-equations-of-motion}
 
-We want to write the equations of motion with the formalism of logarithmic derivatives: we express all the derivatives which were with respect to \(r\),  \(\dv*{}{r} \), with derivatives with respect to \(\log r \), which properly speaking would be ill-defined but we understand to mean \(\dv*{}{\log r} \defeq r \dv*{}{r} \); a more formal approach to this definition would be to use an adimensional radial coordinate \(r/(2M)\), but for consistency with \cite[]{Nobili:2000} I will not use that notation.
+We want to write the equations of motion with the formalism of logarithmic derivatives: we express all the derivatives which were with respect to \(r\),  \(\dv*{}{r} \), with derivatives with respect to \(\log r \), which properly speaking would be ill-defined but we understand to mean \(\dv*{}{\log r} \defeq r \dv*{}{r} \); a more formal approach to this definition would be to use an adimensional radial coordinate \(r/(2M)\) as is done in \cite[]{NobiliTurollaZampieri:1991dec}, but for consistency with \cite[]{Nobili:2000} I will not use that notation.
 
 We can recast the mass conservation equation \eqref{eq:integral-continuity} using logarithmic derivatives, since when a quantity has zero derivative its logarithm also does:
 
@@ -622,7 +626,7 @@ When we insert the relations into equation \eqref{eq:accretion-euler} we get:
 \end{align}
 \end{subequations}
 %
-where: we used the fact that \(v_s^2 = \qty(\pdv*{p}{\rho})_s = a + b^2 / B = a + b (\Gamma - 1)\) \cite[eq. B12]{Flammang:1982}, the energy equation \eqref{eq:simplified-energy}, the conservation of mass equation \eqref{eq:differential-continuity}, and the identity we now derive, starting from the expression for the logarithmic derivative of \(y\) \eqref{eq:log-y-conservation}:
+where we used: the fact that \(v_s^2 = \qty(\pdv*{p}{\rho})_s = a + b^2 / B = a + b (\Gamma - 1)\) \cite[eq. B12]{Flammang:1982}, the energy equation \eqref{eq:simplified-energy}, the conservation of mass equation \eqref{eq:differential-continuity}, and the identity we now derive, starting from the expression for the logarithmic derivative of \(y\) \eqref{eq:log-y-conservation}:
 %
 \begin{subequations}
 \begin{align}
@@ -635,11 +639,11 @@ where: we used the fact that \(v_s^2 = \qty(\pdv*{p}{\rho})_s = a + b^2 / B = a 
 \end{align}
 \end{subequations}
 
-The system which describes the motion is then given by equations \eqref{eq:simplified-energy}, \eqref{eq:simplified-euler} and \eqref{eq:accretion-mass}, which remains unchanged.
+The system which describes the motion is then given by equations \eqref{eq:simplified-energy}, \eqref{eq:simplified-euler} and by \eqref{eq:accretion-mass}, which remains unchanged.
 This is a system of three first-order differential equations in the varibles \(T\), \(yv\) and \(\rho_0\) (\(y\) and \(v\) can be recovered since we have an explicit definition in the form \(y = y(v)\)), which would ordinarily need three boundary conditions, but there is a mechanism by which we only need two.
 
 When \(v = v_s\), the logarithmic derivative of \(yv\) term in \eqref{eq:simplified-euler} vanishes: then, either \(r = 2 v_s y^2 /M\) or the logarithmic derivative diverges. Since the latter condition is unphysical, we must consider the former, which defines a radius \(r_s\), and impose \(v(r_s)=v_s\).
 
-This constrains the accceptable solutions, and allows the accretive motion to be fully determined by just imposing two conditions, such as \(\rho_0 (r \rightarrow \infty) = \rho_\infty\) and \(T (r \rightarrow \infty) = T_\infty\).
+This constrains the acceptable solutions, and allows the accretive motion to be fully determined by just imposing two conditions, such as \(\rho_0 (r \rightarrow \infty) = \rho_\infty\) and \(T (r \rightarrow \infty) = T_\infty\).
 
 \end{document}

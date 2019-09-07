@@ -1,19 +1,24 @@
 \documentclass[main.tex]{subfiles}
 \begin{document}
 
-When studying a fluid dynamical problem often one wishes to approximate its behaviour as non-relativistic, when \(v \ll c\).
-The problem of (spherical) accretion onto black holes allows for neither, since the velocities from radial infinity to the horizon span both cases.
+The proper study of the problem of accretion onto a black hole requires the use of a relativistic formalism, since the gravitational effect of such an object can only be properly described as the curvature of space-time, and the speeds of matter from radial infinity to the horizon span the whole interval \([0, c]\).
 
-In section \ref{sec:general-relativity} I will briefly recall the basics of special relativity, differential geometry and general relativity in order to introduce the Schwarzschild metric, which is the geometrical background on which the spherical accretion problem is studied.
+To this end, in section \ref{sec:general-relativity} I will briefly recall the basics of special relativity, differential geometry and general relativity in order to introduce the Schwarzschild metric, which is the geometrical background on which the spherical accretion problem is studied.
 
-In section \ref{sec:fluid-dynamics} I will compare the equations of motion of a non-relativistic fluid to those of a relativistic fluid.
+In classical mechanics the equations of fluid dynamics are the conservation equations of mass (the continuity equation), of momentum (the Navier-Stokes equations) and, if one wishes to consider a varying temperature in the fluid, of energy.
+In section \ref{sec:fluid-dynamics} I will compare the equations of motion of a non-relativistic fluid to those of a relativistic fluid: the classical equations have relativistic analogues; an importance difference is the fact that the energy conservation equation cannot be decoupled from the momentum conservation equations since they are the components of the same tensorial equation: the conservation of the stress-energy tensor.
 
-I will use the formalism first introduced by \textcite[]{Eckart:1940} for the decomposition the stress energy tensor, and following \textcite[]{Taub:1978} distinguish in the Euler equation --- the spatial projection of the conservation equations --- the relativistic forces acting on the fluid due to viscosity and to heat transfer.
+I will use the formalism first introduced by \textcite[]{Eckart:1940} for the decomposition the stress energy-tensor, and following \textcite[]{Taub:1978} distinguish in the spatial projection of the conservation equations the relativistic forces acting on the fluid due to viscosity and to heat transfer.
 
-I will then give a proof of the relativistic Second Principle of thermodynamics, which will justify the definition of an ideal fluid.
+I will then give a proof of the relativistic Second Principle of thermodynamics, which will justify the definition of an ideal fluid: ideality implies the isentropicity of flow lines.
 
-I will then derive the equations which govern spherical accretion in the adiabatic case.
+The relativistic equations of fluid dynamics are very complicated in the general case: in order to be able to analyze the solutions we make several simplifying assumptions.
+I will derive the equations which govern accretion in the spherically symmetric, adiabatic case. These already give an interesting result: they show a critical point corresponding to the adiabatic speed of sound: to avoid a divergence of the velocity gradient, one must impose the condition that the speed of sound be reached exactly at a certain critical radius.
 
-In section \ref{sec:radiative-effects} I will introduce and apply the PSTF moments formalism by \textcite[]{Thorne:1981feb} to the spherical accretion problem, still considering the fluid as ideal but introducing energy transfer terms due to radiation.
+In order to describe the heat transfer we assume that the stress-energy tensor of matter is simply the ideal-fluid one, and that all of the transfer of heat happens through radiation.
+The description of the radiation stress-energy tensor is, however, difficult in general.
+In section \ref{sec:radiative-effects} I will introduce and apply the PSTF moments formalism by \textcite[]{Thorne:1981feb}: it is a relativistic generalization of a technique from classical mechanics which allows, in the spherically symmetric case, for a simple description of the stress-energy tensor in terms of few scalar \emph{moments}; these are tied to each other by differential equations which are first orders of harmonic expansion of the transfer equation for photons.
+
+With these tools, the equations of motion can be reduced to a system of six ODEs, which can be integrated numerically \cite[]{NobiliTurollaZampieri:1991dec}.
 
 \end{document}

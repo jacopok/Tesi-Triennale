@@ -236,15 +236,15 @@ Then, we should take the PSTF part of the equations. This yields a very complica
 
 \begin{equation} \label{eq:PSTF-grey-moment-equations}
   \begin{split}
-    &\left( \nabla _\beta \mathscr M ^{A_k \beta} + u^\beta \nabla_\beta \mathscr M ^{A_k}
+    &\Bigg( \nabla _\beta \mathscr M ^{A_k \beta} + u^\beta \nabla_\beta \mathscr M ^{A_k}
     + \frac{k}{2k+1} \nabla_{\alpha_k} \mathscr M ^{A_{k-1}}
-    - (k-1) \mathscr M ^{A_k \beta \gamma} \sigma_{\beta \gamma} \right.
-    - (k-1) \mathscr M ^{A_k \beta} a_\beta
-    + \frac{4}{3} \mathscr M ^{A_k} \theta + \\
-    &+ \frac{5k}{2k+3} \mathscr M ^{A_{k-1} \beta} \sigma_\beta^{\alpha_k}
-    - k \mathscr M ^{A_{k-1} \beta} \omega_\beta ^{\alpha_k}
-    \left.+ \frac{k (k+3)}{2k+1} \mathscr M ^{A_{k-1}} a^{\alpha_k}
-    + \frac{(k-1) k (k+2) }{(2k-1) (2k+1)} \mathscr M ^{A_{k-2}} \sigma^{\alpha_{k-1} \alpha_k} \right)^{PSTF} = \mathscr S ^{A_k} \,.
+    - (k-1) \mathscr M ^{A_k \beta \gamma} \sigma_{\beta \gamma} \\
+    &- (k-1) \mathscr M ^{A_k \beta} a_\beta
+    + \frac{4}{3} \mathscr M ^{A_k} \theta
+    + \frac{5k}{2k+3} \mathscr M ^{A_{k-1} \beta} \sigma_\beta^{\alpha_k}
+    - k \mathscr M ^{A_{k-1} \beta} \omega_\beta ^{\alpha_k} + \\
+    &+ \frac{k (k+3)}{2k+1} \mathscr M ^{A_{k-1}} a^{\alpha_k}
+    + \frac{(k-1) k (k+2) }{(2k-1) (2k+1)} \mathscr M ^{A_{k-2}} \sigma^{\alpha_{k-1} \alpha_k} \Bigg)^{PSTF} = \mathscr S ^{A_k} \,.
   \end{split}
 \end{equation}
 
@@ -611,9 +611,9 @@ The \(t,r\) by \(t, r\) components of the stress-energy tensor with contravarian
       \left[
       \begin{matrix}
       \frac{\gamma^{4} \left(\rho - v w_{1} + \frac{v \left(v \left(3 p + w_{0} + 3 w_{2}\right) - 3 w_{1}\right)}{3} + w_{0}\right)}{y^{2}} &
-      \gamma^{2} \left(- \frac{v \left(3 p + w_{0} + 3 w_{2}\right)}{3} + v \left(- \rho + v w_{1} - w_{0}\right) + w_{1}\right)\\
+      \gamma^{2} \left(v \left( -p - w_{2} - \rho + v w_{1} - \frac{4}{3} w_{0}\right) + w_{1}\right)\\
       \gamma^{2} \left(- v \left(\rho + w_{0}\right) + \frac{v \left(- 3 p + 3 v w_{1} - w_{0} - 3 w_{2}\right)}{3} + w_{1}\right) &
-      y^{2} \left(p - v w_{1} + v \left(v \left(\rho + w_{0}\right) - w_{1}\right) + \frac{w_{0}}{3} + w_{2}\right)
+      y^{2} \left(p+ v \left(v \left(\rho + w_{0}\right) -2w_1 \right) + \frac{w_{0}}{3} + w_{2}\right)
     \end{matrix}
       \right] \,.
 \end{equation}

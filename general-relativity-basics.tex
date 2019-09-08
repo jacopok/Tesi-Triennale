@@ -97,13 +97,13 @@ The divergence of a vector field $A^\mu$ can be calculated as:
 \end{equation}
 where $g$ is the determinant of the metric.
 
-\paragraph{Stokes' theorem}
-
-If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) of this manifold equipped with coordinates \(x^\mu\) a metric \(g_{\mu\nu}\), with a submanifold boundary \(\partial V\) equipped with coordinates \(y^\mu\) and the induced metric \(h_{\alpha\beta} = \qty(\pdv*{x^\mu}{y^\alpha}) \qty(\pdv*{x^\nu}{y^\beta}) g_{\mu\nu}\), and for which we have a properly oriented normal vector \(n^\mu (y)\); then for any vector \(f^\mu\) we have \cite[]{Unger:2016}:
-
-\begin{equation} \label{eq:stokes-theorem}
-    \int _{V} \nabla_\mu f^\mu \sqrt{\abs{\det g}}  \dd[n]{x}  = \int _{\partial V} f^\mu  n_\mu \sqrt{\abs{\det h}} \dd[n-1]{y} \,.
-\end{equation}
+% \paragraph{Stokes' theorem}
+%
+% If we have a manifold of dimension \(n\), and an \(n\)-dimensional region \(V\) of this manifold equipped with coordinates \(x^\mu\) a metric \(g_{\mu\nu}\), with a submanifold boundary \(\partial V\) equipped with coordinates \(y^\mu\) and the induced metric \(h_{\alpha\beta} = \qty(\pdv*{x^\mu}{y^\alpha}) \qty(\pdv*{x^\nu}{y^\beta}) g_{\mu\nu}\), and for which we have a properly oriented normal vector \(n^\mu (y)\); then for any vector \(f^\mu\) we have \cite[]{Unger:2016}:
+%
+% \begin{equation} \label{eq:stokes-theorem}
+%     \int _{V} \nabla_\mu f^\mu \sqrt{\abs{\det g}}  \dd[n]{x}  = \int _{\partial V} f^\mu  n_\mu \sqrt{\abs{\det h}} \dd[n-1]{y} \,.
+% \end{equation}
 
 \paragraph{Geodesics}
 
@@ -333,7 +333,7 @@ or, equivalently,
     g_{\mu\nu} =  \diag\qty(-(1+2\Phi),\, \frac{1}{1+2\Phi},\, r^2,\, r^2 \sin ^2 \theta ) \,.
 \end{equation}
 
-We can see that it approaches the spherical-coordinates flat metric $\eta_{\mu\nu} ^{\prime} = \diag\qty(-1, 1, r^2, r^2 \sin ^2 \theta)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).
+It approaches the spherical-coordinates flat metric $\eta_{\mu\nu} ^{\prime} = \diag\qty(-1, 1, r^2, r^2 \sin ^2 \theta)$ both in the limit $M\rightarrow 0$ and the limit \(r \rightarrow \infty\). Its determinant is $g = -r^4 \sin^2 \theta$, so \(\sqrt{-g} = r^2 \sin \theta \).
 
 
 \end{document}

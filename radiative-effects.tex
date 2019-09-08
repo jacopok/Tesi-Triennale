@@ -512,7 +512,9 @@ with
     T_\gamma = \frac{1}{4 k_B} \frac{\displaystyle \int_0^\infty h \nu w_0 (r, \nu) \dd{\nu}}{\displaystyle \int_0^\infty w_0 (r, \nu) \dd{\nu}}\,.
 \end{equation}
 
-Do note that the determination of the radiation temperature \(T_\gamma\) with the definition given here is impossible if only the frequency-integrated transfer problem is solved: a reasonable approximation has to be made in order to compute it in this case.
+The term proportional to the electron scattering opacity \(\kappa_{\text{es}}\) in the zeroth source moment accounts for the Compton heating and cooling of the gas caused by the interaction with the photons.
+
+The determination of the radiation temperature \(T_\gamma\) with the definition given here is impossible if only the frequency-integrated transfer problem is solved, since it involves the specific energy density per unit frequency: a reasonable approximation has to be made in order to compute it in this case.
 
 \textcite[eq. 17]{NobiliTurollaZampieri:1991dec}, following the works of Park and Ostriker, propose the following differential equation for the determination of the logarithmic derivative of \(T_\gamma\) when the temperature profile is known:
 %
@@ -618,7 +620,7 @@ The \(t,r\) by \(t, r\) components of the stress-energy tensor with contravarian
 
 \paragraph{The total luminosity \(\dot{E}\)}
 
-We can project the conservation of the stress energy tensor along the unit vector in the temporal direction in the spherical reference frame, \((e_t)_\nu\): we get  \((e_t)_\nu \nabla_\mu T^{\nu\mu} = \nabla_\mu T_t^\mu = 0\).
+We can project the conservation of the stress energy tensor along the unit vector in the time direction in the spherical reference frame, \((e_t)_\nu\): we get  \((e_t)_\nu \nabla_\mu T^{\nu\mu} = \nabla_\mu T_t^\mu = 0\).
 
 Then, applying \eqref{eq:covariant-divergence} and our symmetry assumptions:
 
@@ -671,7 +673,7 @@ The conservation of the stress-energy tensor can be projected onto \(\hat{t}\) a
 \end{align}
 \end{subequations}
 %
-where the identifications come from a reframing of the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} (see \cite[eq. A8]{NobiliTurollaZampieri:1991dec}).
+where the identifications come from the manipulation of the moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} (see \cite[eq. A8]{NobiliTurollaZampieri:1991dec}).
 
 By adding the continuity equation \eqref{eq:differential-continuity} to the equations \eqref{eq:fiducial-projected-conservation} --- which are reworked slightly to get the expressions of logarithmic derivatives --- we get the full system of the simplified conservation equations we will work with. Here, as in \cite[]{NobiliTurollaZampieri:1991dec} and as in section \ref{par:adiabatic-equations-of-motion}, primes denote differentiation with respect to \(\log r\).
 %
@@ -725,7 +727,7 @@ The shear moment \(w_2\) also appears in the grey moment equations \eqref{eq:NTZ
 where \(\tau\) is the electron scattering optical depth, which is defined \cite[eqs. 1.25, 1.26]{RybickiLightman:2004} as the function along photon paths such that the incoming intensity diminishes as \(I = I_0 e^{-\tau}\); \(f(\tau)\) is called the variable Eddington factor, while \(n \in \mathbb N\) can be chosen to reproduce different behaviours.
 The error introduced by this approximation is typically of the order of \(\SI{15}{\percent}\) \cite[]{TurollaNobili:1988}.
 
-The flow is called optically thick when, along a typical photon path (which in our case will be radial) \(\tau \gg 1\), and optically thin when \(\tau \sim 0\).
+The flow is called optically thick when, along a typical photon path \(\tau \gg 1\), and optically thin when \(\tau \ll 1\).
 In these two cases \(f(\tau)\) approaches 0 and \(\frac[i]{2}{3}\) respectively.
 
 If we substitute the closure relation into the grey moment equations \eqref{eq:NTZ91-moment-equations-logarithmic} and solve for \(w_l\), where \(l=0,1\), we get an equation of the form \cite[eq. 18]{NobiliTurollaZampieri:1991dec}:
@@ -734,7 +736,7 @@ If we substitute the closure relation into the grey moment equations \eqref{eq:N
   \qty(v^2 - v f(\tau) - \frac{1}{3}) w_l^{\prime} = \text{a function of }\, r, w_0, w_1, v, v', l \,.
 \end{equation}
 
-This adds a singularity to the system beyond the one at \(v=v_s\) discussed in section \ref{par:adiabatic-equations-of-motion}. This singularity is located at the zeroes of the Legendre polynomial \(P_2 (v)\) (see \eqref{eq:legendre-polynomials}, the order of the polynomial is \(2 = 1+ l_{\text{max}}\) where \(l_{\text{max}}=1\) is the maximum order of moments considered) in the optically thick limit, and at \(v \rightarrow 1\) in the optically thin limit.
+This adds a singularity to the system in addition to the one at \(v=v_s\) discussed in section \ref{par:adiabatic-equations-of-motion}. This singularity is located at the zeroes of the Legendre polynomial \(P_2 (v)\) (see \eqref{eq:legendre-polynomials}, the order of the polynomial is \(2 = 1+ l_{\text{max}}\) where \(l_{\text{max}}=1\) is the maximum order of moments considered) in the optically thick limit, and at \(v \rightarrow 1\) in the optically thin limit.
 
 \paragraph{Boundary conditions}
 
@@ -819,6 +821,6 @@ To plot these, adimensional units are used: the luminosity is rescaled by the Ed
 
 The ratio between \(l\) and \(\dot{m}\) is called the \emph{efficiency} \(e\), and it represents the fraction of the mass of the infalling gas which gets converted to energy in the accretion process.
 
-The numerical solutions for spherical accretion show two branches: the high-luminosity one has \(e \sim \num{5e-5} \divisionsymbol \num{9e-5}\), while the low-luminosity one has \(e \sim \num{9e-8} \divisionsymbol \num{9e-7}\).
+The numerical solutions for spherical accretion show two branches: the high-luminosity one has \(e \sim \num{5.5e-5} \divisionsymbol \num{2.1e-4}\), while the low-luminosity one has \(e \sim \num{8.4e-8} \divisionsymbol \num{8.6e-7}\) \cite[tables 1, 2]{NobiliTurollaZampieri:1991dec}.
 
 \end{document}

@@ -11,13 +11,64 @@
 
 \frame{\titlepage}
 
-\section{General-relativistic fluid dynamics}
+\begin{frame}
+    \frametitle{The Schwarzschild metric}
+    Flat metric:
+
+    \begin{equation*}
+        \dd{s}^2 = -\dd{t}^2 + \dd{r}^2 + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi})\,.
+    \end{equation*}
+
+    Schwarzschild metric:
+
+    \begin{equation*}
+        \dd{s}^2 = -\qty(1-\frac{2M}{r})\dd{t}^2 + \frac{1}{1-\frac{2M}{r}} \dd{r}^2
+        + r^2 \qty(\dd{\theta}^2 + \sin^2\theta \dd{\varphi})\,,
+    \end{equation*}
+    %
+    where \(c = G = 1\).
+
+    % The radial coordinate \(r\) can be defined with the 2-sphere's area: \(A \overset{!}{=} 4 \pi r^2\) since the angular metric is flat.
+
+    % The singularity at \(r = 2M \) is not physical: there are other coordinates in which it disappears and the physical behaviour is revealed, objects \emph{can} actually reach the horizon in finite time.
+\end{frame}
 
 \begin{frame}
     \frametitle{The Schwarzschild metric}
+    \begin{figure}
+        \includegraphics[width=\textwidth]{figures/Schwarzschild-Space}
+    \end{figure}
+
+    % Circles are spaced further apart on the manifold than their radii's difference
 \end{frame}
 
-\section{Bondi accretion}
+\begin{frame}
+    \frametitle{The stress-energy tensor}
+
+    The component \(T^{\mu\nu}\) is the flux of \(\mu\)-th component of the four-momentum \(p^\mu\) through a surface of constant coordinate \(x^\nu\).
+
+    For an ideal fluid (\(\eta = \xi = \kappa = 0\)) in the Local Rest Frame:
+
+    \begin{equation*}
+        T^{\mu\nu} =
+        \begin{bmatrix}
+        \rho   &   &   &  \\
+           & p  &   &  \\
+           &   & p  &  \\
+           &   &   & p
+       \end{bmatrix}_{\text{fid}} \,.
+    \end{equation*}
+\end{frame}
+
+\begin{frame}
+    \frametitle{The Local Rest Frame}
+
+    A set of vectors \(V^\mu _{(\alpha)}\)  such that
+    %
+    \begin{equation*}
+        g_{\mu\nu} V^\mu _{(\alpha)} V^\nu _{(\beta)} = \eta_{(\alpha) (\beta)}\,.
+    \end{equation*}
+\end{frame}
 
 \begin{frame}
     \frametitle{The PSTF moments}

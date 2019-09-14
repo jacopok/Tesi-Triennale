@@ -39,6 +39,8 @@
         \includegraphics[width=\textwidth]{figures/Schwarzschild-Space}
     \end{figure}
 
+    {\tiny Image credit: \url{https://www.physicsforums.com/insights/schwarzschild-metric-part-1-gps-satellites/}.}
+
     % Circles are spaced further apart on the manifold than their radii's difference
 \end{frame}
 
@@ -50,14 +52,16 @@
     For an ideal fluid (\(\eta = \xi = \kappa = 0\)) in the Local Rest Frame:
 
     \begin{equation*}
-        T^{\mu\nu} =
+        T^{\mu\nu}_{\text{ideal fluid}} =
         \begin{bmatrix}
         \rho   &   &   &  \\
            & p  &   &  \\
            &   & p  &  \\
            &   &   & p
-       \end{bmatrix}_{\text{fid}} \,.
+       \end{bmatrix}_{\text{fid}} \,,
     \end{equation*}
+    %
+    where \(\rho = \rho_0 (1 + \varepsilon)\)
 \end{frame}
 
 \begin{frame}
@@ -68,10 +72,72 @@
     \begin{equation*}
         g_{\mu\nu} V^\mu _{(\alpha)} V^\nu _{(\beta)} = \eta_{(\alpha) (\beta)}\,.
     \end{equation*}
+
+    We assume spherical symmetry and stationarity.
+
+    TODO: vector visualization.
 \end{frame}
 
 \begin{frame}
-    \frametitle{The PSTF moments}
+    \frametitle{The radiation moments}
+
+    \begin{subequations}
+    \begin{align*}
+      w_0 &= \int I \dd{\Omega} & \text{radiation energy density} \\
+      w_1 &= \int I \cos \theta \dd{\Omega} & \text{radiation energy flux} \\
+      w_2 &= \int I \qty(\cos^2 \theta - \frac{1}{3}) \dd{\Omega} & \text{radiation shear stress.}
+    \end{align*}
+    \end{subequations}
+
+    TODO: add image.
+\end{frame}
+
+\begin{frame}
+    \frametitle{The full stress-energy tensor}
+
+    \begin{equation*}
+    T^{\mu\nu} =
+    T^{\mu\nu}_{\text{ideal fluid}} +
+    \begin{bmatrix}
+    w_0   & w_1  & 0  & 0 \\
+    w_1   & \frac{1}{3}w_0 + w_2  &  0  & 0 \\
+      0 & 0  &  \frac{1}{3}w_0 -\frac{1}{2}w_2 &  \\
+      0 & 0  &   & \frac{1}{3}w_0 -\frac{1}{2}w_2
+    \end{bmatrix} _{\text{fid}}
+    \end{equation*}
+
+    The equations to solve are:
+
+    \begin{subequations}
+    \begin{align*}
+      \nabla_\mu T^{\mu\nu} = 0 && \text{2 equations} \\
+      \nabla_\mu \qty(\rho_0 u^\mu) = 0&& \text{1 equation} \\
+      \text{conservation of photon number} && \text{2 equations.}
+    \end{align*}
+    \end{subequations}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Singularities}
+    The Euler equation becomes:
+        \begin{equation*}
+        (v^2 - v_s^2) \frac{(yv) ^{\prime}}{yv} - 2 v_s^2 + \frac{M}{y^2 r}
+        = -\frac{r}{yv (p + \rho)} \qty((\Gamma-1)s_0 + v s_1)
+        \end{equation*}
+
+    TODO: include singularity with optical thickness dependence?
+\end{frame}
+
+\begin{frame}
+    \frametitle{Accretion efficiency}
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Accretion efficiency}
+    \centering
+    \includegraphics[width=0.7\textwidth]{../figures/logl-logm}
 \end{frame}
 
 \end{document}

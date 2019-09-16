@@ -8,6 +8,7 @@
 *.out
 *.pdf
 !figures/*
+!presentation/figures/*
 !main.pdf
 !Frontespizio_Laurea.pdf
 *.run.xml

@@ -1,0 +1,72 @@
+%% Creator: Inkscape inkscape 0.92.3, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'moments.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \newcommand*\fsize{\dimexpr\f@size pt\relax}%
+  \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{576bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.6875)%
+    \lineheight{1}%
+    \setlength\tabcolsep{0pt}%
+    \put(0,0){\includegraphics[width=\unitlength,page=1]{moments.pdf}}%
+    \put(0.92540771,0.24987017){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$-0.25$}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=2]{moments.pdf}}%
+    \put(0.14419286,0.38314102){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$w_0$}\end{tabular}}}}%
+    \put(0.37387149,0.49643541){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$w_1$}\end{tabular}}}}%
+    \put(0.61281966,0.60972981){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textbf{$w_2$}\end{tabular}}}}%
+    \put(0.92540771,0.19693231){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$-0.50$}\end{tabular}}}}%
+    \put(0.92540771,0.14399446){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$-0.75$}\end{tabular}}}}%
+    \put(0.92540771,0.0910566){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$-1.00$}\end{tabular}}}}%
+    \put(0.93094708,0.30280802){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$0.00$}\end{tabular}}}}%
+    \put(0.93094708,0.35574589){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$0.25$}\end{tabular}}}}%
+    \put(0.93094708,0.4086837){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$0.50$}\end{tabular}}}}%
+    \put(0.93094708,0.46162146){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$0.75$}\end{tabular}}}}%
+    \put(0.93094708,0.51455935){\color[rgb]{0.14901961,0.14901961,0.14901961}\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}\textit{$1.00$}\end{tabular}}}}%
+    \put(0,0){\includegraphics[width=\unitlength,page=3]{moments.pdf}}%
+  \end{picture}%
+\endgroup%
